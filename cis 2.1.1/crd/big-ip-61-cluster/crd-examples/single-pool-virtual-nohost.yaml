@@ -5,8 +5,15 @@ metadata:
   labels:
     f5cr: "true"
 spec:
+  tlsProfileName: reencrypt-tls
   virtualServerAddress: "10.192.75.106"
   pools:
-  - path: /
+  - monitor:
+      interval: 20
+      recv: ""
+      send: /
+      timeout: 10
+      type: http
+    path: /
     service: f5-hello-world
     servicePort: 8080
