@@ -39,6 +39,7 @@ spec:
             - "--http-listen-address=0.0.0.0:8080"
             - "--as3-validation=true"
             - "--log-as3-response=true"
+            - "--custom-resource-mode=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
