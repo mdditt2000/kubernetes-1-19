@@ -5,7 +5,7 @@ metadata:
   labels:
     f5cr: "true"
 spec:
-  virtualServerAddress: "10.192.75.107"
+  virtualServerAddress: "10.192.75.67"
   host: mysite.f5demo.com
   pools:
   - monitor:
