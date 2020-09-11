@@ -22,7 +22,7 @@ spec:
         imagePullPolicy: Always
         name: f5-demo
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           protocol: TCP
         - containerPort: 443
           protocol: TCP

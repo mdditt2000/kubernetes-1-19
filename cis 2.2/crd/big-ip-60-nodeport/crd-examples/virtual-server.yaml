@@ -10,7 +10,7 @@ spec:
   pools:
   - path: /
     service: f5-demo
-    servicePort: 8080
+    servicePort: 80
   - path: /
     service: f5-demo
     servicePort: 443
