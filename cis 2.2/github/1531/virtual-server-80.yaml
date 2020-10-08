@@ -17,4 +17,4 @@ spec:
     path: /
     service: f5-demo
     servicePort: 80
-    nodeMemberLabel: worker
+    nodeMemberLabel: f5role=worker
