@@ -17,4 +17,4 @@ spec:
     path: /
     service: f5-demo
     servicePort: 80
-    nodeMemberLabel: f5role=worker
+    nodeMemberLabel: node-role.kubernetes.io/f5role=worker
