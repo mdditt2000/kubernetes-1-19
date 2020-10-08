@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-bigip-ctlr-deployment
+  namespace: kube-system
+spec:
+  # DO NOT INCREASE REPLICA COUNT
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+   matchLabels:
+    app: k8s-bigip-ctlr
+  strategy:
+   rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+   type: RollingUpdate
+  template:
+    metadata:
+      name: k8s-bigip-ctlr
+      labels:
+        app: k8s-bigip-ctlr
+    spec:
+      # Name of the Service Account bound to a Cluster Role with the required
+      # permissions
+      serviceAccountName: k8s-bigip-ctlr
+      containers:
+        - name: k8s-bigip-ctlr
+          image: "f5networks/k8s-bigip-ctlr:2.1.1"
+          env:
+            - name: BIGIP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  # Replace with the name of the Secret containing your login
+                  # credentials
+                  name: f5-bigip-login
+                  key: username
+            - name: BIGIP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  # Replace with the name of the Secret containing your login
+                  # credentials
+                  name: f5-bigip-login
+                  key: password
+          command: ["/app/bin/k8s-bigip-ctlr"]
+          args: [
+            # See the k8s-bigip-ctlr documentation for information about
+            # all config options
+            # https://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/latest
+            "--bigip-username=$(BIGIP_USERNAME)",
+            "--bigip-password=$(BIGIP_PASSWORD)",
+            "--bigip-url=192.168.200.60",
+            "--bigip-partition=kubernetes",
+            "--pool-member-type=cluster",
+            "--insecure=true",
+            "--manage-ingress=false",
+            "--manage-routes=false",
+            "--manage-configmaps=false",
+            "--custom-resource-mode=true",
+            "--log-level=DEBUG",
+            "--log-as3-response=true",
+            "--namespace=default"
+            ]
+      imagePullSecrets:
+        # Secret that gives access to a private docker registry
+        - name: f5-docker-images
+        # Secret containing the BIG-IP system login credentials
+        - name: f5-bigip-login
