@@ -40,7 +40,7 @@ spec:
             - "--as3-validation=true"
             - "--log-as3-response=true"
             - "--custom-resource-mode=true"
-            - "--node-label-selector=node-role.kubernetes.io/f5role=worker"
+            - "--node-label-selector=f5role=worker"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
