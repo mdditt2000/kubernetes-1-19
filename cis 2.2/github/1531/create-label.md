@@ -11,11 +11,4 @@ kubectl label nodes k8s-1-19-node1.example.com node-role.kubernetes.io/f5role=wo
 kubectl label nodes k8s-1-19-node2.example.com node-role.kubernetes.io/f5role=worker
 kubectl label nodes k8s-1-19-node3.example.com node-role.kubernetes.io/f5role=worker
 kubectl label nodes k8s-1-19-node4.example.com node-role.kubernetes.io/f5role=worker
-kubectl label nodes k8s-1-19-node5.example.com node-role.kubernetes.io/f5role=worker
-
-kubectl label nodes k8s-1-19-node1.lab.fp.f5net.com node-role.kubernetes.io/f5role=worker
-kubectl label nodes k8s-1-19-node2.lab.fp.f5net.com node-role.kubernetes.io/f5role=worker
-kubectl label nodes k8s-1-19-node3.lab.fp.f5net.com node-role.kubernetes.io/f5role=worker
-kubectl label nodes k8s-1-19-node4.lab.fp.f5net.com node-role.kubernetes.io/f5role=worker
-kubectl label nodes k8s-1-19-node5.lab.fp.f5net.com node-role.kubernetes.io/f5role=worker
 ```
