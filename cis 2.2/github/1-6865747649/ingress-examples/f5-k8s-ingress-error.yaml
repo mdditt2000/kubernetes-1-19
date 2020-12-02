@@ -18,13 +18,7 @@ metadata:
         ]
     virtual-server.f5.com/ip: 10.192.75.108
     virtual-server.f5.com/partition: k8s
-    creationTimestamp: "2020-12-02T07:56:48Z"
-    generation: 1
   name: f5-hello-world
-  namespace: sock-shop
-  resourceVersion: "83714532"
-  selfLink: /apis/extensions/v1beta1/namespaces/sock-shop/ingresses/f5-test-rule
-  uid: 18aefdc5-657e-4f15-983a-3d7edbec5104
 spec:
  rules:
  # URL
