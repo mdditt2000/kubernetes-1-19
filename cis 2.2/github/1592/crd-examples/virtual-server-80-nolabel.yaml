@@ -5,9 +5,8 @@ metadata:
   labels:
     f5cr: "true"
 spec:
+  virtualServerAddress: "10.192.75.108"
   host: mysite.f5demo.com
-  tlsProfileName: edge-tls
-  virtualServerAddress: "10.192.75.67"
   pools:
   - monitor:
       interval: 20
