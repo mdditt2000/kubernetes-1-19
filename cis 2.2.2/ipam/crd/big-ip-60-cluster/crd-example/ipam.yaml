@@ -1,0 +1,19 @@
+apiVersion: "fic.f5.com/v1"
+kind: F5IPAM
+metadata:
+  name: f5ipam.sample
+  namespace: kube-system
+spec:
+  hostSpecs:
+  - host: cafe.example.com
+    cidr: 10.10.10.0/24
+  - host: tea.example.com
+    cidr: 10.10.10.0/24
+status:
+  IPStatus:
+  - host: cafe.example.com
+    ip: 10.10.10.45
+    cidr: 10.10.10.0/24
+  - host: tea.example.com
+    ip: 10.10.10.47
+    cidr: 10.10.10.0/24

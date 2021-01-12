@@ -40,7 +40,7 @@ spec:
             - "--custom-resource-mode=true"
             - "--as3-validation=true"
             - "--log-as3-response=true"
-            - "--share-nodes=true"
+            - "--unsafe=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
@@ -56,6 +56,6 @@ spec:
                 secretKeyRef: 
                   key: password
                   name: bigip-login
-          image: "f5networks/k8s-bigip-ctlr:2.2.1"
+          image: "vklohiya1/k8s-bigip-ctlr:uncheck"
           name: f5-server
       serviceAccountName: k8s-bigip-ctlr
