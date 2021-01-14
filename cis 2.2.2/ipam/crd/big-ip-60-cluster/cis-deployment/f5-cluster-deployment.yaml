@@ -55,6 +55,6 @@ spec:
                 secretKeyRef: 
                   key: password
                   name: bigip-login
-          image: "potnuruf5/k8s-bigip-ctlr:ipamSupport-build-5"
+          image: "amit49g/k8s-bigip-ctlr:2.2.2-draft-01"
           name: f5-server
       serviceAccountName: k8s-bigip-ctlr
