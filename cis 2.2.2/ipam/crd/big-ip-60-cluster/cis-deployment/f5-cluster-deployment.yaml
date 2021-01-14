@@ -40,6 +40,7 @@ spec:
             - "--custom-resource-mode=true"
             - "--as3-validation=true"
             - "--log-as3-response=true"
+            - "--ipam=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
