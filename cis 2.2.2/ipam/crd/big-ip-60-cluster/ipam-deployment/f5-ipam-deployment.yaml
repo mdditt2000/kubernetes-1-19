@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: test-ipam-controller-1
-  name: test-ipam-controller-1
+    name: f5-ipam-controller
+  name: f5-ipam-controller
   namespace: kube-system
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-ipam-controller-1
+      app: f5-ipam-controller
   template:
     metadata:
       labels:
-        app: test-ipam-controller-1
+        app: f5-ipam-controller
     spec:
       containers:
       - args:
@@ -24,6 +24,6 @@ spec:
         - /app/bin/f5-ipam-controller
         image: subbuv26/f5-ipam-controller:iprange_fix
         imagePullPolicy: IfNotPresent
-        name: test-ipam-controller-1
+        name: f5-ipam-controller
       serviceAccount: ipam-ctlr
       serviceAccountName: ipam-ctlr
