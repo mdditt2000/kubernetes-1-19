@@ -2,13 +2,13 @@
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
- name: coffee-virtual-server
+ name: f5-demo
  labels:
    f5cr: "true"
 spec:
- host: demo.f5demo.com
+ host: mysite.f5demo.com
  cidr: "10.192.75.0/24"
  pools:
- - path: /coffee
-   service: svc-2
+ - path: /
+   service: f5-demo
    servicePort: 80
