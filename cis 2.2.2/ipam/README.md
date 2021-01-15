@@ -12,7 +12,7 @@ The Controller can:
 
 ## F5 CIS Configuration Options for IPAM Deployment
 
-### Step 1:
+### Step 1
 
 Add the parameter --ipam=true in the CIS deployment to provide the CIDR parameter in virtualserver CRD
 
@@ -64,7 +64,7 @@ ip-range parameter holds the IP address ranges and from this range, it creates a
     - --log-level=DEBUG
 ```
 
-Deploy the RBAC,schema for F5 IPAM Controller and F5 IPAM Controller
+Deploy RBAC, schema and F5 IPAM Controller deployment
 
 ```
 kubectl create -f f5-ipam-rbac.yaml
