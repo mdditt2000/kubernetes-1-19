@@ -41,7 +41,7 @@ Deploy CIS
 kubectl create -f f5-cluster-deployment.yaml
 ```
 
-* cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/cis-deployment)
 
 ## F5 IPAM Deploy Configuration Options
 
@@ -72,7 +72,7 @@ kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-deployment.yaml
 ```
 
-* ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/ipam-deployment)
+ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/ipam-deployment)
 
 ## Configuring CIS CRD to work with F5 IPAM Controller
 
@@ -103,7 +103,7 @@ kubectl create -f customresourcedefinitions.yaml
 kubectl create -f virtual-server-crd.yaml
 ```
 
-* crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/crd-example)
+crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/crd-example)
 
 
 ## Logging output when creating the CRD
