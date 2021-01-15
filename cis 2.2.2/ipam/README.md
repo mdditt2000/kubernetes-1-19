@@ -103,7 +103,8 @@ kubectl create -f customresourcedefinitions.yaml
 kubectl create -f virtual-server-crd.yaml
 ```
 
-Files located at https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/crd-example
+* crd-example [document](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/crd-example)
+
 
 ## Logging output when creating the CRD
 
