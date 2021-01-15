@@ -101,7 +101,7 @@ Deploy the CRD and updated schema
 ```
 kubectl create -f customresourcedefinitions.yaml
 kubectl create -f virtual-server-crd.yaml
-kubec
+```
 
 Files located at https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/crd-example
 
