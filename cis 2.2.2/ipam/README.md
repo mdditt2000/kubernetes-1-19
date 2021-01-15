@@ -10,7 +10,42 @@ The Controller can:
 
 **Note** The idea here is that we will support CRD, Type LB and possibly  route/ingress in the future
 
+## F5 CIS Configuration Options for IPAM Deployment
+
+### Step 1:
+
+Add the parameter --ipam=true in the CIS deployment to provide the CIDR parameter in virtualserver CRD
+
+* --ipam=true
+
+```
+- args: 
+    - "--bigip-username=$(BIGIP_USERNAME)"
+    - "--bigip-password=$(BIGIP_PASSWORD)"
+    - "--bigip-url=192.168.200.60"
+    - "--bigip-partition=k8s"
+    - "--namespace=default"
+    - "--pool-member-type=cluster"
+    - "--flannel-name=fl-vxlan"
+    - "--log-level=DEBUG"
+    - "--insecure=true"
+    - "--custom-resource-mode=true"
+    - "--as3-validation=true"
+    - "--log-as3-response=true"
+    - "--ipam=true"
+```
+
+Deploy CIS
+
+```
+kubectl create -f f5-cluster-deployment.yaml
+```
+
+Files located at https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/cis-deployment
+
 ## F5 IPAM Deploy Configuration Options
+
+### Step 2
 
 * --orchestration=kubernetes
 
@@ -29,12 +64,14 @@ ip-range parameter holds the IP address ranges and from this range, it creates a
     - --log-level=DEBUG
 ```
 
-### Step 1
-
 Deploy the RBAC for F5 IPAM Controller and F5 IPAM Controller
 
 ```
 kubectl create -f f5-ipam-rbac.yaml
-kubectl create -f f5-ipam-rbac.yaml
+kubectl create -f f5-ipam-deployment.yaml
 ```
-Files located at
+
+Files located at https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/ipam-deployment
+
+### Step 3
+
