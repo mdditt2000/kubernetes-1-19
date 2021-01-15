@@ -137,11 +137,4 @@ I0114 19:09:29.270816       1 shared_informer.go:204] Caches are synced for F5 I
 2021/01/14 21:14:30 [DEBUG] [CORE] Allocated IP: 10.192.75.111 for CIDR: 10.192.75.0/24
 2021/01/14 21:14:30 [DEBUG] [PROV] Created 'A' Record. Host:mysite.f5demo.com, IP:10.192.75.111
 2021/01/14 21:14:30 [DEBUG] Updated: kube-system/ipam.k8s with Status. Added Host: mysite.f5demo.com, CIDR: 10.192.75.0/24, IP: 10.192.75.111
-2021/01/14 21:14:30 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
-2021/01/14 21:14:30 [DEBUG] Processing Key: &{0xc00032f340 0xc00032e2c0 Update}
-2021/01/14 21:16:21 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
-2021/01/14 21:16:21 [DEBUG] Processing Key: &{0xc00032e000 0xc00032f340 Update}
-2021/01/14 21:16:21 [DEBUG] Updated: kube-system/ipam.k8s with Status. Added Host: mysite.f5demo.com, CIDR: , IP: 10.192.75.111
-2021/01/14 21:16:21 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
-2021/01/14 21:16:21 [DEBUG] Processing Key: &{0xc0001ae000 0xc00032e000 Update}
 ```
