@@ -64,10 +64,11 @@ ip-range parameter holds the IP address ranges and from this range, it creates a
     - --log-level=DEBUG
 ```
 
-Deploy the RBAC for F5 IPAM Controller and F5 IPAM Controller
+Deploy the RBAC,schema for F5 IPAM Controller and F5 IPAM Controller
 
 ```
 kubectl create -f f5-ipam-rbac.yaml
+kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-deployment.yaml
 ```
 
