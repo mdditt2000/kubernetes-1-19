@@ -22,7 +22,7 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image: amit49g/f5-ipam-controller:0.1.0-draft-01
+        image: f5devcentral/f5-ipam-controller:0.1.0
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
       serviceAccount: ipam-ctlr

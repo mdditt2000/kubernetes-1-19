@@ -2,7 +2,20 @@
 
 The F5 IPAM Controller is a Docker container that allocates IP addresses from an static list for hostnames. The F5 IPAM Controller watches CRD resources and consumes the hostnames within each resource.
 
-The Controller can:
+## Prerequisites
+
+AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
+CIS 2.2.3 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.2.3)
+F5 IPAM Controller [repo](https://github.com/f5devcentral/f5-ipam-controller/releases/tag/v0.1.0)
+
+## Setup Options
+
+CIS 2.2.3 provides two options for using the F5 IPAM controller
+
+* First option is defining the CIDR network label in the virtualserver CRD which maps to the IP-Range
+* Second option is only defining the hostname in the virtualserver CRD which maps to the IPAM CRD
+
+In CIS 2.2.3 the F5 IPAM Controller can:
 
 * Allocate IP address from static IP address pool based on the CIDR mentioned in a Kubernetes resource
 
@@ -10,7 +23,7 @@ The Controller can:
 
 **Note** The idea here is that we will support CRD, Type LB and possibly  route/ingress in the future
 
-## F5 CIS Configuration Options for IPAM Deployment
+## F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
 
 ### Step 1
 
@@ -139,3 +152,12 @@ I0114 19:09:29.270816       1 shared_informer.go:204] Caches are synced for F5 I
 2021/01/14 21:14:30 [DEBUG] [PROV] Created 'A' Record. Host:mysite.f5demo.com, IP:10.192.75.111
 2021/01/14 21:14:30 [DEBUG] Updated: kube-system/ipam.k8s with Status. Added Host: mysite.f5demo.com, CIDR: 10.192.75.0/24, IP: 10.192.75.111
 ```
+
+## F5 CIS Configuration Options for IPAM Deployment defining the hostname in the virtualserver CRD which maps to the IPAM CRD
+
+### Step 1 
+
+No change in CIS deployment
+
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.2.2/ipam/crd/big-ip-60-cluster/cis-deployment)
+
