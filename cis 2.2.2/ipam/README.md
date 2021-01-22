@@ -4,9 +4,10 @@ The F5 IPAM Controller is a Docker container that allocates IP addresses from an
 
 ## Prerequisites
 
-AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
+Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
 CIS 2.2.3 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.2.3)
 F5 IPAM Controller [repo](https://github.com/f5devcentral/f5-ipam-controller/releases/tag/v0.1.0)
+Github [documentation](https://github.com/f5devcentral/f5-ipam-controller/blob/main/README.md)
 
 ## Setup Options
 
