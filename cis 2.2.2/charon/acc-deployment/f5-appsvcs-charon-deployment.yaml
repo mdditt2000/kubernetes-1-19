@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: f5-appsvcs-charon
+  name: f5-appsvcs-charon
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: f5-appsvcs-charon
+  template:
+    metadata:
+      labels:
+        app: f5-appsvcs-charon
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: f5-demo
+        image: mdditt2000/f5-appsvcs-charon
+        imagePullPolicy: Always
+        name: f5-appsvcs-charon
+        ports:
+        - containerPort: 8080
+          protocol: TCP

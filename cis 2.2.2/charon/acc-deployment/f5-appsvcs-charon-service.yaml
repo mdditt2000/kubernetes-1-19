@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: f5-demo
+  name: f5-appsvcs-charon
 spec:
   ports:
     - name: http
       protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 8080
+      targetPort: 8080
   selector:
-    app: f5-demo
+    app: f5-appsvcs-charon
   type: ClusterIP
