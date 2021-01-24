@@ -12,7 +12,7 @@ k8s-1-19-node4.example.com    Ready    <none>   29d   v1.19.0
 Create the label
 ```
 kubectl label nodes k8s-1-19-node1.example.com f5role=worker
-ubectl label nodes k8s-1-19-node2.example.com f5role=worker
+kubectl label nodes k8s-1-19-node2.example.com f5role=worker
 kubectl label nodes k8s-1-19-node3.example.com f5role=worker
 kubectl label nodes k8s-1-19-node4.example.com f5role=worker
 ```
