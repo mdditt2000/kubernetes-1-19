@@ -6,9 +6,9 @@ metadata:
 spec:
   hostSpecs:
   - host: mysite.f5demo.com
-    cidr: 10.192.75.111/24
+    cidr: 10.192.75.0/24
 status:
   IPStatus:
   - host: mysite.f5demo.com
     ip: 10.192.75.111
-    cidr: 10.192.75.111/24
+    cidr: 10.192.75.0/24
