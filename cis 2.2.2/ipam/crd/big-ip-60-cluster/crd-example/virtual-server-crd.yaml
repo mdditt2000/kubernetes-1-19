@@ -8,7 +8,7 @@ metadata:
    f5cr: "true"
 spec:
  host: mysite.f5demo.com
- cidr: "10.192.75.111/24"
+ cidr: "10.192.75.0/24"
  pools:
  - path: /
    service: f5-demo
