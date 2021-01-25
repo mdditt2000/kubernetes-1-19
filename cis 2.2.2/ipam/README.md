@@ -1,5 +1,7 @@
 # F5 IPAM Controller for CIS 2.2.3
 
+**Note** F5 IPAM Controller is currently in **PREVIEW**
+
 The F5 IPAM Controller is a Docker container that allocates IP addresses from an static list for hostnames. The F5 IPAM Controller watches CRD resources and consumes the hostnames within each resource.
 
 ## Prerequisites
