@@ -72,7 +72,7 @@ cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 The orchestration parameter holds the orchestration environment i.e. Kubernetes.
 
-* --ip-range="10.192.75.111/24-10.192.75.115/24"28"
+* --ip-range="10.192.75.111/24-10.192.75.115/24"
 
 ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated to the corresponding hostname in the virtual server CRD.
 
