@@ -7,13 +7,14 @@ metadata:
 spec:
   host: myapp.f5demo.com
   virtualServerAddress: "10.192.75.111"
+  virtualServerHTTPSPort: 443
   pools:
   - monitor:
       interval: 20
       recv: ""
       send: /
       timeout: 10
-      type: http
+      type: https
     path: /
     service: f5-demo
-    servicePort: 80
+    servicePort: 443
