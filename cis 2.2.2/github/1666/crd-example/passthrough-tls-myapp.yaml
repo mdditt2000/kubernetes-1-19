@@ -9,3 +9,5 @@ spec:
     - myapp.f5demo.com
   tls:
     termination: passthrough
+    clientSSL: /Common/clientssl
+    reference: bigip
