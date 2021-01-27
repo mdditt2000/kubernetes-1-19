@@ -15,7 +15,7 @@ spec:
       recv: ""
       send: /
       timeout: 10
-      type: https
+      type: http
     path: /
     service: f5-demo
     servicePort: 80
