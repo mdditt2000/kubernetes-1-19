@@ -7,7 +7,6 @@ metadata:
  labels:
    f5cr: "true"
 spec:
- spec:
   host: myapp.f5demo.com
   virtualServerAddress: "10.192.75.111"
  pools:
