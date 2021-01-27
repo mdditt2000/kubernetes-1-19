@@ -1,0 +1,146 @@
+{
+    "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/3.18.0/as3-schema-3.18.0-4.json",
+    "class": "AS3",
+    "declaration": {
+        "class": "ADC",
+        "controls": {
+            "class": "Controls",
+            "userAgent": "CIS/v2.3.0-WIP K8S/v1.19.0"
+        },
+        "id": "urn:uuid:B97DFADF-9F0D-4F6C-8D66-E9B52E593694",
+        "k8s": {
+            "Shared": {
+                "class": "Application",
+                "crd_10_192_75_111_443": {
+                    "source": "0.0.0.0/0",
+                    "translateServerAddress": true,
+                    "translateServerPort": true,
+                    "class": "Service_HTTPS",
+                    "virtualAddresses": [
+                        "10.192.75.111"
+                    ],
+                    "virtualPort": 443,
+                    "snat": "auto",
+                    "policyEndpoint": "/k8s/Shared/crd_10_192_75_111_443_policy",
+                    "clientTLS": {
+                        "bigip": "/Common/serverssl"
+                    },
+                    "serverTLS": {
+                        "bigip": "/Common/clientssl"
+                    },
+                    "iRules": [
+                        {
+                            "use": "crd_10_192_75_111_443_passthrough_irule"
+                        }
+                    ],
+                    "redirect80": false
+                },
+                "crd_10_192_75_111_443_passthrough_irule": {
+                    "class": "iRule",
+                    "iRule": "\n\t\tproc select_ab_pool {path default_pool } {\n\t\t\tset last_slash [string length $path]\n\t\t\tset ab_class \"/k8s/Shared/crd_10_192_75_111_443_ab_deployment_dg\"\n\t\t\twhile {$last_slash \u003e= 0} {\n\t\t\t\tif {[class match $path equals $ab_class]} then {\n\t\t\t\t\tbreak\n\t\t\t\t}\n\t\t\t\tset last_slash [string last \"/\" $path $last_slash]\n\t\t\t\tincr last_slash -1\n\t\t\t\tset path [string range $path 0 $last_slash]\n\t\t\t}\n\n\t\t\tif {$last_slash \u003e= 0} {\n\t\t\t\tset ab_rule [class match -value $path equals $ab_class]\n\t\t\t\tif {$ab_rule != \"\"} then {\n\t\t\t\t\tset weight_selection [expr {rand()}]\n\t\t\t\t\tset service_rules [split $ab_rule \";\"]\n\t\t\t\t\tforeach service_rule $service_rules {\n\t\t\t\t\t\tset fields [split $service_rule \",\"]\n\t\t\t\t\t\tset pool_name [lindex $fields 0]\n\t\t\t\t\t\tset weight [expr {double([lindex $fields 1])}]\n\t\t\t\t\t\tif {$weight_selection \u003c= $weight} then {\n\t\t\t\t\t\t\treturn $pool_name\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t# If we had a match, but all weights were 0 then\n\t\t\t\t# retrun a 503 (Service Unavailable)\n\t\t\t\tHTTP::respond 503\n\t\t\t}\n\t\t\treturn $default_pool\n\t\t}\n\n\n\t\tproc close_connection {} {\n    \t\treject \n    \t\tevent disable all \n    \t\treturn \n\t\t}\n\t\twhen CLIENT_ACCEPTED {\n\t\t\tTCP::collect\n\t\t}\n\n\t\twhen CLIENT_DATA {\n\t\t\t# Byte 0 is the content type.\n\t\t\t# Bytes 1-2 are the TLS version.\n\t\t\t# Bytes 3-4 are the TLS payload length.\n\t\t\t# Bytes 5-$tls_payload_len are the TLS payload.\n\t\t\tbinary scan [TCP::payload] cSS tls_content_type tls_version tls_payload_len\n\t\t\tif { ! [ expr { [info exists tls_content_type] \u0026\u0026 [string is integer -strict $tls_content_type] } ] }  { global close_connection }\n\t\t\tif { ! [ expr { [info exists tls_version] \u0026\u0026 [string is integer -strict $tls_version] } ] }  { global close_connection }\n\t\t\tswitch -exact $tls_version {\n\t\t\t\t\"769\" -\n\t\t\t\t\"770\" -\n\t\t\t\t\"771\" {\n\t\t\t\t\t# Content type of 22 indicates the TLS payload contains a handshake.\n\t\t\t\t\tif { $tls_content_type == 22 } {\n\t\t\t\t\t\t# Byte 5 (the first byte of the handshake) indicates the handshake\n\t\t\t\t\t\t# record type, and a value of 1 signifies that the handshake record is\n\t\t\t\t\t\t# a ClientHello.\n\t\t\t\t\t\tbinary scan [TCP::payload] @5c tls_handshake_record_type\n\t\t\t\t\t\tif { ! [ expr { [info exists tls_handshake_record_type] \u0026\u0026 [string is integer -strict $tls_handshake_record_type] } ] }  { global close_connection }\n\t\t\t\t\t\tif { $tls_handshake_record_type == 1 } {\n\t\t\t\t\t\t\t# Bytes 6-8 are the handshake length (which we ignore).\n\t\t\t\t\t\t\t# Bytes 9-10 are the TLS version (which we ignore).\n\t\t\t\t\t\t\t# Bytes 11-42 are random data (which we ignore).\n\n\t\t\t\t\t\t\t# Byte 43 is the session ID length.  Following this are three\n\t\t\t\t\t\t\t# variable-length fields which we shall skip over.\n\t\t\t\t\t\t\tset record_offset 43\n\n\t\t\t\t\t\t\t# Skip the session ID.\n\t\t\t\t\t\t\tbinary scan [TCP::payload] @${record_offset}c tls_session_id_len\n\t\t\t\t\t\t\tif { ! [ expr { [info exists tls_session_id_len] \u0026\u0026 [string is integer -strict $tls_session_id_len] } ] }  { global close_connection }\n\t\t\t\t\t\t\tincr record_offset [expr {1 + $tls_session_id_len}]\n\n\t\t\t\t\t\t\t# Skip the cipher_suites field.\n\t\t\t\t\t\t\tbinary scan [TCP::payload] @${record_offset}S tls_cipher_suites_len\n\t\t\t\t\t\t\tif { ! [ expr { [info exists tls_cipher_suites_len] \u0026\u0026 [string is integer -strict $tls_cipher_suites_len] } ] }  { global close_connection }\n\t\t\t\t\t\t\tincr record_offset [expr {2 + $tls_cipher_suites_len}]\n\n\t\t\t\t\t\t\t# Skip the compression_methods field.\n\t\t\t\t\t\t\tbinary scan [TCP::payload] @${record_offset}c tls_compression_methods_len\n\t\t\t\t\t\t\tif { ! [ expr { [info exists tls_compression_methods_len] \u0026\u0026 [string is integer -strict $tls_compression_methods_len] } ] }  { global close_connection }\n\t\t\t\t\t\t\tincr record_offset [expr {1 + $tls_compression_methods_len}]\n\n\t\t\t\t\t\t\t# Get the number of extensions, and store the extensions.\n\t\t\t\t\t\t\tbinary scan [TCP::payload] @${record_offset}S tls_extensions_len\n\t\t\t\t\t\t\tif { ! [ expr { [info exists tls_extensions_len] \u0026\u0026 [string is integer -strict $tls_extensions_len] } ] }  { global close_connection }\n\t\t\t\t\t\t\tincr record_offset 2\n\t\t\t\t\t\t\tbinary scan [TCP::payload] @${record_offset}a* tls_extensions\n\t\t\t\t\t\t\tif { ! [info exists tls_extensions] }  { global close_connection }\n\t\t\t\t\t\t\tfor { set extension_start 0 }\n\t\t\t\t\t\t\t\t\t{ $tls_extensions_len - $extension_start == abs($tls_extensions_len - $extension_start) }\n\t\t\t\t\t\t\t\t\t{ incr extension_start 4 } {\n\t\t\t\t\t\t\t\t# Bytes 0-1 of the extension are the extension type.\n\t\t\t\t\t\t\t\t# Bytes 2-3 of the extension are the extension length.\n\t\t\t\t\t\t\t\tbinary scan $tls_extensions @${extension_start}SS extension_type extension_len\n\t\t\t\t\t\t\t\tif { ! [ expr { [info exists extension_type] \u0026\u0026 [string is integer -strict $extension_type] } ] }  { global close_connection }\n\t\t\t\t\t\t\t\tif { ! [ expr { [info exists extension_len] \u0026\u0026 [string is integer -strict $extension_len] } ] }  { global close_connection }\n\n\t\t\t\t\t\t\t\t# Extension type 00 is the ServerName extension.\n\t\t\t\t\t\t\t\tif { $extension_type == \"00\" } {\n\t\t\t\t\t\t\t\t\t# Bytes 4-5 of the extension are the SNI length (we ignore this).\n\n\t\t\t\t\t\t\t\t\t# Byte 6 of the extension is the SNI type.\n\t\t\t\t\t\t\t\t\tset sni_type_offset [expr {$extension_start + 6}]\n\t\t\t\t\t\t\t\t\tbinary scan $tls_extensions @${sni_type_offset}S sni_type\n\t\t\t\t\t\t\t\t\tif { ! [ expr { [info exists sni_type] \u0026\u0026 [string is integer -strict $sni_type] } ] }  { global close_connection }\n\n\t\t\t\t\t\t\t\t\t# Type 0 is host_name.\n\t\t\t\t\t\t\t\t\tif { $sni_type == \"0\" } {\n\t\t\t\t\t\t\t\t\t\t# Bytes 7-8 of the extension are the SNI data (host_name)\n\t\t\t\t\t\t\t\t\t\t# length.\n\t\t\t\t\t\t\t\t\t\tset sni_len_offset [expr {$extension_start + 7}]\n\t\t\t\t\t\t\t\t\t\tbinary scan $tls_extensions @${sni_len_offset}S sni_len\n\t\t\t\t\t\t\t\t\t\tif { ! [ expr { [info exists sni_len] \u0026\u0026 [string is integer -strict $sni_len] } ] }  { global close_connection } \n\n\t\t\t\t\t\t\t\t\t\t# Bytes 9-$sni_len are the SNI data (host_name).\n\t\t\t\t\t\t\t\t\t\tset sni_start [expr {$extension_start + 9}]\n\t\t\t\t\t\t\t\t\t\tbinary scan $tls_extensions @${sni_start}A${sni_len} tls_servername\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\tincr extension_start $extension_len\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tif { [info exists tls_servername] } {\n\t\t\t\t\t\t\t\tset passthru_class \"/k8s/Shared/crd_10_192_75_111_443_ssl_passthrough_servername_dg\"\n\t\t\t\t\t\t\t\tif { [class exists $passthru_class] } {\n\t\t\t\t\t\t\t\t\tset servername_lower [string tolower $tls_servername]\n\t\t\t\t\t\t\t\t\tSSL::disable serverside\n\t\t\t\t\t\t\t\t\tset dflt_pool_passthrough \"\"\n\n\t\t\t\t\t\t\t\t\t# Disable Serverside SSL for Passthrough Class\n\t\t\t\t\t\t\t\t\tset dflt_pool_passthrough [class match -value $servername_lower equals $passthru_class]\n\t\t\t\t\t\t\t\t\tif { not ($dflt_pool_passthrough equals \"\") } {\n\t\t\t\t\t\t\t\t\t\tSSL::disable\n\t\t\t\t\t\t\t\t\t\tHTTP::disable\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\tset ab_class \"/k8s/Shared/crd_10_192_75_111_443_ab_deployment_dg\"\n\t\t\t\t\t\t\t\t\tif { not [class exists $ab_class] } {\n\t\t\t\t\t\t\t\t\t\tif { $dflt_pool_passthrough == \"\" } then {\n\t\t\t\t\t\t\t\t\t\t\tlog local0.debug \"Failed to find pool for $servername_lower\"\n\t\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\t\tpool $dflt_pool_passthrough\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\tset selected_pool [call select_ab_pool $servername_lower $dflt_pool_passthrough]\n\t\t\t\t\t\t\t\t\t\tif { $selected_pool == \"\" } then {\n\t\t\t\t\t\t\t\t\t\t\tlog local0.debug \"Failed to find pool for $servername_lower\"\n\t\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\t\tpool $selected_pool\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tTCP::release\n\t\t}\n\n\t\twhen CLIENTSSL_HANDSHAKE {\n \t\t\tSSL::collect\n\t\t}\n\n         when CLIENTSSL_DATA {\n            if { [llength [split [SSL::payload]]] \u003c 1 }{\n                global close_connection\n                }\n            set sslpath [lindex [split [SSL::payload]] 1]\n            set routepath \"\"\n            \n            if { [info exists tls_servername] } {\n\t\t\t\tset servername_lower [string tolower $tls_servername]\n\t\t\t\t# Set routepath as combination of servername and url path\n\t\t\t\tappend routepath $servername_lower $sslpath\n\t\t\t\tset routepath [string tolower $routepath]\n\t\t\t\tset sslpath $routepath\n\t\t\t\t# Find the number of \"/\" in the routepath\n\t\t\t\tset rc 0\n\t\t\t\tforeach x [split $routepath {}] {\n\t\t\t\t   if {$x eq \"/\"} {\n\t\t\t\t\t   incr rc\n\t\t\t\t   }\n\t\t\t\t}\n\t\t\t\t# Disable serverside ssl and enable only for reencrypt routes\t\t\t\t\t\t\t\t\t\t\t\t\t\n                SSL::disable serverside\n\t\t\t\tset reencrypt_class \"/k8s/Shared/crd_10_192_75_111_443_ssl_reencrypt_servername_dg\"\n\t\t\t\tset edge_class \"/k8s/Shared/crd_10_192_75_111_443_ssl_edge_servername_dg\"\n                if { [class exists $reencrypt_class] || [class exists $edge_class] } {\n\t\t\t\t\t# Compares the routepath with the entries in ssl_reencrypt_servername_dg and\n\t\t\t\t\t# ssl_edge_servername_dg.\n\t\t\t\t\tfor {set i $rc} {$i \u003e= 0} {incr i -1} {\n\t\t\t\t\t\tif { [class exists $reencrypt_class] } {\n\t\t\t\t\t\t\tset reen_pool [class match -value $routepath equals $reencrypt_class]\n\t\t\t\t\t\t\tif { not ($reen_pool equals \"\") } {\n\t\t\t\t\t\t\t\tset dflt_pool $reen_pool\n\t\t\t\t\t\t\t\tSSL::enable serverside\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\tif { [class exists $edge_class] } {\n\t\t\t\t\t\t\tset edge_pool [class match -value $routepath equals $edge_class]\n\t\t\t\t\t\t\tif { not ($edge_pool equals \"\") } {\n\t\t\t\t\t\t\t    set dflt_pool $edge_pool\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n                        if { not [info exists dflt_pool] } {\n                            set routepath [\n                                string range $routepath 0 [\n                                    expr {[string last \"/\" $routepath]-1}\n                                ]\n                            ]\n                        }\n                        else {\n                            break\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n                }\n                set ab_class \"/k8s/Shared/crd_10_192_75_111_443_ab_deployment_dg\"\n                # Handle requests sent to unknown hosts.\n                # For valid hosts, Send the request to respective pool.\n                if { not [info exists dflt_pool] } then {\n                \t global close_connection \n                } else {\n                \tpool $dflt_pool\n                }\n                if { [class exists $ab_class] } {\n                    set selected_pool [call select_ab_pool $servername_lower $dflt_pool]\n                    if { $selected_pool == \"\" } then {\n                        log local0.debug \"Unable to find pool for $servername_lower\"\n                    } else {\n                        pool $selected_pool\n                    }\n                }\n            }\n            SSL::release\n        }\n\n\t\twhen SERVER_CONNECTED {\n\t\t\tset reencryptssl_class \"/k8s/Shared/crd_10_192_75_111_443_ssl_reencrypt_serverssl_dg\"\n\t\t\tset edgessl_class \"/k8s/Shared/crd_10_192_75_111_443_ssl_edge_serverssl_dg\"\n\t\t\tif { [info exists sslpath] and [class exists $reencryptssl_class] } {\n\t\t\t\t# Find the nearest child path which matches the reencrypt_class\n\t\t\t\tfor {set i $rc} {$i \u003e= 0} {incr i -1} {\n\t\t\t\t\tif { [class exists $reencryptssl_class] } {\n\t\t\t\t\t\tset reen [class match -value $sslpath equals $reencryptssl_class]\n\t\t\t\t\t\tif { not ($reen equals \"\") } {\n\t\t\t\t\t\t\t    set sslprofile $reen\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tif { [class exists $edgessl_class] } {\n\t\t\t\t\t\tset edge [class match -value $sslpath equals $edgessl_class]\n\t\t\t\t\t\tif { not ($edge equals \"\") } {\n\t\t\t\t\t\t\t    set sslprofile $edge\n\t\t\t\t\t\t}\n\t\t\t\t\t\t\n\t\t\t\t\t}\n\t\t\t\t\tif { not [info exists sslprofile] } {\n\t\t\t\t\t\tset sslpath [\n\t\t\t\t\t\t\tstring range $sslpath 0 [\n\t\t\t\t\t\t\t\texpr {[string last \"/\" $sslpath]-1}\n\t\t\t\t\t\t\t]\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t\telse {\n\t\t\t\t\t\tbreak\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t# Assign respective SSL profile based on ssl_reencrypt_serverssl_dg\n\t\t\t\tif { not ($sslprofile equals \"false\") } {\n\t\t\t\t\t\tSSL::profile $reen\n\t\t\t\t}\n\t\t\t}\n        }"
+                },
+                "crd_10_192_75_111_443_policy": {
+                    "class": "Endpoint_Policy",
+                    "rules": [
+                        {
+                            "name": "vs_mysite_f5demo_com_default_f5_demo_443",
+                            "conditions": [
+                                {
+                                    "type": "httpHeader",
+                                    "name": "host",
+                                    "event": "request",
+                                    "all": {
+                                        "values": [
+                                            "mysite.f5demo.com"
+                                        ],
+                                        "operand": "equals"
+                                    }
+                                }
+                            ],
+                            "actions": [
+                                {
+                                    "type": "forward",
+                                    "event": "request",
+                                    "select": {
+                                        "pool": {
+                                            "use": "default_f5_demo_443"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "strategy": "first-match"
+                },
+                "crd_10_192_75_111_443_ssl_reencrypt_servername_dg": {
+                    "records": [
+                        {
+                            "key": "myapp.f5demo.com",
+                            "value": "default_f5_demo_443"
+                        },
+                        {
+                            "key": "mysite.f5demo.com",
+                            "value": "default_f5_demo_443"
+                        }
+                    ],
+                    "keyDataType": "string",
+                    "class": "Data_Group"
+                },
+                "crd_10_192_75_111_443_ssl_reencrypt_serverssl_dg": {
+                    "records": [
+                        {
+                            "key": "myapp.f5demo.com",
+                            "value": "crd_10_192_75_111_tls_client"
+                        },
+                        {
+                            "key": "mysite.f5demo.com",
+                            "value": "crd_10_192_75_111_tls_client"
+                        }
+                    ],
+                    "keyDataType": "string",
+                    "class": "Data_Group"
+                },
+                "default_f5_demo_443": {
+                    "class": "Pool",
+                    "members": [
+                        {
+                            "addressDiscovery": "static",
+                            "serverAddresses": [
+                                "10.244.1.23"
+                            ],
+                            "servicePort": 443
+                        },
+                        {
+                            "addressDiscovery": "static",
+                            "serverAddresses": [
+                                "10.244.4.47"
+                            ],
+                            "servicePort": 443
+                        }
+                    ],
+                    "monitors": [
+                        {
+                            "use": "/k8s/Shared/default_f5_demo_https_443"
+                        }
+                    ]
+                },
+                "default_f5_demo_https_443": {
+                    "class": "Monitor",
+                    "interval": 20,
+                    "monitorType": "https",
+                    "targetAddress": "",
+                    "timeout": 10,
+                    "adaptive": false,
+                    "receive": "",
+                    "send": "/",
+                    "targetPort": 0
+                },
+                "template": "shared"
+            },
+            "class": "Tenant"
+        },
+        "label": "CIS Declaration",
+        "remark": "Auto-generated by CIS",
+        "schemaVersion": "3.18.0"
+    }
+}
