@@ -1,7 +1,7 @@
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: f5-hello-world
+  name: f5-demo-1
   labels:
     f5cr: "true"
 spec:
@@ -16,5 +16,5 @@ spec:
       timeout: 10
       type: http
     path: /
-    service: f5-hello-world
-    servicePort: 8080
+    service: f5-demo
+    servicePort: 80
