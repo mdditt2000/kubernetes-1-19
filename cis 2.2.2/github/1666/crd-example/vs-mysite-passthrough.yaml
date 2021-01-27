@@ -8,7 +8,8 @@ spec:
   host: mysite.f5demo.com
   virtualServerAddress: "10.192.75.111"
   virtualServerHTTPSPort: 443
-  tlsProfileName: passthrough-tls-myapp
+  tlsProfileName: passthrough-tls-mysite
+  snat: auto
   pools:
   - monitor:
       interval: 20
@@ -16,6 +17,6 @@ spec:
       send: /
       timeout: 10
       type: https
-    path: /
+    path: /mysite
     service: f5-demo
     servicePort: 443
