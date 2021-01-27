@@ -8,7 +8,7 @@ spec:
   host: myapp.f5demo.com
   virtualServerAddress: "10.192.75.111"
   virtualServerHTTPSPort: 443
-  tlsProfileName: passthrough-tls-myapp
+  tlsProfileName: reencrypt-tls-myapp
   pools:
   - monitor:
       interval: 20
