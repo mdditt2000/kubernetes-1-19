@@ -17,6 +17,6 @@ spec:
       send: /
       timeout: 10
       type: https
-    path: /mysite
+    path: /
     service: f5-demo
     servicePort: 443

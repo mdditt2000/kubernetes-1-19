@@ -55,6 +55,6 @@ spec:
                 secretKeyRef: 
                   key: password
                   name: bigip-login
-          image: "subbuv26/k8s-bigip-ctlr:multihost_vs_sec"
+          image: "subbuv26/k8s-bigip-ctlr:multihost_vs_plc"
           name: f5-server
       serviceAccountName: k8s-bigip-ctlr
