@@ -9,6 +9,7 @@ spec:
   virtualServerAddress: "10.192.75.111"
   virtualServerHTTPSPort: 443
   tlsProfileName: reencrypt-tls-myapp
+  snat: auto
   pools:
   - monitor:
       interval: 20
