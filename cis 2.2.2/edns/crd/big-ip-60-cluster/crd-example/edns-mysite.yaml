@@ -14,7 +14,7 @@ spec:
     loadBalanceMethod: round-robin
     dataServerName: /Common/k8s19-cluster
     monitor:
-      type: https
+      type: http
       send: "GET /"
       recv: ""
       interval: 10
