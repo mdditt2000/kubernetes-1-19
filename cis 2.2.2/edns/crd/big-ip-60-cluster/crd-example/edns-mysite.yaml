@@ -12,7 +12,7 @@ spec:
   - name: mysite.f5demo.com
     dnsRecordType: A
     loadBalanceMethod: round-robin
-    dataServerName: /Common/GSLBServer
+    dataServerName: /Common/k8s19-cluster
     monitor:
       type: https
       send: "GET /"
