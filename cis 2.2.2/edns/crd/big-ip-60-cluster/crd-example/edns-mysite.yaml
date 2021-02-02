@@ -12,7 +12,7 @@ spec:
   - name: mysite.f5demo.com
     dnsRecordType: A
     loadBalanceMethod: round-robin
-    dataServerName: /Common/k8s19-cluster
+    dataServerName: /Common/bip-ip-ve5-pme.lab.fp.f5net.com
     monitor:
       type: http
       send: "GET /  HTTP/1.1\r\nHOST: mysite.f5demo.com\r\n"
