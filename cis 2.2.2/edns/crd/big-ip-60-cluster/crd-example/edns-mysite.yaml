@@ -15,7 +15,7 @@ spec:
     dataServerName: /Common/k8s19-cluster
     monitor:
       type: http
-      send: "GET /"
+      send: "GET /  HTTP/1.1\r\nHOST: mysite.f5demo.com\r\n"
       recv: ""
       interval: 10
       timeout: 10
