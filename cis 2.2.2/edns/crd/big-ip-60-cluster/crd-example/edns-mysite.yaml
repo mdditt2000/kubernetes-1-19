@@ -15,7 +15,7 @@ spec:
     dataServerName: /Common/bip-ip-ve5-pme.lab.fp.f5net.com
     monitor:
       type: http
-      send: "GET /  HTTP/1.1\r\nHOST: mysite.f5demo.com\r\n"
+      send: "GET / HTTP/1.1\r\nHost: mysite.f5demo.com\r\nConnection: Close\r\n\r\n"
       recv: ""
       interval: 10
-      timeout: 10
+      timeout: 30
