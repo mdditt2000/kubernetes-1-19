@@ -15,7 +15,7 @@ The F5 IPAM Controller is a Docker container that allocates IP addresses from an
 
 CIS 2.2.3 provides the following options for using the F5 IPAM controller
 
-* Defining the CIDR label in the virtualserver CRD which maps to the IP-Range. In my example i am using the following 
+* Defining the CIDR label in the virtualserver CRD which maps to the IP-Range. In my example I am using the following 
 
   - ip range "10.192.75.111/24-10.192.75.115/24"
   - cidr label "10.192.75.0/24"
