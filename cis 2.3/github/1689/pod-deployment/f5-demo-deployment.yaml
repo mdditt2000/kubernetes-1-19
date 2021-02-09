@@ -4,6 +4,7 @@ metadata:
   labels:
     app: my-nginx-pool
   name: my-nginx-pool
+  namespace: my-nginx2
 spec:
   replicas: 2
   selector:
