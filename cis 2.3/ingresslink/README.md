@@ -17,31 +17,26 @@ Minimum version to use IngressLink:
 * NGINX+ IC [repo](coming)
 * Github [documentation](coming)
 
-## Setup Options
+## Setup IngressLink in Kubernetes
 
-Configure CIS
+### Configure CIS component for IngressLink
 
-Create CIS Ingresslink schema
+**Step 1:**
 
-`
+Create CIS Ingresslink CRD schema
 
-`
+```
+kubectl create -f ingresslink-customresourcedefinition.yaml
+```
+**Step 2:**
 
-## Configuration 
+* Add the following statements to the CIS deployment arguments 
 
-* Defining the CIDR label in the virtualserver CRD which maps to the IP-Range. In my example I am using the following 
+- "--custom-resource-mode=true"
+- "--ingress-link-mode=true"
 
-  - ip range "10.192.75.111/24-10.192.75.115/24"
-  - cidr label "10.192.75.0/24"
-  - hostname "mysite.f5demo.com" and "myapp.f5demo.com"
+Deploy CIS 
 
-* Updating the IP status for the virtualserver CRD
-
-In CIS 2.3 the F5 IPAM Controller can:
-
-* Allocate IP address from static IP address pool based on the CIDR mentioned in a Kubernetes resource
-
-* F5 IPAM Controller decides to allocate the IP from the respective IP address pool for the hostname specified in the virtualserver custom resource
-
-**Note** The idea here is that we will support CRD, Type LB and possibly  route/ingress in the future
-
+```
+kubectl create -f ingresslink-customresourcedefinition.yaml
+```
