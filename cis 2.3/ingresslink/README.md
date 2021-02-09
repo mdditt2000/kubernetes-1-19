@@ -28,7 +28,7 @@ Create CIS Ingresslink CRD schema
 ```
 kubectl create -f ingresslink-customresourcedefinition.yaml
 ```
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ipam/crd/big-ip-60-cluster/cis-deployment)
+cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
 
 **Step 2:**
 
@@ -48,4 +48,4 @@ Deploy CIS
  kubectl create -f f5-cis-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ipam/crd/big-ip-60-cluster/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
