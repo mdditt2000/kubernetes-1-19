@@ -2,7 +2,7 @@
 
 **Note** F5 IngressLink in **PREVIEW**
 
-The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a connector between BIG-IP and Nginx using F5 Container Ingress Service and Nginx Ingress Service. The purpose of this page is to documented and simply the configuration and steps required to preview Ingresslink
+The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a connector between BIG-IP and Nginx using F5 Container Ingress Service and Nginx plus Ingress Service. The purpose of this page is to documented the configuration steps required to preview Ingresslink
 
 ## IngressLink Compatibility Matrix
 
@@ -49,3 +49,15 @@ Deploy CIS
 ```
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
+
+Validate that CIS is deployed and running correctly
+
+```
+[kube@k8s-1-19-master cis-deployment]$ kubectl get pods -n kube-system
+NAME                                                       READY   STATUS    RESTARTS   AGE
+k8s-bigip-ctlr-deployment-fd86c54bb-w6phz                  1/1     Running   0          41s
+```
+
+You can monitor CIS logs using the following: 
+
+
