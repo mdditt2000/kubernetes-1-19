@@ -28,15 +28,24 @@ Create CIS Ingresslink CRD schema
 ```
 kubectl create -f ingresslink-customresourcedefinition.yaml
 ```
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ipam/crd/big-ip-60-cluster/cis-deployment)
+
 **Step 2:**
 
-* Add the following statements to the CIS deployment arguments 
+* Add the following statements to the CIS deployment arguments for Ingresslink
 
 - "--custom-resource-mode=true"
 - "--ingress-link-mode=true"
 
+* In this example I am using ClusterIP mode with VXLAN
+
+- "--pool-member-type=cluster"
+- "--flannel-name=fl-vxlan"
+          
 Deploy CIS 
 
 ```
-kubectl create -f ingresslink-customresourcedefinition.yaml
+ kubectl create -f f5-cis-deployment.yaml
 ```
+
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ipam/crd/big-ip-60-cluster/cis-deployment)
