@@ -19,7 +19,7 @@ CIS 2.3 provides the following options for using the F5 IPAM controller
 
   - ip range "10.192.75.111/24-10.192.75.115/24"
   - cidr label "10.192.75.0/24"
-  - hostname "mysite.f5demo.com" and hostname "myapp.f5demo.com"
+  - hostname "mysite.f5demo.com" and "myapp.f5demo.com"
 
 * Updating the IP status for the virtualserver CRD
 
@@ -70,7 +70,7 @@ cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 * --orchestration=kubernetes
 
-The orchestration parameter holds the orchestration environment i.e. Kubernetes.
+The orchestration parameter holds the orchestration environment i.e. Kubernetes
 
 * --ip-range="10.192.75.111/24-10.192.75.115/24"
 
@@ -95,26 +95,28 @@ kubectl create -f f5-ipam-deployment.yaml
 ## Logging output when deploying the F5 IPAM Controller
 
 ```
-2021/02/08 20:30:29 [DEBUG] Creating IPAM Kubernetes Client
-2021/02/08 20:30:29 [DEBUG] [ipam] Creating Informers for Namespace kube-system
-2021/02/08 20:30:29 [DEBUG] Created New IPAM Client
-2021/02/08 20:30:29 [DEBUG] [MGR] Creating Manager with Provider: f5-ip-provider
-2021/02/08 20:30:29 [DEBUG] [PROV] Parsing IP Ranges: 10.192.75.111/24-10.192.75.115/24
-2021/02/08 20:30:29 [DEBUG] [PROV] IP Pool: 10.192.75.111 to 10.192.75.115/24
-2021/02/08 20:30:29 [DEBUG] [PROV] Processed CIDR: 10.192.75.0/24
-2021/02/08 20:30:29 [DEBUG] [STORE] Column names: [id ipaddress status cidr]
-2021/02/08 20:30:29 [DEBUG] [STORE] ipaddress_range: 1   10.192.75.111  1       10.192.75.0/24
-2021/02/08 20:30:29 [DEBUG] [STORE] ipaddress_range: 2   10.192.75.112  1       10.192.75.0/24
-2021/02/08 20:30:29 [DEBUG] [STORE] ipaddress_range: 3   10.192.75.113  1       10.192.75.0/24
-2021/02/08 20:30:29 [DEBUG] [STORE] ipaddress_range: 4   10.192.75.114  1       10.192.75.0/24
-2021/02/08 20:30:29 [DEBUG] [STORE] ipaddress_range: 5   10.192.75.115  1       10.192.75.0/24
-2021/02/08 20:30:29 [INFO] [CORE] Controller started
-2021/02/08 20:30:29 [INFO] Starting IPAMClient Informer
-I0208 20:30:29.660421       1 shared_informer.go:197] Waiting for caches to sync for F5 IPAMClient Controller
-I0208 20:30:29.764900       1 shared_informer.go:204] Caches are synced for F5 IPAMClient Controller
-2021/02/08 20:30:29 [DEBUG] K8S Orchestrator Started
-2021/02/08 20:30:29 [DEBUG] Starting Custom Resource Worker
-2021/02/08 20:30:29 [DEBUG] Starting Response Worker
+2021/02/08 21:56:05 [DEBUG] Creating IPAM Kubernetes Client
+2021/02/08 21:56:05 [DEBUG] [ipam] Creating Informers for Namespace kube-system
+2021/02/08 21:56:05 [DEBUG] Created New IPAM Client
+2021/02/08 21:56:05 [DEBUG] [MGR] Creating Manager with Provider: f5-ip-provider
+2021/02/08 21:56:05 [DEBUG] [PROV] Parsing IP Ranges: 10.192.75.111/24-10.192.75.115/24
+2021/02/08 21:56:05 [DEBUG] [PROV] IP Pool: 10.192.75.111 to 10.192.75.115/24
+2021/02/08 21:56:05 [DEBUG] [PROV] Processed CIDR: 10.192.75.0/24
+2021/02/08 21:56:05 [DEBUG] [STORE] Column names: [id ipaddress status cidr]
+2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 1   10.192.75.111  1       10.192.75.0/24
+2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 2   10.192.75.112  1       10.192.75.0/24
+2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 3   10.192.75.113  1       10.192.75.0/24
+2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 4   10.192.75.114  1       10.192.75.0/24
+2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 5   10.192.75.115  1       10.192.75.0/24
+2021/02/08 21:56:05 [INFO] [CORE] Controller started
+2021/02/08 21:56:05 [INFO] Starting IPAMClient Informer
+I0208 21:56:05.533616       1 shared_informer.go:197] Waiting for caches to sync for F5 IPAMClient Controller
+2021/02/08 21:56:05 [DEBUG] Enqueueing on Create: kube-system/ipam.k8s
+I0208 21:56:05.636980       1 shared_informer.go:204] Caches are synced for F5 IPAMClient Controller
+2021/02/08 21:56:05 [DEBUG] K8S Orchestrator Started
+2021/02/08 21:56:05 [DEBUG] Starting Response Worker
+2021/02/08 21:56:05 [DEBUG] Starting Custom Resource Worker
+2021/02/08 21:56:05 [DEBUG] Processing Key: &{0xc0004d8420 <nil> Create}
 ```
 
 ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ipam/crd/big-ip-60-cluster/ipam-deployment)
@@ -177,11 +179,24 @@ crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis
 
 ## Logging output when the virtualserver is created
 
-
-
-
-
-
+```
+2021/02/08 21:57:50 [INFO] [STORE] No A record with Host: mysite.f5demo.com
+2021/02/08 21:57:50 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
+2021/02/08 21:57:50 [DEBUG] Processing Key: &{0xc0004d8580 0xc0004d8420 Update}
+2021/02/08 21:57:50 [DEBUG] [CORE] Allocated IP: 10.192.75.111 for CIDR: 10.192.75.0/24
+2021/02/08 21:57:50 [DEBUG] [PROV] Created 'A' Record. Host:mysite.f5demo.com, IP:10.192.75.111
+2021/02/08 21:57:50 [DEBUG] Updated: kube-system/ipam.k8s with Status. Added Host: mysite.f5demo.com, CIDR: 10.192.75.0/24, IP: 10.192.75.111
+2021/02/08 21:57:50 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
+2021/02/08 21:57:50 [DEBUG] Processing Key: &{0xc0004d9b80 0xc0004d8580 Update}
+2021/02/08 21:59:55 [INFO] [STORE] No A record with Host: myapp.f5demo.com
+2021/02/08 21:59:55 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
+2021/02/08 21:59:55 [DEBUG] Processing Key: &{0xc0004d8840 0xc0004d9b80 Update}
+2021/02/08 21:59:55 [DEBUG] [CORE] Allocated IP: 10.192.75.112 for CIDR: 10.192.75.0/24
+2021/02/08 21:59:55 [DEBUG] [PROV] Created 'A' Record. Host:myapp.f5demo.com, IP:10.192.75.112
+2021/02/08 21:59:55 [DEBUG] Updated: kube-system/ipam.k8s with Status. Added Host: myapp.f5demo.com, CIDR: 10.192.75.0/24, IP: 10.192.75.112
+2021/02/08 21:59:55 [DEBUG] Enqueueing on Update: kube-system/ipam.k8s
+2021/02/08 21:59:55 [DEBUG] Processing Key: &{0xc0004349a0 0xc0004d8840 Update}
+```
 
 ## View the F5 IPAM Controller configuration
 
