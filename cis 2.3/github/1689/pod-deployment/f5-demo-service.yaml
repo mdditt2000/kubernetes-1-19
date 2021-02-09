@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx-pool
+  namespace: my-nginx2
+  labels:
+    app: my-nginx-pool
+    cis.f5.com/as3-tenant: my-nginx2_as3
+    cis.f5.com/as3-app: my-nginx2-80
+    cis.f5.com/as3-pool: my-nginx-pool
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 443
+      targetPort: 443
+  selector:
+    app: my-nginx-pool
+  type: ClusterIP

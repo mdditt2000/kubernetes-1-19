@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-nginx-pool
+  name: my-nginx-pool
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-nginx-pool
+  template:
+    metadata:
+      labels:
+        app: my-nginx-pool
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: my-nginx-pool
+        image: f5devcentral/f5-demo-httpd
+        imagePullPolicy: Always
+        name: my-nginx-pool
+        ports:
+        - containerPort: 80
+          protocol: TCP
