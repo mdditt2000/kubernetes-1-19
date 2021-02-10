@@ -51,9 +51,9 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 ### Install the CIS Controller 
 
 Add BIG-IP credentials as Kubernetes Secrets.
-
+``
 kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
-
+``
 Create a service account for deploying CIS.
 
     kubectl create serviceaccount bigip-ctlr -n kube-system
