@@ -47,42 +47,37 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 
 **Step 3:**
 
+kubectl create -f f5-cluster-deployment.yaml
+kubectl create -f f5-bigip-node.yaml
+
 ### Install the CIS Controller 
 
-Add BIG-IP credentials as Kubernetes Secrets.
+Add BIG-IP credentials as Kubernetes Secrets
 
-  kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
+    kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
 
 Create a service account for deploying CIS.
 
-  kubectl create serviceaccount bigip-ctlr -n kube-system
+    kubectl create serviceaccount bigip-ctlr -n kube-system
 
 Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as follows:
     
-  kubectl apply -f  cis-config/cis_rbac.yaml
+    kubectl create clusterrolebinding k8s-bigip-ctlr-clusteradmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8s-bigip-ctlr
     
 Create IngressLink Custom Resource definition as follows:
 
-  kubectl apply -f ingresslink-customresourcedefinition.yaml
+    kubectl create -f ingresslink-customresourcedefinition.yaml
+
+cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
 
 Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in nodeport mode as follows:
-
-  kubectl apply -f  cis-config/cis_deploy.yaml
-    
-Note: To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
-
-    args:
-    - --pool-member-type=cluster
-    - --flannel-name=/test/vxlan-tunnel-mp 
-    . . .
-
 
 * Add the following statements to the CIS deployment arguments for Ingresslink
 
 - "--custom-resource-mode=true"
 - "--ingress-link-mode=true"
 
-* In this example I am using ClusterIP mode with VXLAN
+**Note:** To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
 
 - "--pool-member-type=cluster"
 - "--flannel-name=fl-vxlan"
@@ -91,27 +86,21 @@ Additionally, if you are deploying the CIS in Cluster Mode you need to have foll
     
 * You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
 * VXLAN tunnel should be configured from OpenShift/Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
-         
+    
 Deploy CIS 
 
-```
- kubectl create -f f5-cis-deployment.yaml
-```
+    kubectl create -f f5-cis-deployment.yaml
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
 
 Validate that CIS is deployed and running correctly
 
-```
-[kube@k8s-1-19-master cis-deployment]$ kubectl get pods -n kube-system
-NAME                                                       READY   STATUS    RESTARTS   AGE
-k8s-bigip-ctlr-deployment-fd86c54bb-w6phz                  1/1     Running   0          41s
-```
+    [kube@k8s-1-19-master cis-deployment]$ kubectl get pods -n kube-system
+    NAME                                                       READY   STATUS    RESTARTS   AGE
+    k8s-bigip-ctlr-deployment-fd86c54bb-w6phz                  1/1     Running   0          41s
 
 You can view the CIS logs using the following
 
 **Note** CIS log level is currently set to DEBUG. This can be changed in the CIS controller arguments 
 
-```
-kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[debug'
-```
+    kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[debug'
