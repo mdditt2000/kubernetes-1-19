@@ -1,8 +1,12 @@
 # F5 IngressLink
 
-**Note** F5 IngressLink in **PREVIEW**
+The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a connector between BIG-IP and Nginx using F5 Container Ingress Service and Nginx Ingress Service. The purpose of this page is to documented and simply the configuration and steps required to preview Ingresslink
 
-The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a connector between BIG-IP and Nginx using F5 Container Ingress Service and Nginx plus Ingress Service. The purpose of this page is to documented the configuration steps required to preview Ingresslink
+**Currently available as a public preview**,  F5 IngressLink is the first true integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. On this page you’ll find:
+
+* Links to the GitHub repositories for all the requisite software
+* Documentation for the solution(s)
+* A step by step configuration and deployment guide for F5 IngressLink
 
 ## IngressLink Compatibility Matrix
 
@@ -19,9 +23,22 @@ Minimum version to use IngressLink:
 
 ## Setup IngressLink in Kubernetes
 
+**Step 1:**
+
+### 1. Create the Proxy iRule on Bigip
+
+Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule. Proxy_Protocol_iRule can be located 
+
+* Login to BigIp GUI 
+* On the Main tab, click Local Traffic > iRules.
+* Click Create.
+* In the Name field, type name as "Proxy_Protocol_iRule".
+* In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file.
+Click Finished.
+
 ### Configure CIS component for IngressLink
 
-**Step 1:**
+**Step 2**
 
 Create CIS Ingresslink CRD schema
 
@@ -32,6 +49,36 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 
 **Step 2:**
 
+### 2. Install the CIS Controller 
+
+Add BIG-IP credentials as Kubernetes Secrets.
+
+    kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
+
+Create a service account for deploying CIS.
+
+    kubectl create serviceaccount bigip-ctlr -n kube-system
+
+Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as follows:
+    
+    kubectl apply -f  cis-config/cis_rbac.yaml
+    
+Create IngressLink Custom Resource definition as follows:
+
+    kubectl apply -f ingresslink-customresourcedefinition.yaml
+
+Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in nodeport mode as follows:
+
+    kubectl apply -f  cis-config/cis_deploy.yaml
+    
+Note: To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
+
+    args:
+    - --pool-member-type=cluster
+    - --flannel-name=/test/vxlan-tunnel-mp 
+    . . .
+
+
 * Add the following statements to the CIS deployment arguments for Ingresslink
 
 - "--custom-resource-mode=true"
@@ -41,7 +88,12 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 
 - "--pool-member-type=cluster"
 - "--flannel-name=fl-vxlan"
-          
+
+Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
+    
+* You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
+* VXLAN tunnel should be configured from OpenShift/Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
+         
 Deploy CIS 
 
 ```
@@ -58,6 +110,10 @@ NAME                                                       READY   STATUS    RES
 k8s-bigip-ctlr-deployment-fd86c54bb-w6phz                  1/1     Running   0          41s
 ```
 
-You can monitor CIS logs using the following: 
+You can view the CIS logs using the following
 
+**Note** CIS log level is currently set to DEBUG. This can be changed in the CIS controller arguments 
 
+```
+kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[debug'
+```
