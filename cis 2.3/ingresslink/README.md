@@ -21,7 +21,7 @@ Minimum version to use IngressLink:
 * NGINX+ IC [repo](coming)
 * Github [documentation](coming)
 
-## Setup IngressLink in Kubernetes
+## Setup F5 IngressLink in Kubernetes
 
 **Step 1:**
 
@@ -82,7 +82,7 @@ kubectl create -f f5-cis-deployment.yaml
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
 
-Create bigip-node for VXLAN tunnels
+Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN Kubernetes using ClusterIP
 
     kubectl create -f f5-bigip-node.yaml
 
