@@ -25,31 +25,28 @@ Minimum version to use IngressLink:
 
 **Step 1:**
 
-### 1. Create the Proxy iRule on Bigip
+### Create the Proxy iRule on Bigip
 
-Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule. Proxy_Protocol_iRule can be located from repo [iRule](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
+Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule. iRule can be located from [iRule](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
 
 * Login to BigIp GUI 
 * On the Main tab, click Local Traffic > iRules.
 * Click Create.
 * In the Name field, type name as "Proxy_Protocol_iRule".
-* In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file.
-Click Finished.
-
-### Configure CIS component for IngressLink
+* In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file. Click Finished.
 
 **Step 2**
 
-Create CIS Ingresslink CRD schema
+### Create CIS Ingresslink CRD schema
 
 ```
 kubectl create -f ingresslink-customresourcedefinition.yaml
 ```
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
 
-**Step 2:**
+**Step 3:**
 
-### 2. Install the CIS Controller 
+### Install the CIS Controller 
 
 Add BIG-IP credentials as Kubernetes Secrets.
 
