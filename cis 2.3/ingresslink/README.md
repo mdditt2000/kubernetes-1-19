@@ -27,13 +27,15 @@ Minimum version to use IngressLink:
 
 ### Create the Proxy iRule on Bigip
 
-Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule. iRule can be located from [iRule](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
+Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule
 
 * Login to BigIp GUI 
 * On the Main tab, click Local Traffic > iRules.
 * Click Create.
 * In the Name field, type name as "Proxy_Protocol_iRule".
 * In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file. Click Finished.
+
+Proxy_Protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
 
 **Step 2**
 
@@ -50,7 +52,7 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 
 Add BIG-IP credentials as Kubernetes Secrets.
 
-    kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
+kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
 
 Create a service account for deploying CIS.
 
