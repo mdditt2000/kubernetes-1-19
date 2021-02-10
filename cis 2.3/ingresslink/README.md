@@ -88,7 +88,7 @@ Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN K
 
 bigip-node [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-bigip-node.yaml)
 
-Validate that CIS is deployed and running correctly
+Verify CIS deployment
 
     [kube@k8s-1-19-master cis-deployment]$ kubectl get pods -n kube-system
     NAME                                                       READY   STATUS    RESTARTS   AGE
@@ -131,3 +131,28 @@ Use a Deployment. When you run the Ingress Controller by using a Deployment, by 
 Create a service for the Ingress Controller pods for ports 80 and 443 as follows:
 
     kubectl apply -f nginx-config/nginx-service.yaml
+
+Verify NGINX-Ingress deployment
+
+[kube@k8s-1-19-master nginx-config]$ kubectl get pods -n nginx-ingress
+NAME                             READY   STATUS    RESTARTS   AGE
+nginx-ingress-744d95cb86-xk2vx   1/1     Running   0          16s
+
+**Step 4**
+
+Create an IngressLink Resource
+
+Update the ip-address in IngressLink resource and iRule which is created in Step-1. This ip-address will be used to configure the BIG-IP device to load balance among the Ingress Controller pods.
+
+    kubectl apply -f ingresslink.yaml
+
+Note: The name of the app label selector in IngressLink resource should match the labels of the nginx-ingress service created in step-3.
+
+**Step 5**
+
+Create an Demo App
+
+Now to test the integration let's deploy a sample ingress.
+
+    kubectl apply -f ingress-example
+
