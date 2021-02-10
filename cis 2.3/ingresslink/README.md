@@ -75,8 +75,6 @@ Additionally, if you are deploying the CIS in Cluster Mode you need to have foll
     
 * You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
 * VXLAN tunnel should be configured from Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
-    
-Deploy CIS 
 
     kubectl create -f f5-cis-deployment.yaml
 
