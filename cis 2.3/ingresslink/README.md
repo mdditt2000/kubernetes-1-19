@@ -59,17 +59,17 @@ Create IngressLink Custom Resource definition as follows:
 
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
 
-Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in nodeport mode as follows:
+Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in ClusterIP mode as follows:
 
 * Add the following statements to the CIS deployment arguments for Ingresslink
 
-- "--custom-resource-mode=true"
-- "--ingress-link-mode=true"
+    - "--custom-resource-mode=true"
+    - "--ingress-link-mode=true"
 
 **Note:** To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
 
-- "--pool-member-type=cluster"
-- "--flannel-name=fl-vxlan"
+    - "--pool-member-type=cluster"
+    - "--flannel-name=fl-vxlan"
 
 Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
     
