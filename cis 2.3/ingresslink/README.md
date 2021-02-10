@@ -41,9 +41,8 @@ Proxy_Protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/m
 
 ### Create CIS Ingresslink CRD schema
 
-```
-kubectl create -f ingresslink-customresourcedefinition.yaml
-```
+  kubectl create -f ingresslink-customresourcedefinition.yaml
+
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
 
 **Step 3:**
@@ -51,24 +50,24 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
 ### Install the CIS Controller 
 
 Add BIG-IP credentials as Kubernetes Secrets.
-```
-kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
-```
+
+  kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
+
 Create a service account for deploying CIS.
 
-    kubectl create serviceaccount bigip-ctlr -n kube-system
+  kubectl create serviceaccount bigip-ctlr -n kube-system
 
 Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as follows:
     
-    kubectl apply -f  cis-config/cis_rbac.yaml
+  kubectl apply -f  cis-config/cis_rbac.yaml
     
 Create IngressLink Custom Resource definition as follows:
 
-    kubectl apply -f ingresslink-customresourcedefinition.yaml
+  kubectl apply -f ingresslink-customresourcedefinition.yaml
 
 Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in nodeport mode as follows:
 
-    kubectl apply -f  cis-config/cis_deploy.yaml
+  kubectl apply -f  cis-config/cis_deploy.yaml
     
 Note: To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
 
