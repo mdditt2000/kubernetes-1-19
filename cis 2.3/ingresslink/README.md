@@ -144,7 +144,7 @@ Create an IngressLink Resource
 
 Update the ip-address in IngressLink resource and iRule which is created in Step-1. This ip-address will be used to configure the BIG-IP device to load balance among the Ingress Controller pods.
 
-    kubectl apply -f ingresslink.yaml
+    kubectl apply -f vs-crd.yaml
 
 Note: The name of the app label selector in IngressLink resource should match the labels of the nginx-ingress service created in step-3.
 
