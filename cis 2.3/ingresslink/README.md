@@ -27,7 +27,7 @@ Minimum version to use IngressLink:
 
 ### 1. Create the Proxy iRule on Bigip
 
-Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule. Proxy_Protocol_iRule can be located 
+Proxy Protocol is required by NGINX to provide the applications PODs with the original client IPs. Use the following steps to configure the Proxy_Protocol_iRule. Proxy_Protocol_iRule can be located from repo [iRule](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
 
 * Login to BigIp GUI 
 * On the Main tab, click Local Traffic > iRules.
