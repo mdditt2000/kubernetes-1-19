@@ -66,7 +66,7 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
     - "--custom-resource-mode=true"
     - "--ingress-link-mode=true"
 
-**Note:** To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
+* To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
 
     - "--pool-member-type=cluster"
     - "--flannel-name=fl-vxlan"
