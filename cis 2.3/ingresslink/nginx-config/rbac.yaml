@@ -76,6 +76,7 @@ rules:
   resources:
   - virtualservers/status
   - virtualserverroutes/status
+  - policies/status
   verbs:
   - update
 - apiGroups:
@@ -85,13 +86,13 @@ rules:
   verbs:
   - get
 - apiGroups:
-  - cis.f5.com
+    - cis.f5.com
   resources:
-  - nginxcisconnectors
+    - ingresslinks
   verbs:
-  - list
-  - watch
-  - get
+    - list
+    - watch
+    - get
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
