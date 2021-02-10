@@ -99,3 +99,35 @@ You can view the CIS logs using the following
 **Note** CIS log level is currently set to DEBUG. This can be changed in the CIS controller arguments 
 
     kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[debug'
+
+**Step 3**
+
+### Nginx-Controller Installation
+
+Create a namespace and a service account for the Ingress controller:
+   
+    kubectl apply -f nginx-config/ns-and-sa.yaml
+   
+Create a cluster role and cluster role binding for the service account:
+   
+    kubectl apply -f nginx-config/rbac.yaml
+   
+Create a secret with a TLS certificate and a key for the default server in NGINX:
+
+    kubectl apply -f nginx-config/default-server-secret.yaml
+    
+Create a config map for customizing NGINX configuration:
+
+    kubectl apply -f nginx-config/nginx-config.yaml
+    
+Create an IngressClass resource (for Kubernetes >= 1.18):  
+    
+    kubectl apply -f nginx-config/ingress-class.yaml
+
+Use a Deployment. When you run the Ingress Controller by using a Deployment, by default, Kubernetes will create one Ingress controller pod.
+    
+    kubectl apply -f nginx-config/nginx-ingress.yaml
+  
+Create a service for the Ingress Controller pods for ports 80 and 443 as follows:
+
+    kubectl apply -f nginx-config/nginx-service.yaml
