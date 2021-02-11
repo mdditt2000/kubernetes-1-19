@@ -56,6 +56,6 @@ spec:
                 secretKeyRef: 
                   key: password
                   name: bigip-login
-          image: "lavanyasirigudi/k8s-bigip-ctlr:cis_2.3_draft_0"
+          image: "amit49g/k8s-bigip-ctlr:updateDeleteFix-1.0"
           name: f5-server
       serviceAccountName: k8s-bigip-ctlr
