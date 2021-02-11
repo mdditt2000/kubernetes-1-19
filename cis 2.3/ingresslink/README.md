@@ -134,9 +134,9 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
 Verify NGINX-Ingress deployment
 
-[kube@k8s-1-19-master nginx-config]$ kubectl get pods -n nginx-ingress
-NAME                             READY   STATUS    RESTARTS   AGE
-nginx-ingress-744d95cb86-xk2vx   1/1     Running   0          16s
+    [kube@k8s-1-19-master nginx-config]$ kubectl get pods -n nginx-ingress
+    NAME                             READY   STATUS    RESTARTS   AGE
+    nginx-ingress-744d95cb86-xk2vx   1/1     Running   0          16s
 
 **Step 4**
 
