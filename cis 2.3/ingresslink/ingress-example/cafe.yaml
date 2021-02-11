@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: coffee
-        image: nginxdemos/nginx-hello:plain-text
+        image: pleshakov/nginx-hello:0.1
         ports:
         - containerPort: 8080
 ---
@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: tea 
-        image: nginxdemos/nginx-hello:plain-text
+        image: pleshakov/nginx-hello:0.1
         ports:
         - containerPort: 8080
 ---
