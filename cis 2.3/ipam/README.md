@@ -203,6 +203,7 @@ crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis
 F5 IPAM Controller creates the following CRD to create the configuration between CIS and IPAM 
 
 ```
+[kube@k8s-1-19-master crd-example]$ kubectl describe f5ipam -n kube-system
 Name:         ipam.k8s
 Namespace:    kube-system
 Labels:       <none>
@@ -210,8 +211,8 @@ Annotations:  <none>
 API Version:  fic.f5.com/v1
 Kind:         F5IPAM
 Metadata:
-  Creation Timestamp:  2021-02-08T20:36:40Z
-  Generation:          9
+  Creation Timestamp:  2021-02-12T17:38:54Z
+  Generation:          13
   Managed Fields:
     API Version:  fic.f5.com/v1
     Fields Type:  FieldsV1
@@ -224,28 +225,22 @@ Metadata:
         f:IPStatus:
     Manager:         Go-http-client
     Operation:       Update
-    Time:            2021-02-08T20:45:04Z
-  Resource Version:  34302103
+    Time:            2021-02-12T19:05:56Z
+  Resource Version:  35195953
   Self Link:         /apis/fic.f5.com/v1/namespaces/kube-system/f5ipams/ipam.k8s
-  UID:               eff9bc36-c9db-48b0-823a-b50f352bf5cd
+  UID:               fb932c42-aea5-48ed-bd95-c12f58a2cd29
 Spec:
   Host Specs:
     Cidr:  10.192.75.0/24
-    Host:  mysite.f5demo.com
+    Host:  myapp.f5demo.com
     Cidr:  10.192.75.0/24
-    Host:  myapp.f5demo.com
-    Host:  myapp.f5demo.com
     Host:  mysite.f5demo.com
 Status:
   IP Status:
     Cidr:  10.192.75.0/24
-    Host:  mysite.f5demo.com
-    Ip:    10.192.75.111
+    Host:  myapp.f5demo.com
+    Ip:    10.192.75.112
     Cidr:  10.192.75.0/24
-    Host:  myapp.f5demo.com
-    Ip:    10.192.75.112
-    Host:  myapp.f5demo.com
-    Ip:    10.192.75.112
     Host:  mysite.f5demo.com
     Ip:    10.192.75.111
 Events:    <none>
@@ -259,7 +254,7 @@ kubectl describe f5ipam -n kube-system
 
 ## Limitations
 
-CIS cannot update and delete the hostname in the F5-IPAM custom resource hence update and deletion of IP address for virtual server custom may not work as expected. In case if the user wants to reflect the changes, the user can delete the F5-IPAM custom resource from kube-system named "f5ipam" and restart both the controller
+CIS cannot update and delete the hostname in the F5-IPAM custom resource hence update and deletion of IP address for virtual server custom may not work as expected. In case if the user wants to reflect the changes, the user can delete the F5-IPAM custom resource from kube-system named "f5ipam" and restart both the controllers
 
 Locate and delete the f5ipam crd before restarting the F5 IPAM Controller 
 
