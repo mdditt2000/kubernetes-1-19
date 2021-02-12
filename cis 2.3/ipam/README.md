@@ -95,28 +95,28 @@ kubectl create -f f5-ipam-deployment.yaml
 ## Logging output when deploying the F5 IPAM Controller
 
 ```
-2021/02/08 21:56:05 [DEBUG] Creating IPAM Kubernetes Client
-2021/02/08 21:56:05 [DEBUG] [ipam] Creating Informers for Namespace kube-system
-2021/02/08 21:56:05 [DEBUG] Created New IPAM Client
-2021/02/08 21:56:05 [DEBUG] [MGR] Creating Manager with Provider: f5-ip-provider
-2021/02/08 21:56:05 [DEBUG] [PROV] Parsing IP Ranges: 10.192.75.111/24-10.192.75.115/24
-2021/02/08 21:56:05 [DEBUG] [PROV] IP Pool: 10.192.75.111 to 10.192.75.115/24
-2021/02/08 21:56:05 [DEBUG] [PROV] Processed CIDR: 10.192.75.0/24
-2021/02/08 21:56:05 [DEBUG] [STORE] Column names: [id ipaddress status cidr]
-2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 1   10.192.75.111  1       10.192.75.0/24
-2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 2   10.192.75.112  1       10.192.75.0/24
-2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 3   10.192.75.113  1       10.192.75.0/24
-2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 4   10.192.75.114  1       10.192.75.0/24
-2021/02/08 21:56:05 [DEBUG] [STORE] ipaddress_range: 5   10.192.75.115  1       10.192.75.0/24
-2021/02/08 21:56:05 [INFO] [CORE] Controller started
-2021/02/08 21:56:05 [INFO] Starting IPAMClient Informer
-I0208 21:56:05.533616       1 shared_informer.go:197] Waiting for caches to sync for F5 IPAMClient Controller
-2021/02/08 21:56:05 [DEBUG] Enqueueing on Create: kube-system/ipam.k8s
-I0208 21:56:05.636980       1 shared_informer.go:204] Caches are synced for F5 IPAMClient Controller
-2021/02/08 21:56:05 [DEBUG] K8S Orchestrator Started
-2021/02/08 21:56:05 [DEBUG] Starting Response Worker
-2021/02/08 21:56:05 [DEBUG] Starting Custom Resource Worker
-2021/02/08 21:56:05 [DEBUG] Processing Key: &{0xc0004d8420 <nil> Create}
+2021/02/12 17:52:49 [DEBUG] Creating IPAM Kubernetes Client
+2021/02/12 17:52:49 [DEBUG] [ipam] Creating Informers for Namespace kube-system
+2021/02/12 17:52:49 [DEBUG] Created New IPAM Client
+2021/02/12 17:52:49 [DEBUG] [MGR] Creating Manager with Provider: f5-ip-provider
+2021/02/12 17:52:49 [DEBUG] [PROV] Parsing IP Ranges: 10.192.75.111/24-10.192.75.115/24
+2021/02/12 17:52:49 [DEBUG] [PROV] IP Pool: 10.192.75.111 to 10.192.75.115/24
+2021/02/12 17:52:49 [DEBUG] [PROV] Processed CIDR: 10.192.75.0/24
+2021/02/12 17:52:49 [DEBUG] [STORE] Column names: [id ipaddress status cidr]
+2021/02/12 17:52:49 [DEBUG] [STORE] ipaddress_range: 1   10.192.75.111  1       10.192.75.0/24
+2021/02/12 17:52:49 [DEBUG] [STORE] ipaddress_range: 2   10.192.75.112  1       10.192.75.0/24
+2021/02/12 17:52:49 [DEBUG] [STORE] ipaddress_range: 3   10.192.75.113  1       10.192.75.0/24
+2021/02/12 17:52:49 [DEBUG] [STORE] ipaddress_range: 4   10.192.75.114  1       10.192.75.0/24
+2021/02/12 17:52:49 [DEBUG] [STORE] ipaddress_range: 5   10.192.75.115  1       10.192.75.0/24
+I0212 17:52:49.103363       1 shared_informer.go:197] Waiting for caches to sync for F5 IPAMClient Controller
+2021/02/12 17:52:49 [INFO] [CORE] Controller started
+2021/02/12 17:52:49 [INFO] Starting IPAMClient Informer
+2021/02/12 17:52:49 [DEBUG] Enqueueing on Create: kube-system/ipam.k8s
+I0212 17:52:49.211011       1 shared_informer.go:204] Caches are synced for F5 IPAMClient Controller
+2021/02/12 17:52:49 [DEBUG] K8S Orchestrator Started
+2021/02/12 17:52:49 [DEBUG] Starting Custom Resource Worker
+2021/02/12 17:52:49 [DEBUG] Processing Key: &{0xc0004ab080 <nil> Create}
+2021/02/12 17:52:49 [DEBUG] Starting Response Worker
 ```
 
 ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ipam/crd/big-ip-60-cluster/ipam-deployment)
