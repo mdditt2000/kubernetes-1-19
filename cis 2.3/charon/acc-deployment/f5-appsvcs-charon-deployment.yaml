@@ -19,7 +19,7 @@ spec:
       - env:
         - name: service_name
           value: f5-appsvcs-charon
-        image: mdditt2000/as3converter:dev
+        image: vzhuravlevf5/zvvaccdev:dev
         imagePullPolicy: Always
         name: f5-appsvcs-charon
         ports:
