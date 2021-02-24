@@ -36,6 +36,7 @@ spec:
             - "--namespace=tea"
             - "--pool-member-type=cluster"
             - "--flannel-name=fl-vxlan"
+            - "--custom-resource-mode=true"
             - "--log-level=DEBUG"
             - "--insecure=true"
             - "--as3-validation=true"
