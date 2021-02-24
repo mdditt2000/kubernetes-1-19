@@ -16,6 +16,7 @@
                     "virtualAddresses": [
                         "172.16.3.4"
                     ],
+                    "shareAddresses": true,
                     "policyEndpoint": "tea_cafe.example.com_policy"
                 },
                 "tea_cafe.example.com_policy": {
