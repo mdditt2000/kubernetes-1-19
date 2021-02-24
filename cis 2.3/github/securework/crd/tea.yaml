@@ -1,0 +1,16 @@
+apiVersion: "cis.f5.com/v1"
+kind: VirtualServer
+metadata:
+  name: tea-virtual-server
+  namespace: tea
+  labels:
+    f5cr: "true"
+spec:
+  # This is an insecure virtual, Please use TLSProfile to secure the virtual
+  # check out tls examples to understand more.
+  virtualServerAddress: "172.16.3.4"
+  host: cafe.example.com
+  pools:
+  - path: /tea
+    service: f5-demo-tea
+    servicePort: 80
