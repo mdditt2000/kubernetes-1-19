@@ -3,6 +3,11 @@ kind: Service
 metadata:
   name: f5-demo-tea
   namespace: tea
+  labels:
+    app: f5-demo-tea
+    cis.f5.com/as3-tenant: tea
+    cis.f5.com/as3-app: tea_app
+    cis.f5.com/as3-pool: tea_pool
 spec:
   ports:
     - name: http
