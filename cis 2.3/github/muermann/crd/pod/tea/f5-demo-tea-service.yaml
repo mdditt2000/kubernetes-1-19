@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: f5-demo-tea
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 443
+      targetPort: 443
+  selector:
+    app: f5-demo-tea
+  type: ClusterIP
