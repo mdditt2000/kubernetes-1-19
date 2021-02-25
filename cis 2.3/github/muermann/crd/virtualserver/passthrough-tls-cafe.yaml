@@ -6,6 +6,6 @@ metadata:
   name: passthrough-tls-cafe
 spec: 
   hosts: 
-    - cafe.example.com
+    - tea.example.com
   tls:
     termination: passthrough

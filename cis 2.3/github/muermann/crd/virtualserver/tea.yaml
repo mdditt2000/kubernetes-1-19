@@ -11,7 +11,7 @@ spec:
   virtualServerAddress: "10.192.75.110"
   virtualServerHTTPSPort: 443
   tlsProfileName: passthrough-tls-cafe
-  host: cafe.example.com
+  host: tea.example.com
   pools:
   - path: /tea
     service: f5-demo-tea

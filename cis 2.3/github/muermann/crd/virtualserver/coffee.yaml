@@ -9,7 +9,8 @@ spec:
   # This is an insecure virtual, Please use TLSProfile to secure the virtual
   # check out tls examples to understand more.
   virtualServerAddress: "10.192.75.110"
-  host: cafe.example.com
+  virtualServerHTTPPort: 80
+  host: coffee.example.com
   pools:
   - path: /coffee
     service: f5-demo-coffee
