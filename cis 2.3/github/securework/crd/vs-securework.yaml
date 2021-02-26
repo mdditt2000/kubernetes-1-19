@@ -13,7 +13,7 @@ spec:
   httpTraffic: redirect
   waf: /Common/WAF_Policy
   tlsProfileName: reencrypt-tls
-  host: portal.securework.com
+  host: cafe.example.com
   pools:
   - path: /
     service: nginx-ingress

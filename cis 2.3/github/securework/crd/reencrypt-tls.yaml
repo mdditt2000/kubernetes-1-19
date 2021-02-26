@@ -12,4 +12,4 @@ spec:
     serverSSL: /Common/serverssl
     reference: bigip
   hosts:
-  - portal.securework.com
+  - cafe.example.com
