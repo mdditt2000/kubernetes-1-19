@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: f5-demo-tea
+  name: f5-demo-tea
+  namespace: tea
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: f5-demo-tea
+  template:
+    metadata:
+      labels:
+        app: f5-demo-tea
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: f5-demo-tea
+        image: f5devcentral/f5-demo-httpd
+        imagePullPolicy: Always
+        name: f5-demo-tea
+        ports:
+        - containerPort: 80
+          protocol: TCP
