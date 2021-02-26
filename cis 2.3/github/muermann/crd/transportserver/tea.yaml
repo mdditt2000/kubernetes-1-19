@@ -3,17 +3,17 @@ kind: TransportServer
 metadata:
   labels:
     f5cr: "true"
-  name: tea-virtual-server-80
+  name: tea-virtual-server-443
   namespace: default
 spec:
   virtualServerAddress: "10.192.75.110"
-  virtualServerPort: 80
-  virtualServerName: tea-virtual-server-80
+  virtualServerPort: 443
+  virtualServerName: tea-virtual-server-443
   mode: standard
   snat: auto
   pool:
     service: f5-demo-tea
-    servicePort: 80
+    servicePort: 443
     monitor:
       type: tcp
       interval: 10
