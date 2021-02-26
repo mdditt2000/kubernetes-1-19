@@ -11,7 +11,7 @@ spec:
   virtualServerAddress: "10.192.75.110"
   virtualServerHTTPSPort: 443
   httpTraffic: redirect
-  waf: /Common/waf_policy
+  waf: /Common/WAF_POLICY
   tlsProfileName: reencrypt-tls
   host: portal.securework.com
   pools:
