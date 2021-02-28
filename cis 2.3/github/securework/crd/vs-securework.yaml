@@ -12,6 +12,8 @@ spec:
   virtualServerHTTPSPort: 443
   httpTraffic: redirect
   waf: /Common/WAF_Policy
+  iRules:
+  - /Common/Portal_SSL_Version
   tlsProfileName: reencrypt-tls
   host: cafe.example.com
   pools:
