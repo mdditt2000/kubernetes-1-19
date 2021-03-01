@@ -23,7 +23,7 @@ Minimum version to use IngressLink:
 | 2.3+ | v13.1+ | 1.10+ | 3.18+ | 
 
 * Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
-* CIS 2.3 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.2.3)
+* CIS 2.3 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.3.0)
 * NGINX+ IC [repo](coming)
 * Github [documentation](coming)
 
@@ -148,7 +148,7 @@ nginx-ingress-744d95cb86-xk2vx   1/1     Running   0          16s
 
 **Step 4**
 
-Create an IngressLink Resource
+### Create an IngressLink Resource
 
 Update the ip-address in IngressLink resource and iRule which is created in Step-1. This ip-address will be used to configure the BIG-IP device to load balance among the Ingress Controller pods.
 
@@ -158,9 +158,46 @@ Note: The name of the app label selector in IngressLink resource should match th
 
 **Step 5**
 
-Create an Demo App
+### Deploy the Cafe Application
 
-Now to test the integration let's deploy a sample ingress.
+Create the coffee and the tea deployments and services:
 
-    kubectl apply -f ingress-example
+    kubectl create -f cafe.yaml
+
+### Configure Load Balancing for the Cafe Application
+
+Create a secret with an SSL certificate and a key:
+
+    kubectl create -f cafe-secret.yaml
+
+Create an Ingress resource:
+
+    kubectl create -f cafe-ingress.yaml
+
+demo application [repo](https://github.com/mdditt2000/anz-f5-engage/tree/main/ingress-example)
+
+### Test the Application
+
+1. To access the application, curl the coffee and the tea services. We'll use ```curl```'s --insecure option to turn off certificate verification of our self-signed
+certificate and the --resolve option to set the Host header of a request with ```cafe.example.com```
+    
+To get coffee:
+
+    $ curl --resolve cafe.example.com:$IC_HTTPS_PORT:$IC_IP https://cafe.example.com:$IC_HTTPS_PORT/coffee --insecure
+    Server address: 10.12.0.18:80
+    Server name: coffee-7586895968-r26zn
+
+If your prefer tea:
+
+    $ curl --resolve cafe.example.com:$IC_HTTPS_PORT:$IC_IP https://cafe.example.com:$IC_HTTPS_PORT/tea --insecure
+    Server address: 10.12.0.19:80
+    Server name: tea-7cd44fcb4d-xfw2x
+
+Get the `cafe-ingress` resource to check its reported address:
+
+    $ kubectl get ing cafe-ingress
+    NAME           HOSTS              ADDRESS         PORTS     AGE
+    cafe-ingress   cafe.example.com   35.239.225.75   80, 443   115s
+
+As you can see, the Ingress Controller reported the BIG-IP IP address (configured in IngressLink resource) in the ADDRESS field of the Ingress status.
 
