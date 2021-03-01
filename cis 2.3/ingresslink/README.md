@@ -176,6 +176,8 @@ Create an Ingress resource:
 
 demo application [repo](https://github.com/mdditt2000/anz-f5-engage/tree/main/ingress-example)
 
+**Step 6**
+
 ### Test the Application
 
 1. To access the application, curl the coffee and the tea services. We'll use ```curl```'s --insecure option to turn off certificate verification of our self-signed
@@ -200,4 +202,8 @@ Get the `cafe-ingress` resource to check its reported address:
     cafe-ingress   cafe.example.com   35.239.225.75   80, 443   115s
 
 As you can see, the Ingress Controller reported the BIG-IP IP address (configured in IngressLink resource) in the ADDRESS field of the Ingress status.
+
+**Step 7**
+
+### Troubleshooting IngressLink
 
