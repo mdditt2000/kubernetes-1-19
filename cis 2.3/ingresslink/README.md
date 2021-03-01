@@ -27,7 +27,7 @@ Minimum version to use IngressLink:
 * NGINX+ IC [repo](coming)
 * Github [documentation](coming)
 
-## Setup F5 IngressLink in Kubernetes
+## Configure F5 IngressLink with Kubernetes
 
 **Step 1:**
 
