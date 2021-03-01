@@ -174,7 +174,7 @@ Create an Ingress resource:
 
     kubectl create -f cafe-ingress.yaml
 
-demo application [repo](https://github.com/mdditt2000/anz-f5-engage/tree/main/ingress-example)
+demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ingresslink/ingress-example)
 
 **Step 6**
 
