@@ -207,6 +207,13 @@ As you can see, the Ingress Controller reported the BIG-IP IP address (configure
 
 ### Troubleshooting IngressLink
 
+Check the CIS API communication with BIG-IP using DEBUG logging. Below is a successful deployment of the ingresslink resource
+
+    $ kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[as3'
+    2021/03/02 00:17:09 [DEBUG] [AS3] PostManager Accepted the configuration
+    2021/03/02 00:17:09 [DEBUG] [AS3] posting request to https://192.168.200.60/mgmt/shared/appsvcs/declare/
+    2021/03/02 00:17:12 [DEBUG] [AS3] Response from BIG-IP: code: 200 --- tenant:ingresslink --- message: success
+
 Check the ingresslink resource 
 
     $ kubectl get ingresslink -n nginx-ingress
