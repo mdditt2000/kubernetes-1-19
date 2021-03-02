@@ -59,7 +59,7 @@ Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as foll
     
     kubectl create clusterrolebinding k8s-bigip-ctlr-clusteradmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8s-bigip-ctlr
     
-Create IngressLink Custom Resource definition as follows:
+Create CIS IngressLink Custom Resource definition schema as follows:
 
     kubectl create -f ingresslink-customresourcedefinition.yaml
 
@@ -109,6 +109,10 @@ You can view the CIS logs using the following
 **Step 3**
 
 ### Nginx-Controller Installation
+
+Create NGINX IC IngressLink Custom Resource definition schema as follows:
+
+    kubectl create -f ingresslink-customresourcedefinition.yaml
 
 Create a namespace and a service account for the Ingress controller:
    
