@@ -262,3 +262,5 @@ Check the ingresslink resource configuration
     metadata:
     resourceVersion: ""
     selfLink: ""
+
+For Nginx Ingress troubleshooting please use the following link https://kubernetes.github.io/ingress-nginx/troubleshooting/
