@@ -207,3 +207,51 @@ As you can see, the Ingress Controller reported the BIG-IP IP address (configure
 
 ### Troubleshooting IngressLink
 
+Check the ingresslink resource 
+
+    $ kubectl get ingresslink -n nginx-ingress
+    NAME             AGE
+    vs-ingresslink   13m
+
+Check the ingresslink resource configuration
+
+    $ kubectl get ingresslink -n nginx-ingress -o yaml
+    apiVersion: v1
+    items:
+    - apiVersion: cis.f5.com/v1
+    kind: IngressLink
+    metadata:
+        creationTimestamp: "2021-03-01T23:58:18Z"
+        generation: 1
+        managedFields:
+        - apiVersion: cis.f5.com/v1
+        fieldsType: FieldsV1
+        fieldsV1:
+            f:spec:
+            .: {}
+            f:iRules: {}
+            f:selector:
+                .: {}
+                f:matchLabels:
+                .: {}
+                f:app: {}
+            f:virtualServerAddress: {}
+        manager: kubectl-create
+        operation: Update
+        time: "2021-03-01T23:58:18Z"
+        name: vs-ingresslink
+        namespace: nginx-ingress
+        resourceVersion: "39164170"
+        selfLink: /apis/cis.f5.com/v1/namespaces/nginx-ingress/ingresslinks/vs-ingresslink
+        uid: 4a31d5fb-4e72-45c7-8d37-a25d7618a50c
+    spec:
+        iRules:
+        - /Common/Proxy_Protocol_iRule
+        selector:
+        matchLabels:
+            app: nginx-ingress
+        virtualServerAddress: 10.192.75.110
+    kind: List
+    metadata:
+    resourceVersion: ""
+    selfLink: ""
