@@ -110,9 +110,14 @@ You can view the CIS logs using the following
 
 ### Nginx-Controller Installation
 
-Create NGINX IC IngressLink Custom Resource definition schema as follows:
+Create NGINX IC custom resource definitions for VirtualServer and VirtualServerRoute, TransportServer and Policy resources:
 
-    kubectl create -f ingresslink-customresourcedefinition.yaml
+    kubectl apply -f k8s.nginx.org_virtualservers.yaml
+    kubectl apply -f k8s.nginx.org_virtualserverroutes.yaml
+    kubectl apply -f k8s.nginx.org_transportservers.yaml
+    kubectl apply -f k8s.nginx.org_policies.yaml
+
+crd-schema [repo](https://github.com/nginxinc/kubernetes-ingress/tree/v1.10.0/deployments/common/crds)
 
 Create a namespace and a service account for the Ingress controller:
    
