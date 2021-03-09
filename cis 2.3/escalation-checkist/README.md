@@ -23,6 +23,6 @@ Ingress Resources
     * CIS deployment yaml
     * Associated Service definition along with resource definition
     * Kubernetes or OpenShift logs from the CIS deployment
-    * Any AS3 error displayed in the CID deployment logs or restjavad logs on BIG-IP
+    * Any AS3 error displayed in the CIS or restjavad logs on BIG-IP
 
 
