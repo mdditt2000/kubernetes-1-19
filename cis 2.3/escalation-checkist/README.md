@@ -8,6 +8,11 @@ Issue Type:
 - Feature
 - unKnown
 
+Reproducible:
+
+- yes
+- no
+
 Environment:
 
 - CIS Version
@@ -32,5 +37,6 @@ Ingress Resources
     * Associated Service definition along with resource definition
     * Kubernetes or OpenShift logs from the CIS deployment
     * Any AS3 error displayed in the CIS pod logs or restjavad logs on BIG-IP
+    * Resource deployment logs (if any)
 
 
