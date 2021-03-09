@@ -21,7 +21,7 @@ Ingress Resources
 - What files/information/logs to gather
 
     * CIS deployment yaml
-    * resource definition yaml
+    * resource definition and associated service definition yaml
     * Kubernetes or OpenShift logs from the CIS deployment
     * Any AS3 error displayed in the CID deployment logs or restjavad logs on BIG-IP
 
