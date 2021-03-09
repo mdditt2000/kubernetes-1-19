@@ -2,12 +2,20 @@
 
 To effectively troubleshoot F5 CIS please provide the following information
 
-Environment
+Issue Type:
 
-- CIS Version: 
-- AS3 Version:
-- Kubernetes or OpenShift version:
-- What CNI: Flannel or Calico
+- Bug
+- Feature
+- unKnown
+
+Environment:
+
+- CIS Version
+- AS3 Version
+- Kubernetes or OpenShift version
+- What CNI:
+    * Flannel
+    * Calico
 
 Ingress Resources
 
