@@ -20,3 +20,4 @@ spec:
   - path: /
     service: nginx-ingress
     servicePort: 443
+    
