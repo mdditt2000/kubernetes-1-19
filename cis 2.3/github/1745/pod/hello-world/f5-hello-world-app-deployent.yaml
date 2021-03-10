@@ -22,5 +22,5 @@ spec:
         imagePullPolicy: Always
         name: hello-world-app
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           protocol: TCP
