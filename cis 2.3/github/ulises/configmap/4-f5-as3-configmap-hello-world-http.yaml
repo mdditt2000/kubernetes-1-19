@@ -24,7 +24,7 @@ data:
                         "class": "Service_HTTP",
                         "remark": "a1",
                         "virtualAddresses": [
-                                "192.168.44.201"
+                            "192.168.44.201"
                         ],
                         "pool": "Hello_World_app_pool"
                     },
@@ -40,7 +40,7 @@ data:
                             }
                         ]
                     }
+                }
             }
         }
-    }
     }
