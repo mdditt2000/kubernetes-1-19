@@ -8,6 +8,7 @@ metadata:
 data:
   template: |
     {
+        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
         "class": "AS3",
         "declaration": {
             "class": "ADC",
@@ -24,7 +25,7 @@ data:
                         "class": "Service_HTTP",
                         "remark": "a1",
                         "virtualAddresses": [
-                                "192.168.44.201"
+                            "192.168.44.201"
                         ],
                         "pool": "Hello_World_app_pool"
                     },
@@ -35,12 +36,12 @@ data:
                         ],
                         "members": [
                             {
-                                "servicePort": 8080,
+                                "servicePort": 80,
                                 "serverAddresses": []
                             }
                         ]
                     }
+                }
             }
         }
-    }
     }
