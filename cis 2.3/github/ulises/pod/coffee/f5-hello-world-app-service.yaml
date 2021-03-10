@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello_world_app
+  labels:
+    app: f5-demo-coffee
+    cis.f5.com/as3-tenant: Hello_World
+    cis.f5.com/as3-app: Hello_World_app
+    cis.f5.com/as3-pool: Hello_World_app_pool
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: hello_world_app
+  type: ClusterIP

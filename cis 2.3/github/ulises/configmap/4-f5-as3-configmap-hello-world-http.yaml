@@ -1,0 +1,47 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: f5-as3-declaration-create
+  labels:
+    f5type: virtual-server
+    as3: "true"
+data:
+  template: |
+    {
+        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
+        "class": "AS3",
+        "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.13.0",
+            "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+            "label": "https",
+            "remark": "A1-2 Template",
+            "Hello_World": {
+                "class": "Tenant",
+                "Hello_World_app": {
+                    "class": "Application",
+                    "template": "generic",
+                    "a1_80_vs": {
+                        "class": "Service_HTTP",
+                        "remark": "a1",
+                        "virtualAddresses": [
+                            "192.168.44.201"
+                        ],
+                        "pool": "Hello_World_app_pool"
+                    },
+                    "Hello_World_app_pool": {
+                        "class": "Pool",
+                        "monitors": [
+                            "http"
+                        ],
+                        "members": [
+                            {
+                                "servicePort": 8080,
+                                "serverAddresses": []
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }

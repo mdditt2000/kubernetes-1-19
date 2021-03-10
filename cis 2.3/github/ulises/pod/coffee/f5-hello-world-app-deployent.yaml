@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: Hello_World_app
+  name: Hello_World_app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello_world_app
+  template:
+    metadata:
+      labels:
+        app: hello_world_app
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: hello_world_app
+        image: f5devcentral/f5-demo-httpd
+        imagePullPolicy: Always
+        name: hello_world_app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
