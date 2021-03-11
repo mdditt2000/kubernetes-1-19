@@ -55,6 +55,6 @@ spec:
                 secretKeyRef: 
                   key: password
                   name: bigip-login
-          image: "subbuv26/k8s-bigip-ctlr:ingress_link"
+          image: "vklohiya1/k8s-bigip-ctlr:ingressLink1"
           name: f5-server
       serviceAccountName: k8s-bigip-ctlr
