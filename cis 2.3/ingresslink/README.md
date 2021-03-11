@@ -23,7 +23,7 @@ Minimum version to use IngressLink:
 | 2.3+ | v13.1+ | 1.10+ | 3.18+ | 
 
 * Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
-* CIS 2.3 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.3.0)
+* CIS 2.3 private build [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.3.0)
 * NGINX+ IC [repo](coming)
 * Github [documentation](coming)
 
@@ -70,7 +70,6 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
 * Add the following statements to the CIS deployment arguments for Ingresslink
 
     - "--custom-resource-mode=true"
-    - "--ingress-link-mode=true"
 
 * To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
 
