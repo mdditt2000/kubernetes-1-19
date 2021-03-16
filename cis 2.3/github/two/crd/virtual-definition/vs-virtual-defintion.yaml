@@ -10,7 +10,6 @@ spec:
   virtualServerAddress: "10.192.75.110"
   virtualServerName: "hello-world-app"
   virtualServerHTTPPort: 80
-  host: cafe.example.com
   pools:
   - path: /
     service: hello-world-app
