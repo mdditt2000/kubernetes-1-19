@@ -18,7 +18,7 @@ spec:
       - env:
         - name: service_name
           value: hello-world-app
-        image: f5devcentral/f5-demo-httpd:nginx
+        image: f5devcentral/f5-hello-world:latest
         imagePullPolicy: Always
         name: hello-world-app
         ports:
