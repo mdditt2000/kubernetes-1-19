@@ -4,16 +4,16 @@ This document is created to assist with migration of customer two environment us
 
 ##  Virtual Server
 
-* Virtual_Definition "Virtual Server Definition" -- Done
-* Virtual_Definition.VS_Type "Virtual Server Type" -- Done
-* Virtual_Definition.VS_IP "Virtual Server IP" -- Done
-* Virtual_Definition.VS_Port "Virtual Server Port" -- Done
+* Virtual_Definition "Virtual Server Definition"
+* Virtual_Definition.VS_Type "Virtual Server Type"
+* Virtual_Definition.VS_IP "Virtual Server IP"
+* Virtual_Definition.VS_Port "Virtual Server Port"
 * Virtual_Definition.VS_TCP_Client_Profile "TCP Client Profile"
 * Virtual_Definition.VS_TCP_Server_Profile "TCP Server Profile"
 * Virtual_Definition.VS_HTTP_Profile "HTTP Profile" 
-* Virtual_Definition.VS_SSL_Client_Profiles "SSL Client Profiles" -- Done
-* Virtual_Definition.VS_SSL_Server_Profiles "SSL Server Profiles" -- Done
-* Virtual_Definition.VS_FastL4_Client_Profile "FastL4 Client Profile" -- Done
+* Virtual_Definition.VS_SSL_Client_Profiles "SSL Client Profiles"
+* Virtual_Definition.VS_SSL_Server_Profiles "SSL Server Profiles"
+* Virtual_Definition.VS_FastL4_Client_Profile "FastL4 Client Profile"
 * Virtual_Definition.VS_VLAN_Enabled "Enabled on VLAN (ext/int)"
 * Virtual_Definition.VS_SNATPool "SNAT Pool"
 * Virtual_Definition.VS_Persistence "Default Persistence Profile"
