@@ -12,7 +12,7 @@ This document is created to assist with migration of customer two environment us
 
 ![example](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/diagram/2021-03-01_15-41-39.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
  
 * Virtual_Definition.VS_Type "Virtual Server Type"
 * Virtual_Definition.VS_IP "Virtual Server IP"
