@@ -4,13 +4,12 @@ This document is created to assist with migration of customer two environment us
 
 ##  Virtual Server
 
-* Virtual_Definition "Virtual Server Definition"
+### Virtual_Definition "Virtual Server Definition"
 
-    - CIS allows the user to change the Virtual Server Definition by using the virtualServerName parameter
+* CIS allows the user to change the Virtual Server Definition by using the virtualServerName parameter
 
-    ```
     virtualServerName: "Virtual Server Definition"
-    ```
+
 ![example](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
  
 * Virtual_Definition.VS_Type "Virtual Server Type"
