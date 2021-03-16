@@ -8,7 +8,7 @@ spec:
   # This is an insecure virtual, Please use TLSProfile to secure the virtual
   # check out tls examples to understand more.
   virtualServerAddress: "10.192.75.110"
-  virtualServerName: "Virtual Server Definition"
+  virtualServerName: "hello-world-app"
   virtualServerHTTPPort: 80
   host: cafe.example.com
   pools:
