@@ -6,7 +6,7 @@ This document is created to assist with migration of customer two environment us
 
 ### Virtual_Definition "Virtual Server Definition"
 
-* CIS allows the user to change the Virtual Server Definition by using the virtualServerName parameter
+CIS allows the user to change the Virtual Server Definition by using the virtualServerName parameter
 
     virtualServerName: "Virtual Server Definition"
 
