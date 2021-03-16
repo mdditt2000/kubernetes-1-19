@@ -8,7 +8,7 @@ This document is created to assist with migration of customer two environment us
 
 CIS allows the user to change the Virtual Server Definition by using the virtualServerName parameter
 
-    virtualServerName: "Virtual Server Definition"
+    virtualServerName: "hello-world-app"
 
 example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
 
