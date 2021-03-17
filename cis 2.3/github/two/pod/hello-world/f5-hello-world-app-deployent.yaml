@@ -14,7 +14,6 @@ spec:
       labels:
         app: hello-world-app
     spec:
-      hostNetwork: true
       containers:
       - env:
         - name: service_name
