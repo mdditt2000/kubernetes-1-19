@@ -4,20 +4,47 @@ This document is created to assist with migration of customer two environment us
 
 ##  Virtual Server
 
-### Virtual_Definition "Virtual Server Definition"
+### Virtual Server Definition
 
-CIS allows the user to change the Virtual Server Definition by using the virtualServerName parameter
+Virtual Server Definition is configured by using the virtualServerName parameter
 
-    virtualServerName: "hello-world-app"
+    virtualServerName: "K8S_iApp_004_test"
 
 example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-17_13-25-56.png)
 
- 
-* Virtual_Definition.VS_Type "Virtual Server Type"
-* Virtual_Definition.VS_IP "Virtual Server IP"
-* Virtual_Definition.VS_Port "Virtual Server Port"
+### Virtual Server Type
+
+VirtualServer uses standard "Virtual Server Type" by default. This parameter cannot be modified
+
+example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-17_13-25-56.png)
+
+### Virtual Server IP
+
+Virtual Server IP is configured by using the virtualServerAddress parameter
+
+    virtualServerAddress: "10.192.75.110"
+
+example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-17_13-25-56.png)
+
+### Virtual Server Port
+
+Virtual Server Port is configured by using the virtualServerHTTPPort and virtualServerHTTPSPort parameter
+
+    virtualServerHTTPPort: 80
+
+example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-17_13-25-56.png)
+
+    virtualServerHTTPPort: 443
+
+
 * Virtual_Definition.VS_TCP_Client_Profile "TCP Client Profile"
 * Virtual_Definition.VS_TCP_Server_Profile "TCP Server Profile"
 * Virtual_Definition.VS_HTTP_Profile "HTTP Profile" 
