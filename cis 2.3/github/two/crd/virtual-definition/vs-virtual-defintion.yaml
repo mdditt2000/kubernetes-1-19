@@ -8,7 +8,7 @@ spec:
   # This is an insecure virtual, Please use TLSProfile to secure the virtual
   # check out tls examples to understand more.
   virtualServerAddress: "10.192.75.110"
-  virtualServerName: "hello-world-app"
+  virtualServerName: "K8S_iApp_004 test"
   virtualServerHTTPPort: 80
   pools:
   - path: /
