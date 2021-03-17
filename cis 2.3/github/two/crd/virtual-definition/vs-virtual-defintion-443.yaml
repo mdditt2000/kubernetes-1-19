@@ -7,9 +7,11 @@ metadata:
 spec:
   # This is an insecure virtual, Please use TLSProfile to secure the virtual
   # check out tls examples to understand more.
+  host: cafe.example.com
   virtualServerAddress: "10.192.75.110"
   virtualServerName: "K8S_iApp_004_test"
   virtualServerHTTPSPort: 443
+  httpTraffic: none
   pools:
   - path: /
     service: hello-world-app
