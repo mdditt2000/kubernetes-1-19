@@ -12,7 +12,7 @@ CIS allows the user to change the Virtual Server Definition by using the virtual
 
 example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-16_15-29-06.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-17_13-25-56.png)
 
  
 * Virtual_Definition.VS_Type "Virtual Server Type"
