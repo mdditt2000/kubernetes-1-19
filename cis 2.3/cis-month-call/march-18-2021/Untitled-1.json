@@ -1,0 +1,94 @@
+{
+    "k8s": {
+        "Shared": {
+            "K8S_iApp_004_test_80": {
+                "source": "0.0.0.0/0",
+                "translateServerAddress": true,
+                "translateServerPort": true,
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                    "10.192.75.110"
+                ],
+                "virtualPort": 80,
+                "snat": "auto",
+                "policyEndpoint": "/k8s/Shared/K8S_iApp_004_test_80_cafe.example.com_policy",
+                "persistenceMethods": [
+                    "cookie"
+                ],
+                "profileHTTP": "basic",
+                "virtualType": "standard",
+                "layer4": "tcp",
+                "profileTCP": "normal",
+                "serviceDownImmediateAction": "none",
+                "shareAddresses": false,
+                "enable": true,
+                "maxConnections": 0,
+                "addressStatus": true,
+                "mirroring": "none",
+                "lastHop": "default",
+                "translateClientPort": false,
+                "nat64Enabled": false,
+                "httpMrfRoutingEnabled": false
+            },
+            "K8S_iApp_004_test_80_cafe.example.com_policy": {
+                "class": "Endpoint_Policy",
+                "rules": [
+                    {
+                        "name": "vs_cafe_example_com_default_hello_world_app_443",
+                        "conditions": [
+                            {
+                                "type": "httpHeader",
+                                "name": "host",
+                                "event": "request",
+                                "all": {
+                                    "values": [
+                                        "cafe.example.com"
+                                    ],
+                                    "operand": "equals"
+                                }
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "type": "forward",
+                                "event": "request",
+                                "select": {
+                                    "pool": {
+                                        "use": "/k8s/Shared/default_hello_world_app_443"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "strategy": "first-match"
+            },
+            "class": "Application",
+            "default_hello_world_app_443": {
+                "class": "Pool",
+                "loadBalancingMode": "round-robin",
+                "minimumMembersActive": 1,
+                "reselectTries": 0,
+                "serviceDownAction": "none",
+                "slowRampTime": 10
+            },
+            "template": "shared",
+            "enable": true
+        },
+        "class": "Tenant",
+        "enable": true,
+        "defaultRouteDomain": 0,
+        "optimisticLockKey": ""
+    },
+    "schemaVersion": "3.18.0",
+    "class": "ADC",
+    "id": "autogen_baf0e798-90ab-45aa-b538-c7f2d04b3089",
+    "updateMode": "selective",
+    "controls": {
+        "archiveTimestamp": "2021-03-17T22:12:20.448Z",
+        "class": "Controls",
+        "logLevel": "error",
+        "trace": false,
+        "traceResponse": false
+    }
+}
