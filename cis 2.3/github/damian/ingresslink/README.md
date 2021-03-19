@@ -8,7 +8,7 @@ The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink
 
 This architecture diagram demonstrates the IngressLink solution
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/diagram/2021-03-01_15-41-39.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/damian/ingresslink/diagram/2021-03-01_15-41-39.png)
 
 On this page you’ll find:
 
@@ -22,7 +22,7 @@ Minimum version to use IngressLink:
 
 | CIS | BIGIP | NGINX+ IC | AS3 |
 | ------ | ------ | ------ | ------ |
-| 2.3+ | v13.1+ | 1.10+ | 3.18+ | 
+| 2.4+ | v13.1+ | 1.10+ | 3.18+ | 
 
 * Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
 * CIS 2.3 private build [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.3.0)
@@ -43,7 +43,7 @@ Proxy Protocol is required by NGINX to provide the applications PODs with the or
 * In the Name field, type name as "Proxy_Protocol_iRule".
 * In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file. Click Finished.
 
-Proxy_Protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
+Proxy_Protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/damian/ingresslink/big-ip/proxy-protocal/irule)
 
 **Step 2**
 
@@ -63,28 +63,25 @@ Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as foll
     
 Create CIS IngressLink Custom Resource definition schema as follows:
 
-    kubectl create -f ingresslink-customresourcedefinition.yaml
+    kubectl create -f customresourcedefinition.yaml
 
-cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
+cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/damian/ingresslink/cis/cis-crd-schema/customresourcedefinition.yaml)
 
 Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in ClusterIP mode as follows:
 
-* Add the following statements to the CIS deployment arguments for Ingresslink
+* Add the following statements to the CIS deployment arguments for Ingresslink CRD
 
     - "--custom-resource-mode=true"
 
-* To deploy the CIS controller in cluster mode update CIS deployment arguments as follows for kubernetes.
+* To deploy the CIS controller in nodeport mode update CIS deployment arguments as follows for kubernetes.
 
     - "--pool-member-type=nodeport"
-    
-* You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
-* VXLAN tunnel should be configured from Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
 
 ```
 kubectl create -f f5-cis-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/damian/ingresslink/cis/cis-deployment/f5-cis-deployment.yaml)
 
 Verify CIS deployment
 
@@ -139,6 +136,8 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
     kubectl apply -f nginx-config/nginx-service.yaml
 
+nginx-ingress [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/github/damian/ingresslink/nginx-config)
+
 Verify NGINX-Ingress deployment
 
 ```
@@ -175,7 +174,7 @@ Create an Ingress resource:
 
     kubectl create -f cafe-ingress.yaml
 
-demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ingresslink/ingress-example)
+demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/github/damian/ingresslink/ingress-example)
 
 **Step 6**
 
@@ -203,65 +202,3 @@ Get the `cafe-ingress` resource to check its reported address:
     cafe-ingress   cafe.example.com   35.239.225.75   80, 443   115s
 
 As you can see, the Ingress Controller reported the BIG-IP IP address (configured in IngressLink resource) in the ADDRESS field of the Ingress status.
-
-**Step 7**
-
-### Troubleshooting IngressLink
-
-Check the CIS API communication with BIG-IP using DEBUG logging. Below is a successful deployment of the ingresslink resource
-
-    $ kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[as3'
-    2021/03/02 00:17:09 [DEBUG] [AS3] PostManager Accepted the configuration
-    2021/03/02 00:17:09 [DEBUG] [AS3] posting request to https://192.168.200.60/mgmt/shared/appsvcs/declare/
-    2021/03/02 00:17:12 [DEBUG] [AS3] Response from BIG-IP: code: 200 --- tenant:ingresslink --- message: success
-
-Check the ingresslink resource 
-
-    $ kubectl get ingresslink -n nginx-ingress
-    NAME             AGE
-    vs-ingresslink   13m
-
-Check the ingresslink resource configuration
-
-    $ kubectl get ingresslink -n nginx-ingress -o yaml
-    apiVersion: v1
-    items:
-    - apiVersion: cis.f5.com/v1
-    kind: IngressLink
-    metadata:
-        creationTimestamp: "2021-03-01T23:58:18Z"
-        generation: 1
-        managedFields:
-        - apiVersion: cis.f5.com/v1
-        fieldsType: FieldsV1
-        fieldsV1:
-            f:spec:
-            .: {}
-            f:iRules: {}
-            f:selector:
-                .: {}
-                f:matchLabels:
-                .: {}
-                f:app: {}
-            f:virtualServerAddress: {}
-        manager: kubectl-create
-        operation: Update
-        time: "2021-03-01T23:58:18Z"
-        name: vs-ingresslink
-        namespace: nginx-ingress
-        resourceVersion: "39164170"
-        selfLink: /apis/cis.f5.com/v1/namespaces/nginx-ingress/ingresslinks/vs-ingresslink
-        uid: 4a31d5fb-4e72-45c7-8d37-a25d7618a50c
-    spec:
-        iRules:
-        - /Common/Proxy_Protocol_iRule
-        selector:
-        matchLabels:
-            app: nginx-ingress
-        virtualServerAddress: 10.192.75.110
-    kind: List
-    metadata:
-    resourceVersion: ""
-    selfLink: ""
-
-For Nginx Ingress troubleshooting please use the following link https://kubernetes.github.io/ingress-nginx/troubleshooting/
