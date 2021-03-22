@@ -58,10 +58,16 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_14-01-19.png)
 
-- Opened Jira [RFE] for enhancement to support custom **HTTP Profile**: 
-  CONTCNTR-2555
+- Opened Jira [RFE] for enhancement to support custom **HTTP Profile**: CONTCNTR-2556
 
-* Virtual_Definition.VS_HTTP_Profile "HTTP Profile"
+### Virtual Server Default Persistence Profile
+
+VirtualServer uses default AS3 persistence of Cookie show below
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_14-01-19.png)
+
+
+
 * Virtual_Definition.VS_Persistence "Default Persistence Profile"
 
 * Virtual_Definition.VS_SSL_Client_Profiles "SSL Client Profiles"
