@@ -66,7 +66,7 @@ VirtualServer uses Cookie persistence by default. Persistence cannot be modified
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_15-26-35.png)
 
-- Opened Jira [RFE] for enhancement to support any AS3 supported Persistence methods **: CONTCNTR-2557
+- Opened Jira [RFE] for enhancement to support any AS3 supported Persistence methods: CONTCNTR-2557
 
 ```
 Example 
