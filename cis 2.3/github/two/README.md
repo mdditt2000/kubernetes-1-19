@@ -6,7 +6,7 @@ This document is created to assist with migration of customer two environment us
 
 ### Virtual Server Definition
 
-Virtual Server Definition is configured by using the virtualServerName parameter
+Virtual Server Definition is configured by using the **virtualServerName** parameter
 
     virtualServerName: "K8S_iApp_004_test"
 
@@ -16,7 +16,7 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server Type
 
-VirtualServer uses standard "Virtual Server Type" by default. This parameter cannot be modified
+**VirtualServer** uses standard "Virtual Server Type" by default. This parameter cannot be modified
 
 example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/crd/virtual-definition/vs-virtual-defintion.yaml)
 
@@ -24,7 +24,7 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server IP
 
-Virtual Server IP is configured by using the virtualServerAddress parameter
+Virtual Server IP is configured by using the **virtualServerAddress** parameter
 
     virtualServerAddress: "10.192.75.110"
 
@@ -45,11 +45,11 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server TCP Client Profile
 
-Virtual Server uses the following default TCP Client Profile, TCP Server Profile which cannot currently be modified
+Virtual Server uses the following default below. **TCP Client Profile**, **TCP Server Profile** cannot currently be modified
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_13-35-02.png)
 
-- Opened Jira [RFE] for enhancement to support custom TCP Client Profile, TCP Server Profile: 
+- Opened Jira [RFE] for enhancement to support custom **TCP Client Profile**, **TCP Server Profile**: 
   CONTCNTR-2555
 
 ### Virtual Server HTTP Profile
