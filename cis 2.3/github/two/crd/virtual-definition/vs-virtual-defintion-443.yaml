@@ -10,9 +10,9 @@ spec:
   host: cafe.example.com
   virtualServerAddress: "10.192.75.110"
   virtualServerName: "K8S_iApp_004_test"
-  virtualServerHTTPSPort: 443
+  virtualServerHTTPPort: 443
   httpTraffic: none
   pools:
   - path: /
     service: hello-world-app
-    servicePort: 443
+    servicePort: 8080
