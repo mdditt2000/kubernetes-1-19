@@ -62,13 +62,19 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server Default Persistence Profile
 
-VirtualServer uses default AS3 persistence of Cookie show below
+VirtualServer uses Cookie persistence by default. Persistence cannot be modified in the CRD
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_14-01-19.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_15-26-35.png)
 
+- Opened Jira [RFE] for enhancement to support any AS3 supported Persistence methods **: CONTCNTR-2557
 
+```
+Example 
 
-* Virtual_Definition.VS_Persistence "Default Persistence Profile"
+"persistenceMethods": [
+  "source_addr"
+],
+```
 
 * Virtual_Definition.VS_SSL_Client_Profiles "SSL Client Profiles"
 * Virtual_Definition.VS_SSL_Server_Profiles "SSL Server Profiles"
