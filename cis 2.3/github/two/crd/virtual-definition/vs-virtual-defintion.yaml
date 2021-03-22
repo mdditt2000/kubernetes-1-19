@@ -12,12 +12,12 @@ spec:
   virtualServerName: "K8S_iApp_004_test"
   virtualServerHTTPPort: 80
   pools:
-  - monitor:
-      interval: 20
-      recv: ""
-      send: /
-      timeout: 10
-      type: http
-    path: /
+  - path: /
     service: hello-world-app
     servicePort: 8080
+    monitor:
+      type: http
+      send: “GET /rn”
+      recv: ""
+      interval: 10
+      timeout: 10
