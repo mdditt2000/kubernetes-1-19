@@ -1,3 +1,11 @@
+AS3 Override:
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: sys-override
+  namespace: default
+data:
+  template: |
     {
       "declaration": {
         "openshift_lab": {
