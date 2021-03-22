@@ -34,7 +34,7 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server Port
 
-Virtual Server Port is configured by using the virtualServerHTTPPort and virtualServerHTTPSPort parameter. VirtualServerHTTPPort support custom http ports such as 8081 and virtualServerHTTPPort support https ports such as 8443 etc
+Virtual Server Port is configured by using the **virtualServerHTTPPort** and **virtualServerHTTPSPort** parameter. **VirtualServerHTTPPort** supports custom http ports, example 8081 and **virtualServerHTTPSPort** support https ports example 8443
 
     virtualServerHTTPPort: 80
 
