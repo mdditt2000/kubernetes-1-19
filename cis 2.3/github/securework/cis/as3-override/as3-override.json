@@ -1,0 +1,29 @@
+    {
+      "declaration": {
+        "openshift_lab": {
+          "Shared": {
+            "http_ose_vserver": {
+              "iRules": [
+                {
+                  "bigip": "/Common/client_cert"
+                }
+              ],
+              "persistenceMethods": [
+                {
+                  "bigip": "/Common/custom_cookie"
+                }
+              ],
+              "fallbackPersistenceMethod": "source-address",
+              "policyWAF": {
+                "bigip": "/Common/WAF_Policy"
+              },
+              "securityLogProfiles": [
+                {
+                  "bigip": "/Common/Log all requests"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }

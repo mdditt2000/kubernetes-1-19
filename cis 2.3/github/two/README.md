@@ -45,7 +45,7 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server TCP Client Profile
 
-Virtual Server uses the following default below. **TCP Client Profile**, **TCP Server Profile** cannot currently be modified
+**TCP Client Profile**, **TCP Server Profile** cannot currently be modified. Virtual Server uses the following defaults
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_13-35-02.png)
 
@@ -53,6 +53,13 @@ Virtual Server uses the following default below. **TCP Client Profile**, **TCP S
   CONTCNTR-2555
 
 ### Virtual Server HTTP Profile
+
+**HTTP Profile** cannot currently be modified. Virtual Server uses the following defaults
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_14-01-19.png)
+
+- Opened Jira [RFE] for enhancement to support custom **HTTP Profile**: 
+  CONTCNTR-2555
 
 * Virtual_Definition.VS_HTTP_Profile "HTTP Profile"
 * Virtual_Definition.VS_Persistence "Default Persistence Profile"
