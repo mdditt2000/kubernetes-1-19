@@ -34,7 +34,7 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
 ### Virtual Server Port
 
-Virtual Server Port is configured by using the virtualServerHTTPPort and virtualServerHTTPSPort parameter
+Virtual Server Port is configured by using the virtualServerHTTPPort and virtualServerHTTPSPort parameter. VirtualServerHTTPPort support custom http ports such as 8081 and virtualServerHTTPPort support https ports such as 8443 etc
 
     virtualServerHTTPPort: 80
 
@@ -44,16 +44,27 @@ example [crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.
 
     virtualServerHTTPPort: 443
 
+### Virtual Server TCP Client Profile
 
-* Virtual_Definition.VS_TCP_Client_Profile "TCP Client Profile"
-* Virtual_Definition.VS_TCP_Server_Profile "TCP Server Profile"
-* Virtual_Definition.VS_HTTP_Profile "HTTP Profile" 
+Virtual Server uses the following default TCP Client Profile, TCP Server Profile which cannot currently be modified
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/github/two/diagrams/2021-03-22_13-35-02.png)
+
+- Opened Jira [RFE] for enhancement to support custom TCP Client Profile, TCP Server Profile: 
+  CONTCNTR-2555
+
+### Virtual Server HTTP Profile
+
+* Virtual_Definition.VS_HTTP_Profile "HTTP Profile"
+* Virtual_Definition.VS_Persistence "Default Persistence Profile"
+
 * Virtual_Definition.VS_SSL_Client_Profiles "SSL Client Profiles"
 * Virtual_Definition.VS_SSL_Server_Profiles "SSL Server Profiles"
+
 * Virtual_Definition.VS_FastL4_Client_Profile "FastL4 Client Profile"
 * Virtual_Definition.VS_VLAN_Enabled "Enabled on VLAN (ext/int)"
+
 * Virtual_Definition.VS_SNATPool "SNAT Pool"
-* Virtual_Definition.VS_Persistence "Default Persistence Profile"
 * Virtual_Definition.VS_iRules "Activated iRules"
 * Virtual_Definition.VS_Application_Security_Policy "Application Security Policy"
 * Virtual_Definition.VS_IP_Intelligence_Policy "IP Intelligence Policy"
