@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gss-server-lab2
+  namespace: default
+  labels:
+    app: gss-server-lab2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gss-server-lab2
+  template:
+    metadata:
+      labels:
+        app: gss-server-lab2
+    spec:
+      containers:
+      - name: cont-gss-server-lab2
+        image: f5devcentral/f5-hello-world:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gss-server-lab2
+  namespace: default
+  labels:
+    app: gss-server-lab2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gss-server-lab2
+  template:
+    metadata:
+      labels:
+        app: gss-server-lab2
+    spec:
+      containers:
+      - name: cont-gss-server-lab2
+        image: f5devcentral/f5-hello-world:latest
+        ports:
+        - containerPort: 8080
+
+
