@@ -33,7 +33,7 @@ spec:
             - "--bigip-url=192.168.200.60"
             - "--bigip-partition=k8s"
             - "--namespace=default"
-            - "--namespace: echoserver2"
+            - "--namespace=echoserver2"
             - "--pool-member-type=nodeport"
             - "--log-level=DEBUG"
             - "--log-as3-response=true"
