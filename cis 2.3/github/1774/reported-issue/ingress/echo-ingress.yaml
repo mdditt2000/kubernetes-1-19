@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  namespace: echoserver2
+  annotations:
+    virtual-server.f5.com/ip: "10.192.75.108"
+    virtual-server.f5.com/partition: "k8s"
+    virtual-server.f5.com/balance: "round-robin"
+    virtual-server.f5.com/http-port: "80"
+spec:
+  rules:
+    - host: mysite.f5demo.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: echoserver2
+                port:
+                  number: 8080
