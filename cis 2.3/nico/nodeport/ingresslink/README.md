@@ -1,4 +1,4 @@
-# F5 IngressLink
+# F5 IngressLink using NodePort
 
 The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service and Nginx Ingress Service. The purpose of this page is to documented and simply the configuration and steps required to preview Ingresslink
 
@@ -61,7 +61,7 @@ Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as foll
     
 Create CIS IngressLink Custom Resource definition schema as follows:
 
-    kubectl create -f ingresslink-customresourcedefinition.yaml
+    kubectl create -f customresourcedefinition.yaml
 
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
 
@@ -71,15 +71,9 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
 
     - "--custom-resource-mode=true"
 
-* To deploy the CIS controller in cluster mode update CIS deploymemt arguments as follows for kubernetes.
+* To deploy the CIS controller in nodeport mode update CIS deployment arguments as follows for kubernetes.
 
-    - "--pool-member-type=cluster"
-    - "--flannel-name=fl-vxlan"
-
-Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
-    
-* You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
-* VXLAN tunnel should be configured from Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
+    - "--pool-member-type=nodeport"
 
 ```
 kubectl create -f f5-cis-deployment.yaml
@@ -87,11 +81,6 @@ kubectl create -f f5-cis-deployment.yaml
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
 
-Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN Kubernetes using ClusterIP
-
-    kubectl create -f f5-bigip-node.yaml
-
-bigip-node [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-bigip-node.yaml)
 
 Verify CIS deployment
 
