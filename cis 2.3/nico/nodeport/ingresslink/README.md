@@ -41,7 +41,7 @@ Proxy Protocol is required by NGINX to provide the applications PODs with the or
 * In the Name field, type name as "Proxy_Protocol_iRule".
 * In the Definition field, Copy the definition from "Proxy_Protocol_iRule" file. Click Finished.
 
-Proxy_Protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/big-ip/proxy-protocal/irule)
+Proxy_Protocol_iRule [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/nico/nodeport/ingresslink/big-ip/proxy-protocal/irule)
 
 **Step 2**
 
@@ -63,7 +63,7 @@ Create CIS IngressLink Custom Resource definition schema as follows:
 
     kubectl create -f customresourcedefinition.yaml
 
-cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-crd-schema/ingresslink-customresourcedefinition.yaml)
+cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/nico/nodeport/ingresslink/cis/cis-crd-schema/customresourcedefinition.yaml)
 
 Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in ClusterIP mode as follows:
 
@@ -79,7 +79,7 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
 kubectl create -f f5-cis-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/cis/ingresslink/cis-deployment/f5-cis-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/nico/nodeport/ingresslink/cis/cis-deployment/f5-cis-deployment.yaml)
 
 
 Verify CIS deployment
@@ -153,6 +153,8 @@ Update the ip-address in IngressLink resource and iRule which is created in Step
 
 Note: The name of the app label selector in IngressLink resource should match the labels of the nginx-ingress service created in step-3.
 
+crd-resource [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/nico/nodeport/ingresslink/cis/crd-resource/vs-ingresslink.yaml)
+
 **Step 5**
 
 ### Deploy the Cafe Application
@@ -171,7 +173,7 @@ Create an Ingress resource:
 
     kubectl create -f cafe-ingress.yaml
 
-demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/ingresslink/ingress-example)
+demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.3/nico/nodeport/ingresslink/ingress-example)
 
 **Step 6**
 
