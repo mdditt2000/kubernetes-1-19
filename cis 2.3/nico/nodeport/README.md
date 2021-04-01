@@ -1,4 +1,4 @@
-# F5 IngressLink using ClusterIP
+# F5 IngressLink
 
 The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service and Nginx Ingress Service. The purpose of this page is to documented and simply the configuration and steps required to preview Ingresslink
 
