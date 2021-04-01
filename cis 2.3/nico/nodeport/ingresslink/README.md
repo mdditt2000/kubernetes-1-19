@@ -6,7 +6,7 @@ The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink
 
 This architecture diagram demonstrates the IngressLink solution
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/ingresslink/diagram/2021-03-01_15-41-39.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.3/nico/nodeport/ingresslink/diagram/2021-03-01_15-41-39.png)
 
 On this page you’ll find:
 
