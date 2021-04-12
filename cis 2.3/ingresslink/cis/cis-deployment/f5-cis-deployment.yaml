@@ -39,6 +39,7 @@ spec:
             - "--insecure=true"
             - "--log-as3-response=true"
             - "--custom-resource-mode=true"
+            - "--share-nodes=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
