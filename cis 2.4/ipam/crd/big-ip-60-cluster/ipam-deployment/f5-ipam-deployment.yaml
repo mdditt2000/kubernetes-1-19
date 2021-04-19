@@ -22,7 +22,7 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image: subbuv26/k8s-bigip-ctlr:v2.4.0_prebuild
+        image: subbuv26/f5-ipam-controller:subres_api
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
       serviceAccount: ipam-ctlr
