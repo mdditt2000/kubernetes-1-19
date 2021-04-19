@@ -18,7 +18,7 @@ spec:
       containers:
       - args:
         - --orchestration=kubernetes
-        - --ip-range='{"Test":"172.16.3.21-172.16.3.30"}'
+        - --ip-range='{"Test":"10.192.75.112-10.192.75.115"}'
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
