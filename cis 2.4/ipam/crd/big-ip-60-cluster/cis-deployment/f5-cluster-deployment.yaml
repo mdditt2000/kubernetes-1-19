@@ -41,6 +41,7 @@ spec:
             - "--as3-validation=true"
             - "--log-as3-response=true"
             - "--ipam=true"
+            - "--share-nodes=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
