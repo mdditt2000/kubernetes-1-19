@@ -286,18 +286,3 @@ View the F5 IPAM CRD and allocate IP status
 ```
 kubectl describe f5ipam -n kube-system
 ```
-
-## Limitations
-
-CIS cannot update and delete the hostname in the F5-IPAM custom resource hence update and deletion of IP address for virtual server custom may not work as expected. In case if the user wants to reflect the changes, the user can delete the F5-IPAM custom resource from kube-system named "f5ipam" and restart both the controllers
-
-Locate and delete the f5ipam crd before restarting the F5 IPAM Controller 
-
-```
-[kube@k8s-1-19-master crd-example]$ kubectl get f5ipam -n kube-system
-NAME AGE
-ipam.k8s 66m
-
-[kube@k8s-1-19-master crd-example]$ kubectl delete f5ipam ipam.k8s -n kube-system
-f5ipam.fic.f5.com "ipam.k8s" deleted
-```
