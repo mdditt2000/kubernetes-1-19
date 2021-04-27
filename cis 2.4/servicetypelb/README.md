@@ -104,9 +104,11 @@ Deploy CIS
 
 ```
 kubectl create -f f5-cluster-deployment.yaml
+kubectl create -f customresourcedefinitions.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
+* cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
+* crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/crd-schema/customresourcedefinitions.yaml)
 
 ## F5 IPAM Deploy Configuration Options
 
@@ -186,7 +188,7 @@ I0420 17:10:47.903745       1 shared_informer.go:247] Caches are synced for F5 I
 ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/ipam-deployment/f5-ipam-deployment.yaml)
 
 
-## Create the CIS CRD schema to work with F5 IPAM Controller
+## Create the Service Type LoadBalancer Service
 
 Only the CIS CRD schema is required 
 
@@ -198,7 +200,7 @@ Deploy the CRD schema
 kubectl create -f customresourcedefinitions.yaml
 ```
 
-crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.4/ipam/crd/big-ip-60-cluster/crd-example)
+crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/crd-schema/customresourcedefinitions.yaml)
 
 ## Logging output when the virtualserver is created
 
