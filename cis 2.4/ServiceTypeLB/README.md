@@ -6,7 +6,9 @@ Services of type LoadBalancer are natively supported in Kubernetes deployments. 
 
 Using CIS with services configured for type LoadBalancer, BIG-IP can load balance the incoming traffic to the Kubernetes cluster without having to create and ingress resource. CIS will manage the public IP addresses for the application using the F5 IPAM Controller. This cloud like simplification of load balancer resources could significantly reduce your operational expenses.
 
+![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/diagrams/2021-04-26_14-13-25.png)
 
+Demo on YouTube [video](https://www.youtube.com/watch?v=s9iUZoRqYQs)
 
 ## Prerequisites
 
