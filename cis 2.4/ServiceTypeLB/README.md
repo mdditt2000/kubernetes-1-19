@@ -1,14 +1,58 @@
 # Service Type LoadBalancer
 
-A service of type LoadBalancer is the simplest and the fastest way to expose a service inside a Kubernetes cluster to the external world. You only need to specify the service type as type=LoadBalancer in the service definition
+A service of type LoadBalancer is the simplest and the fastest way to expose a service inside a Kubernetes cluster to the external world. All you need to-do is specify the service type as type=LoadBalancer in the service definition.
 
-Services of type LoadBalancer are natively supported in Kubernetes deployments. When you create a service of type LoadBalancer it spins up a service in integration with  F5 IPAM Controller which allocates an IP address that will forward all traffic to your service.
-
-Using CIS with services configured for type LoadBalancer, BIG-IP can load balance the incoming traffic to the Kubernetes cluster without having to create and ingress resource. CIS will manage the public IP addresses for the application using the F5 IPAM Controller. This cloud like simplification of load balancer resources could significantly reduce your operational expenses.
+Services of type LoadBalancer are natively supported in Kubernetes deployments. When you create a service of type LoadBalancer, Kubernetes spins up a service in integration with F5 IPAM Controller which allocates an IP address from the ip-range specified by the ipamlabel. Using CIS with services configured for type LoadBalancer, BIG-IP can load balance the incoming traffic to the Kubernetes cluster without having to create any ingress resource. CIS will manage the public IP addresses for the application using the F5 IPAM Controller. This cloud like simplification of load balancer resources could significantly reduce your operational expenses.
 
 ![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ipam/diagrams/2021-04-26_14-13-25.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=s9iUZoRqYQs)
+Demo on YouTube [video]()
+
+Looking at the diagram and Service of type LoadBalancer, the following events occur:
+
+1. CIS will update the service whenever the loadBalancer IP in the service is empty.
+2. The IPAM controller assigns an IP address for the loadBalancer: ingress: object from the ip-range based on the ipamlabel specified but the annotation
+3. Once the object is updated with the IP address, CIS automatically configures BIG-IP with the External IP address as shown below
+
+### Looking at the Service of type LoadBalancer f5-demo shown in the user-guide
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cis.f5.com/ipamLabel: Test
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cis.f5.com/ipamLabel":"Test"},"labels":{"app":"f5-demo"},"name":"f5-demo","namespace":"default"},"spec":{"ports":[{"name":"f5-demo","port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"f5-demo"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":null}}
+  creationTimestamp: "2021-04-19T18:05:23Z"
+  labels:
+    app: f5-demo
+  name: f5-demo
+  namespace: default
+  resourceVersion: "52258409"
+  selfLink: /api/v1/namespaces/default/services/f5-demo
+  uid: d8336cc3-8611-48d9-bcfc-c3521c45eef1
+spec:
+  clusterIP: 10.111.131.138
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: f5-demo
+    nodePort: 31970
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: f5-demo
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.192.75.113
+
+```
+
+## Configuring Service Type LoadBalancer
 
 ## Prerequisites
 
@@ -17,24 +61,19 @@ Demo on YouTube [video](https://www.youtube.com/watch?v=s9iUZoRqYQs)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
 * Github [documentation](https://github.com/F5Networks/f5-ipam-controller#readme)
 
-## Setup Options
+## Setup Options for the IPAM controller
 
 CIS 2.4 provides the following options for using the F5 IPAM controller
 
-* Defining the IPAM label in the virtualserver CRD which maps to the IP-Range. In my example I am using the following 
+* Defining the IPAM label in the service which maps to the IP-Range. In my example I am using the following 
 
   - ip-range='{"Test":"10.192.75.113-10.192.75.116","Production":"10.192.125.30-10.192.125.50"}'
-  - hostname "mysite.f5demo.com" and "myapp.f5demo.com"
-
-* Updating the IP status for the virtualserver CRD
 
 In CIS 2.4 the F5 IPAM Controller can:
 
-* Allocate IP address from static IP address pool based on the CIDR mentioned in a Kubernetes resource
+* Allocate IP address from static IP address pool based on the ipamlable defined in the service
 
-* F5 IPAM Controller decides to allocate the IP from the respective IP address pool for the hostname specified in the virtualserver custom resource
-
-**Note** The idea here is that you specify the ip-range label in the virtualserver CRD, or using Type LB. 
+**Note** The idea here is that you specify the ip-range label in the service and use service type load balancing. 
 
 ## F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
 
@@ -59,7 +98,6 @@ args:
   - "--as3-validation=true"
   - "--log-as3-response=true"
   - "--ipam=true"
-  - "--share-nodes=true"
 ```
 
 Deploy CIS
