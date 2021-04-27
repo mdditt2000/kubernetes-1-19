@@ -106,7 +106,7 @@ Deploy CIS
 kubectl create -f f5-cluster-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/ipam/crd/big-ip-60-cluster/cis-deployment/f5-cluster-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
 
 ## F5 IPAM Deploy Configuration Options
 
@@ -118,7 +118,7 @@ The orchestration parameter holds the orchestration environment i.e. Kubernetes
 
 * --ip-range='{"Test":"10.192.75.113-10.192.75.116","Production":"10.192.125.30-10.192.125.50"}'
 
-ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated to the corresponding hostname in the virtual server CRD.
+ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated by the ipamlabel defined in the Service
 
 * --log-level=debug
 
@@ -183,70 +183,19 @@ I0420 17:10:47.903745       1 shared_informer.go:247] Caches are synced for F5 I
 2021/04/20 17:12:35 [DEBUG] Processing Key: &{0xc00055a840 0xc000154160 Update}
 ```
 
-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/ipam/crd/big-ip-60-cluster/ipam-deployment/f5-ipam-deployment.yaml)
+ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/ipam-deployment/f5-ipam-deployment.yaml)
 
 
-## Configuring CIS CRD to work with F5 IPAM Controller for the following hosts
+## Create the CIS CRD schema to work with F5 IPAM Controller
 
-- hostname "mysite.f5demo.com"
-- hostname "myapp.f5demo.com"
+Only the CIS CRD schema is required 
 
-### Step 3
+## Step 3
 
-Provide a ipamLabel in the virtual server CRD. Make your to create latest CIS virtualserver schema which supports ipamLabel
-
-```
-apiVersion: "cis.f5.com/v1"
-kind: VirtualServer
-metadata:
-  name: f5-demo-myapp
-  labels:
-    f5cr: "true"
-spec:
-  host: myapp.f5demo.com
-  ipamLabel: Production
-  pools:
-  - monitor:
-      interval: 20
-      recv: ""
-      send: /
-      timeout: 31
-      type: http
-    path: /
-    service: f5-demo
-    servicePort: 80
-```
-
-and
-
-```
-apiVersion: "cis.f5.com/v1"
-kind: VirtualServer
-metadata:
-  name: f5-demo-mysite
-  labels:
-    f5cr: "true"
-spec:
-  host: mysite.f5demo.com
-  ipamLabel: Test
-  pools:
-  - monitor:
-      interval: 20
-      recv: ""
-      send: /
-      timeout: 31
-      type: http
-    path: /
-    service: f5-demo
-    servicePort: 80
-```
-
-Deploy the CRD and updated schema
+Deploy the CRD schema
 
 ```
 kubectl create -f customresourcedefinitions.yaml
-kubectl create -f vs-mysite.yaml
-kubectl create -f vs-myapp.yaml
 ```
 
 crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.4/ipam/crd/big-ip-60-cluster/crd-example)
