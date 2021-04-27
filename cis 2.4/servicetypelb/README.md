@@ -190,31 +190,38 @@ ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master
 
 ## Create the Service Type LoadBalancer Service
 
-Only the CIS CRD schema is required 
-
 ## Step 3
 
-Deploy the CRD schema
+Create the pod deployments and services for the test and production application
 
 ```
-kubectl create -f customresourcedefinitions.yaml
+kubectl create -f f5-demo-test-service.yaml
+kubectl create -f f5-demo-production-service.yaml
 ```
 
-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/crd-schema/customresourcedefinitions.yaml)
+pod-deployments [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.4/servicetypelb/pod-deployment)
 
-## Logging output when the virtualserver is created
+## Logging output when the IPAM controller when the services are created
 
 ```
-2021/04/20 17:12:35 [DEBUG] [CORE] Allocated IP: 10.192.75.113 for Request:
-Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr:         Operation: Create
-2021/04/20 17:12:35 [DEBUG] [PROV] Created 'A' Record. Host:mysite.f5demo.com, IP:10.192.75.113
-2021/04/20 17:12:35 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.75.113 for Request:
-Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
-2021/04/20 17:13:01 [DEBUG] [CORE] Allocated IP: 10.192.125.30 for Request:
-Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr:         Operation: Create
-2021/04/20 17:13:01 [DEBUG] [PROV] Created 'A' Record. Host:myapp.f5demo.com, IP:10.192.125.30
-2021/04/20 17:13:01 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.125.30 for Request:
-Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.30   Operation: Create
+2021/04/27 20:46:11 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
+2021/04/27 20:46:11 [DEBUG] Processing Key: &{0xc0002d4000 0xc0004ec2c0 Update}
+2021/04/27 20:46:11 [DEBUG] [CORE] Allocated IP: 10.192.125.30 for Request:
+Hostname:       Key: default/f5-demo-production_svc     CIDR:   IPAMLabel: Production   IPAddr:         Operation: Create
+2021/04/27 20:46:11 [DEBUG] [PROV] Created 'A' Record. Host:default/f5-demo-production_svc, IP:10.192.125.30
+2021/04/27 20:46:11 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
+2021/04/27 20:46:11 [DEBUG] Processing Key: &{0xc0002d4160 0xc0002d4000 Update}
+2021/04/27 20:46:11 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.125.30 for Request:
+Hostname:       Key: default/f5-demo-production_svc     CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.30   Operation: Create
+2021/04/27 20:46:32 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
+2021/04/27 20:46:32 [DEBUG] Processing Key: &{0xc00055a420 0xc0002d4160 Update}
+2021/04/27 20:46:32 [DEBUG] [CORE] Allocated IP: 10.192.75.113 for Request:
+Hostname:       Key: default/f5-demo-test_svc   CIDR:   IPAMLabel: Test IPAddr:         Operation: Create
+2021/04/27 20:46:32 [DEBUG] [PROV] Created 'A' Record. Host:default/f5-demo-test_svc, IP:10.192.75.113
+2021/04/27 20:46:32 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.75.113 for Request:
+Hostname:       Key: default/f5-demo-test_svc   CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
+2021/04/27 20:46:32 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
+2021/04/27 20:46:32 [DEBUG] Processing Key: &{0xc0002d4580 0xc00055a420 Update}
 ```
 
 ## View the F5 IPAM Controller configuration
@@ -222,7 +229,7 @@ Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 
 F5 IPAM Controller creates the following CRD to create the configuration between CIS and IPAM 
 
 ```
-[kube@k8s-1-19-master crd-example]$ kubectl describe f5ipam -n kube-system
+[kube@k8s-1-19-master production]$ kubectl describe f5ipam -n kube-system
 Name:         ipam.192.168.200.60.k8s
 Namespace:    kube-system
 Labels:       <none>
@@ -231,7 +238,7 @@ API Version:  fic.f5.com/v1
 Kind:         F5IPAM
 Metadata:
   Creation Timestamp:  2021-04-19T17:59:38Z
-  Generation:          11
+  Generation:          29
   Managed Fields:
     API Version:  fic.f5.com/v1
     Fields Type:  FieldsV1
@@ -248,7 +255,7 @@ Metadata:
         f:IPStatus:
     Manager:      f5-ipam-controller
     Operation:    Update
-    Time:         2021-04-20T17:22:41Z
+    Time:         2021-04-27T20:46:32Z
     API Version:  fic.f5.com/v1
     Fields Type:  FieldsV1
     fieldsV1:
@@ -256,30 +263,37 @@ Metadata:
         f:hostSpecs:
     Manager:         k8s-bigip-ctlr.real
     Operation:       Update
-    Time:            2021-04-20T17:22:41Z
-  Resource Version:  50804197
+    Time:            2021-04-27T20:46:32Z
+  Resource Version:  52405608
   Self Link:         /apis/fic.f5.com/v1/namespaces/kube-system/f5ipams/ipam.192.168.200.60.k8s
   UID:               611befc3-63e3-4558-858e-3868adf9bda4
 Spec:
   Host Specs:
-    Host:        mysite.f5demo.com
-    Ipam Label:  Test
-    Host:        myapp.f5demo.com
     Ipam Label:  Production
+    Key:         default/f5-demo-production_svc
+    Ipam Label:  Test
+    Key:         default/f5-demo-test_svc
 Status:
   IP Status:
-    Host:        mysite.f5demo.com
-    Ip:          10.192.75.113
-    Ipam Label:  Test
-    Host:        myapp.f5demo.com
     Ip:          10.192.125.30
     Ipam Label:  Production
+    Key:         default/f5-demo-production_svc
+    Ip:          10.192.75.113
+    Ipam Label:  Test
+    Key:         default/f5-demo-test_svc
 Events:          <none>
-[kube@k8s-1-19-master crd-example]$
+[kube@k8s-1-19-master production]$
 ```
 
-View the F5 IPAM CRD and allocate IP status
+## View the Service Type LoadBalancer status
+
+Use the kubectl get service command to determine the EXTERNAL-IP
 
 ```
-kubectl describe f5ipam -n kube-system
+[kube@k8s-1-19-master production]$ kubectl get service
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE
+f5-demo-production   LoadBalancer   10.111.34.124   10.192.125.30   80:31141/TCP   14m
+f5-demo-test         LoadBalancer   10.96.155.107   10.192.75.113   80:30164/TCP   13m
 ```
+CIS will add the EXTERNAL-IP to the BIG-IP as you can see in the diagram
+
