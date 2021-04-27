@@ -14,7 +14,7 @@ Looking at the diagram and Service of type LoadBalancer, the following events oc
 2. The IPAM controller assigns an IP address for the loadBalancer: ingress: object from the ip-range based on the ipamlabel specified but the annotation
 3. Once the object is updated with the IP address, CIS automatically configures BIG-IP with the External IP address as shown below
 
-### Looking at the Service of type LoadBalancer f5-demo shown in the user-guide
+#### Example of Service type LoadBalancer shown in the diagram
 
 ```
 apiVersion: v1
@@ -59,7 +59,6 @@ status:
 * Recommend AS3 version 3.26 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
 * CIS 2.4 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
-* Github [documentation](https://github.com/F5Networks/f5-ipam-controller#readme)
 
 ## Setup Options for the IPAM controller
 
@@ -75,7 +74,7 @@ In CIS 2.4 the F5 IPAM Controller can:
 
 **Note** The idea here is that you specify the ip-range label in the service and use service type load balancing. 
 
-## F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
+## Create the CIS Deployment Configuration
 
 ### Step 1
 
@@ -100,7 +99,7 @@ args:
   - "--ipam=true"
 ```
 
-Deploy CIS
+Deploy CIS and CRD schema
 
 ```
 kubectl create -f f5-cluster-deployment.yaml
@@ -110,7 +109,7 @@ kubectl create -f customresourcedefinitions.yaml
 * cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/cis-deployment/f5-cluster-deployment.yaml)
 * crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/crd-schema/customresourcedefinitions.yaml)
 
-## F5 IPAM Deploy Configuration Options
+## F5 IPAM Deployment Configuration
 
 ### Step 2
 
@@ -190,7 +189,7 @@ ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master
 
 ## Create the Service Type LoadBalancer Service
 
-## Step 3
+### Step 3
 
 Create the pod deployments and services for the test and production application
 
