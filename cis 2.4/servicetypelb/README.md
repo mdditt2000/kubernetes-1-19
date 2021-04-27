@@ -297,3 +297,4 @@ f5-demo-test         LoadBalancer   10.96.155.107   10.192.75.113   80:30164/TCP
 ```
 CIS will add the EXTERNAL-IP to the BIG-IP as you can see in the diagram
 
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/diagram/2021-04-27_14-15-10.png)
