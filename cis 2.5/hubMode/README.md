@@ -12,7 +12,7 @@ CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps tran
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_13-28-57.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://www.youtube.com/watch?v=-HLcHH_vQJE)
 
 ## Example files from the diagram:
 
