@@ -8,7 +8,7 @@ Looking at the diagram below, we see the current Kubernetes personas (left in th
 
 CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
 
-![diagram](diagam)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_13-28-57.png)
 
 Demo on YouTube [video]()
 
