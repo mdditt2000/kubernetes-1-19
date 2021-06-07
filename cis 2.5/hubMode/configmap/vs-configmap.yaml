@@ -22,7 +22,7 @@ data:
                 "A1": {
                     "class": "Application",
                     "template": "generic",
-                    "a1_80_vs": {
+                    "a1_80_vs_n1": {
                         "class": "Service_HTTP",
                         "remark": "n1 namespace",
                         "virtualAddresses": [
@@ -46,7 +46,7 @@ data:
                 "A2": {
                     "class": "Application",
                     "template": "generic",
-                    "a1_80_vs": {
+                    "a1_80_vs_n2": {
                         "class": "Service_HTTP",
                         "remark": "n2 namespace",
                         "virtualAddresses": [
