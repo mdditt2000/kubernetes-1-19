@@ -4,7 +4,7 @@ HubMode expands on current ConfigMap implementation in CIS using the AS3 API. On
  
 Looking at the diagram below, we see the current Kubernetes roles (left in the picture) and “introduction of Operators” (the right), where different personas are responsible for configuration of the platform. Infrastructure provider responsible for Ingress "ConfigMap and Cluster Operator and or application developers responsible for pod deployment and service. These personas are mostly working in different projects and or namespaces. CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
 
-![diagram](diagam)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_12-13-34.png)
 
 CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
 
