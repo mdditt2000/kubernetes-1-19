@@ -2,11 +2,11 @@
 
 HubMode expands on current ConfigMap implementation in CIS using the AS3 API. One of key strength of CIS is it can help multiple team collaborate better together. With microservices architecture we are seeing organizations create dedicate team that combine network and system personas. This allegement request that network engineers (NetOps) be added to these teams. F5 CIS ConfigMap is a perfect fit as it can accelerates the developer experience and workflow tooling.
  
-Looking at the diagram below, we see the current Kubernetes personas (left in the picture) and “introduction of Operators” (the right), where different personas are responsible for configuration of the platform. Infrastructure provider responsible for Ingress "ConfigMap" while Cluster Operator and or Application Developers responsible for Pod Deployments/Services. These personas are mostly working in different projects and or namespaces. CIS maps perfectly to both personas with the introduction on HubMode using ConfigMaps. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
+Looking at the diagram below, we see the current Kubernetes personas (left in the picture) and “introduction of Operators” (the right), where different personas are responsible for configuration of the platform. Infrastructure Provider responsible for Ingress "ConfigMap" while Cluster Operator and or Application Developers responsible for Pod Deployments/Services. These personas are mostly working in different projects and or namespaces. CIS maps perfectly to both personas with the introduction on HubMode using ConfigMaps. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_12-13-34.png)
 
-CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
+CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. In this example the Infrastructure Provider is creating the ConfigMap in the default namespace while the Application Developers is creating the Pod Deployments/Services in n1 namespace. Using HubMode, CIS will detect the associated endpoints using the service discovery labels regards of the namespace. This is consistent with CIS 1.x. 
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_13-28-57.png)
 
