@@ -1,8 +1,14 @@
 # HubMode option when using ConfigMap
 
-A service of type LoadBalancer is the simplest and the fastest way to expose a service inside a Kubernetes cluster to the external world. All you need to-do is specify the service type as type=LoadBalancer in the service definition.
+HubMode expands on current ConfigMap implementation in CIS using the AS3 API. One of key strength of CIS is it can help multiple team collaborate better together. We are seeing CIS users create dedicate team that combine network and system role focusing on PaaS. This allegement request that network engineers (NetOps) be added to these teams. F5 CIS ConfigMap is a perfect fit as it assist with developer experience and workflow tooling
+ 
+Looking at the diagram below, we see the current Kubernetes roles (left in the picture) and “introduction of Operators” (the right), where different personas are responsible for configuration of the platform. Infrastructure provider responsible for Ingress "ConfigMap and Cluster Operator and or application developers responsible for pod deployment and service. These personas are mostly working in different projects and or namespaces. CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/servicetypelb/diagram/2021-04-27_10-11-10.png)
+![diagram](diagam)
+
+CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. 
+
+![diagram](diagam)
 
 Demo on YouTube [video]()
 
