@@ -14,6 +14,6 @@ spec:
     port: 8080
     protocol: TCP
     targetPort: 8080
-  type: NodePort
+  type: ClusterIP
   selector:
     app: f5-hello-world

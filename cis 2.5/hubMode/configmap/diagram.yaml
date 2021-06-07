@@ -42,30 +42,6 @@ data:
                             }
                         ]
                     }
-                },
-                "A2": {
-                    "class": "Application",
-                    "template": "generic",
-                    "a1_80_vs_n2": {
-                        "class": "Service_HTTP",
-                        "remark": "n2 namespace",
-                        "virtualAddresses": [
-                            "10.192.75.102"
-                        ],
-                        "pool": "web_pool_n2"
-                    },
-                    "web_pool_n2": {
-                        "class": "Pool",
-                        "monitors": [
-                            "http"
-                        ],
-                        "members": [
-                            {
-                                "servicePort": 8080,
-                                "serverAddresses": []
-                            }
-                        ]
-                    }
                 }
             }
         }
