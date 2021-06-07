@@ -7,7 +7,7 @@ metadata:
     app: f5-hello-world
     cis.f5.com/as3-tenant: AS3
     cis.f5.com/as3-app: A1
-    cis.f5.com/as3-pool: web_pool
+    cis.f5.com/as3-pool: web_pool_n1
 spec:
   ports:
   - name: f5-hello-world
