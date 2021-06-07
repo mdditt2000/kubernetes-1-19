@@ -14,46 +14,146 @@ CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps tran
 
 Demo on YouTube [video]()
 
-Looking at the diagram and Service of type LoadBalancer, the following events occur:
+## Example files from the diagram:
 
-1. CIS will update the service whenever the loadBalancer IP in the service is empty.
-2. The IPAM controller assigns an IP address for the loadBalancer: ingress: object from the ip-range based on the ipamlabel specified but the annotation
-3. Once the object is updated with the IP address, CIS automatically configures BIG-IP with the External IP address as shown below
+CIS deployment arguments
 
-#### Example of Service type LoadBalancer shown in the diagram
+```
+args: 
+  - "--bigip-username=$(BIGIP_USERNAME)"
+  - "--bigip-password=$(BIGIP_PASSWORD)"
+  - "--bigip-url=192.168.200.60"
+  - "--bigip-partition=k8s"
+  - "--pool-member-type=cluster"
+  - "--flannel-name=fl-vxlan"
+  - "--log-level=DEBUG"
+  - "--insecure=true"
+  - "--manage-configmaps=true"
+```
+
+* cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/cis-deployment)
+
+ConfigMap for A1 and A2. ConfigMap applied in namespace default. Add the **hubMode: "true"** label
+
+```
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: f5-as3-declaration
+  namespace: default
+  labels:
+    f5type: virtual-server
+    as3: "true"
+    hubMode: "true"
+data:
+  template: |
+    {
+        "class": "AS3",
+        "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.13.0",
+            "id": "urn:uuid:33045210",
+            "label": "http",
+            "remark": "A1 Template",
+            "hubMode": {
+                "class": "Tenant",
+                "A1": {
+                    "class": "Application",
+                    "template": "generic",
+                    "a1_80_vs_n1": {
+                        "class": "Service_HTTP",
+                        "remark": "n1 namespace",
+                        "virtualAddresses": [
+                            "10.192.75.101"
+                        ],
+                        "pool": "web_pool_n1"
+                    },
+                    "web_pool_n1": {
+                        "class": "Pool",
+                        "monitors": [
+                            "http"
+                        ],
+                        "members": [
+                            {
+                                "servicePort": 8080,
+                                "serverAddresses": []
+                            }
+                        ]
+                    }
+                },
+                "A2": {
+                    "class": "Application",
+                    "template": "generic",
+                    "a1_80_vs_n2": {
+                        "class": "Service_HTTP",
+                        "remark": "n2 namespace",
+                        "virtualAddresses": [
+                            "10.192.75.102"
+                        ],
+                        "pool": "web_pool_n2"
+                    },
+                    "web_pool_n2": {
+                        "class": "Pool",
+                        "monitors": [
+                            "http"
+                        ],
+                        "members": [
+                            {
+                                "servicePort": 8080,
+                                "serverAddresses": []
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+```
+
+* configmap [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/configmap)
+
+Service for endpoint A1 and A2 with the appropriate service discovery labels for CIS
 
 ```
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    cis.f5.com/ipamLabel: Test
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cis.f5.com/ipamLabel":"Test"},"labels":{"app":"f5-demo"},"name":"f5-demo","namespace":"default"},"spec":{"ports":[{"name":"f5-demo","port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"f5-demo"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":null}}
-  creationTimestamp: "2021-04-19T18:05:23Z"
+  name: f5-hello-world-n1
+  namespace: n1
   labels:
-    app: f5-demo
-  name: f5-demo
-  namespace: default
-  resourceVersion: "52258409"
-  selfLink: /api/v1/namespaces/default/services/f5-demo
-  uid: d8336cc3-8611-48d9-bcfc-c3521c45eef1
+    app: f5-hello-world
+    cis.f5.com/as3-tenant: hubMode
+    cis.f5.com/as3-app: A1
+    cis.f5.com/as3-pool: web_pool_n1
 spec:
-  clusterIP: 10.111.131.138
-  externalTrafficPolicy: Cluster
   ports:
-  - name: f5-demo
-    nodePort: 31970
-    port: 80
+  - name: f5-hello-world
+    port: 8080
     protocol: TCP
-    targetPort: 80
+    targetPort: 8080
+  type: ClusterIP
   selector:
-    app: f5-demo
-  sessionAffinity: None
-  type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - ip: 10.192.75.113
-
+    app: f5-hello-world
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: f5-hello-world-n1
+  namespace: n2
+  labels:
+    app: f5-hello-world
+    cis.f5.com/as3-tenant: hubMode
+    cis.f5.com/as3-app: A2
+    cis.f5.com/as3-pool: web_pool_n2
+spec:
+  ports:
+  - name: f5-hello-world
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  type: ClusterIP
+  selector:
+    app: f5-hello-world
 ```
+
+* pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/pod-deployment)
