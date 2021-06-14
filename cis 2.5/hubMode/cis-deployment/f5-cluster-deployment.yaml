@@ -37,6 +37,8 @@ spec:
             - "--log-level=DEBUG"
             - "--insecure=true"
             - "--manage-configmaps=true"
+            - "--namespace=control-hub-1"
+            - "--namespace=control-hub-2"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
