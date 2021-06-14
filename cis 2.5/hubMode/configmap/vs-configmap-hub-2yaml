@@ -2,7 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: f5-as3-declaration
-  namespace: control-hub-1
+  namespace: control-hub-2
   labels:
     f5type: virtual-server
     as3: "true"
@@ -16,33 +16,9 @@ data:
             "schemaVersion": "3.13.0",
             "id": "urn:uuid:33045210",
             "label": "http",
-            "remark": "A1 Template",
-            "hubMode": {
+            "remark": "A2 Template",
+            "control-hub-2": {
                 "class": "Tenant",
-                "A1": {
-                    "class": "Application",
-                    "template": "generic",
-                    "a1_80_vs_n1": {
-                        "class": "Service_HTTP",
-                        "remark": "n1 namespace",
-                        "virtualAddresses": [
-                            "10.192.75.101"
-                        ],
-                        "pool": "web_pool_n1"
-                    },
-                    "web_pool_n1": {
-                        "class": "Pool",
-                        "monitors": [
-                            "http"
-                        ],
-                        "members": [
-                            {
-                                "servicePort": 8080,
-                                "serverAddresses": []
-                            }
-                        ]
-                    }
-                },
                 "A2": {
                     "class": "Application",
                     "template": "generic",
