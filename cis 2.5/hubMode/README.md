@@ -29,18 +29,22 @@ args:
   - "--log-level=DEBUG"
   - "--insecure=true"
   - "--manage-configmaps=true"
+  - "--namespace=control-hub-1"
+  - "--namespace=control-hub-2"
 ```
 
 * cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/hubMode/cis-deployment)
 
-ConfigMap for A1 and A2. ConfigMap applied in namespace default. Add the **hubMode: "true"** label
+In this example I created two **vs-configmap-hub-1** and **vs-configmap-hub-2** ConfigMap. Each ConfigMap is creating a new tenent in BIG-IP mapping to the namespace. ConfigMap applied in namespace control-hub-1 and control-hub-2. Add the **hubMode: "true"** label
+
+**vs-configmap-hub-1**
 
 ```
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: f5-as3-declaration
-  namespace: default
+  name: vs-configmap-hub-1
+  namespace: control-hub-1
   labels:
     f5type: virtual-server
     as3: "true"
@@ -55,7 +59,7 @@ data:
             "id": "urn:uuid:33045210",
             "label": "http",
             "remark": "A1 Template",
-            "hubMode": {
+            "control-hub-1": {
                 "class": "Tenant",
                 "A1": {
                     "class": "Application",
@@ -80,7 +84,36 @@ data:
                             }
                         ]
                     }
-                },
+                }
+            }
+        }
+    }
+```
+
+**vs-configmap-hub-2**
+
+```
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: vs-configmap-hub-2
+  namespace: control-hub-2
+  labels:
+    f5type: virtual-server
+    as3: "true"
+    hubMode: "true"
+data:
+  template: |
+    {
+        "class": "AS3",
+        "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.13.0",
+            "id": "urn:uuid:33045210",
+            "label": "http",
+            "remark": "A2 Template",
+            "control-hub-2": {
+                "class": "Tenant",
                 "A2": {
                     "class": "Application",
                     "template": "generic",
@@ -122,7 +155,7 @@ metadata:
   namespace: n1
   labels:
     app: f5-hello-world
-    cis.f5.com/as3-tenant: hubMode
+    cis.f5.com/as3-tenant: control-hub-1
     cis.f5.com/as3-app: A1
     cis.f5.com/as3-pool: web_pool_n1
 spec:
@@ -142,7 +175,7 @@ metadata:
   namespace: n2
   labels:
     app: f5-hello-world
-    cis.f5.com/as3-tenant: hubMode
+    cis.f5.com/as3-tenant: control-hub-2
     cis.f5.com/as3-app: A2
     cis.f5.com/as3-pool: web_pool_n2
 spec:
