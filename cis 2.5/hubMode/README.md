@@ -8,7 +8,7 @@ Looking at the diagram below, we see the current Kubernetes personas (left in th
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-07_12-13-34.png)
 
-CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. In this example the Infrastructure Provider is creating the ConfigMap in the default namespace while the Application Developers is creating the Pod Deployments/Services in n1 namespace. Using HubMode, CIS will detect the associated endpoints using the service discovery labels regards of the namespace. This is consistent with CIS 1.x. 
+CIS maps perfectly to both roles. With HubMode CIS can better assist NetOps transform from imperative to declarative using AS3 declarations, no matter of the mode. In this example the Infrastructure Provider is creating the ConfigMaps in the namespace control-hub-1/2 while the Application Developers is creating the Pod Deployments/Services in n1 namespace. Using HubMode, CIS will detect the associated endpoints using the service discovery labels regards of the namespace. This is consistent with CIS 1.x. 
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-14_10-35-47.png)
 
