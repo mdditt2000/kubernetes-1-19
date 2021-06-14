@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: f5-as3-declaration
+  name: vs-configmap-hub-2
   namespace: control-hub-2
   labels:
     f5type: virtual-server

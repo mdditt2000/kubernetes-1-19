@@ -5,7 +5,7 @@ metadata:
   namespace: n2
   labels:
     app: f5-hello-world
-    cis.f5.com/as3-tenant: hubMode
+    cis.f5.com/as3-tenant: control-hub-1
     cis.f5.com/as3-app: A2
     cis.f5.com/as3-pool: web_pool_n2
 spec:
