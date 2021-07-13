@@ -16,7 +16,7 @@ The F5 IPAM Controller is deployed in Kubernetes working with CIS to allocates I
 
 ## Setup Options
 
-CIS 2.5 provides two deployment methods for using the F5 IPAM controller. You can only use one deployment method per F5 IPAM Controller
+CIS 2.5 provides two deployment option for using the F5 IPAM controller. You can only use one deployment method per F5 IPAM Controller
 
 * ip-range - statically specifies the pool of IP address range based on a ipam label
 * infoblox-labels - infoblox labels holds the mappings for infoblox's netView, dnsView and CIDR
@@ -28,7 +28,7 @@ In this user-guide we are using the deployment options of Infoblox. In CIS 2.5 t
 
 **Note** The idea here is that you specify the ip-range label in the virtualserver CRD, or using Type LB. 
 
-## Step 1: F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
+## Step 1: CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
 
 Add the parameter --ipam=true in the CIS deployment to provide the integration with CIS and IPAM
 
