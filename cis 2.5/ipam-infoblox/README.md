@@ -4,7 +4,7 @@
 
 The F5 IPAM Controller is deployed in Kubernetes working with CIS to allocates IP addresses from Infoblox network ranges. The F5 IPAM Controller watches orchestration-specific CRD resources and consumes the hostnames within each resource. The F5 IPAM Controller integrates with Infoblox WAPI via the RESTful web API to allowcate the virtual server IP addresses.
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-27-21.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-46-41.png)
 
 ## Prerequisites
 
