@@ -189,7 +189,9 @@ Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 
 2021/07/13 17:52:21 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.125.33 for Request:
 Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.33   Operation: Create
 ```
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-14_10-35-47.png)
+ipamLabel: Production Infoblox setup
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_12-58-46.png)
 
 **mysite.f5demo.com**
 
@@ -202,7 +204,9 @@ Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr:         
 2021/07/13 17:41:07 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.75.113 for Request:
 Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
 ```
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-14_10-35-47.png)
+ipamLabel: Test Infoblox setup
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-27-21.png)
 
 ## View the F5 IPAM Controller configuration
 
