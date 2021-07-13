@@ -1,6 +1,8 @@
 # F5 IPAM Controller with Container Ingress Services using Infoblox IPAM Integration 
 
-The F5 IPAM Controller is deployed in Kubernetes working with Container Ingress Services (CIS) to allocates IP addresses from Infoblox network ranges. The F5 IPAM Controller watches orchestration-specific CRD resources and consumes the hostnames within each resource.
+**Please note: Infoblox IPAM Integration with F5 IPAM Controller is in preview**
+
+The F5 IPAM Controller is deployed in Kubernetes working with Container Ingress Services (CIS) to allocates IP addresses from Infoblox network ranges. The F5 IPAM Controller watches orchestration-specific CRD resources and consumes the hostnames within each resource. The F5 IPAM Controller integrates with Infoblox WAPI via the RESTful web API.
 
 ## Prerequisites
 
@@ -8,29 +10,26 @@ The F5 IPAM Controller is deployed in Kubernetes working with Container Ingress 
 * CIS 2.5 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.5.0)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
 * Github [documentation](https://github.com/F5Networks/f5-ipam-controller#readme)
+* Infoblox Github [documentation](https://www.infoblox.com/products/ipam-dhcp/)
 
 ## Setup Options
 
-CIS 2.4 provides the following options for using the F5 IPAM controller
+CIS 2.5 provides two deployment for using the F5 IPAM controller
 
-* Defining the IPAM label in the virtualserver CRD which maps to the IP-Range. In my example I am using the following 
+* ip-range - ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated to the corresponding hostname in the virtual server CRD
+* infoblox-labels - infoblox labels holds the mappings for infoblox's netView, dnsView and CIDR
 
-  - ip-range='{"Test":"10.192.75.113-10.192.75.116","Production":"10.192.125.30-10.192.125.50"}'
-  - hostname "mysite.f5demo.com" and "myapp.f5demo.com"
+In this user-guide we are using the deployment options of Infoblox
 
-* Updating the IP status for the virtualserver CRD
 
-In CIS 2.4 the F5 IPAM Controller can:
+In CIS 2.5 the F5 IPAM Controller for Infoblox can:
 
-* Allocate IP address from static IP address pool based on the CIDR mentioned in a Kubernetes resource
-
+* Allocate IP address from infoblox data management IP address pool based on the **ipamLabel** in the Kubernetes CRD
 * F5 IPAM Controller decides to allocate the IP from the respective IP address pool for the hostname specified in the virtualserver custom resource
 
 **Note** The idea here is that you specify the ip-range label in the virtualserver CRD, or using Type LB. 
 
-## F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
-
-### Step 1
+## Step 1: F5 CIS Configuration Options for IPAM Deployment defining the CIDR network label in the VirtualServer CRD
 
 Add the parameter --ipam=true in the CIS deployment to provide the integration with CIS and IPAM
 
@@ -51,7 +50,6 @@ args:
   - "--as3-validation=true"
   - "--log-as3-response=true"
   - "--ipam=true"
-  - "--share-nodes=true"
 ```
 
 Deploy CIS
@@ -60,92 +58,65 @@ Deploy CIS
 kubectl create -f f5-cluster-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/ipam/crd/big-ip-60-cluster/cis-deployment/f5-cluster-deployment.yaml)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/cis-deployment/f5-cluster-deployment.yaml)
 
-## F5 IPAM Deploy Configuration Options
+## Step 2: F5 IPAM Deploy Configuration Options
 
-### Step 2
-
-* --orchestration=kubernetes
-
-The orchestration parameter holds the orchestration environment i.e. Kubernetes
-
-* --ip-range='{"Test":"10.192.75.113-10.192.75.116","Production":"10.192.125.30-10.192.125.50"}'
-
-ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated to the corresponding hostname in the virtual server CRD.
-
-* --log-level=debug
+* --orchestration=kubernetes - The orchestration parameter holds the orchestration environment i.e. Kubernetes
+* --infoblox-labels='{"Test":{"cidr": "10.192.75.112/30","netView": "test", "dnsview": "default.test"},"Production":{"cidr": "10.192.125.32/28","netView": "production", "dnsview": "default.production"}}' - ipamlabel ranges and from this Infoblox
+* --log-level=debug - recommend drop log to info
+* --infoblox-grid-host for the URL (or IP Address) of Infoblox Grid Host
+* --infoblox-wapi-port the Infoblox Server listens on
+* --infoblox-wapi-version API version of Infoblox
+* --infoblox username and password
 
 ```
-- args:
-    - --orchestration=kubernetes
-    - --ip-range='{"Test":"10.192.75.113-10.192.75.116","Production":"10.192.125.30-10.192.125.50"}'
-    - --log-level=DEBUG
+args:
+  - --orchestration=kubernetes
+  - --log-level=DEBUG
+  - --ipam-provider=infoblox
+  - --infoblox-labels='{"Test":{"cidr": "10.192.75.112/30","netView": "test", "dnsview": "default.test"},"Production":{"cidr": "10.192.125.32/28","netView": "production", "dnsview": "default.production"}}'
+  - --infoblox-grid-host=10.192.75.240
+  - --infoblox-wapi-port="443"
+  - --infoblox-wapi-version=2.10.5
+  - --infoblox-username=admin
+  - --infoblox-password=infoblox
 ```
 
 Deploy RBAC, schema and F5 IPAM Controller deployment
 
 ```
-kubectl create -f f5-ipam-rbac.yaml
+kubectl create -f f5-ipam-ctlr-clusterrole.yaml
 kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-deployment.yaml
 ```
+ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/ipam-infoblox/ipam-deployment)
+
 ## Logging output when deploying the F5 IPAM Controller
 
 ```
-[kube@k8s-1-19-master crd-example]$ kubectl logs -f deploy/f5-ipam-controller -n kube-system
-Found 2 pods, using pod/f5-ipam-controller-5d76c6f964-n9v6p
-2021/04/20 17:10:47 [INFO] [INIT] Starting: F5 IPAM Controller - Version: 0.1.2, BuildInfo: azure-208-24641f25a94eadfef5ebd159315a091280e626a5
-2021/04/20 17:10:47 [DEBUG] Creating IPAM Kubernetes Client
-2021/04/20 17:10:47 [DEBUG] [ipam] Creating Informers for Namespace kube-system
-2021/04/20 17:10:47 [DEBUG] Created New IPAM Client
-2021/04/20 17:10:47 [DEBUG] [MGR] Creating Manager with Provider: f5-ip-provider
-2021/04/20 17:10:47 [DEBUG] [STORE] [id ipaddress status ipam_label]
-2021/04/20 17:10:47 [DEBUG] [STORE]  1   10.192.75.113 1 Test
-2021/04/20 17:10:47 [DEBUG] [STORE]  2   10.192.75.114 1 Test
-2021/04/20 17:10:47 [INFO] [CORE] Controller started
-2021/04/20 17:10:47 [INFO] Starting IPAMClient Informer
-2021/04/20 17:10:47 [DEBUG] [STORE]  3   10.192.75.115 1 Test
-2021/04/20 17:10:47 [DEBUG] [STORE]  4   10.192.125.30 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  5   10.192.125.31 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  6   10.192.125.32 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  7   10.192.125.33 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  8   10.192.125.34 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  9   10.192.125.35 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  10  10.192.125.36 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  11  10.192.125.37 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  12  10.192.125.38 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  13  10.192.125.39 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  14  10.192.125.40 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  15  10.192.125.41 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  16  10.192.125.42 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  17  10.192.125.43 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  18  10.192.125.44 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  19  10.192.125.45 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  20  10.192.125.46 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  21  10.192.125.47 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  22  10.192.125.48 1 Production
-2021/04/20 17:10:47 [DEBUG] [STORE]  23  10.192.125.49 1 Production
-I0420 17:10:47.790510       1 shared_informer.go:240] Waiting for caches to sync for F5 IPAMClient Controller
-2021/04/20 17:10:47 [DEBUG] Enqueueing on Create: kube-system/ipam.192.168.200.60.k8s
-I0420 17:10:47.903745       1 shared_informer.go:247] Caches are synced for F5 IPAMClient Controller
-2021/04/20 17:10:47 [DEBUG] K8S Orchestrator Started
-2021/04/20 17:10:47 [DEBUG] Starting Custom Resource Worker
-2021/04/20 17:10:47 [DEBUG] Starting Response Worker
-2021/04/20 17:10:47 [DEBUG] Processing Key: &{0xc000154160 <nil> Create}
-2021/04/20 17:12:35 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
-2021/04/20 17:12:35 [DEBUG] Processing Key: &{0xc00055a840 0xc000154160 Update}
+$ kubectl logs -f deploy/f5-ipam-controller -n kube-system
+[kube@k8s-1-19-master xianfei]$ kubectl logs -f deploy/f5-ipam-controller -n kube-system
+2021/07/13 17:39:39 [INFO] [INIT] Starting: F5 IPAM Controller - Version: 0.1.5-WIP, BuildInfo: amkgupta-0382461-dirty-20210712172739
+2021/07/13 17:39:39 [DEBUG] Creating IPAM Kubernetes Client
+2021/07/13 17:39:39 [DEBUG] [ipam] Creating Informers for Namespace kube-system
+2021/07/13 17:39:39 [DEBUG] Created New IPAM Client
+2021/07/13 17:39:39 [DEBUG] [MGR] Creating Manager with Provider: infoblox
+2021/07/13 17:39:40 [INFO] [CORE] Controller started
+2021/07/13 17:39:40 [INFO] Starting IPAMClient Informer
+I0713 17:39:40.221163       1 shared_informer.go:240] Waiting for caches to sync for F5 IPAMClient Controller
+2021/07/13 17:39:40 [DEBUG] Enqueueing on Create: kube-system/ipam.192.168.200.60.k8s
+I0713 17:39:40.322244       1 shared_informer.go:247] Caches are synced for F5 IPAMClient Controller
+2021/07/13 17:39:40 [DEBUG] K8S Orchestrator Started
+2021/07/13 17:39:40 [DEBUG] Starting Custom Resource Worker
+2021/07/13 17:39:40 [DEBUG] Starting Response Worker
 ```
 
-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.4/ipam/crd/big-ip-60-cluster/ipam-deployment/f5-ipam-deployment.yaml)
 
-
-## Configuring CIS CRD to work with F5 IPAM Controller for the following hosts
+## Step 3: Configuring CIS CRD to work with F5 IPAM Controller for the following hosts
 
 - hostname "mysite.f5demo.com"
 - hostname "myapp.f5demo.com"
-
-### Step 3
 
 Provide a ipamLabel in the virtual server CRD. Make your to create latest CIS virtualserver schema which supports ipamLabel
 
@@ -203,86 +174,38 @@ kubectl create -f vs-mysite.yaml
 kubectl create -f vs-myapp.yaml
 ```
 
-crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.4/ipam/crd/big-ip-60-cluster/crd-example)
+crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/ipam-infoblox/crd-example)
 
 ## Logging output when the virtualserver is created
 
+**myapp.f5demo.com**
+
 ```
-2021/04/20 17:12:35 [DEBUG] [CORE] Allocated IP: 10.192.75.113 for Request:
-Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr:         Operation: Create
-2021/04/20 17:12:35 [DEBUG] [PROV] Created 'A' Record. Host:mysite.f5demo.com, IP:10.192.75.113
-2021/04/20 17:12:35 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.75.113 for Request:
-Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
-2021/04/20 17:13:01 [DEBUG] [CORE] Allocated IP: 10.192.125.30 for Request:
+2021/07/13 17:52:21 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
+2021/07/13 17:52:21 [DEBUG] Processing Key: &{0xc0001e6160 0xc0001e7ce0 Update}
+Hostname: myapp.f5demo.com      Key:    CIDR: 10.192.125.32/28  IPAMLabel: Production   IPAddr:         Operation: Create
+2021/07/13 17:52:21 [DEBUG] [CORE] Allocated IP: 10.192.125.33 for Request:
 Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr:         Operation: Create
-2021/04/20 17:13:01 [DEBUG] [PROV] Created 'A' Record. Host:myapp.f5demo.com, IP:10.192.125.30
-2021/04/20 17:13:01 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.125.30 for Request:
-Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.30   Operation: Create
+2021/07/13 17:52:21 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.125.33 for Request:
+Hostname: myapp.f5demo.com      Key:    CIDR:   IPAMLabel: Production   IPAddr: 10.192.125.33   Operation: Create
 ```
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-14_10-35-47.png)
+
+**mysite.f5demo.com**
+
+```
+2021/07/13 17:41:06 [DEBUG] Enqueueing on Update: kube-system/ipam.192.168.200.60.k8s
+2021/07/13 17:41:06 [DEBUG] Processing Key: &{0xc0001e7080 0xc000195340 Update}
+Hostname: mysite.f5demo.com     Key:    CIDR: 10.192.75.112/30  IPAMLabel: Test IPAddr:         Operation: Create
+2021/07/13 17:41:07 [DEBUG] [CORE] Allocated IP: 10.192.75.113 for Request:
+Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr:         Operation: Create
+2021/07/13 17:41:07 [DEBUG] Updated: kube-system/ipam.192.168.200.60.k8s with Status. With IP: 10.192.75.113 for Request:
+Hostname: mysite.f5demo.com     Key:    CIDR:   IPAMLabel: Test IPAddr: 10.192.75.113   Operation: Create
+```
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/hubMode/diagram/2021-06-14_10-35-47.png)
 
 ## View the F5 IPAM Controller configuration
 
 F5 IPAM Controller creates the following CRD to create the configuration between CIS and IPAM 
 
-```
-[kube@k8s-1-19-master crd-example]$ kubectl describe f5ipam -n kube-system
-Name:         ipam.192.168.200.60.k8s
-Namespace:    kube-system
-Labels:       <none>
-Annotations:  <none>
-API Version:  fic.f5.com/v1
-Kind:         F5IPAM
-Metadata:
-  Creation Timestamp:  2021-04-19T17:59:38Z
-  Generation:          11
-  Managed Fields:
-    API Version:  fic.f5.com/v1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:spec:
-    Manager:      k8s-bigip-ctlr
-    Operation:    Update
-    Time:         2021-04-19T20:15:18Z
-    API Version:  fic.f5.com/v1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:status:
-        .:
-        f:IPStatus:
-    Manager:      f5-ipam-controller
-    Operation:    Update
-    Time:         2021-04-20T17:22:41Z
-    API Version:  fic.f5.com/v1
-    Fields Type:  FieldsV1
-    fieldsV1:
-      f:spec:
-        f:hostSpecs:
-    Manager:         k8s-bigip-ctlr.real
-    Operation:       Update
-    Time:            2021-04-20T17:22:41Z
-  Resource Version:  50804197
-  Self Link:         /apis/fic.f5.com/v1/namespaces/kube-system/f5ipams/ipam.192.168.200.60.k8s
-  UID:               611befc3-63e3-4558-858e-3868adf9bda4
-Spec:
-  Host Specs:
-    Host:        mysite.f5demo.com
-    Ipam Label:  Test
-    Host:        myapp.f5demo.com
-    Ipam Label:  Production
-Status:
-  IP Status:
-    Host:        mysite.f5demo.com
-    Ip:          10.192.75.113
-    Ipam Label:  Test
-    Host:        myapp.f5demo.com
-    Ip:          10.192.125.30
-    Ipam Label:  Production
-Events:          <none>
-[kube@k8s-1-19-master crd-example]$
-```
 
-View the F5 IPAM CRD and allocate IP status
-
-```
-kubectl describe f5ipam -n kube-system
-```
