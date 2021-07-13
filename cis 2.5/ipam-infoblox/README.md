@@ -1,8 +1,8 @@
-# F5 IPAM Controller with Container Ingress Services using Infoblox IPAM Integration 
+# F5 IPAM Controller and F5 Container Ingress Services (CIS) using Infoblox IPAM Integration 
 
 **Please note: Infoblox IPAM Integration with F5 IPAM Controller is in preview**
 
-The F5 IPAM Controller is deployed in Kubernetes working with Container Ingress Services (CIS) to allocates IP addresses from Infoblox network ranges. The F5 IPAM Controller watches orchestration-specific CRD resources and consumes the hostnames within each resource. The F5 IPAM Controller integrates with Infoblox WAPI via the RESTful web API.
+The F5 IPAM Controller is deployed in Kubernetes working with CIS to allocates IP addresses from Infoblox network ranges. The F5 IPAM Controller watches orchestration-specific CRD resources and consumes the hostnames within each resource. The F5 IPAM Controller integrates with Infoblox WAPI via the RESTful web API.
 
 ## Prerequisites
 
