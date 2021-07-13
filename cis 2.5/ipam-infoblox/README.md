@@ -65,7 +65,7 @@ Add the parameter
 
 * --orchestration=kubernetes - The orchestration parameter holds the orchestration environment i.e. Kubernetes
 * --infoblox-labels='{"Test":{"cidr": "10.192.75.112/30","netView": "test", "dnsview": "default.test"},"Production":{"cidr": "10.192.125.32/28","netView": "production", "dnsview": "default.production"}}' - ipamlabel ranges and from this Infoblox
-* --log-level=debug - recommend drop log to info
+* --log-level=debug - recommend info after testing
 * --infoblox-grid-host for the URL (or IP Address) of Infoblox Grid Host
 * --infoblox-wapi-port the Infoblox Server listens on
 * --infoblox-wapi-version API version of Infoblox
