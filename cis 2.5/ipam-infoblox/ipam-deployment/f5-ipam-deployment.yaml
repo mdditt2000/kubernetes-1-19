@@ -28,7 +28,7 @@ spec:
         - --infoblox-wapi-port
         - "443"
         - --infoblox-wapi-version
-        - 2.11.2
+        - 2.10.5
         - --infoblox-username
         - admin
         - --infoblox-password
