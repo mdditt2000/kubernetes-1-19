@@ -193,6 +193,10 @@ ipamLabel: Production Infoblox setup
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_12-58-46.png)
 
+ipam status for CRD 
+
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-30-21.png)
+
 **mysite.f5demo.com**
 
 ```
@@ -208,8 +212,8 @@ ipamLabel: Test Infoblox setup
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-27-21.png)
 
-## View the F5 IPAM Controller configuration
+ipam status for CRD 
 
-F5 IPAM Controller creates the following CRD to create the configuration between CIS and IPAM 
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-30-21.png)
 
 
