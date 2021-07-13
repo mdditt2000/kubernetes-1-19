@@ -114,7 +114,7 @@ I0713 17:39:40.322244       1 shared_informer.go:247] Caches are synced for F5 I
 ```
 
 
-## Step 3: Configuring CIS CRD to work with F5 IPAM Controller for the following hosts
+## Step 3: Configuring CRD to work with F5 IPAM Controller for the following hosts
 
 - hostname "mysite.f5demo.com"
 - hostname "myapp.f5demo.com"
