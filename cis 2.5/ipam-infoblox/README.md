@@ -177,7 +177,7 @@ kubectl create -f vs-myapp.yaml
 
 crd-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.5/ipam-infoblox/crd-example)
 
-## Logging output when the virtualserver is created
+## Logging output from the VirtualServer
 
 **myapp.f5demo.com**
 
