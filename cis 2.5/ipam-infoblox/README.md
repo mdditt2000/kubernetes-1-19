@@ -6,10 +6,10 @@ The F5 IPAM Controller is deployed in Kubernetes working with Container Ingress 
 
 ## Prerequisites
 
-* Recommend AS3 version 3.29 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.26.0)
+* Recommend AS3 version 3.29 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.29.0)
 * CIS 2.5 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.5.0)
 * F5 IPAM Controller [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.2)
-* Github [documentation](https://github.com/F5Networks/f5-ipam-controller#readme)
+* Github [documentation](https://github.com/F5Networks/f5-ipam-controller/blob/main/README.md)
 * Infoblox Github [documentation](https://www.infoblox.com/products/ipam-dhcp/)
 
 ## Setup Options
