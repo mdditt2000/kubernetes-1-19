@@ -18,13 +18,10 @@ The F5 IPAM Controller is deployed in Kubernetes working with CIS to allocates I
 
 CIS 2.5 provides two deployment for using the F5 IPAM controller
 
-* ip-range - this parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated to the corresponding hostname in the virtual server CRD
+* ip-range - statically specifies the pool of IP address range based on a ipam label
 * infoblox-labels - infoblox labels holds the mappings for infoblox's netView, dnsView and CIDR
 
-In this user-guide we are using the deployment options of Infoblox
-
-
-In CIS 2.5 the F5 IPAM Controller for Infoblox can:
+In this user-guide we are using the deployment options of Infoblox. In CIS 2.5 the F5 IPAM Controller for Infoblox can:
 
 * Allocate IP address from infoblox data management IP address pool based on the **ipamLabel** in the Kubernetes CRD
 * F5 IPAM Controller decides to allocate the IP from the respective IP address pool for the hostname specified in the virtualserver custom resource
