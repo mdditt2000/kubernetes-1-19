@@ -32,7 +32,7 @@ spec:
         - --infoblox-username
         - admin
         - --infoblox-password
-        - Infoblox
+        - infoblox
         - --log-level
         - DEBUG
 
