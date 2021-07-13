@@ -214,6 +214,6 @@ ipamLabel: Test Infoblox setup
 
 ipam status for CRD 
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-30-21.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.5/ipam-infoblox/diagram/2021-07-13_13-33-27.png)
 
 
