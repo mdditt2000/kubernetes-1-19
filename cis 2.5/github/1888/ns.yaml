@@ -1,0 +1,105 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns1
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns2
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns3
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns4
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns5
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns6
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns7
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns8
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns9
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns10
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns11
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns12
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns13
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns14
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns15
+---
+
