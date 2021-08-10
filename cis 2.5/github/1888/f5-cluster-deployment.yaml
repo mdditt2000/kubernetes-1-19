@@ -37,6 +37,7 @@ spec:
             - "--flannel-name=fl-vxlan"
             - "--log-level=DEBUG"
             - "--agent=cccl"
+            - "--namespace=ns1"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
