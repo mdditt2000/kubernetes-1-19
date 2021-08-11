@@ -32,12 +32,10 @@ spec:
             - "--bigip-password=$(BIGIP_PASSWORD)"
             - "--bigip-url=192.168.200.60"
             - "--bigip-partition=k8s"
-            - "--namespace=default"
             - "--pool-member-type=cluster"
             - "--flannel-name=fl-vxlan"
             - "--log-level=DEBUG"
             - "--agent=cccl"
-            - "--namespace=ns1"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
