@@ -4374,6 +4374,6 @@ spec:
        paths:
        - path: /
          backend:
-            serviceName: svc10-ns15
+            serviceName: svc10-ns16
             servicePort: 80
 ---
