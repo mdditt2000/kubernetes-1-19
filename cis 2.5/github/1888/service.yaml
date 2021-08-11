@@ -2398,3 +2398,19 @@ spec:
     app: nginx
   type: ClusterIP
 ---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns16
+  name: svc10-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---

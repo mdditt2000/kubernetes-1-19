@@ -4348,3 +4348,32 @@ spec:
             serviceName: svc10-ns15
             servicePort: 80
 ---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns16
+  namespace: ns16
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.213.246" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns16.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns16.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns16.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns15
+            servicePort: 80
+---

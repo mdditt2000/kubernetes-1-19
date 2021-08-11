@@ -103,3 +103,9 @@ metadata:
   name: ns15
 ---
 
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns16
+---
