@@ -36,6 +36,8 @@ spec:
             - "--flannel-name=fl-vxlan"
             - "--log-level=INFO"
             - "--insecure=true"
+            - "--as3-validation=true"
+            - "--log-as3-response=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
