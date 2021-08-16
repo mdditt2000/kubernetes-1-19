@@ -35,7 +35,6 @@ spec:
             - "--pool-member-type=cluster"
             - "--flannel-name=fl-vxlan"
             - "--log-level=INFO"
-            - "--agent=cccl"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
