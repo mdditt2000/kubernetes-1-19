@@ -35,9 +35,10 @@ spec:
             - "--pool-member-type=cluster"
             - "--flannel-name=fl-vxlan"
             - "--log-level=INFO"
-            - "--insecure=true"
-            - "--as3-validation=true"
-            - "--log-as3-response=true"
+            - "--agent=cccl"
+            #- "--insecure=true"
+            #- "--as3-validation=true"
+            #- "--log-as3-response=true"
           command: 
             - /app/bin/k8s-bigip-ctlr
           env: 
