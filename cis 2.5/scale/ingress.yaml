@@ -1,0 +1,4379 @@
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.215.33" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.215.207" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.218.92" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.19.224" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.134.26" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.64.133" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.184.250" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.189.100" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.140.99" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns1 
+  namespace: ns1
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.160.130" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns1.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns1.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns1.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns1
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.147.53" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.17.70" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.199.181" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.138.238" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.59.4" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.244.28" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.143.95" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.23.43" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.150.176" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns2 
+  namespace: ns2
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.4.248" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns2.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns2.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns2.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns2
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.96.68" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.191.139" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.203.199" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.8.209" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.47.114" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.116.176" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.17.92" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.7.33" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.100.76" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns3 
+  namespace: ns3
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.167.131" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns3.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns3.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns3.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns3
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.98.70" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.100.206" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.168.251" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.204.113" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.113.114" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.113.74" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.2.219" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.252.218" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.34.45" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns4 
+  namespace: ns4
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.167.151" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns4.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns4.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns4.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns4
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.161.241" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.127.80" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.216.86" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.40.0" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.3.241" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.127.164" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.168.215" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.70.27" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.143.97" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns5 
+  namespace: ns5
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.150.167" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns5.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns5.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns5.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns5
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.39.59" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.97.185" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.40.87" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.180.169" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.89.75" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.30.100" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.64.241" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.121.239" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.166.173" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns6 
+  namespace: ns6
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.153.18" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns6.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns6.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns6.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns6
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.60.49" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.122.141" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.58.12" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.92.214" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.242.234" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.168.39" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.150.246" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.211.94" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.221.218" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns7 
+  namespace: ns7
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.181.145" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns7.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns7.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns7.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns7
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.73.220" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.88.55" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.171.79" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.137.81" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.10.147" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.77.7" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.83.198" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.181.120" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.85.199" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns8 
+  namespace: ns8
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.78.3" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns8.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns8.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns8.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns8
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.174.7" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.92.158" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.221.55" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.72.70" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.251.116" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.43.29" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.204.18" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.29.204" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.78.58" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns9 
+  namespace: ns9
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.236.4" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns9.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns9.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns9.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns9
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.193.23" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.145.49" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.25.198" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.175.214" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.20.215" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.102.174" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.128.65" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.151.99" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.141.115" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns10 
+  namespace: ns10
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.231.25" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns10.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns10.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns10.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns10
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.21.68" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.85.182" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.57.141" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.192.9" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.222.223" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.177.134" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.102.150" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.114.198" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.122.253" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns11 
+  namespace: ns11
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.169.38" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns11.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns11.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns11.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns11
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.55.160" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.213.12" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.3.166" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.117.134" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.106.197" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.204.13" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.65.58" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.46.139" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.14.228" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns12 
+  namespace: ns12
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.152.219" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns12.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns12.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns12.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns12
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.109.175" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.246.112" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.231.219" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.129.177" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.46.23" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.50.238" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.93.156" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.245.61" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.100.18" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns13 
+  namespace: ns13
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.197.50" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns13.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns13.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns13.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns13
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.78.136" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.221.184" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.83.195" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.125.201" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.88.56" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.165.28" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.112.198" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.67.40" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.104.105" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns14 
+  namespace: ns14
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.116.127" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns14.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns14.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns14.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns14
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing1-svc1-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.12.2" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing1-svc1-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing1-svc1-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing1-svc1-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc1-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing2-svc2-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.93.113" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing2-svc2-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing2-svc2-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing2-svc2-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc2-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing3-svc3-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.48.42" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing3-svc3-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing3-svc3-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing3-svc3-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc3-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing4-svc4-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.1.96" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing4-svc4-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing4-svc4-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing4-svc4-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc4-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing5-svc5-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.112.212" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing5-svc5-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing5-svc5-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing5-svc5-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc5-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing6-svc6-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.210.211" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing6-svc6-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing6-svc6-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing6-svc6-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc6-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing7-svc7-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.144.117" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing7-svc7-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing7-svc7-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing7-svc7-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc7-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing8-svc8-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.209.65" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing8-svc8-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing8-svc8-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing8-svc8-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc8-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing9-svc9-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.236.9" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing9-svc9-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing9-svc9-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing9-svc9-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc9-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns15 
+  namespace: ns15
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.213.212" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns15.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns15.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns15.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns15
+            servicePort: 80
+---
+
+apiVersion: extensions/v1beta1 
+kind: Ingress
+metadata:
+  name: ing10-svc10-ns16
+  namespace: ns16
+  annotations:
+     ingress.kubernetes.io/allow-http: "true"
+     kubernetes.io/ingress.class: f5
+     'virtual-server.f5.com/ip': "10.169.213.246" 
+     virtual-server.f5.com/health: |
+      [
+        {
+          "path":     "www.ing10-svc10-ns16.com/",
+          "send":     "GET / HTTP/1.1\r\nHost: www.ing10-svc10-ns16.com\r\nConnection: Close\r\n\r\n",
+          "interval": 5,
+          "timeout":  10
+        }
+      ]
+spec:
+  rules:
+   - host: www.ing10-svc10-ns16.com 
+     http:
+       paths:
+       - path: /
+         backend:
+            serviceName: svc10-ns16
+            servicePort: 80
+---

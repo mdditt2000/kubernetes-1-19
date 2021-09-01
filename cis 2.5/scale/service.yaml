@@ -1,0 +1,4641 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns1
+  name: svc1-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns1
+  name: svc2-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns1
+  name: svc3-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns1
+  name: svc4-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns1
+  name: svc5-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns1
+  name: svc6-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns1
+  name: svc7-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns1
+  name: svc8-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns1
+  name: svc9-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns1
+  name: svc10-ns1
+  namespace: ns1
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns2
+  name: svc1-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns2
+  name: svc2-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns2
+  name: svc3-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns2
+  name: svc4-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns2
+  name: svc5-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns2
+  name: svc6-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns2
+  name: svc7-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns2
+  name: svc8-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns2
+  name: svc9-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns2
+  name: svc10-ns2
+  namespace: ns2
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns3
+  name: svc1-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns3
+  name: svc2-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns3
+  name: svc3-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns3
+  name: svc4-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns3
+  name: svc5-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns3
+  name: svc6-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns3
+  name: svc7-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns3
+  name: svc8-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns3
+  name: svc9-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns3
+  name: svc10-ns3
+  namespace: ns3
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns4
+  name: svc1-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns4
+  name: svc2-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns4
+  name: svc3-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns4
+  name: svc4-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns4
+  name: svc5-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns4
+  name: svc6-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns4
+  name: svc7-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns4
+  name: svc8-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns4
+  name: svc9-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns4
+  name: svc10-ns4
+  namespace: ns4
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns5
+  name: svc1-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns5
+  name: svc2-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns5
+  name: svc3-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns5
+  name: svc4-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns5
+  name: svc5-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns5
+  name: svc6-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns5
+  name: svc7-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns5
+  name: svc8-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns5
+  name: svc9-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns5
+  name: svc10-ns5
+  namespace: ns5
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns6
+  name: svc1-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns6
+  name: svc2-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns6
+  name: svc3-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns6
+  name: svc4-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns6
+  name: svc5-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns6
+  name: svc6-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns6
+  name: svc7-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns6
+  name: svc8-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns6
+  name: svc9-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns6
+  name: svc10-ns6
+  namespace: ns6
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns7
+  name: svc1-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns7
+  name: svc2-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns7
+  name: svc3-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns7
+  name: svc4-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns7
+  name: svc5-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns7
+  name: svc6-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns7
+  name: svc7-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns7
+  name: svc8-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns7
+  name: svc9-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns7
+  name: svc10-ns7
+  namespace: ns7
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns8
+  name: svc1-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns8
+  name: svc2-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns8
+  name: svc3-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns8
+  name: svc4-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns8
+  name: svc5-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns8
+  name: svc6-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns8
+  name: svc7-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns8
+  name: svc8-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns8
+  name: svc9-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns8
+  name: svc10-ns8
+  namespace: ns8
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns9
+  name: svc1-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns9
+  name: svc2-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns9
+  name: svc3-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns9
+  name: svc4-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns9
+  name: svc5-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns9
+  name: svc6-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns9
+  name: svc7-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns9
+  name: svc8-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns9
+  name: svc9-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns9
+  name: svc10-ns9
+  namespace: ns9
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns10
+  name: svc1-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns10
+  name: svc2-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns10
+  name: svc3-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns10
+  name: svc4-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns10
+  name: svc5-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns10
+  name: svc6-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns10
+  name: svc7-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns10
+  name: svc8-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns10
+  name: svc9-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns10
+  name: svc10-ns10
+  namespace: ns10
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns11
+  name: svc1-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns11
+  name: svc2-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns11
+  name: svc3-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns11
+  name: svc4-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns11
+  name: svc5-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns11
+  name: svc6-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns11
+  name: svc7-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns11
+  name: svc8-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns11
+  name: svc9-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns11
+  name: svc10-ns11
+  namespace: ns11
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns12
+  name: svc1-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns12
+  name: svc2-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns12
+  name: svc3-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns12
+  name: svc4-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns12
+  name: svc5-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns12
+  name: svc6-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns12
+  name: svc7-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns12
+  name: svc8-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns12
+  name: svc9-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns12
+  name: svc10-ns12
+  namespace: ns12
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns13
+  name: svc1-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns13
+  name: svc2-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns13
+  name: svc3-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns13
+  name: svc4-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns13
+  name: svc5-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns13
+  name: svc6-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns13
+  name: svc7-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns13
+  name: svc8-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns13
+  name: svc9-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns13
+  name: svc10-ns13
+  namespace: ns13
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns14
+  name: svc1-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns14
+  name: svc2-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns14
+  name: svc3-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns14
+  name: svc4-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns14
+  name: svc5-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns14
+  name: svc6-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns14
+  name: svc7-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns14
+  name: svc8-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns14
+  name: svc9-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns14
+  name: svc10-ns14
+  namespace: ns14
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns15
+  name: svc1-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns15
+  name: svc2-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns15
+  name: svc3-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns15
+  name: svc4-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns15
+  name: svc5-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns15
+  name: svc6-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns15
+  name: svc7-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns15
+  name: svc8-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns15
+  name: svc9-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns15
+  name: svc10-ns15
+  namespace: ns15
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns16
+  name: svc1-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns16
+  name: svc2-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns16
+  name: svc3-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns16
+  name: svc4-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns16
+  name: svc5-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns16
+  name: svc6-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns16
+  name: svc7-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns16
+  name: svc8-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns16
+  name: svc9-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns16
+  name: svc10-ns16
+  namespace: ns16
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns17
+  name: svc1-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns17
+  name: svc2-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns17
+  name: svc3-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns17
+  name: svc4-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns17
+  name: svc5-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns17
+  name: svc6-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns17
+  name: svc7-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns17
+  name: svc8-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns17
+  name: svc9-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns17
+  name: svc10-ns17
+  namespace: ns17
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns18
+  name: svc1-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns18
+  name: svc2-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns18
+  name: svc3-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns18
+  name: svc4-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns18
+  name: svc5-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns18
+  name: svc6-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns18
+  name: svc7-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns18
+  name: svc8-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns18
+  name: svc9-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns18
+  name: svc10-ns18
+  namespace: ns18
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns19
+  name: svc1-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns19
+  name: svc2-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns19
+  name: svc3-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns19
+  name: svc4-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns19
+  name: svc5-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns19
+  name: svc6-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns19
+  name: svc7-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns19
+  name: svc8-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns19
+  name: svc9-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns19
+  name: svc10-ns19
+  namespace: ns19
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns20
+  name: svc1-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns20
+  name: svc2-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns20
+  name: svc3-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns20
+  name: svc4-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns20
+  name: svc5-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns20
+  name: svc6-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns20
+  name: svc7-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns20
+  name: svc8-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns20
+  name: svc9-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns20
+  name: svc10-ns20
+  namespace: ns20
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns21
+  name: svc1-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns21
+  name: svc2-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns21
+  name: svc3-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns21
+  name: svc4-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns21
+  name: svc5-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns21
+  name: svc6-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns21
+  name: svc7-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns21
+  name: svc8-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns21
+  name: svc9-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns21
+  name: svc10-ns21
+  namespace: ns21
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns22
+  name: svc1-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns22
+  name: svc2-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns22
+  name: svc3-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns22
+  name: svc4-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns22
+  name: svc5-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns22
+  name: svc6-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns22
+  name: svc7-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns22
+  name: svc8-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns22
+  name: svc9-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns22
+  name: svc10-ns22
+  namespace: ns22
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns23
+  name: svc1-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns23
+  name: svc2-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns23
+  name: svc3-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns23
+  name: svc4-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns23
+  name: svc5-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns23
+  name: svc6-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns23
+  name: svc7-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns23
+  name: svc8-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns23
+  name: svc9-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns23
+  name: svc10-ns23
+  namespace: ns23
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns24
+  name: svc1-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns24
+  name: svc2-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns24
+  name: svc3-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns24
+  name: svc4-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns24
+  name: svc5-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns24
+  name: svc6-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns24
+  name: svc7-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns24
+  name: svc8-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns24
+  name: svc9-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns24
+  name: svc10-ns24
+  namespace: ns24
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns25
+  name: svc1-ns25
+  namespace: ns25
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns26
+  name: svc2-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns26
+  name: svc3-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns26
+  name: svc4-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns26
+  name: svc5-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns26
+  name: svc6-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns26
+  name: svc7-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns26
+  name: svc8-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns26
+  name: svc9-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns26
+  name: svc10-ns26
+  namespace: ns26
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns27
+  name: svc1-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns27
+  name: svc2-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns27
+  name: svc3-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns27
+  name: svc4-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns27
+  name: svc5-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns27
+  name: svc6-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns27
+  name: svc7-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns27
+  name: svc8-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns27
+  name: svc9-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns27
+  name: svc10-ns27
+  namespace: ns27
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns28
+  name: svc1-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns28
+  name: svc2-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns28
+  name: svc3-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns28
+  name: svc4-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns28
+  name: svc5-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns28
+  name: svc6-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns28
+  name: svc7-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns28
+  name: svc8-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns28
+  name: svc9-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns28
+  name: svc10-ns28
+  namespace: ns28
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns29
+  name: svc1-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns29
+  name: svc2-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns29
+  name: svc3-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns29
+  name: svc4-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns29
+  name: svc5-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns29
+  name: svc6-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns29
+  name: svc7-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns29
+  name: svc8-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns29
+  name: svc9-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns29
+  name: svc10-ns29
+  namespace: ns29
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc1-ns30
+  name: svc1-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc2-ns30
+  name: svc2-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc3-ns30
+  name: svc3-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc4-ns30
+  name: svc4-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc5-ns30
+  name: svc5-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc6-ns30
+  name: svc6-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc7-ns30
+  name: svc7-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc8-ns30
+  name: svc8-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc9-ns30
+  name: svc9-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: svc10-ns30
+  name: svc10-ns30
+  namespace: ns30
+spec:
+  ports:
+    # The port that this service should serve on.
+    - port: 80
+  selector:
+    app: nginx
+  type: ClusterIP
+---
