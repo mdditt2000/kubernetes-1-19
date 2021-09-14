@@ -28,14 +28,10 @@ spec:
       containers: 
         - 
           args: 
-            - "--gtm-bigip-username=$(BIGIP_USERNAME)"
-            - "--gtm-bigip-password=$(BIGIP_PASSWORD)"
-            - "--gtm-bigip-url=10.192.75.60"
             - "--bigip-username=$(BIGIP_USERNAME)"
             - "--bigip-password=$(BIGIP_PASSWORD)"
             - "--bigip-url=192.168.200.60"
             - "--bigip-partition=k8s"
-            - "--namespace=default"
             - "--pool-member-type=cluster"
             - "--flannel-name=fl-vxlan"
             - "--log-level=DEBUG"
@@ -58,6 +54,6 @@ spec:
                 secretKeyRef: 
                   key: password
                   name: bigip-login
-          image: "mdditt2000/k8s-bigip-ctlr:2.2.3"
+          image: "mdditt2000/k8s-bigip-ctlr:2.5.1"
           name: f5-server
       serviceAccountName: k8s-bigip-ctlr
