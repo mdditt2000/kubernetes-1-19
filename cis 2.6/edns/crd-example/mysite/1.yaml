@@ -1,0 +1,46 @@
+apiVersion: cis.f5.com/v1
+kind: VirtualServer
+metadata: null
+name: pgadmin1-vs
+namespace: pg1
+labels: null
+f5cr: 'true'
+spec: null
+host: pgadmin1.occ01.corp
+pools:
+    -
+        monitor: null
+interval: 10
+send: GET
+timeout: 10
+type: http
+path: /
+service: pgadminf5
+servicePort: 5050
+virtualServerAddress: 172.31.8.227
+virtualServerName: pgadmin1-occ-test
+
+----
+
+apiVersion: cis.f5.com/v1
+kind: ExternalDNS
+metadata:
+name: exdns-f5
+namespace: kube-system
+labels:
+f5cr: 'true'
+spec:
+dnsRecordType: A
+domainName: occ01.corp
+loadBalanceMethod: round-robin
+pools:
+- dataServerName: /Common/GSLBServer
+dnsRecordType: A
+loadBalanceMethod: round-robin
+monitor:
+interval: 10
+recv: ''
+send: GET /
+timeout: 10
+type: http
+name: pgadmin1.occ01.corp
