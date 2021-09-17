@@ -63,22 +63,53 @@ kubectl create -f pod-deployment
 
 pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/pod-deployment)
 
-## Step 3: Create the VirtualServer and ExternalDNS CRD
+## Step 3: Create the VirtualServers
 
 **Note** CIS requires the following created on BIG-IP DNS
 
 * DataCenter record using the default options
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
 
 * Servers under GSLB(DNS) by referring above DataCenter with BIG-IP device with external SelfIP, Virtual Server Discovery enabled
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-52-01.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-52-01.png)
+
+Create the mysite and myapp virtualservers CRDs
+
+```
+kubectl create -f vs-myapp.yaml
+kubectl create -f vs-mysite.yaml
+kubectl create -f customresourcedefinitions.yml
+```
+crd-resources [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/crd-example
+
+Validate both **virtualservers** crd's are created
+
+![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-20.png)
+
+Connect the **mysite.f5demo.com**
+
+![mysite](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-40-14.png)
+
+Connect the **myapp.f5demo.com**
+
+![myapp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-58.png)
+
+Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist
+
+![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-47-58.png)
+
+Verify the virtualservers created in the servicelist
+
+![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-50-05.png)
+
+## Step 4: Create the WideIP's using the ExternalDNS CRDs
 
 The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in this user-guide. Important to **Note** the following:
 
-* host: mysite.f5demo.com in the **VirtualServer** CRD needs to match pools name: mysite.f5demo.com **ExternalDNS CRD**
-* use the following string for the GSLB monitor
+* host: mysite.f5demo.com in the **VirtualServer** CRD needs to match domainName: mysite.f5demo.com and pools name: mysite.f5demo.com **ExternalDNS CRD**
+* use the following string for the GSLB monitor in the ExternalDNS CRD
 
 ```
  monitor:
@@ -87,3 +118,4 @@ The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in thi
 ```
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
+
