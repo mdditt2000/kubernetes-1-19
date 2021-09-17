@@ -63,9 +63,9 @@ kubectl create -f pod-deployment
 
 pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/pod-deployment)
 
-## Step 3: Create the VirtualServer CRD and ExternalDNS CRD
+## Step 3: Create the VirtualServer and ExternalDNS CRD
 
-CIS requires the following created on DNS
+**Note** CIS requires the following created on BIG-IP DNS
 
 * DataCenter record using the default options
 
@@ -74,3 +74,16 @@ CIS requires the following created on DNS
 * Servers under GSLB(DNS) by referring above DataCenter with BIG-IP device with external SelfIP, Virtual Server Discovery enabled
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-52-01.png)
+
+The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in this user-guide. Important to **Note** the following:
+
+* host: mysite.f5demo.com in the **VirtualServer** CRD needs to match pools name: mysite.f5demo.com **ExternalDNS CRD**
+* use the following string for the GSLB monitor
+
+```
+ monitor:
+      type: http
+      send: "GET / HTTP/1.1\r\nHost: mysite.f5demo.com\r\n"
+```
+
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
