@@ -71,7 +71,7 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
 
-* Servers under GSLB(DNS) by referring above DataCenter with BIG-IP device with external SelfIP, Virtual Server Discovery enabled
+* Servers under GSLB(DNS) by referring above **DataCenter** with **BIG-IP device**, **external SelfIP**, and most important **Virtual Server Discovery enabled**. Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS. 
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-52-01.png)
 
@@ -108,8 +108,8 @@ Verify the virtualservers created in the servicelist
 
 The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in this user-guide. Important to **Note** the following:
 
-* host: mysite.f5demo.com in the **VirtualServer** CRD needs to match domainName: mysite.f5demo.com and pools name: mysite.f5demo.com **ExternalDNS CRD**
-* use the following string for the GSLB monitor in the ExternalDNS CRD
+* Host: mysite.f5demo.com in the **VirtualServer** CRD needs to match domainName: mysite.f5demo.com and pools name: mysite.f5demo.com **ExternalDNS CRD**
+* Use the following string for the GSLB monitor in the ExternalDNS CRD
 
 ```
  monitor:
