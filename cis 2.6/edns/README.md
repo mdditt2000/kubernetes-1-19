@@ -67,11 +67,17 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 **Note** CIS requires the following created on BIG-IP DNS
 
-* DataCenter record using the default options
+* DataCenter using the default options
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
 
-* Servers under GSLB(DNS) by referring above **DataCenter** with **BIG-IP device**, **external SelfIP**, and most important **Virtual Server Discovery enabled**. Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS. 
+* Servers under GSLB(DNS) by referring:
+
+    - **DataCenter** with **BIG-IP device**
+    - **external SelfIP**
+    - **Virtual Server Discovery enabled**
+    
+**Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-52-01.png)
 
