@@ -65,7 +65,7 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ## Step 3: Create the VirtualServers
 
-**Note** CIS requires the following created on BIG-IP DNS
+**Note** CIS requires the following prerequisites created on BIG-IP DNS
 
 * **DataCenter** using the default options
 
@@ -74,8 +74,16 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 * **Servers** under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
-    - **external SelfIP**
+
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-02.png)
+
+    - **External SelfIP**
+
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-58.png)
+
     - **Virtual Server Discovery enabled**
+
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-18-23.png)
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
