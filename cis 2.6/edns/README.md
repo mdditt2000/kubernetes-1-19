@@ -77,11 +77,11 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-02.png)
 
-*   - **External SelfIP**
+- **External SelfIP**
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-58.png)
 
-*   - **Virtual Server Discovery enabled**
+- **Virtual Server Discovery enabled**
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-18-23.png)
     
