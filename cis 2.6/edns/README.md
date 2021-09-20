@@ -77,11 +77,15 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-02.png)
 
-- **External SelfIP**
+* **Servers** under GSLB(DNS) by referring:
+
+    - **External SelfIP**
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-58.png)
 
-- **Virtual Server Discovery enabled**
+* **Servers** under GSLB(DNS) by referring:
+
+    - **Virtual Server Discovery enabled**
 
 ![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-18-23.png)
     
@@ -120,14 +124,16 @@ Verify the virtualservers created in the servicelist
 
 The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in this user-guide. Important to **Note** the following:
 
-* Host: mysite.f5demo.com in the **VirtualServer** CRD needs to match domainName: mysite.f5demo.com and pools name: mysite.f5demo.com **ExternalDNS CRD**
-* Use the following string for the GSLB monitor in the ExternalDNS CRD
+* **Host:** **mysite.f5demo.com** in the **VirtualServer** CRD needs to match **domainName: mysite.f5demo.com** and **pools name: mysite.f5demo.com** **ExternalDNS CRD**
+* Use the following string for the **GSLB monitor** in the ExternalDNS CRD
 
 ```
  monitor:
       type: http
       send: "GET / HTTP/1.1\r\nHost: mysite.f5demo.com\r\n"
 ```
+
+* **dataServerName: /Common/big-ip-60-cluster** in the ExternalDNS CRD needs to match DataCenter Server name
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
 
