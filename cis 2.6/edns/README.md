@@ -152,6 +152,6 @@ If the status for the Wide IP's show red then maybe the external DNS monitor has
 
 ![monitor](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-20-20.png)
 
-Also validate the send string
+Also validate the Send String
 
 ![sendstring](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-21-00.png)
