@@ -137,3 +137,13 @@ The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in thi
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
 
+Create the mysite and myapp EDNS CRDs
+
+```
+kubectl create -f edns-myapp.yaml
+kubectl create -f edns-mysite.yaml
+```
+
+Validate the WIDE IP list. You should see both Wide IP created for mysite and myapp
+
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-14-10.png)
