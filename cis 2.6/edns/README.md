@@ -67,11 +67,11 @@ pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 **Note** CIS requires the following created on BIG-IP DNS
 
-* DataCenter using the default options
+* **DataCenter** using the default options
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
 
-* Servers under GSLB(DNS) by referring:
+* **Servers** under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
     - **external SelfIP**
