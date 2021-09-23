@@ -13,9 +13,9 @@ Looking at the diagram below there are two Data Centers **k8s19-cluster** and **
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
 * Global DNS provisioned and synchronized between Data Centers
 
-## Step 1: Deploy CIS for **k8s19-cluster** and **k8s20-cluster** clusters
+## Step 1: Deploy CIS for k8s19-cluster and k8s20-cluster
 
-CIS 2.6 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below.
+CIS 2.6 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the **same BIG-IP** you can re-use the secret generic bigip-login when deploying CIS as shown below.
 
 Add the following parameters to THE CIS deployment
 
@@ -64,7 +64,7 @@ Cluster **k8s19-cluster**
     - "--log-as3-response=true"
 ```
 
-Deploy CIS in both **k8s19-cluster** and **k8s20-cluster** clusters
+Deploy CIS in both **k8s19-cluster** and **k8s20-cluster**
 
 ```
 kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
@@ -78,7 +78,7 @@ kubectl create -f f5-bigip-node.yaml
 cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/cis-deployment)
 cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/cis-deployment)
 
-## Step 2: Deploy F5 Demo App for both clusters
+## Step 2: Deploy F5 Demo App for k8s19-cluster and k8s20-cluster
 
 Deploy the test F5 demo deployment and service. This is a simple application on port 80 and requires a Host Header
 
@@ -89,13 +89,22 @@ kubectl create -f pod-deployment
 pod-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/pod-deployment)
 pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/pod-deployment)
 
-## Step 3: Create the VirtualServers for both clusters
+## Step 3: Create the VirtualServers for k8s19-cluster and k8s20-cluster
 
-**Note** CIS requires the following prerequisites created on BIG-IP DNS
+### **k8s19-cluster**
+
+**Note** CIS requires the following prerequisites created on **big-ip-60-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
+
 
 * **DataCenter** using the default options
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-49-20.png)
+    - **k8s19-cluster**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
+
+*   - **k8s20-cluster**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
