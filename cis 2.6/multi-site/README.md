@@ -101,6 +101,16 @@ pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-1
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
 
+**Note** CIS requires the following prerequisites created on **big-ip-91-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
+
+* **DataCenter** on **big-ip-91-cluster** for **k8s19-cluster**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
+
+* **DataCenter** on **big-ip-91-cluster** for **k8s20-cluster**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
+
 * **Servers** under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
