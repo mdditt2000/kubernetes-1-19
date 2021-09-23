@@ -2,7 +2,7 @@
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS on the same device for a multi site kubernetes clusters as shown in the diagram
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-24-26.png)
+![architecture](coming)
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD re
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
 * Global DNS license under Resource Provisioning Section
 
-## Step 1: Deploy CIS
+## Step 1: Deploy CIS for both clusters
 
 CIS 2.6 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below.
 
@@ -76,7 +76,7 @@ kubectl create -f f5-bigip-node.yaml
 cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/cis-deployment)
 cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/cis-deployment)
 
-## Step 2: Deploy F5 Demo App 
+## Step 2: Deploy F5 Demo App for both clusters
 
 Deploy the test F5 demo deployment and service. This is a simple application on port 80 and requires a Host Header
 
@@ -84,9 +84,10 @@ Deploy the test F5 demo deployment and service. This is a simple application on 
 kubectl create -f pod-deployment
 ```
 
-pod-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/pod-deployment)
+pod-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/pod-deployment)
+pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/pod-deployment)
 
-## Step 3: Create the VirtualServers
+## Step 3: Create the VirtualServers for both clusters
 
 **Note** CIS requires the following prerequisites created on BIG-IP DNS
 
