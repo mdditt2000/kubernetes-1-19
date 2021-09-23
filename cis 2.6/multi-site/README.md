@@ -22,7 +22,7 @@ Add the following parameters to THE CIS deployment
 * --gtm-bigip-password - Provide password for CIS to access GTM
 * --gtm-bigip-url - Provide url for CIS to access GTM. CIS uses the python SDK to configure GTM 
 
-Cluster k8s20-cluster
+Cluster **k8s20-cluster**
 
 ```
 - args: 
@@ -42,7 +42,7 @@ Cluster k8s20-cluster
     - "--log-as3-response=true"
 ```
 
-Cluster k8s19-cluster
+Cluster **k8s19-cluster**
 
 ```
 - args: 
@@ -62,7 +62,7 @@ Cluster k8s19-cluster
     - "--log-as3-response=true"
 ```
 
-Deploy CIS in both locations
+Deploy CIS in both **k8s19-cluster** and **k8s20-cluster** clusters
 
 ```
 kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
@@ -73,7 +73,8 @@ kubectl create -f f5-bigip-node.yaml
 ```
 **Note** f5-bigip-node is required for Flannel
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/cis-deployment)
+cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/cis-deployment)
+cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/cis-deployment)
 
 ## Step 2: Deploy F5 Demo App 
 
