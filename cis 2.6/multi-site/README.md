@@ -2,7 +2,7 @@
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS on the same device for a multi site kubernetes clusters as shown in the diagram
 
-![architecture](coming)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_15-52-41.png)
 
 ## Prerequisites
 
