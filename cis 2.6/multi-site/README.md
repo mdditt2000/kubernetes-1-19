@@ -13,7 +13,7 @@ Looking at the diagram below there are two Data Centers **k8s19-cluster** and **
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
 * Global DNS provisioned and synchronized between Data Centers
 
-## Step 1: Deploy CIS for both clusters
+## Step 1: Deploy CIS for **k8s19-cluster** and **k8s20-cluster** clusters
 
 CIS 2.6 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below.
 
