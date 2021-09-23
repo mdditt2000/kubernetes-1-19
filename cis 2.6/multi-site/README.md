@@ -1,4 +1,4 @@
-# ExternalDNS for for Multi-Site Kubernetes using F5 CIS with BIG-IP LTM and DNS
+# ExternalDNS for Multi-Site Kubernetes using F5 CIS with BIG-IP LTM and DNS
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS on the same device for a multi site kubernetes clusters as shown in the diagram
 
