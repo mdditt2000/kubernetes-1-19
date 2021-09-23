@@ -9,7 +9,7 @@ ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD re
 * Recommend AS3 version 3.30 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
 * CIS 2.6 [repo](coming)
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
-* Global DNS license under Resource Provisioning Section
+* Global DNS provisioned and synchronized between Data Centers
 
 ## Step 1: Deploy CIS for both clusters
 
