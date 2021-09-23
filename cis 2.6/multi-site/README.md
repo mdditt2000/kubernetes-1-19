@@ -91,18 +91,13 @@ pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-1
 
 ## Step 3: Create the VirtualServers for k8s19-cluster and k8s20-cluster
 
-### **k8s19-cluster**
-
 **Note** CIS requires the following prerequisites created on **big-ip-60-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
 
-
-* **DataCenter** using the default options
-
-    - **k8s19-cluster**
+* **DataCenter** on **big-ip-60-cluster** for **k8s19-cluster**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
 
-*   - **k8s20-cluster**
+* **DataCenter** on **big-ip-60-cluster** for **k8s20-cluster**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
 
