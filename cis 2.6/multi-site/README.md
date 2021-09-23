@@ -73,8 +73,8 @@ kubectl create -f f5-bigip-node.yaml
 ```
 **Note** f5-bigip-node is required for Flannel
 
-cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/cis-deployment)
-cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/edns/cis-deployment)
+cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/cis-deployment)
+cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/cis-deployment)
 
 ## Step 2: Deploy F5 Demo App 
 

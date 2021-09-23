@@ -30,10 +30,10 @@ spec:
           args: 
             - "--bigip-username=$(BIGIP_USERNAME)"
             - "--bigip-password=$(BIGIP_PASSWORD)"
-            - "--bigip-url=192.168.200.60"
+            - "--bigip-url=192.168.200.91"
             - "--gtm-bigip-username=$(BIGIP_USERNAME)"
             - "--gtm-bigip-password=$(BIGIP_PASSWORD)"
-            - "--gtm-bigip-url=192.168.200.60"
+            - "--gtm-bigip-url=192.168.200.91"
             - "--bigip-partition=k8s"
             - "--pool-member-type=cluster"
             - "--flannel-name=fl-vxlan"
