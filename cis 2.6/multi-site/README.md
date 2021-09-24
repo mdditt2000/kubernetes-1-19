@@ -188,7 +188,11 @@ Verify DataCenter and Server list could learn the new virtualservers LTM in the 
 
 ![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-10-11.png)
 
-Verify the virtualservers created in the servicelist 
+Verify the virtualservers created in the servicelist for **big-ip-60-cluster**
+
+![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-50-05.png)
+
+Verify the virtualservers created in the servicelist for **big-ip-91-cluster**
 
 ![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-50-05.png)
 
