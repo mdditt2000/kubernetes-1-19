@@ -91,45 +91,72 @@ pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-1
 
 ## Step 3: Create the VirtualServers for k8s19-cluster and k8s20-cluster
 
-**Note** CIS requires the following prerequisites created on **big-ip-60-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
+**Note** CIS requires the following **Data Center** prerequisites created on **big-ip-60-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
 
-* **DataCenter** on **big-ip-60-cluster** for **k8s19-cluster**
-
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
-
-* **DataCenter** on **big-ip-60-cluster** for **k8s20-cluster**
-
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
-
-**Note** CIS requires the following prerequisites created on **big-ip-91-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
-
-* **DataCenter** on **big-ip-91-cluster** for **k8s19-cluster**
+* **DataCenter** with BIG-IP DNS **big-ip-60-cluster** for **k8s19-cluster**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
 
-* **DataCenter** on **big-ip-91-cluster** for **k8s20-cluster**
+* **DataCenter** with BIG-IP DNS **big-ip-60-cluster** for **k8s20-cluster**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
 
-* **Servers** under GSLB(DNS) by referring:
+**Note** CIS requires the following **Data Center** prerequisites created on **big-ip-91-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster**
+
+* **DataCenter** on with BIG-IP DNS **big-ip-91-cluster** for **k8s19-cluster**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
+
+* **DataCenter** on with BIG-IP DNS**big-ip-91-cluster** for **k8s20-cluster**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
+
+**Note** CIS requires the following all **Server** prerequisites created for **big-ip-60-cluster** and **big-ip-91-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster** as shown in the diagram
+
+![Serverslist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-37-41.png)
+
+Example server creation for **big-ip-60-cluster** for **k8s19-cluster**
+
+* **Servers** with BIG-IP DNS **big-ip-60-cluster** for **k8s19-cluster** under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-02.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-13-22.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-17-58.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-14-53.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_14-18-23.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-15-32.png)
     
-**Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
+**Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS.
+
+Example server creation for **big-ip-91-cluster** for **k8s19-cluster**
+
+* **Servers** with BIG-IP DNS **big-ip-91-cluster** for **k8s20-cluster** under GSLB(DNS) by referring:
+
+    - **DataCenter** with **BIG-IP device**
+
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-47-43.png)
+
+* **Servers** under GSLB(DNS) by referring:
+
+    - **External SelfIP**
+
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-48-22.png)
+
+* **Servers** under GSLB(DNS) by referring:
+
+    - **Virtual Server Discovery enabled**
+
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-49-10.png)
+
 
 Create the mysite and myapp virtualservers CRDs
 
