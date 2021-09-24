@@ -111,7 +111,7 @@ kubectl create -f pod-deployment
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
 
-**Note** CIS requires the following all **Server** prerequisites created for **big-ip-60-cluster** and **big-ip-91-cluster** BIG-IP DNS for both **k8s19-cluster** amd **k8s20-cluster** as shown in the diagram
+**Note** CIS requires the following **Server** created for **big-ip-60-cluster** and **big-ip-91-cluster** BIG-IP DNS in both **k8s19-cluster** amd **k8s20-cluster** Data Centers
 
 ![Serverslist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-37-41.png)
 
