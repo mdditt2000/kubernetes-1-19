@@ -198,9 +198,9 @@ Verify the virtualservers created in the servicelist for **big-ip-91-cluster**
 
 If all the virtualservers are created, **green** and synchronized you can continue to Step 4 and create the Wide IPs for both **k8s19-cluster** and **k8s20-cluster**
 
-## Step 4: Create the WideIP's using the ExternalDNS CRDs
+## Step 4: Create the WideIP's using the ExternalDNS CRDs for both k8s19-cluster and k8s20-cluster
 
-The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in this user-guide. Important to **Note** the following:
+The diagram below show the **VirtualServer** and **ExternalDNS CRD** for **mysite.f5demo.com** in k8s19-cluster. Important to **Note** the following:
 
 * **Host:** **mysite.f5demo.com** in the **VirtualServer** CRD needs to match **domainName: mysite.f5demo.com** and **pools name: mysite.f5demo.com** **ExternalDNS CRD**
 * Use the following string for the **GSLB monitor** in the ExternalDNS CRD
@@ -213,14 +213,17 @@ The diagram below show the **VirtualServer** and **ExternalDNS CRD** used in thi
 
 * **dataServerName: /Common/big-ip-60-cluster** in the ExternalDNS CRD needs to match DataCenter Server name
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
+![mysite](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_10-25-22.png)
 
-Create the mysite and myapp EDNS CRDs
+Create the mysite and myapp EDNS CRDs for both **k8s19-cluster** and **k8s20-cluster**
 
 ```
 kubectl create -f edns-myapp.yaml
 kubectl create -f edns-mysite.yaml
 ```
+
+* crd-resources k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/crd-example)
+* crd-resources k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/crd-example)
 
 Validate the WIDE IP list. You should see both Wide IP created for mysite and myapp and both green status
 
