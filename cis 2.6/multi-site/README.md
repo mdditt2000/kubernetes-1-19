@@ -196,7 +196,7 @@ Verify the virtualservers created in the servicelist for **big-ip-91-cluster**
 
 ![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-14-21.png)
 
-If all the virtualservers are created and synchronized you can continue to Step 4 and create the Wide IPs for both **k8s19-cluster** and **k8s20-cluster**
+If all the virtualservers are created, **green** and synchronized you can continue to Step 4 and create the Wide IPs for both **k8s19-cluster** and **k8s20-cluster**
 
 ## Step 4: Create the WideIP's using the ExternalDNS CRDs
 
