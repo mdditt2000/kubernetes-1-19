@@ -176,7 +176,6 @@ Validate both **virtualservers** crd's for **k8s20-cluster**
 
 ![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-02-32.png)
 
-
 Connect the **mysite.f5demo.com** for both **k8s19-cluster** and **k8s20-cluster**
 
 ![mysite](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-40-14.png)
@@ -185,7 +184,7 @@ Connect the **myapp.f5demo.com** for both **k8s19-cluster** and **k8s20-cluster*
 
 ![myapp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-58.png)
 
-Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist 
+Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist for both **k8s19-cluster** and **k8s20-cluster**
 
 ![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-47-58.png)
 
