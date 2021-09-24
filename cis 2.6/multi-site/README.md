@@ -117,7 +117,7 @@ pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-1
 
 Example server creation for **big-ip-60-cluster** for **k8s19-cluster**
 
-* **Servers** with BIG-IP DNS **big-ip-60-cluster** for **k8s19-cluster** under GSLB(DNS) by referring:
+* **Servers** with BIG-IP DNS under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
@@ -139,7 +139,7 @@ Example server creation for **big-ip-60-cluster** for **k8s19-cluster**
 
 Example server creation for **big-ip-91-cluster** for **k8s19-cluster**
 
-* **Servers** with BIG-IP DNS **big-ip-91-cluster** for **k8s20-cluster** under GSLB(DNS) by referring:
+* **Servers** with BIG-IP DNS under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
