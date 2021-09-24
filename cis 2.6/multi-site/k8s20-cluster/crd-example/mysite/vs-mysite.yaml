@@ -6,7 +6,7 @@ metadata:
     f5cr: "true"
 spec:
   host: mysite.f5demo.com
-  virtualServerAddress: "10.192.75.111"
+  virtualServerAddress: "10.192.75.113"
   virtualServerHTTPPort: 80
   snat: auto
   pools:
