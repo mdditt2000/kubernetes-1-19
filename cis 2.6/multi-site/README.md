@@ -168,9 +168,14 @@ kubectl create -f customresourcedefinitions.yml
 * crd-resources k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/crd-example)
 * crd-resources k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/crd-example)
 
-Validate both **virtualservers** crd's
+Validate both **virtualservers** crd's for **k8s19-cluster**
 
 ![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-20.png)
+
+Validate both **virtualservers** crd's for **k8s20-cluster**
+
+![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-02-32.png)
+
 
 Connect the **mysite.f5demo.com** for both **k8s19-cluster** and **k8s20-cluster**
 
