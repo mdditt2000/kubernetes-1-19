@@ -2,9 +2,9 @@
 
 ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 CIS with BIG-IP LTM and DNS in a multi-site kubernetes deployment. 
 
-Looking at the diagram below there are two Data Centers **k8s19-cluster** and **k8s20-cluster**. Both Data Center have standalone BIG-IP LTM and DNS **big-ip-60-cluster** and **big-ip-91-cluster**. The BIG-IP DNS devices are synchronized, to share Data Center, Server, Wide IP, and Virtual Server availability. Each Data Centers has Kubernetes deployed with duplicate applications. However Data Center **k8s20-cluster** has a newer version of Kubernetes installed. Creating a second cluster with traffic distribution helps validation of newer kubernetes version, high availability, scaling etc. F5 CIS with BIG-IP LTM and DNS using ExternalDNS solves the multi-site challenges. 
+Looking at the diagram below there are two Data Centers **east** and **west**. Both Data Center have standalone BIG-IP LTM and DNS. The BIG-IP DNS devices are synchronized, to share Data Center, Server, Wide IP, and Virtual Server availability. Each Data Centers has Kubernetes deployed with duplicate applications. However Data Center **west** has a newer version of Kubernetes installed. Creating a second cluster with traffic distribution helps validation of newer kubernetes version, high availability, scaling etc. F5 CIS with BIG-IP LTM and DNS using ExternalDNS solves the multi-site challenges. 
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_15-52-41.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-05-52.png)
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Add the following parameters to THE CIS deployment
 * --gtm-bigip-password - Provide password for CIS to access GTM
 * --gtm-bigip-url - Provide url for CIS to access GTM. CIS uses the python SDK to configure GTM 
 
-Cluster **k8s20-cluster**
+Cluster **east**
 
 ```
 - args: 
@@ -44,7 +44,7 @@ Cluster **k8s20-cluster**
     - "--log-as3-response=true"
 ```
 
-Cluster **k8s19-cluster**
+Cluster **west**
 
 ```
 - args: 
@@ -64,7 +64,7 @@ Cluster **k8s19-cluster**
     - "--log-as3-response=true"
 ```
 
-Deploy CIS in both **k8s19-cluster** and **k8s20-cluster**
+Deploy CIS in both **east** and **west**
 
 ```
 kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
@@ -78,7 +78,7 @@ kubectl create -f f5-bigip-node.yaml
 * cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/cis-deployment)
 * cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/cis-deployment)
 
-## Step 2: Deploy F5 Demo App for k8s19-cluster and k8s20-cluster
+## Step 2: Deploy F5 Demo App for east and data Data Centers
 
 Deploy the test F5 demo deployment and service. This is a simple application on port 80 and requires a Host Header
 
