@@ -75,8 +75,8 @@ kubectl create -f f5-bigip-node.yaml
 ```
 **Note** f5-bigip-node is required for Flannel
 
-* cis-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/cis-deployment)
-* cis-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/cis-deployment)
+* cis-deployment east [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/cis-deployment)
+* cis-deployment west [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/cis-deployment)
 
 ## Step 2: Deploy F5 Demo App for east and data Data Centers
 
@@ -86,8 +86,8 @@ Deploy the test F5 demo deployment and service. This is a simple application on 
 kubectl create -f pod-deployment
 ```
 
-* pod-deployment k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/pod-deployment)
-* pod-deployment k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/pod-deployment)
+* pod-deployment east [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/pod-deployment)
+* pod-deployment west [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/pod-deployment)
 
 ## Step 3: Create the VirtualServers for east and data Data Centers
 
