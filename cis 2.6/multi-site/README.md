@@ -95,19 +95,19 @@ kubectl create -f pod-deployment
 
 * **DataCenter** with BIG-IP DNS **east** for **Kubernetes v19 cluster**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-46-14.png)
 
 * **DataCenter** with BIG-IP DNS **west** for **Kubernetes v19 cluster**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-47-44.png)
 
 * **DataCenter** with BIG-IP DNS **east** for **Kubernetes v20 cluster**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-37-50.png)
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-46-14.png)
 
 * **DataCenter** with BIG-IP DNS **west** for **Kubernetes v20 cluster**
 
-![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-23_16-38-45.png)
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-47-44.png)
 
 **Note** CIS requires the following **Server** created for **big-ip-60-cluster** and **big-ip-91-cluster** BIG-IP DNS in both **k8s19-cluster** amd **k8s20-cluster** Data Centers
 
