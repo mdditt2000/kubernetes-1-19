@@ -4,7 +4,7 @@ ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD re
 
 Looking at the diagram below there are two Data Centers **east** and **west**. Both Data Center have standalone BIG-IP LTM and DNS. The BIG-IP DNS devices are synchronized, to share Data Center, Server, Wide IP, and Virtual Server availability. Each Data Centers has Kubernetes deployed with duplicate applications. However Data Center **west** has a newer version of Kubernetes installed. Creating a second cluster with traffic distribution helps validation of newer kubernetes version, high availability, scaling etc. F5 CIS with BIG-IP LTM and DNS using ExternalDNS solves the multi-site challenges. 
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-05-52.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-21-58.png)
 
 ## Prerequisites
 
