@@ -12,7 +12,7 @@ spec:
   - name: myapp.f5demo.com
     dnsRecordType: A
     loadBalanceMethod: round-robin
-    dataServerName: /Common/big-ip-60-cluster
+    dataServerName: /Common/east
     monitor:
       type: http
       send: "GET / HTTP/1.1\r\nHost: myapp.f5demo.com\r\n"
