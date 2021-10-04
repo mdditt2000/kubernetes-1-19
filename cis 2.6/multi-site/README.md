@@ -109,20 +109,13 @@ kubectl create -f pod-deployment
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-27_12-47-44.png)
 
-
------
-
-**Note** CIS requires the following **Server** created for **big-ip-60-cluster** and **big-ip-91-cluster** BIG-IP DNS in both **k8s19-cluster** amd **k8s20-cluster** Data Centers
-
-![Serverslist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-37-41.png)
-
-Example server creation for **big-ip-60-cluster** for **k8s19-cluster**
+**Note** CIS requires the **Server** created for **east** amd **west** created on both BIG-IP DNS devices
 
 * **Servers** with BIG-IP DNS under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-13-22.png)
+![Servers](hhttps://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_14-47-33.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
@@ -134,7 +127,7 @@ Example server creation for **big-ip-60-cluster** for **k8s19-cluster**
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-15-32.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_14-48-24.png)
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS.
 
