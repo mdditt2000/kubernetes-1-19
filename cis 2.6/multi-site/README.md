@@ -13,7 +13,7 @@ Looking at the diagram below there are two Data Centers **east** and **west**. B
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
 * Global DNS provisioned and synchronized between Data Centers
 
-## Step 1: Deploy CIS for east and data Data Centers
+## Step 1: Deploy CIS for both Data Centers
 
 CIS 2.6 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the **same BIG-IP** you can re-use the secret generic bigip-login when deploying CIS as shown below.
 
@@ -78,7 +78,7 @@ kubectl create -f f5-bigip-node.yaml
 * cis-deployment **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/cis-deployment)
 * cis-deployment **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/cis-deployment)
 
-## Step 2: Deploy F5 Demo App for east and data Data Centers
+## Step 2: Deploy F5 Demo App for both Data Centers
 
 Deploy the test F5 demo deployment and service. This is a simple application on port 80 and requires a Host Header
 
@@ -89,7 +89,7 @@ kubectl create -f pod-deployment
 * pod-deployment **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/pod-deployment)
 * pod-deployment **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/pod-deployment)
 
-## Step 3: Create the VirtualServers for east and data Data Centers
+## Step 3: Create the VirtualServers for both Data Centers
 
 **Note** CIS requires **east** amd **west** **Data Center** created on both BIG-IP DNS devices
 
