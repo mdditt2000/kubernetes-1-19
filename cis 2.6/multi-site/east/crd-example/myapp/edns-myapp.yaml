@@ -9,7 +9,7 @@ spec:
   dnsRecordType: A
   loadBalanceMethod: round-robin
   pools:
-  - name: myapp.f5demo.com
+  - name: east.myapp.f5demo.com
     dnsRecordType: A
     loadBalanceMethod: round-robin
     dataServerName: /Common/east
