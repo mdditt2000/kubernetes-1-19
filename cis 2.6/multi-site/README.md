@@ -216,3 +216,10 @@ Validate the pool members for the WIDE IP list. You should see two members in th
 
 ![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-20-36.png)
 
+Validate connectively to **mysite.f5demo.com** 
+
+![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-28-17.png)
+
+Validate connectively to **myapp.f5demo.com** 
+
+![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-28-17.png)
