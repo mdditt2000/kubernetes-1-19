@@ -133,19 +133,19 @@ Example of **DataCenter** for both **east** amd **west**
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-38-58.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-04-25.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-01.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-05-00.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-39.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-05-47.png)
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
