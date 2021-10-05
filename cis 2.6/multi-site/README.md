@@ -200,4 +200,12 @@ Validate the WIDE IP list. You should see both Wide IP created for mysite and my
 
 Validate the pool members for the WIDE IP list. You should see two members in the pool as shown in the diagram below
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-44-28.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-49-56.png)
+
+## Step 5: Validating Multi-site DNS Availability
+
+**note** BIG-IP needs to listeners for both 
+
+Validate the pool members for the WIDE IP list. You should see two members in the pool as shown in the diagram below
+
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-49-56.png)
