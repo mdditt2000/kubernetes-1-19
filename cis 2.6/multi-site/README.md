@@ -106,9 +106,9 @@ Example of **DataCenter** for both **east** amd **west**
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-54-11.png)
 
 
-**Note** CIS requires the **Server** created for **east** amd **west** created on both BIG-IP DNS devices
+**Note** CIS requires the **Server** for **east** amd **west** on both BIG-IP DNS devices
 
-* **Servers** with BIG-IP DNS under GSLB(DNS) by referring:
+* **Servers** for **east** BIG-IP DNS under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
