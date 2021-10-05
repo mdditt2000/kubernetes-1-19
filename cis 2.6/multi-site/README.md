@@ -127,8 +127,6 @@ Example of **DataCenter** for both **east** amd **west**
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
-*Note** CIS requires the **Server** for **east** amd **west** on both BIG-IP DNS devices
-
 * **Servers** for **west** BIG-IP DNS under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
@@ -149,23 +147,23 @@ Example of **DataCenter** for both **east** amd **west**
     
 **Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
-Create the mysite and myapp virtualservers CRDs for both **k8s19-cluster** and **k8s20-cluster**
+Create the mysite and myapp virtualservers CRDs for both for both Data Centers
 
 ```
 kubectl create -f vs-myapp.yaml
 kubectl create -f vs-mysite.yaml
 kubectl create -f customresourcedefinitions.yml
 ```
-* crd-resources k8s19-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s19-cluster/crd-example)
-* crd-resources k8s20-cluster [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/k8s20-cluster/crd-example)
+* crd-resources **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/crd-example)
+* crd-resources **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/crd-example)
 
-Validate both **virtualservers** crd's for **k8s19-cluster**
+Validate both **virtualservers** crd's for **east**
 
-![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-20.png)
+![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-14-19.png)
 
-Validate both **virtualservers** crd's for **k8s20-cluster**
+Validate both **virtualservers** crd's for **west**
 
-![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-02-32.png)
+![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-14-55.png)
 
 Connect the **mysite.f5demo.com** for both **k8s19-cluster** and **k8s20-cluster**
 
