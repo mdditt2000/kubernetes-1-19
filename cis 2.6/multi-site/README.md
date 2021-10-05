@@ -204,8 +204,10 @@ Validate the pool members for the WIDE IP list. You should see two members in th
 
 ## Step 5: Validating Multi-site DNS Availability
 
-**note** BIG-IP needs to listeners for both 
+**note** BIG-IP needs to listeners for both UDP and TCP for both **east**
 
-Validate the pool members for the WIDE IP list. You should see two members in the pool as shown in the diagram below
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-08-45.png)
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-49-56.png)
+**note** BIG-IP needs to listeners for both UDP and TCP for both **west**
+
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-08-45.png)
