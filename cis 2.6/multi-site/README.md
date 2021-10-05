@@ -93,11 +93,11 @@ kubectl create -f pod-deployment
 
 **Note** CIS requires **east** amd **west** **Data Center** created on both BIG-IP DNS devices
 
-* **DataCenter** for **east** and **west** **Kubernetes v19 cluster**
+* **DataCenter** **east** for **Kubernetes v19 cluster** and **Kubernetes v20 cluster**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-45-10.png)
 
-* **DataCenter** for **east** and **west** **Kubernetes v20 cluster**
+* **DataCenter** **west** for **Kubernetes v19 cluster** and **Kubernetes v20 cluster**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-46-35.png)
 
