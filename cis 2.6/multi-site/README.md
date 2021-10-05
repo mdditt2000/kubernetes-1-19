@@ -105,7 +105,6 @@ Example of **DataCenter** for both **east** amd **west**
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-54-11.png)
 
-
 **Note** CIS requires the **Server** for **east** amd **west** on both BIG-IP DNS devices
 
 * **Servers** for **east** BIG-IP DNS under GSLB(DNS) by referring:
@@ -118,36 +117,37 @@ Example of **DataCenter** for both **east** amd **west**
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-14-53.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-01.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_14-48-24.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-39.png)
     
-**Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS.
+**Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
-Example server creation for **big-ip-91-cluster** for **k8s19-cluster**
+*Note** CIS requires the **Server** for **east** amd **west** on both BIG-IP DNS devices
 
-* **Servers** with BIG-IP DNS under GSLB(DNS) by referring:
+* **Servers** for **west** BIG-IP DNS under GSLB(DNS) by referring:
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-47-43.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-38-58.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **External SelfIP**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-48-22.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-01.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
     - **Virtual Server Discovery enabled**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_13-49-10.png)
-
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-00-39.png)
+    
+**Note** Virtual Server Discovery must be enabled for this solution to work. We plan to enhance this in a upcoming release of CIS
 
 Create the mysite and myapp virtualservers CRDs for both **k8s19-cluster** and **k8s20-cluster**
 
