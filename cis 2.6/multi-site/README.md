@@ -211,3 +211,8 @@ Validate the pool members for the WIDE IP list. You should see two members in th
 **note** BIG-IP needs to listeners for both UDP and TCP for both **west**
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-11-50.png)
+
+**note** Setup the correct dedication for the NS records to point to the BIG-IP DNS. NS record for **mysite.f5demo.com** and **myapp.f5demo.com** are **east** and **west** BIG-IP DNS devices
+
+![delegation](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_22-20-36.png)
+
