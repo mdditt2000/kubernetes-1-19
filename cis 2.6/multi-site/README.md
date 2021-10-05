@@ -115,7 +115,7 @@ kubectl create -f pod-deployment
 
     - **DataCenter** with **BIG-IP device**
 
-![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_14-59-38.png)
+![Servers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-38-58.png)
 
 * **Servers** under GSLB(DNS) by referring:
 
