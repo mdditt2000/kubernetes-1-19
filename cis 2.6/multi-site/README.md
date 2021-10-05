@@ -198,10 +198,6 @@ Validate the WIDE IP list. You should see both Wide IP created for mysite and my
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-44-28.png)
 
-If the status for the Wide IP's show red then maybe the external DNS monitor has failed. Check the monitor
+Validate the pool members for the WIDE IP list. You should see two members in the pool as shown in the diagram below
 
-![monitor](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-20-20.png)
-
-Also validate the Send String
-
-![sendstring](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-20_15-21-00.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-44-28.png)
