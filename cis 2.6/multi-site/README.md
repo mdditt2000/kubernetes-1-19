@@ -157,37 +157,17 @@ kubectl create -f customresourcedefinitions.yml
 * crd-resources **east** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/east/crd-example)
 * crd-resources **west** [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.6/multi-site/west/crd-example)
 
-Validate both **virtualservers** crd's for **east**
+Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist for **east**
 
 ![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-14-19.png)
 
-Validate both **virtualservers** crd's for **west**
+Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist for **west**
 
 ![virtualservers](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_21-14-55.png)
 
-Connect the **mysite.f5demo.com** for both **k8s19-cluster** and **k8s20-cluster**
+If all the **virtualservers** are created, **green** and synchronized you can continue to **Step 4** and create the Wide IPs for both **east** and **west**
 
-![mysite](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-40-14.png)
-
-Connect the **myapp.f5demo.com** for both **k8s19-cluster** and **k8s20-cluster**
-
-![myapp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/edns/diagram/2021-09-17_13-39-58.png)
-
-Verify DataCenter and Server list could learn the new virtualservers LTM in the serverlist for both **k8s19-cluster** and **k8s20-cluster**
-
-![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-10-11.png)
-
-Verify the virtualservers created in the servicelist for **big-ip-60-cluster**
-
-![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-12-54.png)
-
-Verify the virtualservers created in the servicelist for **big-ip-91-cluster**
-
-![serverlist](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-09-24_15-14-21.png)
-
-If all the virtualservers are created, **green** and synchronized you can continue to Step 4 and create the Wide IPs for both **k8s19-cluster** and **k8s20-cluster**
-
-## Step 4: Create the WideIP's using the ExternalDNS CRDs for both k8s19-cluster and k8s20-cluster
+## Step 4: Create the WideIP's using the ExternalDNS CRDs for both east and west
 
 The diagram below show the **VirtualServer** and **ExternalDNS CRD** for **mysite.f5demo.com** in k8s19-cluster. Important to **Note** the following:
 
