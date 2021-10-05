@@ -101,6 +101,11 @@ kubectl create -f pod-deployment
 
 ![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-46-35.png)
 
+Example of **DataCenter** for both **east** amd **west**
+
+![DataCenter](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.6/multi-site/diagrams/2021-10-04_20-54-11.png)
+
+
 **Note** CIS requires the **Server** created for **east** amd **west** created on both BIG-IP DNS devices
 
 * **Servers** with BIG-IP DNS under GSLB(DNS) by referring:
