@@ -1,5 +1,3 @@
-# for reference only
-# Should be changed as per your cluster requirements
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -15,16 +13,15 @@ rules:
     resources: ["virtualservers","virtualservers/status", "tlsprofiles", "transportservers", "ingresslinks", "ingresslinks/status", "externaldnss", "policies"]
     verbs: ["get", "list", "watch", "update", "patch"]
   - apiGroups: ["fic.f5.com"]
-      resources: ["ipams", "ipams/status"]
-      verbs: ["get", "list", "watch", "update", "create", "patch", "delete"]
+    resources: ["ipams", "ipams/status"]
+    verbs: ["get", "list", "watch", "update", "create", "patch", "delete"]
   - apiGroups: ["apiextensions.k8s.io"]
-      resources: ["customresourcedefinitions"]
-      verbs: ["get", "list", "watch", "update", "create", "patch"]
+    resources: ["customresourcedefinitions"]
+    verbs: ["get", "list", "watch", "update", "create", "patch"]
   - apiGroups: ["", "extensions"]
     resources: ["secrets"]
     verbs: ["get", "list", "watch"]
 ---
-
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
