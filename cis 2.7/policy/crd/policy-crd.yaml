@@ -8,3 +8,5 @@ metadata:
 spec:
   l7Policies:
     waf: /Common/WAF_Policy
+  ltmPolicies:
+    type: /Common/Log all requests
