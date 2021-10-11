@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: f5-demo-https
+spec:
+  ports:
+    - name: https
+      protocol: TCP
+      port: 
+      targetPort: 443
+  selector:
+    app: f5-demo-https
+  type: ClusterIP
