@@ -8,6 +8,7 @@ spec:
   host: mysite.f5demo.com
   virtualServerAddress: "10.192.75.111"
   virtualServerHTTPSPort: 443
+  tlsProfileName: passthrough-tls
   snat: auto
   pools:
   - monitor:
