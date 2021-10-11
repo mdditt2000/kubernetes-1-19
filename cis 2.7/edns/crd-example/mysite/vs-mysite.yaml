@@ -7,7 +7,6 @@ metadata:
 spec:
   host: mysite.f5demo.com
   virtualServerAddress: "10.192.75.111"
-  virtualServerHTTPPort: 80
   snat: auto
   pools:
   - monitor:
@@ -15,7 +14,7 @@ spec:
       recv: ""
       send: /
       timeout: 10
-      type: http
+      type: https
     path: /
-    service: f5-demo
-    servicePort: 80
+    service: f5-demo-https
+    servicePort: 443
