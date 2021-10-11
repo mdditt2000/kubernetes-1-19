@@ -6,7 +6,7 @@ spec:
   ports:
     - name: https
       protocol: TCP
-      port: 
+      port: 443
       targetPort: 443
   selector:
     app: f5-demo-https
