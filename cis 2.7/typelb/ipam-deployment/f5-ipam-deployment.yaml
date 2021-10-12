@@ -22,8 +22,20 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image:  f5networks/f5-ipam-controller:0.1.5
+        image: f5networks/f5-ipam-controller:latest
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
-      serviceAccount: ipam-ctlr
-      serviceAccountName: ipam-ctlr
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - mountPath: /app/ipamdb
+          name: samplevol
+      securityContext:
+        fsGroup: 1200
+        runAsGroup: 1200
+        runAsUser: 1200
+      serviceAccount: bigip-controller
+      serviceAccountName: bigip-controller
+      volumes:
+      - name: samplevol
+        persistentVolumeClaim:
+          claimName: pvc-local
