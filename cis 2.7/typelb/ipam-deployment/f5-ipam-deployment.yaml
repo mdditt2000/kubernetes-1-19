@@ -22,7 +22,7 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image: f5networks/f5-ipam-controller:latest
+        image: f5networks/f5-ipam-controller:0.1.5
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
         terminationMessagePath: /dev/termination-log
