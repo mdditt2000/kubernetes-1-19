@@ -9,6 +9,7 @@ spec:
   virtualServerAddress: "10.192.75.111"
   virtualServerHTTPSPort: 443
   tlsProfileName: passthrough-tls
+  httpTraffic: redirect
   snat: auto
   pools:
   - monitor:

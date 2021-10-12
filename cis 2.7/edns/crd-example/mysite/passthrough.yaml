@@ -7,6 +7,5 @@ metadata:
 spec:
   tls:
     termination: passthrough
-    reference: bigip
   hosts:
   - mysite.f5demo.com
