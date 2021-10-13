@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     cis.f5.com/ipamLabel: Test
-  name: nginx-ingress-cis
+  name: nginx-ingress-service
   namespace: nginx-ingress
   labels:
     app: nginx-ingress
@@ -19,4 +19,6 @@ spec:
       name: https
   selector:
     app: nginx-ingress
-  type: ClusterIP
+  type: LoadBalancer
+status:
+  loadBalancer:
