@@ -28,7 +28,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         volumeMounts:
         - mountPath: /app/ipamdb
-          name: samplevol
+          name: local-pv
       securityContext:
         fsGroup: 1200
         runAsGroup: 1200
@@ -36,6 +36,6 @@ spec:
       serviceAccount: bigip-controller
       serviceAccountName: bigip-controller
       volumes:
-      - name: samplevol
+      - name: local-pv
         persistentVolumeClaim:
           claimName: pvc-local
