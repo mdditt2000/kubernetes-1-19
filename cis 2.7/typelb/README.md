@@ -29,13 +29,13 @@ Add BIG-IP credentials as Kubernetes Secrets and create the service account for 
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/cis/cis-deployment)
     
-Create CIS Custom Resource definition schema as follows:
+Create CIS CRD schema
 
     kubectl create -f customresourcedefinition.yaml
 
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-crd-schema/customresourcedefinition.yaml)
 
-Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file and Install CIS Controller in ClusterIP mode as follows:
+Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file
 
 * Add the following statements to the CIS deployment for CRD support for namespace nginx-ingress
 
@@ -49,7 +49,7 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
 
 * Add the parameter --ipam=true in the CIS deployment to provide the integration with CIS and IPAM
 
-    - --ipam=true
+    - "--ipam=true"
 
 Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
     
@@ -69,6 +69,34 @@ Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN K
 bigip-node [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-deployment/f5-bigip-node.yaml)
 
 **Step 2**
+
+### F5 IPAM Deploy Configuration Options
+
+Add the parameter
+
+* --orchestration=kubernetes - The orchestration parameter holds the orchestration environment i.e. Kubernetes
+* --ip-range='{"Test":"10.192.75.113-10.192.75.116"}' - ipamlabel that matches the service. Ranch of public IPs that CIS will configure BIG-IP
+* --log-level=debug - recommend info after testing
+
+```
+args:
+  - --orchestration=kubernetes
+  - --ip-range='{"Test":"10.192.75.113-10.192.75.116"}'
+  - --log-level=DEBUG
+```
+
+Deploy RBAC, Schema, F5 IPAM Controller and Persistent Volumes deployment files
+
+```
+
+kubectl create -f f5-ipam-ctlr-rbac.yaml
+kubectl create -f f5-ipam-schema.yaml
+kubectl create -f f5-ipam-persitentvolume.yaml
+kubectl create -f f5-ipam-deployment.yaml
+```
+ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/ipam-deployment)
+
+**Step 3**
 
 ### Nginx-Controller Installation
 
@@ -103,7 +131,7 @@ Create an IngressClass resource (for Kubernetes >= 1.18):
 
 Use a Deployment. When you run the Ingress Controller by using a Deployment, by default, Kubernetes will create one Ingress controller pod.
 
-Add the annotation to the nginx-service for service type loadbalancer to obtain the public IP address from IPAM 
+Add the annotation to the nginx-service for service **type=loadbalancer** to obtain the public IP address from IPAM 
 
 ```
   annotations:
