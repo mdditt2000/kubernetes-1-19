@@ -1,10 +1,10 @@
-# F5 IngressLink using ClusterIP User Guide
+# Simplifying Kubernestes Ingress using F5 Technologies
 
-The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service and Nginx Ingress Service. The purpose of this user guide is to documented and simply the configuration and steps required to configure Ingresslink
+The purpose of this user guide is to demonstrate the Kubernetes Ingress Solution using F5 BIG-IP and NGINX better together technologies. The document also simplifies the solution by providing examples and guidance. 
 
-F5 IngressLink is the first true integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
+F5 Ingress solution provides customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
 
-This architecture diagram demonstrates the IngressLink solution
+This architecture diagram demonstrates the simplified Kubernetes Ingress solution
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/diagram/2021-03-01_15-41-39.png)
 
@@ -14,18 +14,10 @@ On this page you’ll find:
 * Documentation for the solution(s)
 * A step by step configuration and deployment guide for F5 IngressLink
 
-## IngressLink Compatibility Matrix
-
-Minimum version to use IngressLink:
-
-| CIS | BIGIP | NGINX+ IC | AS3 |
-| ------ | ------ | ------ | ------ |
-| 2.4+ | v13.1+ | 1.10+ | 3.18+ | 
-
 * Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
-* CIS 2.4 private build [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
+* CIS 2.4 image [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
 * NGINX+ IC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink/clusterip/nginx-config)
-* Product Documentation [documentation](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)
+* Product Documentation [documentation](https://clouddocs.f5.com/containers/latest/)
 
 ## Configure F5 IngressLink with Kubernetes
 
