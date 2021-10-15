@@ -14,12 +14,6 @@ On this page you’ll find:
 * Documentation for the solution(s)
 * A step by step configuration and deployment guide
 
-* Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
-* CIS 2.6 image [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.6.0)
-* F5 IPAM image [repo](https://github.com/F5Networks/f5-ipam-controller/releases/tag/v0.1.5)
-* NGINX+ IC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink/clusterip/nginx-config)
-* Product Documentation [documentation](https://clouddocs.f5.com/containers/latest/)
-
 ## Configure F5 BIG-IP
 
 **Step 1:**
