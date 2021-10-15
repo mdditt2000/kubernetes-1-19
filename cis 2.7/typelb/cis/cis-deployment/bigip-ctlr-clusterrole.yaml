@@ -26,7 +26,7 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: bigip-ctlr-clusterrole-binding
-  namespace: <controller_namespace>
+  namespace: kube-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -34,5 +34,5 @@ roleRef:
 subjects:
   - apiGroup: ""
     kind: ServiceAccount
-    name: bigip-ctlr
-    namespace: <controller_namespace>
+    name: k8s-bigip-ctlr
+    namespace: kube-system
