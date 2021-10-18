@@ -42,15 +42,13 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
     - "--custom-resource-mode=true"
     - "--namespace=nginx-ingress"
 
-* To deploy the CIS controller in cluster mode update CIS deployment arguments as follows for kubernetes.
-
-    - "--pool-member-type=cluster"
-    - "--flannel-name=fl-vxlan"
-
-Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
+* To deploy the CIS controller in cluster mode update CIS deployment arguments as follows for kubernetes. Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
     
 * You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
 * VXLAN tunnel should be configured from Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
+
+    - "--pool-member-type=cluster"
+    - "--flannel-name=fl-vxlan"
 
 * Add the **IPAM parameter** in the CIS deployment to provide **type loadbalance** support
 
