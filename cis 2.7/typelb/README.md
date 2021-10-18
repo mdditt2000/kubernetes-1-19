@@ -29,13 +29,13 @@ Add BIG-IP credentials as Kubernetes Secrets and create the service account requ
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/cis/cis-deployment)
     
-Create CIS CRD schema
+### Create CIS CRD schema
 
     kubectl create -f customresourcedefinition.yaml
 
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-crd-schema/customresourcedefinition.yaml)
 
-Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment manifest
+### Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment manifest
 
 * Add the following statements to the CIS deployment for CRD support for namespace nginx-ingress
 
@@ -62,7 +62,7 @@ kubectl create -f f5-cis-deployment.yaml
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-deployment/f5-cis-deployment.yaml)
 
-Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN Kubernetes using ClusterIP
+### Configure BIG-IP as a node in the Kubernetes cluster. This is required for OVN Kubernetes using ClusterIP
 
     kubectl create -f f5-bigip-node.yaml
 
