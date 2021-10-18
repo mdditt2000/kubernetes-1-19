@@ -70,7 +70,7 @@ bigip-node [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%
 
 ### F5 IPAM Deploy Configuration Options
 
-The LoadBalancer Service type provisions an external IP address. CIS uses IPAM integration to provisions this external IP address on BIG-IP. F5 IPAM controller is required for this solution. Add the following configuration parameter to the IPAM manifest:
+The **LoadBalancer Service type** provisions an external IP address. CIS uses IPAM integration to provisions this external IP address on BIG-IP. F5 IPAM controller is required for this solution. Add the following configuration parameter to the IPAM manifest:
 
 * --orchestration=kubernetes - The orchestration parameter holds the orchestration environment i.e. Kubernetes
 * --ip-range='{"Test":"10.192.75.113-10.192.75.116"}' - ipamlabel that matches the service. Ranch of public IPs that CIS will configure BIG-IP
