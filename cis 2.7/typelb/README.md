@@ -114,6 +114,10 @@ ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 ### Nginx-Controller Installation
 
+This diagram demonstrates the how CIS and IPAM work together for the **LoadBalancer Service type**
+
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-15_14-05-41.png)
+
 Create NGINX IC custom resource definitions for VirtualServer and VirtualServerRoute, TransportServer and Policy resources:
 
     kubectl apply -f k8s.nginx.org_virtualservers.yaml
@@ -143,9 +147,7 @@ Create an IngressClass resource (for Kubernetes >= 1.18):
     
     kubectl apply -f nginx-config/ingress-class.yaml
 
-Use a Deployment. When you run the Ingress Controller by using a Deployment, by default, Kubernetes will create one Ingress controller pod.
-
-Add the annotation to the nginx-service for service **type=loadbalancer** to obtain the public IP address from IPAM 
+Add the annotation to the nginx-service for **LoadBalancer Service type** to obtain the public IP address from IPAM.
 
 ```
   annotations:
@@ -159,6 +161,14 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
     kubectl apply -f nginx-config/nginx-service.yaml
 
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/typelb/nginx-config)
+
+Validate that the EXTERNAL-IP is populated 
+
+```
+❯ kubectl get service -n nginx-ingress
+NAME                    TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+nginx-ingress-service   LoadBalancer   10.97.193.45   10.192.75.113   80:30004/TCP,443:31530/TCP   2d22h
+```
 
 **Step 3**
 
@@ -183,3 +193,4 @@ ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 **Step 4**
 
 ### Test the Application
+
