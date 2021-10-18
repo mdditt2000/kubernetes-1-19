@@ -1,4 +1,4 @@
-# Simplifying Kubernestes Ingress using F5 Technologies
+# Simplifying Kubernetes Ingress using F5 Technologies
 
 The purpose of this document is to demonstrate Kubernetes Ingress using F5 BIG-IP and NGINX technologies. This user-guide simplifies the solution by providing examples and step by step guidance. 
 
@@ -50,7 +50,7 @@ cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/
     - "--pool-member-type=cluster"
     - "--flannel-name=fl-vxlan"
 
-* Add the **IPAM parameter** in the CIS deployment to provide **type loadbalance** support
+* Add the **IPAM parameter** in the CIS deployment to provide **LoadBalancer Service type** support
 
     - "--ipam=true"
 
@@ -70,7 +70,7 @@ bigip-node [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%
 
 ### F5 IPAM Deploy Configuration Options
 
-Add the parameter
+The LoadBalancer Service type provisions an external IP address. CIS uses IPAM integration to provisions this external IP address on BIG-IP. F5 IPAM controller is required for this solution. Add the following configuration parameter to the IPAM manifest:
 
 * --orchestration=kubernetes - The orchestration parameter holds the orchestration environment i.e. Kubernetes
 * --ip-range='{"Test":"10.192.75.113-10.192.75.116"}' - ipamlabel that matches the service. Ranch of public IPs that CIS will configure BIG-IP
@@ -83,10 +83,27 @@ args:
   - --log-level=DEBUG
 ```
 
-Deploy RBAC, Schema, F5 IPAM Controller and Persistent Volumes deployment files
+Modify the persistent volume manifest file that meets your kubernetes deployment 
+
+```
+- ReadWriteOnce
+  storageClassName: local-storage
+  local:
+    path: /tmp/cis_ipam
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - k8s-1-19-node1.example.com
 
 ```
 
+### Deploy RBAC, Schema, F5 IPAM Controller and Persistent Volumes deployment files
+
+```
 kubectl create -f f5-ipam-ctlr-rbac.yaml
 kubectl create -f f5-ipam-schema.yaml
 kubectl create -f f5-ipam-persitentvolume.yaml
