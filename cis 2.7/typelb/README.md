@@ -98,7 +98,6 @@ Modify the persistent volume manifest file that meets your kubernetes deployment
           operator: In
           values:
           - k8s-1-19-node1.example.com
-
 ```
 
 ### Deploy RBAC, Schema, F5 IPAM Controller and Persistent Volumes deployment files
