@@ -2,7 +2,7 @@
 
 The purpose of this document is to demonstrate Kubernetes Ingress using F5 BIG-IP and NGINX technologies. This user-guide simplifies the solution by providing examples and step by step guidance. 
 
-F5 Ingress solution provides customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
+F5 Ingress solution provides you with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
 
 This architecture diagram demonstrates the simplified Kubernetes Ingress solution
 
@@ -20,7 +20,7 @@ On this page you’ll find:
 
 ### Install the CIS Controller 
 
-Add BIG-IP credentials as Kubernetes Secrets and create the service account for deploying CIS and communicating the IPAM
+Add BIG-IP credentials as Kubernetes Secrets and create the service account required for deploying CIS
 
     kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
     kubectl create serviceaccount bigip-ctlr -n kube-system
@@ -35,7 +35,7 @@ Create CIS CRD schema
 
 cis-crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/cis/cis-crd-schema/customresourcedefinition.yaml)
 
-Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment file
+Update the bigip address, partition and other details(image, imagePullSecrets, etc) in CIS deployment manifest
 
 * Add the following statements to the CIS deployment for CRD support for namespace nginx-ingress
 
@@ -47,14 +47,14 @@ Update the bigip address, partition and other details(image, imagePullSecrets, e
     - "--pool-member-type=cluster"
     - "--flannel-name=fl-vxlan"
 
-* Add the parameter --ipam=true in the CIS deployment to provide the integration with CIS and IPAM
-
-    - "--ipam=true"
-
 Additionally, if you are deploying the CIS in Cluster Mode you need to have following prerequisites. For more information, see [Deployment Options](https://clouddocs.f5.com/containers/latest/userguide/config-options.html#config-options)
     
 * You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
 * VXLAN tunnel should be configured from Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
+
+* Add the **IPAM parameter** in the CIS deployment to provide **type loadbalance** support
+
+    - "--ipam=true"
 
 ```
 kubectl create -f f5-cis-deployment.yaml
