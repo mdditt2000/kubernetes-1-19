@@ -116,7 +116,7 @@ ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 This diagram demonstrates the how CIS and IPAM work together for the **LoadBalancer Service type**
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-15_14-05-41.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-30-40.png)
 
 Create NGINX IC custom resource definitions for VirtualServer and VirtualServerRoute, TransportServer and Policy resources:
 
