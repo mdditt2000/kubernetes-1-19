@@ -1,6 +1,6 @@
 # Simplifying Kubernestes Ingress using F5 Technologies
 
-The purpose of this user guide is to demonstrate the Kubernetes Ingress Solution using F5 BIG-IP and NGINX better together technologies. The document also simplifies the solution by providing examples and guidance. 
+The purpose of this document is to demonstrate Kubernetes Ingress using F5 BIG-IP and NGINX technologies. This user-guide simplifies the solution by providing examples and step by step guidance. 
 
 F5 Ingress solution provides customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
 
