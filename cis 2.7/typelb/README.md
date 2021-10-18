@@ -116,7 +116,7 @@ ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 This diagram demonstrates the how CIS and IPAM work together for the **LoadBalancer Service type**
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-30-40.png)
+![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-30-40.png)
 
 Create NGINX IC custom resource definitions for VirtualServer and VirtualServerRoute, TransportServer and Policy resources:
 
@@ -194,3 +194,16 @@ ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 ### Test the Application
 
+Validate the external IP address on BIG-IP
+
+![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-50-41.png)
+
+Connext to Cafe App for Coffee and Tea
+
+* cafe.example.com/coffee
+
+![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-53-34.png)
+
+* cafe.example.com/tea
+
+![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/typelb/diagram/2021-10-18_14-53-03.png)
