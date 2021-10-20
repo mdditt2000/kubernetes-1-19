@@ -1,4 +1,6 @@
-## Creating VXLAN Tunnels on Kubernetes Cluster¶
+## Creating VXLAN Tunnels on Kubernetes Cluster
+
+This configuration is for Standalone BIG-IP
 
 Log in to BIG-IP and create a partition called kubernetes for CIS
 
