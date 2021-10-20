@@ -12,7 +12,7 @@ Create a VXLAN profile
 
 Create a VXLAN tunnel
 
-   tmsh create net tunnels tunnel fl-vxlan key 1 profile fl-vxlan local-address 10.1.1.4
+    tmsh create net tunnels tunnel fl-vxlan key 1 profile fl-vxlan local-address 10.1.1.4
 
 Create the VXLAN tunnel self IP
 
