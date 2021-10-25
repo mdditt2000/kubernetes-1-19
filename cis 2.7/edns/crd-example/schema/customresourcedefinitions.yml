@@ -365,9 +365,6 @@ spec:
                   items:
                     type: object
                     properties:
-                      name:
-                        type: string
-                        pattern: '^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$'
                       dataServerName:
                         type: string
                       dnsRecordType:
@@ -380,7 +377,7 @@ spec:
                         properties:
                           type:
                             type: string
-                            enum: [http, https, tcp]
+                            enum: [http, https]
                           send:
                             type: string
                           recv:
@@ -394,7 +391,6 @@ spec:
                           - send
                           - interval
                     required:
-                      - name
                       - dataServerName
               required:
                 - domainName
@@ -405,6 +401,9 @@ spec:
           jsonPath: .spec.domainName
         - name: Age
           type: date
+          jsonPath: .metadata.creationTimestamp
+        - name: CREATED ON
+          type: string
           jsonPath: .metadata.creationTimestamp
 ---
 apiVersion: apiextensions.k8s.io/v1
@@ -435,6 +434,8 @@ spec:
                 virtualServerAddress:
                   type: string
                   pattern: '^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$'
+                ipamLabel:
+                  type: string
                 iRules:
                   type: array
                   items:
@@ -446,3 +447,18 @@ spec:
                         type: string
                       type: object
                   type: object
+            status:
+              type: object
+              properties:
+                vsAddress:
+                  type: string
+      additionalPrinterColumns:
+        - name: IPAMVSAddress
+          type: string
+          description: IP address of virtualServer
+          jsonPath: .status.vsAddress
+        - name: Age
+          type: date
+          jsonPath: .metadata.creationTimestamp
+      subresources:
+        status: { }
