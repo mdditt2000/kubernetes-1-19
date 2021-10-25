@@ -388,7 +388,6 @@ spec:
                             type: integer
                         required:
                           - type
-                          - send
                           - interval
                     required:
                       - dataServerName
