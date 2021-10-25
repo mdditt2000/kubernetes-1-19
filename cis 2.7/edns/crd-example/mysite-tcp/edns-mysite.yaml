@@ -14,7 +14,5 @@ spec:
     dataServerName: /Common/east
     monitor:
       type: tcp
-      send: "GET / \r\n"
-      recv: ""
       interval: 10
       timeout: 30
