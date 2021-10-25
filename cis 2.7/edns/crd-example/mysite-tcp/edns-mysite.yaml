@@ -15,7 +15,7 @@ spec:
     dataServerName: /Common/east
     monitor:
       type: tcp
-      send: "GET / HTTP/1.1\r\nHost: mysite.f5demo.com\r\n"
+      send: "GET / \r\n"
       recv: ""
       interval: 10
       timeout: 30
