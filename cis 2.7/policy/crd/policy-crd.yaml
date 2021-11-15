@@ -8,6 +8,10 @@ metadata:
 spec:
   l7Policies:
     waf: /Common/WAF_Policy
+  l3Policies:
+    firewallPolicy: /Common/WEB_Policy
+  profiles:
+    http: /Common/Custom_HTTP
   profiles:
     logProfiles:
       - /Common/Log all requests
