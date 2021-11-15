@@ -9,5 +9,5 @@ spec:
   l7Policies:
     waf: /Common/WAF_Policy
   profiles:
-    http: /Common/Custom_HTTP
-    tcp: /Common/Custom_TCP
+    logProfiles:
+      - /Common/Log all requests
