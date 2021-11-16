@@ -12,6 +12,5 @@ spec:
     firewallPolicy: /Common/WEB_Policy
   profiles:
     http: /Common/Custom_HTTP
-  profiles:
     logProfiles:
       - /Common/Log all requests
