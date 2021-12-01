@@ -1,0 +1,25 @@
+bigip_login_secret: c2-dc0-bigip-secret
+rbac:
+  create: true
+serviceAccount:
+  create: true
+  name:
+namespace: kube-system
+args:
+  bigip_url: 10.21.17.1
+  bigip_partition: c2-dc0-k-nonprod
+  log_level: DEBUG
+  pool_member_type: nodeport
+  insecure: true
+  as3_validation: true
+  custom_resource_mode: true
+image:
+  user: f5networks
+  repo: k8s-bigip-ctlr
+  pullPolicy: Always
+nodeSelector: {}
+tolerations: []
+livenessProbe: {}
+readinessProbe: {}
+resources: {}
+version: latest
