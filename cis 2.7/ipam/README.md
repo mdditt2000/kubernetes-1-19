@@ -2,7 +2,7 @@
 
 The purpose of this document is to share the content for the CIS/IPAM learning session
 
-Presentation[ppt](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/ipam/documents/CIS%20iPAM%20Learning%20Session.pptx)
+Presentation [ppt](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/ipam/documents/CIS%20iPAM%20Learning%20Session.pptx)
 
 ## Product Documentation
 
