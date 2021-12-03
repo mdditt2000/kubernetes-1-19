@@ -9,7 +9,7 @@ volumeBindingMode: WaitForFirstConsumer
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv
+  name: pvc-local
 spec:
   capacity:
     storage: 1Gi
@@ -26,7 +26,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - k8s-1-19-node1.example.com
+          - k8s-1-19-node1.lab.fp.f5net.com
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
