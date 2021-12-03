@@ -1,0 +1,13 @@
+{
+    "declaration": {
+        "c1-dc2-k-prod": {
+            "Shared": {
+                "ingress_10_4_5_215_80": {
+                    "policyFirewallEnforced": {
+                        "bigip": "/Common/dc2_afm_policy_k8s_temp"
+                    }
+                }
+            }
+        }
+    }
+}
