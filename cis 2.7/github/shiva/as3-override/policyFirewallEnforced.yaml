@@ -16,7 +16,17 @@ data:
                         "policyFirewallEnforced": {
                             "bigip": "/Common/dc2_afm_policy_k8s_temp"
                         }
-                    }
+                    },
+                    "ingress_10_4_5_216_80": {   ---------------------------- New Ingress
+                        "policyFirewallEnforced": {
+                            "bigip": "/Common/dc2_afm_policy_k8s_temp"
+                        }
+                    },
+                    "ingress_10_4_5_217_80": {   ---------------------------- New Ingress
+                        "policyFirewallEnforced": {
+                            "bigip": "/Common/dc2_afm_policy_k8s_temp"
+                        }
+                    },
                 }
             }
         }
