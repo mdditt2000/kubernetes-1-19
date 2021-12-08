@@ -15,18 +15,19 @@ data:
                     "ingress_10_4_5_215_80": {
                         "policyFirewallEnforced": {
                             "bigip": "/Common/dc2_afm_policy_k8s_temp"
-                        }
-                    },
-                    "ingress_10_4_5_216_80": {   ---------------------------- New Ingress
-                        "policyFirewallEnforced": {
-                            "bigip": "/Common/dc2_afm_policy_k8s_temp"
-                        }
-                    },
-                    "ingress_10_4_5_217_80": {   ---------------------------- New Ingress
-                        "policyFirewallEnforced": {
-                            "bigip": "/Common/dc2_afm_policy_k8s_temp"
-                        }
-                    },
+                        },
+                        "snat": {
+                            "bigip": "/Common/dc2_snat_k8s_1047"
+                        },
+                        "iRules": [
+                            {
+                                "bigip": "/Common/dc1_ltm_irule_new_media_uri_public_drop"
+                            },
+                            {
+                                "bigip": "/Common/cos_irule_jira_uri_blocks"
+                            }
+                        ]
+                    }
                 }
             }
         }
