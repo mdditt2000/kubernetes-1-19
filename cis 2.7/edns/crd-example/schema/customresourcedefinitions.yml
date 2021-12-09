@@ -370,12 +370,12 @@ spec:
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: externaldns.cis.f5.com
+  name: externaldnses.cis.f5.com
 spec:
   group: cis.f5.com
   names:
     kind: ExternalDNS
-    plural: externaldns
+    plural: externaldnses
     shortNames:
       - edns
     singular: externaldns
