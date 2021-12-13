@@ -8,6 +8,7 @@ spec:
   host: mysite.f5demo.com
   virtualServerAddress: "10.192.75.111"
   hostGroup: "f5demo"
+  pools:
   - monitor:
       interval: 20
       recv: ""
