@@ -18,7 +18,7 @@ spec:
       - env:
         - name: service_name
           value: f5-demo
-        image: f5devcentral/f5-demo
+        image: f5devcentral/f5-demo-httpd
         imagePullPolicy: Always
         name: f5-demo
         ports:
