@@ -19,7 +19,7 @@ spec:
       recv: ""
       send: /
       timeout: 10
-      type: https
+      type: http
     path: /myapp
     service: f5-demo
     servicePort: 80
@@ -39,7 +39,7 @@ spec:
       recv: ""
       send: /
       timeout: 10
-      type: https
+      type: http
     path: /mysite
     service: f5-demo
     servicePort: 80
