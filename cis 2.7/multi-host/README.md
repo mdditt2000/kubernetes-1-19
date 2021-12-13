@@ -6,7 +6,7 @@ Multi-host feature allows CIS to support a single HTTP VirtualServer on BIG-IP f
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: coffee-virtual-server
+  name: myapp-virtual-server
   labels:
     f5cr: "true"
 spec:
@@ -27,7 +27,7 @@ spec:
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: tea-virtual-server
+  name: mysite-virtual-server
   labels:
     f5cr: "true"
 spec:
