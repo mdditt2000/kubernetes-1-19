@@ -1,3 +1,5 @@
+# for reference only
+# Should be changed as per your cluster requirements
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -10,7 +12,7 @@ rules:
     resources: ["configmaps", "events", "ingresses/status", "services/status"]
     verbs: ["get", "list", "watch", "update", "create", "patch"]
   - apiGroups: ["cis.f5.com"]
-    resources: ["virtualservers","virtualservers/status", "tlsprofiles", "transportservers", "ingresslinks", "ingresslinks/status", "externaldnses", "policies"]
+    resources: ["virtualservers","virtualservers/status", "tlsprofiles", "transportservers", "transportservers/status", "ingresslinks", "ingresslinks/status", "externaldnses", "policies"]
     verbs: ["get", "list", "watch", "update", "patch"]
   - apiGroups: ["fic.f5.com"]
     resources: ["ipams", "ipams/status"]
@@ -34,5 +36,11 @@ roleRef:
 subjects:
   - apiGroup: ""
     kind: ServiceAccount
-    name: k8s-bigip-ctlr
+    name: bigip-ctlr
     namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bigip-ctlr
+  namespace: kube-system
