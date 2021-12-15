@@ -33,8 +33,8 @@ spec:
         fsGroup: 1200
         runAsGroup: 1200
         runAsUser: 1200
-      serviceAccount: ipam-ctlr
-      serviceAccountName: ipam-ctlr
+      serviceAccount: bigip-ctlr
+      serviceAccountName: bigip-ctlr
       volumes:
       - name: local-pv
         persistentVolumeClaim:
