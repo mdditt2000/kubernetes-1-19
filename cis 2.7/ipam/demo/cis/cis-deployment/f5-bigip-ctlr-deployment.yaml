@@ -18,7 +18,7 @@ spec:
       # permissions
       containers:
         - name: k8s-bigip-ctlr
-          image: "quay.io/f5networks/k8s-bigip-ctlr-devel:44af2a06e488980d937fa3000decff102a1143e0"
+          image: "vklohiya1/k8s-bigip-ctlr:2.7.0-1"
           env:
             - name: BIGIP_USERNAME
               valueFrom:
