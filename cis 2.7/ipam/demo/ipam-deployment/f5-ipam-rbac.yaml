@@ -19,11 +19,11 @@ roleRef:
 subjects:
   - apiGroup: ""
     kind: ServiceAccount
-    name: ipam-ctlr
+    name: bigip-ctlr
     namespace: kube-system
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: ipam-ctlr
+  name: bigip-ctlr
   namespace: kube-system
