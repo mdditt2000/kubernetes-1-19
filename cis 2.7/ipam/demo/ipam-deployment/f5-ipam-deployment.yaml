@@ -22,7 +22,7 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image: quay.io/f5networks/f5-ipam-controller-devel:410e5df250ded1602188affab6fe8566fec2e9e2
+        image: f5networks/f5-ipam-controller:0.1.5
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
         terminationMessagePath: /dev/termination-log
