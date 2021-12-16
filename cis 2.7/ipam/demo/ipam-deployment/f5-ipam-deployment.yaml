@@ -22,7 +22,7 @@ spec:
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
-        image: f5networks/f5-ipam-controller:0.1.5
+        image: quay.io/f5networks/f5-ipam-controller-devel:410e5df250ded1602188affab6fe8566fec2e9e2
         imagePullPolicy: IfNotPresent
         name: f5-ipam-controller
         terminationMessagePath: /dev/termination-log
@@ -33,8 +33,8 @@ spec:
         fsGroup: 1200
         runAsGroup: 1200
         runAsUser: 1200
-      serviceAccount: ipam-ctlr
-      serviceAccountName: ipam-ctlr
+      serviceAccount: bigip-ctlr
+      serviceAccountName: bigip-ctlr
       volumes:
       - name: local-pv
         persistentVolumeClaim:
