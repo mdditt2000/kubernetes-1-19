@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: f5-server
+  name: k8s-bigip-ctlr-deployment
   namespace: kube-system
 spec:
   # DO NOT INCREASE REPLICA COUNT
   replicas: 1
   selector:
     matchLabels:
-      app: f5-server
+      app: k8s-bigip-ctlr-deployment
   template:
     metadata:
       labels:
-        app: f5-server
+        app: k8s-bigip-ctlr-deployment
     spec:
       # Name of the Service Account bound to a Cluster Role with the required
       # permissions
       containers:
-        - name: f5-server
-          image: "vklohiya1/k8s-bigip-ctlr:2.7.0-1"
+        - name: k8s-bigip-ctlr-deployment
+          image: "quay.io/f5networks/k8s-bigip-ctlr-devel:333ead8a900f7e9b2af862da13c39f4375359ba2"
           env:
             - name: BIGIP_USERNAME
               valueFrom:
@@ -51,5 +51,6 @@ spec:
               "--as3-validation=true",
               "--log-as3-response=true",
               "--ipam=true",
+              "--disable-teems=true",
           ]
       serviceAccountName: bigip-ctlr
