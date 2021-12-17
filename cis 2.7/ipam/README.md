@@ -93,4 +93,85 @@ Name:         ipam-ctlr-clusterrole
   ipams.fic.f5.com         []                 []              [get list watch update patch]
 ```
 
+### Step 4 
 
+Validate the log output when creating the CRD. Use the following log command below
+
+```
+❯ kubectl logs -f deploy/k8s-bigip-ctlr-deployment -n kube-system | grep --color=auto -i '\[as3\|posting\|response from\|ipam'
+2021/12/17 05:38:52 [DEBUG] [AS3] No certs appended, using only system certs
+2021/12/17 05:38:55 [INFO] Posting GET BIGIP AS3 Version request on https://192.168.200.60/mgmt/shared/appsvcs/info
+2021/12/17 05:38:55 [DEBUG] [ipam] Created IPAM Custom Resource:
+&{{ } {k8s-bigip-ctlr-deployment.k8s.ipam  kube-system /apis/fic.f5.com/v1/namespaces/kube-system/ipams/k8s-bigip-ctlr-deployment.k8s.ipam c5aa891b-1a61-47d5-be3a-bbe573b3f631 104061339 1 2021-12-17 05:40:04 +0000 UTC <nil> <nil> map[] map[] [] []  [{k8s-bigip-ctlr.real Update fic.f5.com/v1 2021-12-17 05:40:04 +0000 UTC FieldsV1 {"f:spec":{},"f:status":{}}}]} {[]} {[]}}
+2021/12/17 05:38:55 [INFO] Enqueueing IPAM: &{{IPAM fic.f5.com/v1} {k8s-bigip-ctlr-deployment.k8s.ipam  kube-system /apis/fic.f5.com/v1/namespaces/kube-system/ipams/k8s-bigip-ctlr-deployment.k8s.ipam c5aa891b-1a61-47d5-be3a-bbe573b3f631 104061339 1 2021-12-17 05:40:04 +0000 UTC <nil> <nil> map[] map[] [] []  [{k8s-bigip-ctlr.real Update fic.f5.com/v1 2021-12-17 05:40:04 +0000 UTC FieldsV1 {"f:spec":{},"f:status":{}}}]} {[]} {[]}}
+I1217 05:38:55.645395       1 shared_informer.go:240] Waiting for caches to sync for F5 IPAMClient Controller
+2021/12/17 05:38:55 [DEBUG] Processing Key: &{kube-system IPAM k8s-bigip-ctlr-deployment.k8s.ipam 0xc00081a6e0 false}
+2021/12/17 05:38:55 [DEBUG] [ipam] Syncing IPAM dependent virtual servers
+2021/12/17 05:38:55 [DEBUG] [ipam] Syncing IPAM dependent transport servers
+I1217 05:38:55.745611       1 shared_informer.go:247] Caches are synced for F5 IPAMClient Controller
+2021/12/17 05:56:42 [DEBUG] Enqueueing VirtualServer: &{{ } {f5-demo-mysite  default /apis/cis.f5.com/v1/namespaces/default/virtualservers/f5-demo-mysite 32dddf1e-3326-41a8-b176-79596fa1e7a9 104064151 1 2021-12-17 05:57:51 +0000 UTC <nil> <nil> map[f5cr:true] map[] [] []  [{kubectl-create Update cis.f5.com/v1 2021-12-17 05:57:51 +0000 UTC FieldsV1 {"f:metadata":{"f:labels":{".":{},"f:f5cr":{}}},"f:spec":{".":{},"f:host":{},"f:ipamLabel":{},"f:pools":{}}}}]} {mysite.f5demo.com   Test  0 0 [{/ f5-demo 80  {http /  10 31} }]      [] [] [] } { }}
+2021/12/17 05:56:42 [DEBUG] [ipam] Updated IPAM CR.
+2021/12/17 05:56:42 [DEBUG] Finished syncing virtual servers &{TypeMeta:{Kind: APIVersion:} ObjectMeta:{Name:f5-demo-mysite GenerateName: Namespace:default SelfLink:/apis/cis.f5.com/v1/namespaces/default/virtualservers/f5-demo-mysite UID:32dddf1e-3326-41a8-b176-79596fa1e7a9 ResourceVersion:104064151 Generation:1 CreationTimestamp:2021-12-17 05:57:51 +0000 UTC DeletionTimestamp:<nil> DeletionGracePeriodSeconds:<nil> Labels:map[f5cr:true] Annotations:map[] OwnerReferences:[] Finalizers:[] ClusterName: ManagedFields:[{Manager:kubectl-create Operation:Update APIVersion:cis.f5.com/v1 Time:2021-12-17 05:57:51 +0000 UTC FieldsType:FieldsV1 FieldsV1:{"f:metadata":{"f:labels":{".":{},"f:f5cr":{}}},"f:spec":{".":{},"f:host":{},"f:ipamLabel":{},"f:pools":{}}}}]} Spec:{Host:mysite.f5demo.com HostGroup: VirtualServerAddress: IPAMLabel:Test VirtualServerName: VirtualServerHTTPPort:0 VirtualServerHTTPSPort:0 Pools:[{Path:/ Service:f5-demo ServicePort:80 NodeMemberLabel: Monitor:{Type:http Send:/ Recv: Interval:10 Timeout:31} Rewrite:}] TLSProfileName: HTTPTraffic: SNAT: WAF: RewriteAppRoot: AllowVLANs:[] IRules:[] ServiceIPAddress:[] PolicyName:} Status:{VSAddress: StatusOk:}} (10.129434ms)
+2021/12/17 05:56:42 [DEBUG] Processing Key: &{kube-system IPAM k8s-bigip-ctlr-deployment.k8s.ipam 0xc00081ac60 false}
+2021/12/17 05:56:42 [INFO] Enqueueing Updated IPAM: &{{ } {k8s-bigip-ctlr-deployment.k8s.ipam  kube-system /apis/fic.f5.com/v1/namespaces/kube-system/ipams/k8s-bigip-ctlr-deployment.k8s.ipam c5aa891b-1a61-47d5-be3a-bbe573b3f631 104064153 2 2021-12-17 05:40:04 +0000 UTC <nil> <nil> map[] map[] [] []  [{f5-ipam-controller Update fic.f5.com/v1 2021-12-17 05:57:51 +0000 UTC FieldsV1 {"f:status":{".":{},"f:IPStatus":{}}}} {k8s-bigip-ctlr.real Update fic.f5.com/v1 2021-12-17 05:57:51 +0000 UTC FieldsV1 {"f:spec":{".":{},"f:hostSpecs":{}}}}]} {[0xc000783650]} {[0xc000b72780]}}
+2021/12/17 05:56:42 [DEBUG] [ipam] Syncing IPAM dependent virtual servers
+2021/12/17 05:56:42 [DEBUG] Finished syncing virtual servers &{TypeMeta:{Kind: APIVersion:} ObjectMeta:{Name:f5-demo-mysite GenerateName: Namespace:default SelfLink:/apis/cis.f5.com/v1/namespaces/default/virtualservers/f5-demo-mysite UID:32dddf1e-3326-41a8-b176-79596fa1e7a9 ResourceVersion:104064151 Generation:1 CreationTimestamp:2021-12-17 05:57:51 +0000 UTC DeletionTimestamp:<nil> DeletionGracePeriodSeconds:<nil> Labels:map[f5cr:true] Annotations:map[] OwnerReferences:[] Finalizers:[] ClusterName: ManagedFields:[{Manager:kubectl-create Operation:Update APIVersion:cis.f5.com/v1 Time:2021-12-17 05:57:51 +0000 UTC FieldsType:FieldsV1 FieldsV1:{"f:metadata":{"f:labels":{".":{},"f:f5cr":{}}},"f:spec":{".":{},"f:host":{},"f:ipamLabel":{},"f:pools":{}}}}]} Spec:{Host:mysite.f5demo.com HostGroup: VirtualServerAddress: IPAMLabel:Test VirtualServerName: VirtualServerHTTPPort:0 VirtualServerHTTPSPort:0 Pools:[{Path:/ Service:f5-demo ServicePort:80 NodeMemberLabel: Monitor:{Type:http Send:/ Recv: Interval:10 Timeout:31} Rewrite:}] TLSProfileName: HTTPTraffic: SNAT: WAF: RewriteAppRoot: AllowVLANs:[] IRules:[] ServiceIPAddress:[] PolicyName:} Status:{VSAddress:10.192.75.117 StatusOk:}} (4.451673ms)
+2021/12/17 05:56:42 [DEBUG] [ipam] Syncing IPAM dependent transport servers
+2021/12/17 05:56:42 [DEBUG] [AS3] PostManager Accepted the configuration
+2021/12/17 05:56:42 [DEBUG] [AS3] posting request to https://192.168.200.60/mgmt/shared/appsvcs/declare/
+2021/12/17 05:56:47 [DEBUG] [AS3] Response from BIG-IP: code: 200 --- tenant:k8s --- message: success
+2021/12/17 05:56:47 [DEBUG] Enqueueing VirtualServer: &{{ } {f5-demo-mysite  default /apis/cis.f5.com/v1/namespaces/default/virtualservers/f5-demo-mysite 32dddf1e-3326-41a8-b176-79596fa1e7a9 104064166 1 2021-12-17 05:57:51 +0000 UTC <nil> <nil> map[f5cr:true] map[] [] []  [{kubectl-create Update cis.f5.com/v1 2021-12-17 05:57:51 +0000 UTC FieldsV1 {"f:metadata":{"f:labels":{".":{},"f:f5cr":{}}},"f:spec":{".":{},"f:host":{},"f:ipamLabel":{},"f:pools":{}}}} {k8s-bigip-ctlr.real Update cis.f5.com/v1 2021-12-17 05:57:56 +0000 UTC FieldsV1 {"f:status":{".":{},"f:status":{},"f:vsAddress":{}}}}]} {mysite.f5demo.com   Test  0 0 [{/ f5-demo 80  {http /  10 31} }]      [] [] [] } {10.192.75.117 Ok}}
+2021/12/17 05:56:47 [DEBUG] Finished syncing virtual servers &{TypeMeta:{Kind: APIVersion:} ObjectMeta:{Name:f5-demo-mysite GenerateName: Namespace:default SelfLink:/apis/cis.f5.com/v1/namespaces/default/virtualservers/f5-demo-mysite UID:32dddf1e-3326-41a8-b176-79596fa1e7a9 ResourceVersion:104064166 Generation:1 CreationTimestamp:2021-12-17 05:57:51 +0000 UTC DeletionTimestamp:<nil> DeletionGracePeriodSeconds:<nil> Labels:map[f5cr:true] Annotations:map[] OwnerReferences:[] Finalizers:[] ClusterName: ManagedFields:[{Manager:kubectl-create Operation:Update APIVersion:cis.f5.com/v1 Time:2021-12-17 05:57:51 +0000 UTC FieldsType:FieldsV1 FieldsV1:{"f:metadata":{"f:labels":{".":{},"f:f5cr":{}}},"f:spec":{".":{},"f:host":{},"f:ipamLabel":{},"f:pools":{}}}} {Manager:k8s-bigip-ctlr.real Operation:Update APIVersion:cis.f5.com/v1 Time:2021-12-17 05:57:56 +0000 UTC FieldsType:FieldsV1 FieldsV1:{"f:status":{".":{},"f:status":{},"f:vsAddress":{}}}}]} Spec:{Host:mysite.f5demo.com HostGroup: VirtualServerAddress: IPAMLabel:Test VirtualServerName: VirtualServerHTTPPort:0 VirtualServerHTTPSPort:0 Pools:[{Path:/ Service:f5-demo ServicePort:80 NodeMemberLabel: Monitor:{Type:http Send:/ Recv: Interval:10 Timeout:31} Rewrite:}] TLSProfileName: HTTPTraffic: SNAT: WAF: RewriteAppRoot: AllowVLANs:[] IRules:[] ServiceIPAddress:[] PolicyName:} Status:{VSAddress:10.192.75.117 StatusOk:Ok}} (4.463156ms)
+2021/12/17 05:56:47 [DEBUG] [AS3] No Change in the Configuration
+```
+### Step 5 
+
+View the IPAM CRD. Validate the IPStatus 
+
+```
+❯ kubectl get ipams -n kube-system  -oyaml
+apiVersion: v1
+items:
+- apiVersion: fic.f5.com/v1
+  kind: IPAM
+  metadata:
+    creationTimestamp: "2021-12-17T05:40:04Z"
+    generation: 2
+    managedFields:
+    - apiVersion: fic.f5.com/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:IPStatus: {}
+      manager: f5-ipam-controller
+      operation: Update
+      time: "2021-12-17T05:57:51Z"
+    - apiVersion: fic.f5.com/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          .: {}
+          f:hostSpecs: {}
+      manager: k8s-bigip-ctlr.real
+      operation: Update
+      time: "2021-12-17T05:57:51Z"
+    name: k8s-bigip-ctlr-deployment.k8s.ipam
+    namespace: kube-system
+    resourceVersion: "104064153"
+    selfLink: /apis/fic.f5.com/v1/namespaces/kube-system/ipams/k8s-bigip-ctlr-deployment.k8s.ipam
+    uid: c5aa891b-1a61-47d5-be3a-bbe573b3f631
+  spec:
+    hostSpecs:
+    - host: mysite.f5demo.com
+      ipamLabel: Test
+  status:
+    IPStatus:
+    - host: mysite.f5demo.com
+      ip: 10.192.75.117
+      ipamLabel: Test
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+```
