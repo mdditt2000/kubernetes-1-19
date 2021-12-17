@@ -66,7 +66,7 @@ pvc-local   Bound    local-pv   1Gi        RWO            local-storage   12h
 [root@k8s-1-19-node1 cis_ipam]# ls
 cis_ipam.sqlite3
 ```
-**Note** if PersistentVolume yaml is removed the folder gets removed. The temp folder will need to be recreated
+**Note** if [f5-ipam-persitentvolume.yaml](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/ipam/demo/ipam-deployment/f5-ipam-persitentvolume.yaml) is removed the folder gets removed. The temp folder will need to be recreated
 
 ### Step 2
 
