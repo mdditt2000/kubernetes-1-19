@@ -9,7 +9,28 @@ Multi-host feature allows CIS to support a single VirtualServer on BIG-IP for di
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: myapp-virtual-server
+  name: vs-mysite
+  labels:
+    f5cr: "true"
+spec:
+  host: mysite.f5demo.com
+  virtualServerAddress: "10.192.75.111"
+  hostGroup: "f5demo"
+  pools:
+  - monitor:
+      interval: 20
+      recv: ""
+      send: /
+      timeout: 10
+      type: http
+    path: /mysite
+    service: f5-demo
+    servicePort: 80
+---
+apiVersion: "cis.f5.com/v1"
+kind: VirtualServer
+metadata:
+  name: vs-myapp
   labels:
     f5cr: "true"
 spec:
@@ -24,26 +45,6 @@ spec:
       timeout: 10
       type: http
     path: /myapp
-    service: f5-demo
-    servicePort: 80
----
-apiVersion: "cis.f5.com/v1"
-kind: VirtualServer
-metadata:
-  name: mysite-virtual-server
-  labels:
-    f5cr: "true"
-spec:
-  host: mysite.f5demo.com
-  virtualServerAddress: "10.192.75.111"
-  hostGroup: "f5demo"
-  - monitor:
-      interval: 20
-      recv: ""
-      send: /
-      timeout: 10
-      type: http
-    path: /mysite
     service: f5-demo
     servicePort: 80
 ```
