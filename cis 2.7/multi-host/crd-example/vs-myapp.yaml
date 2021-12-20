@@ -12,7 +12,7 @@ spec:
   - monitor:
       interval: 20
       recv: ""
-      send: "GET / HTTP/1.1\r\nHost: myapp.f5demo.com\r\n"
+      send: /
       timeout: 10
       type: http
     path: /
