@@ -17,4 +17,4 @@ spec:
       type: http
     path: /mysite
     service: f5-demo
-    servicePort: 8080
+    servicePort: 80
