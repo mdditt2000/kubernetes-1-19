@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: f5-demo
-  name: f5-demo
+    app: f5-demo-mysite
+  name: f5-demo-mysite
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: f5-demo
+      app: f5-demo-mysite
   template:
     metadata:
       labels:
-        app: f5-demo
+        app: f5-demo-mysite
     spec:
       containers:
       - env:
         - name: service_name
-          value: f5-demo
+          value: f5-demo-mysite
         image: f5devcentral/f5-demo-httpd
         imagePullPolicy: Always
-        name: f5-demo
+        name: f5-demo-mysite
         ports:
         - containerPort: 80
           protocol: TCP
