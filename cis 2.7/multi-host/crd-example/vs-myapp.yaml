@@ -1,13 +1,13 @@
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: vs-coffee-f5demo
+  name: vs-myapp
   labels:
     f5cr: "true"
 spec:
-  host: coffee.f5demo.com
+  host: myapp.f5demo.com
   virtualServerAddress: "10.192.75.111"
-  hostGroup: "cafe"
+  hostGroup: "f5demo"
   pools:
   - monitor:
       interval: 20
@@ -15,6 +15,6 @@ spec:
       send: /
       timeout: 10
       type: http
-    path: /coffee
-    service: coffee-svc
-    servicePort: 80
+    path: /myapp
+    service: f5-demo
+    servicePort: 8080

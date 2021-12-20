@@ -1,11 +1,11 @@
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: myapp-virtual-server
+  name: vs-mysite
   labels:
     f5cr: "true"
 spec:
-  host: myapp.f5demo.com
+  host: mysite.f5demo.com
   virtualServerAddress: "10.192.75.111"
   hostGroup: "f5demo"
   pools:
@@ -15,6 +15,6 @@ spec:
       send: /
       timeout: 10
       type: http
-    path: /myapp
+    path: /mysite
     service: f5-demo
-    servicePort: 80
+    servicePort: 8080

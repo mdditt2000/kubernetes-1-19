@@ -18,9 +18,9 @@ spec:
       - env:
         - name: service_name
           value: f5-demo
-        image: f5devcentral/f5-demo-httpd
+        image: f5devcentral/f5-demo-httpd:nginx
         imagePullPolicy: Always
         name: f5-demo
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           protocol: TCP
