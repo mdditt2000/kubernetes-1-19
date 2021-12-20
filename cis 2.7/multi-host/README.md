@@ -1,4 +1,4 @@
-# Introduce Multi-host Support for VirtualServer CRD
+# Introducing Multi-host Support for VirtualServer CRD
 
 Multi-host feature allows CIS to support a single VirtualServer on BIG-IP for different hostnames. This is very similar to how OpenSHift routes work today. The benefit for using the multi-host feature is re-using the public IP Address on BIG-IP. This helps when Public IP addresses are limited. As you can see from the example below.
 
