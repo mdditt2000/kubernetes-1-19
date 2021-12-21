@@ -11,4 +11,4 @@ spec:
     serverSSL: /Common/serverssl
     reference: bigip
   hosts:
-  - mysite.f5demo.com
+  - myapp.f5demo.com
