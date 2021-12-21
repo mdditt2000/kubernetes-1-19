@@ -6,8 +6,6 @@ metadata:
   name: policy-mysite
   namespace: default
 spec:
-  l7Policies:
-    waf: /Common/WAF_Policy
   l3Policies:
     firewallPolicy: /Common/WEB_Policy
   profiles:
