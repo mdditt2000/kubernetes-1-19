@@ -47,7 +47,7 @@ spec:
               "--flannel-name=fl-vxlan",
               "--log-level=DEBUG",
               "--insecure=true",
-              "--manage-configmaps=true,
+              "--manage-configmaps=true",
               "--as3-validation=true",
               "--log-as3-response=true",
           ]
