@@ -25,7 +25,7 @@ data:
                         "class": "Service_HTTP",
                         "remark": "a1",
                         "virtualAddresses": [
-                            "10.192.75.122"
+                            "10.192.75.2222"
                         ],
                         "pool": "web_pool"
                     },
