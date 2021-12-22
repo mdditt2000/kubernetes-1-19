@@ -1,4 +1,4 @@
-# Protection your Kubernetes Cluster against the Apache Log4j2 Vulnerability
+# Protection your Kubernetes Cluster against the Apache Log4j2 Vulnerability using BIG-IP
 
 This demo show how to protect your Kubernetes clusters against the Apache Log4j2 vulnerability using F5 CIS and BIG-IP Advanced WAF. CIS is adding the Advanced WAF policy using a Policy CRD from Kubernetes. Policy CRD is a new feature in CIS 2.7
 
