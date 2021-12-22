@@ -55,5 +55,5 @@ CIS configures BIG-IP with the WAF policy and Log policy as shown below
 
 For more information please review the Blog and CVE support articles
 
-- Protection against the Apache Log4j2 Vulnerability (CVE-2021-44228) [Protection against the Apache Log4j2 Vulnerability (CVE-2021-44228)](https://www.f5.com/company/blog/protection-against-apache-log4j2-vulnerability)
-- K32171392: Apache Log4j2 vulnerability CVE-2021-45046 [K32171392: Apache Log4j2 vulnerability CVE-2021-45046](https://support.f5.com/csp/article/K32171392)
+- [Protection against the Apache Log4j2 Vulnerability (CVE-2021-44228)](https://www.f5.com/company/blog/protection-against-apache-log4j2-vulnerability)
+- [K32171392: Apache Log4j2 vulnerability CVE-2021-45046](https://support.f5.com/csp/article/K32171392)
