@@ -47,6 +47,8 @@ spec:
     servicePort: 443
 ```
 
+CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/log4j/crd)
+
 CIS configures BIG-IP with the WAF policy and Log policy as shown below
 
 ![policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7/log4j/diagram/2021-12-21_16-19-23.png)
