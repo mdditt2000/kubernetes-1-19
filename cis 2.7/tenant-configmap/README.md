@@ -2,7 +2,7 @@
 
 Today CIS sends a unified AS3 declaration with multiple ConfigMaps. If something is incorrect in any of the ConfigMaps, this will stop applying the correct ConfigMaps configuration. This feature enhances the posting of ConfigMaps to BIG-IP
 
-* [YouTube Demo](https://youtu.be/rfvu63dEef4)
+[YouTube Demo](https://youtu.be/rfvu63dEef4)
 
 - Tenant based AS3 declarations for ConfigMaps feature released in CIS 2.7
 - This feature will be available only with CIS parameter **--filter-tenants=true**
