@@ -18,7 +18,7 @@ spec:
       containers:
       - args:
         - --orchestration=kubernetes
-        - --ip-range='{"Test":"10.192.75.113-10.192.75.116"}'
+        - --ip-range='{"Test":"10.192.75.117-10.192.75.119"}'
         - --log-level=DEBUG
         command:
         - /app/bin/f5-ipam-controller
@@ -33,8 +33,8 @@ spec:
         fsGroup: 1200
         runAsGroup: 1200
         runAsUser: 1200
-      serviceAccount: k8s-bigip-ctlr
-      serviceAccountName: k8s-bigip-ctlr
+      serviceAccount: ipam-ctlr
+      serviceAccountName: ipam-ctlr
       volumes:
       - name: local-pv
         persistentVolumeClaim:
