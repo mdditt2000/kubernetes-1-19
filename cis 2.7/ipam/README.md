@@ -181,23 +181,6 @@ metadata:
 Seeing the following error
 
 ```
-❯ kubectl logs -f deploy/f5-ipam-controller -n kube-system
-2022/01/06 00:16:12 [DEBUG] Creating IPAM Kubernetes Client
-2022/01/06 00:16:12 [INFO] [INIT] Starting: F5 IPAM Controller - Version: 0.1.6, BuildInfo: azure-1677-f86d2913adf51b4c8ebc04cac919203623abe5d6
-2022/01/06 00:16:12 [DEBUG] [ipam] Creating Informers for Namespace kube-system
-2022/01/06 00:16:12 [DEBUG] Created New IPAM Client
-2022/01/06 00:16:12 [DEBUG] [MGR] Creating Manager with Provider: f5-ip-provider
-2022/01/06 00:16:12 [DEBUG] [STORE] Using IPAM DB file from mount path
-2022/01/06 00:16:12 [DEBUG] [STORE] [ipaddress status ipam_label reference]
-2022/01/06 00:16:12 [DEBUG] [STORE] 10.192.75.117 0 Test mysite.f5demo.com
-2022/01/06 00:16:12 [DEBUG] [STORE] 10.192.75.118 1 Test lWbHTRADfE17uwQH
-2022/01/06 00:16:12 [DEBUG] [STORE] 10.192.75.119 1 Test gYVa2GgdDYbR6R4A
-2022/01/06 00:16:12 [DEBUG] [PROV] Provider Initialised
-I0106 00:16:12.548751       1 shared_informer.go:240] Waiting for caches to sync for F5 IPAMClient Controller
-2022/01/06 00:16:12 [INFO] [CORE] Controller started
-2022/01/06 00:16:12 [INFO] Starting IPAMClient Informer
-2022/01/06 00:16:12 [DEBUG] Enqueueing on Create: kube-system/k8s-bigip-ctlr-deployment.k8s.ipam
-I0106 00:16:12.649004       1 shared_informer.go:247] Caches are synced for F5 IPAMClient Controller
 2022/01/06 00:16:12 [DEBUG] K8S Orchestrator Started
 2022/01/06 00:16:12 [DEBUG] Starting Custom Resource Worker
 2022/01/06 00:16:12 [DEBUG] Processing Key: &{0xc0001dc160 <nil> Create}
@@ -207,5 +190,5 @@ I0106 00:16:12.649004       1 shared_informer.go:247] Caches are synced for F5 I
 Hostname: mysite.f5demo.com     Key:    IPAMLabel: Test IPAddr:         Operation: Create
 ```
 
-- Remove the IPAM schema required in CIS 2.7
+- Remove the IPAM schema required in CIS 2.6
 - Restart CIS and IPAM
