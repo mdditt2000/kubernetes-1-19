@@ -9,7 +9,7 @@ spec:
   hostGroup: "cafe"
   ipamLabel: Test
   virtualServerHTTPSPort: 443
-  tlsProfileName: passthrough-tls
+  tlsProfileName: reencrypt-tls
   httpTraffic: redirect
   snat: auto
   pools:
