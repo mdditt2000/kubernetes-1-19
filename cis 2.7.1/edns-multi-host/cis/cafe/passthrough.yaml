@@ -8,4 +8,4 @@ spec:
   tls:
     termination: passthrough
   hosts:
-  - mysite.f5demo.com
+  - cafe.example.com
