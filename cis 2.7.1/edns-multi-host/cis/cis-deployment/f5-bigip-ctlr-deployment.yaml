@@ -46,6 +46,7 @@ spec:
               "--gtm-bigip-username=$(BIGIP_USERNAME)",
               "--gtm-bigip-password=$(BIGIP_PASSWORD)",
               "--gtm-bigip-url=192.168.200.60",
+              "--namespace=nginx-ingress",
               "--pool-member-type=cluster",
               "--flannel-name=fl-vxlan",
               "--log-level=DEBUG",
