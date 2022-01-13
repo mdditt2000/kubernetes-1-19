@@ -10,6 +10,8 @@ This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Contro
 
 [YouTube Demo]()
 
+This user-guide demonstrates a single wide-ip **cafe.example.com** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the wide-ip is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the wide-ip and service. 
+
 ## Prerequisites
 
 * Recommend AS3 version 3.30 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
