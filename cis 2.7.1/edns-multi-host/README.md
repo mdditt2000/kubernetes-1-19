@@ -60,7 +60,7 @@ kubectl create -f bigip-ctlr-clusterrole.yaml
 kubectl create -f f5-bigip-ctlr-deployment.yaml
 kubectl create -f f5-bigip-node.yaml
 ```
-**Note** f5-bigip-node is required for Flannel
-**Note** bigip-ctlr-clusterrole is required for CIS permissions 
+- f5-bigip-node is required for Flannel
+- bigip-ctlr-clusterrole is required for CIS permissions 
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
