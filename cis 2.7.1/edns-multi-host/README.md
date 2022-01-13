@@ -50,7 +50,6 @@ args: [
     "--as3-validation=true",
     "--log-as3-response=true",
     "--ipam=true",
-    "--disable-teems=true",
 ]
 ```
 
@@ -64,5 +63,123 @@ kubectl create -f f5-bigip-node.yaml
 ```
 - f5-bigip-node is required for Flannel
 - bigip-ctlr-clusterrole is required for CIS permissions 
+
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
+
+## Step 2: F5 IPAM
+
+CIS uses IPAM integration to provisions this external IP address on BIG-IP. F5 IPAM controller is optional for this solution. **--ipam=true** needs to be added to the CIS deployment and **ipamLabel: Test** and needs to be added to the VirtualServer. Following parameter are required for the IPAM deployment:
+
+```
+args:
+  - --orchestration=kubernetes
+  - --ip-range='{"Test":"10.192.75.117-10.192.75.119"}'
+  - --log-level=DEBUG
+```
+
+Modify the persistent volume manifest file that meets your kubernetes deployment 
+
+```
+- ReadWriteOnce
+  storageClassName: local-storage
+  local:
+    path: /tmp/cis_ipam
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - k8s-1-19-node1.example.com
+```
+
+### Deploy F5 IPAM Controller and Persistent Volumes deployment files
+
+```
+kubectl create -f f5-ipam-ctlr-rbac.yaml
+kubectl create -f f5-ipam-persitentvolume.yaml
+kubectl create -f f5-ipam-deployment.yaml
+```
+ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/ipam-deployment)
+
+View the following guide to help troubleshooting IPAM [IPAM](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/ipam)
+
+## Step 3: Nginx-Controller Installation
+
+Deploy NGINX controller by using the following:
+
+Create a namespace and a service account for the Ingress controller:
+   
+    kubectl apply -f nginx-config/ns-and-sa.yaml
+   
+Create a cluster role and cluster role binding for the service account:
+   
+    kubectl apply -f nginx-config/rbac.yaml
+   
+Create a secret with a TLS certificate and a key for the default server in NGINX:
+
+    kubectl apply -f nginx-config/default-server-secret.yaml
+    
+Create a config map for customizing NGINX configuration:
+
+    kubectl apply -f nginx-config/nginx-config.yaml
+    
+Create an IngressClass resource (for Kubernetes >= 1.18):  
+    
+    kubectl apply -f nginx-config/ingress-class.yaml
+  
+Create a service for the Ingress Controller pods for ports 80 and 443 as follows:
+
+    kubectl apply -f nginx-config/nginx-service.yaml
+
+nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/nginx-config)
+
+## Step 4: Deploy the Cafe Application
+
+Create the coffee and the tea deployments and services:
+
+    kubectl create -f cafe.yaml
+
+### Configure Load Balancing for the Cafe Application
+
+Create a secret with an SSL certificate and a key:
+
+    kubectl create -f cafe-secret.yaml
+
+Create an Ingress resource:
+
+    kubectl create -f cafe-ingress.yaml
+
+ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/ingress-example)
+
+## Step 4: Create VirtualServer and ExternalDNS CRDs
+
+Create the coffee and the tea VirtualServer CRD
+
+    kubectl create -f vs-tea.yaml
+    Kubectl create -f vs-coffee.yaml
+
+Create the coffee and the tea ExternalDNS CRD
+
+    kubectl create -f edns-tea.yaml
+    Kubectl create -f edns-coffee.yaml
+
+Validated VirtualServer CRD and ExternalCRD
+
+**Note** IPAM has provided the first IP address from the range as the external IP address for **cafe.example.com**. **hostGroup: "cafe"** is configured in the VirtualServer CRDs to maintain the same external IP address.
+
+```
+❯ kubectl get crd,vs,externaldns -n nginx-ingress
+NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS   IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d3h
+virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d2h
+
+NAME                                 DOMAINNAME         AGE     CREATED ON
+externaldns.cis.f5.com/edns-coffee   cafe.example.com   2d15h   2022-01-11T06:36:44Z
+externaldns.cis.f5.com/edns-tea      cafe.example.com   27h     2022-01-12T18:57:08Z                                               
+```
+
+Validated wide-ip on BIG-IP DNS
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
