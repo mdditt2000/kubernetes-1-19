@@ -10,7 +10,7 @@ This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Contro
 
 Demo [YouTube]()
 
-This user-guide demonstrates a single wide-ip **cafe.example.com** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the wide-ip is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the wide-ip and service. 
+This user-guide demonstrates a single Wide IP **cafe.example.com** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the Wide IPand service. 
 
 ## Prerequisites
 
@@ -180,6 +180,6 @@ externaldns.cis.f5.com/edns-coffee   cafe.example.com   2d15h   2022-01-11T06:36
 externaldns.cis.f5.com/edns-tea      cafe.example.com   27h     2022-01-12T18:57:08Z                                               
 ```
 
-Validated wide-ip on BIG-IP DNS
+Validated Wide IP on BIG-IP DNS
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
+![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-20-27.png)
