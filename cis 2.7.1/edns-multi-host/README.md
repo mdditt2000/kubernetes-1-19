@@ -160,6 +160,10 @@ Create the coffee and the tea VirtualServer CRD
     kubectl create -f vs-tea.yaml
     Kubectl create -f vs-coffee.yaml
 
+Validated VirtualServer on BIG-IP
+
+![VirtualServer](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-29-16.png)
+
 Create the coffee and the tea ExternalDNS CRD
 
     kubectl create -f edns-tea.yaml
@@ -167,7 +171,7 @@ Create the coffee and the tea ExternalDNS CRD
 
 Validated VirtualServer CRD and ExternalCRD
 
-**Note** IPAM has provided the first IP address from the range as the external IP address for **cafe.example.com**. **hostGroup: "cafe"** is configured in the VirtualServer CRDs to maintain the same external IP address.
+**Note** IPAM has provided the external IP address for **cafe.example.com**. **hostGroup: "cafe"** is configured in the VirtualServer CRDs to maintain the same external IP address for all VirtualServer CRDs
 
 ```
 ❯ kubectl get crd,vs,externaldns -n nginx-ingress
