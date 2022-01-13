@@ -141,7 +141,7 @@ Create the coffee and the tea deployments and services:
 
     kubectl create -f cafe.yaml
 
-### Configure Load Balancing for the Cafe Application
+#### Configure Load Balancing for the Cafe Application
 
 Create a secret with an SSL certificate and a key:
 
