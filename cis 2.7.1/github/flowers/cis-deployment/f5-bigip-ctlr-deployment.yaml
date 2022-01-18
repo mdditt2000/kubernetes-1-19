@@ -51,7 +51,6 @@ spec:
               "--custom-resource-mode=true",
               "--as3-validation=true",
               "--log-as3-response=true",
-              "--ipam=true",
               "--disable-teems=true",
           ]
       serviceAccountName: bigip-ctlr
