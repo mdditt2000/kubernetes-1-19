@@ -10,8 +10,8 @@ spec:
   - name: demo
     port: 8080
     protocol: TCP
-    targetPort: 8080
+    targetPort: demo
   selector:
     app: f5-demo-mysite
   sessionAffinity: None
-  type: ClusterIP
+  type: NodePort
