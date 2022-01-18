@@ -7,10 +7,10 @@ metadata:
   namespace: demo-domains
 spec:
   ports:
-  - name: service_name
+  - name: demo
     port: 8080
     protocol: TCP
-    targetPort: service_name
+    targetPort: 8080
   selector:
     app: f5-demo-mysite
   sessionAffinity: None
