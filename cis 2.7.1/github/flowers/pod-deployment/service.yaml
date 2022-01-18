@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: demo-staging
+  name: demo-staging-mysite
+  namespace: demo-domains
+spec:
+  ports:
+  - name: service_name
+    port: 8080
+    protocol: TCP
+    targetPort: service_name
+  selector:
+    app: f5-demo-mysite
+  sessionAffinity: None
+  type: ClusterIP
