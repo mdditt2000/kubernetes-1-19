@@ -6,7 +6,7 @@ metadata:
   labels:
     f5cr: "true"
 spec:
-  domainName: cafe.example.com
+  domainName: coffee.example.com
   dnsRecordType: A
   loadBalanceMethod: round-robin
   pools:
@@ -15,7 +15,7 @@ spec:
     dataServerName: /Common/east
     monitor:
       type: https
-      send: "GET /coffee HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      send: "GET /coffee HTTP/1.1\r\nHost: coffee.example.com\r\n"
       recv: ""
       interval: 10
       timeout: 30

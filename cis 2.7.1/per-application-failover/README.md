@@ -1,4 +1,4 @@
-# ExternalDNS for NGINX Ingress Controller using F5 CIS with BIG-IP DNS
+# Per Application Failover using ExternalDNS
 
 The purpose of this document is to demonstrate ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP.  ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents ExternalDNS with F5 CIS + BIG-IP LTM and DNS, load balancing to NGINX Ingress Controller. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and data centers. 
 

@@ -6,18 +6,18 @@ metadata:
   labels:
     f5cr: "true"
 spec:
-  host: cafe.example.com
+  host: coffee.example.com
   hostGroup: "cafe"
   ipamLabel: Test
   virtualServerHTTPSPort: 443
-  tlsProfileName: reencrypt-tls
+  tlsProfileName: reencrypt-coffee
   httpTraffic: redirect
   snat: auto
   pools:
   - monitor:
       interval: 20
       recv: ""
-      send: "GET /coffee HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      send: "GET /coffee HTTP/1.1\r\nHost: coffee.example.com\r\n"
       timeout: 10
       type: https
     path: /coffee
