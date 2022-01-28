@@ -8,7 +8,7 @@ metadata:
 spec:
   host: coffee.example.com
   hostGroup: "cafe"
-  ipamLabel: Test
+  virtualServerAddress: "10.192.75.117"
   virtualServerHTTPSPort: 443
   tlsProfileName: reencrypt-coffee
   httpTraffic: redirect
