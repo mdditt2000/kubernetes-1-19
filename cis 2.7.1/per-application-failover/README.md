@@ -6,7 +6,7 @@ ExternalDNS solution provides you with modern, container application workloads t
 
 This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_10-37-44.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_14-00-37.png)
 
 Demo [YouTube]()
 
