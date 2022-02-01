@@ -64,7 +64,7 @@ kubectl create -f f5-bigip-node.yaml
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cis-deployment)
 
-## Step 3: Nginx-Controller Installation
+## Step 2: Nginx-Controller Installation
 
 Deploy NGINX controller by using the following:
 
@@ -94,7 +94,7 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/nginx-config)
 
-## Step 4: Deploy the Cafe Applications
+## Step 3: Deploy the Cafe Applications
 
 Create the ten **cafe** deployments and services:
 
@@ -143,37 +143,110 @@ tea-ingress           <none>   tea.example.com                     80, 443   3d2
 
 ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/ingress-example)
 
-## Step 4: Create VirtualServer and ExternalDNS CRDs
+## Step 4: Create TLSProfile CRDs for re-encryptions
 
-Create the coffee and the tea VirtualServer CRD
-
-    kubectl create -f vs-tea.yaml
-    Kubectl create -f vs-coffee.yaml
-
-Validated VirtualServer on BIG-IP
-
-![VirtualServer](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-29-16.png)
-
-Create the coffee and the tea ExternalDNS CRD
-
-    kubectl create -f edns-tea.yaml
-    Kubectl create -f edns-coffee.yaml
-
-Validated VirtualServer CRD and ExternalCRD
-
-**Note** IPAM has provided the external IP address for **cafe.example.com**. **hostGroup: "cafe"** is configured in the VirtualServer CRDs to maintain the same external IP address for all VirtualServer CRDs
+Create the **cafe** TLSProfile CRDs
 
 ```
-❯ kubectl get crd,vs,externaldns -n nginx-ingress
-NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS   IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d3h
-virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-tls    redirect                  Test        10.192.75.117   Ok       6d2h
+kubectl create -f reencrypt-brew.yaml
+Kubectl create -f reencrypt-chai.yaml
+kubectl create -f reencrypt-coffee.yaml
+Kubectl create -f reencrypt-flatwhite.yaml
+kubectl create -f reencrypt-frappuccino.yaml
+Kubectl create -f reencrypt-latte.yaml
+kubectl create -f reencrypt-macchiato.yaml
+Kubectl create -f reencrypt-mocha.yaml
+kubectl create -f reencrypt-smoothie.yaml
+Kubectl create -f reencrypt-tea.yaml.yaml
+```
 
-NAME                                 DOMAINNAME         AGE     CREATED ON
-externaldns.cis.f5.com/edns-coffee   cafe.example.com   2d15h   2022-01-11T06:36:44Z
-externaldns.cis.f5.com/edns-tea      cafe.example.com   27h     2022-01-12T18:57:08Z                                               
+TLSProfile [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cafe/reencrypt)
+
+Create the **cafe** VirtualServer CRDs
+
+```
+kubectl create -f vs-brew.yaml
+Kubectl create -f vs-chai.yaml
+kubectl create -f vs-coffee.yaml
+Kubectl create -f vs-flatwhite.yaml
+kubectl create -f vs-frappuccino.yaml
+Kubectl create -f vs-latte.yaml
+kubectl create -f vs-macchiato.yaml
+Kubectl create -f vs-mocha.yaml
+kubectl create -f vs-smoothie.yaml
+Kubectl create -f vs-tea.yaml.yaml
+```
+
+VirtualServer [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cafe/virtualserver)
+
+Validated the **VirtualServer** and **TLSProfile** CRDs in Kubernetes
+
+```
+❯ kubectl get vs,TLSProfile -n nginx-ingress
+NAME                                      HOST                      TLSPROFILENAME          HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+virtualserver.cis.f5.com/vs-brew          brew.example.com          reencrypt-brew          redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-chai          chai.example.com          reencrypt-chai          redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-coffee        coffee.example.com        reencrypt-coffee        redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-flatwhite     flatwhite.example.com     reencrypt-flatwhite     redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-frappuccino   frappuccino.example.com   reencrypt-frappuccino   redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-latte         latte.example.com         reencrypt-latte         redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-macchiato     macchiato.example.com     reencrypt-macchiato     redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-mocha         mocha.example.com         reencrypt-mocha         redirect      10.192.75.117               None            Ok       20h
+virtualserver.cis.f5.com/vs-smoothie      smoothie.example.com      reencrypt-smoothie      redirect      10.192.75.117               None            Ok       19h
+virtualserver.cis.f5.com/vs-tea           tea.example.com           reencrypt-tea           redirect      10.192.75.117               None            Ok       19h
+
+NAME                                          AGE
+tlsprofile.cis.f5.com/reencrypt-brew          20h
+tlsprofile.cis.f5.com/reencrypt-chai          20h
+tlsprofile.cis.f5.com/reencrypt-coffee        20h
+tlsprofile.cis.f5.com/reencrypt-flatwhite     20h
+tlsprofile.cis.f5.com/reencrypt-frappuccino   20h
+tlsprofile.cis.f5.com/reencrypt-latte         20h
+tlsprofile.cis.f5.com/reencrypt-macchiato     20h
+tlsprofile.cis.f5.com/reencrypt-mocha         20h
+tlsprofile.cis.f5.com/reencrypt-smoothie      20h
+tlsprofile.cis.f5.com/reencrypt-tea           20h
+```
+**Note** Make sure the status is OK. This is a verification that the LTM profile is created on BIG-IP
+
+Review LTM load balancing profiles on BIG-IP LTM
+
+![BIG-IP LTM](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_11-42-23.png)
+
+Create the **cafe** ExternalDNS CRDs
+
+```
+kubectl create -f vs-brew.yaml
+Kubectl create -f vs-chai.yaml
+kubectl create -f vs-coffee.yaml
+Kubectl create -f vs-flatwhite.yaml
+kubectl create -f vs-frappuccino.yaml
+Kubectl create -f vs-latte.yaml
+kubectl create -f vs-macchiato.yaml
+Kubectl create -f vs-mocha.yaml
+kubectl create -f vs-smoothie.yaml
+Kubectl create -f vs-tea.yaml.yaml
+```
+
+ExternalDNS [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cafe/externaldns) 
+
+Validated ExternalDNS CRDs
+
+```
+kubectl get externaldns -n nginx-ingress
+NAME               DOMAINNAME                AGE   CREATED ON
+edns-brew          brew.example.com          20h   2022-01-31T23:40:18Z
+edns-chai          chai.example.com          20h   2022-01-31T23:17:07Z
+edns-coffee        coffee.example.com        20h   2022-01-31T23:09:28Z
+edns-flatwhite     flatwhite.example.com     20h   2022-01-31T23:18:46Z
+edns-frappuccino   frappuccino.example.com   20h   2022-01-31T23:46:15Z
+edns-latte         latte.example.com         20h   2022-01-31T23:21:09Z
+edns-macchiato     macchiato.example.com     19h   2022-01-31T23:47:25Z
+edns-mocha         mocha.example.com         20h   2022-01-31T23:43:44Z
+edns-smoothie      smoothie.example.com      19h   2022-01-31T23:49:56Z
+edns-tea           tea.example.com           19h   2022-01-31T23:50:45Z                                      
 ```
 
 Validated Wide IP on BIG-IP DNS
 
-![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/edns-multi-host/diagram/2022-01-13_14-20-27.png)
+![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_15-55-49.png)
