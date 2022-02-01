@@ -108,15 +108,17 @@ Create a secret with an SSL certificate and a key:
 
 Create an ten Ingress resource for the **cafe** applications:
 
-    kubectl create -f brew-ingress.yaml
-    kubectl create -f chai-ingress.yaml
-    kubectl create -f coffee-ingress.yaml
-    kubectl create -f flatwhite-ingress.yaml
-    kubectl create -f frappuccino-ingress.yaml
-    kubectl create -f macchiato-ingress.yaml
-    kubectl create -f mocha-ingress.yaml
-    kubectl create -f smoothie-ingress.yaml
-    kubectl create -f tea-ingress.yaml
+```
+kubectl create -f brew-ingress.yaml
+kubectl create -f chai-ingress.yaml
+kubectl create -f coffee-ingress.yaml
+kubectl create -f flatwhite-ingress.yaml
+kubectl create -f frappuccino-ingress.yaml
+kubectl create -f macchiato-ingress.yaml
+kubectl create -f mocha-ingress.yaml
+kubectl create -f smoothie-ingress.yaml
+kubectl create -f tea-ingress.yaml
+```
 
 View the Ingress resources for the **cafe** applications:
 
@@ -133,7 +135,6 @@ macchiato-ingress     <none>   macchiato.example.com               80, 443   21h
 mocha-ingress         <none>   mocha.example.com                   80, 443   3d18h
 smoothie-ingress      <none>   smoothie.example.com                80, 443   21h
 tea-ingress           <none>   tea.example.com                     80, 443   3d20h
-
 ```
 
 ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/ingress-example)
