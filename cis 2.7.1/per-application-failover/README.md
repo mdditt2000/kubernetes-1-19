@@ -261,3 +261,7 @@ edns-tea           tea.example.com           19h   2022-01-31T23:50:45Z
 Validated Wide IP on BIG-IP DNS
 
 ![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_15-55-49.png)
+
+Validated DNS monitor for application **tea.example.com**
+
+![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-50-26.png)
