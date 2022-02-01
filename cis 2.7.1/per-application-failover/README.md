@@ -286,3 +286,7 @@ kubectl scale deploy/coffee --replicas=0
 kubectl scale deploy/mocha --replicas=0
 ```
 ![failure](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-13-04.png)
+
+Demonstrate the failed monitor
+
+https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-17-24.png
