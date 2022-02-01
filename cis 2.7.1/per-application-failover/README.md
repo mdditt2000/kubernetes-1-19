@@ -20,7 +20,7 @@ This user-guide demonstrates ten applications, each application having a unique 
 
 ## Step 1: Deploy CIS
 
-CIS 2.7 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below. In this example user-guide the Public IP address for BIGIP VirtualServer will be obtained from F5 IPAM. 
+CIS 2.7 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below. In this example user-guide the Public IP address for BIGIP VirtualServer will be specified by the VirtualServer CRD. 
 
 Add the following parameters to THE CIS deployment
 
@@ -28,7 +28,6 @@ Add the following parameters to THE CIS deployment
 * --gtm-bigip-username - Provide username for CIS to access GTM
 * --gtm-bigip-password - Provide password for CIS to access GTM
 * --gtm-bigip-url - Provide url for CIS to access GTM. CIS uses the python SDK to configure GTM
-* --ipam=true - CIS to pull VirtualServer IP address from IPAM range
 
 ```
 args: [
@@ -49,7 +48,6 @@ args: [
     "--custom-resource-mode=true",
     "--as3-validation=true",
     "--log-as3-response=true",
-    "--ipam=true",
 ]
 ```
 
@@ -64,46 +62,7 @@ kubectl create -f f5-bigip-node.yaml
 - f5-bigip-node is required for Flannel
 - bigip-ctlr-clusterrole is required for CIS permissions 
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
-
-## Step 2: F5 IPAM
-
-CIS uses IPAM integration to provisions this external IP address on BIG-IP. F5 IPAM controller is optional for this solution. **--ipam=true** needs to be added to the CIS deployment and **ipamLabel: Test** and needs to be added to the VirtualServer. Following parameter are required for the IPAM deployment:
-
-```
-args:
-  - --orchestration=kubernetes
-  - --ip-range='{"Test":"10.192.75.117-10.192.75.119"}'
-  - --log-level=DEBUG
-```
-
-Modify the persistent volume manifest file that meets your kubernetes deployment 
-
-```
-- ReadWriteOnce
-  storageClassName: local-storage
-  local:
-    path: /tmp/cis_ipam
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - k8s-1-19-node1.example.com
-```
-
-### Deploy F5 IPAM Controller and Persistent Volumes deployment files
-
-```
-kubectl create -f f5-ipam-ctlr-rbac.yaml
-kubectl create -f f5-ipam-persitentvolume.yaml
-kubectl create -f f5-ipam-deployment.yaml
-```
-ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/ipam-deployment)
-
-View the following guide to help troubleshooting IPAM [IPAM](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7/ipam)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/cis/cis-deployment)
 
 ## Step 3: Nginx-Controller Installation
 
@@ -135,9 +94,9 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/nginx-config)
 
-## Step 4: Deploy the Cafe Application
+## Step 4: Deploy the Cafe Applications
 
-Create the coffee and the tea deployments and services:
+Create the ten **cafe** deployments and services:
 
     kubectl create -f cafe.yaml
 
@@ -147,11 +106,37 @@ Create a secret with an SSL certificate and a key:
 
     kubectl create -f cafe-secret.yaml
 
-Create an Ingress resource:
+Create an ten Ingress resource for the **cafe** applications:
 
-    kubectl create -f cafe-ingress.yaml
+    kubectl create -f brew-ingress.yaml
+    kubectl create -f chai-ingress.yaml
+    kubectl create -f coffee-ingress.yaml
+    kubectl create -f flatwhite-ingress.yaml
+    kubectl create -f frappuccino-ingress.yaml
+    kubectl create -f macchiato-ingress.yaml
+    kubectl create -f mocha-ingress.yaml
+    kubectl create -f smoothie-ingress.yaml
+    kubectl create -f tea-ingress.yaml
 
-ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/ingress-example)
+View the Ingress resources for the **cafe** applications:
+
+```
+❯ kubectl get ingress
+NAME                  CLASS    HOSTS                     ADDRESS   PORTS     AGE
+brew-ingress          <none>   brew.example.com                    80, 443   21h
+chai-ingress          <none>   chai.example.com                    80, 443   21h
+coffee-ingress        <none>   coffee.example.com                  80, 443   3d20h
+flatwhite-ingress     <none>   flatwhite.example.com               80, 443   21h
+frappuccino-ingress   <none>   frappuccino.example.com             80, 443   21h
+latte-ingress         <none>   latte.example.com                   80, 443   3d18h
+macchiato-ingress     <none>   macchiato.example.com               80, 443   21h
+mocha-ingress         <none>   mocha.example.com                   80, 443   3d18h
+smoothie-ingress      <none>   smoothie.example.com                80, 443   21h
+tea-ingress           <none>   tea.example.com                     80, 443   3d20h
+
+```
+
+ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/per-application-failover/ingress-example)
 
 ## Step 4: Create VirtualServer and ExternalDNS CRDs
 
