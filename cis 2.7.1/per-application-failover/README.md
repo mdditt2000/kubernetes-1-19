@@ -145,6 +145,17 @@ ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 
 ## Step 4: Create TLSProfile CRDs for re-encryptions
 
+The diagram below demonstrates the combination mapping of the VirtualServer, TLSProfile, ExternalDNS CRDs for application **tea.example.com**:
+
+- Reencrypt Termination
+- Redirect HTTP to HTTPS
+- SNI HTTPS Health monitor of the backend application using HOST **tea.example.com** and **PATH /tea**
+- End-to-end-TLS
+- Re-use the same **virtualServerAddress: "10.192.75.117"** for all cafe application
+- Hostname load balancing based on the HOST **tea.example.com** and **PATH /tea**
+
+![combo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-31-07.png)
+
 Create the **cafe** TLSProfile CRDs
 
 ```
