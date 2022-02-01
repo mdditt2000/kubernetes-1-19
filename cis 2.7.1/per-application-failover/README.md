@@ -100,12 +100,12 @@ Create the ten **cafe** deployments and services:
 
     kubectl create -f cafe.yaml
 
-#### Configure Load Balancing for the Cafe Application
+### Configure Load Balancing for the Cafe Application
 
 Create a secret with an SSL certificate and a key:
-
-    kubectl create -f cafe-secret.yaml
-
+```
+kubectl create -f cafe-secret.yaml
+```
 Create an ten Ingress resource for the **cafe** applications:
 
 ```
