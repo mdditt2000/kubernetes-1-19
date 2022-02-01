@@ -4,7 +4,7 @@ The purpose of this document is to demonstrate per application failover using Ex
 
 ExternalDNS solution provides you with modern, container application workloads that use both F5 Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
 
-This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP
+This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP for ten applications
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_14-03-56.png)
 
