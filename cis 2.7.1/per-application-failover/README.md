@@ -20,7 +20,7 @@ This user-guide demonstrates ten applications, each application having a unique 
 
 ## Step 1: Deploy CIS
 
-CIS 2.7 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below. In this example user-guide the Public IP address for BIGIP VirtualServer will be specified by the VirtualServer CRD. 
+CIS 2.7 communicates directly with BIG-IP DNS via the Rest API and requires gtm-bigip-username and password. Since BIG-IP LTM and DNS are on the same device you can re-use the secret generic bigip-login when deploying CIS as shown below. In this example user-guide the Public IP addresses will be specified by the VirtualServer CRD. 
 
 Add the following parameters to THE CIS deployment
 
@@ -51,7 +51,7 @@ args: [
 ]
 ```
 
-Deploy CIS in both locations
+Deploy CIS
 
 ```
 kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
