@@ -1,6 +1,6 @@
 # Per Application Failover using ExternalDNS
 
-The purpose of this document is to demonstrate ExternalDNS with NGINX Ingress Controller using F5 CIS with BIG-IP.  ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents ExternalDNS with F5 CIS + BIG-IP LTM and DNS, load balancing to NGINX Ingress Controller. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and data centers. 
+The purpose of this document is to demonstrate per application failover using ExternalDNS with NGINX Ingress Controller and F5 BIG-IP. ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents ExternalDNS with F5 CIS + BIG-IP LTM and DNS, load balancing to NGINX Ingress Controller. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and data centers. 
 
 ExternalDNS solution provides you with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
 
@@ -10,11 +10,11 @@ This architecture diagram demonstrates the ExternalDNS with NGINX Ingress Contro
 
 Demo [YouTube]()
 
-This user-guide demonstrates a single Wide IP **cafe.example.com** which answers for both coffee and tea deployments. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Recommendation would be to create a dedicated http status page for the DNS monitor, monitoring required deployments etc. IF the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS. Another option is to have a 1-1 mapping between the Wide IPand service. 
+This user-guide demonstrates ten applications, each application having a unique Public Wide IP's **HOST name** which answers for the deployment in Kubernetes. DNS has no layer 7 path awareness and therefore a DNS monitor is required to determine the health of the deployments. Each ExternalDNS CRD would specify the DNS monitor on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitor scaling. IF the monitor detects the http status failure, the Wide IP is removed from BIG-IP DNS.
 
 ## Prerequisites
 
-* Recommend AS3 version 3.30 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
+* Recommend AS3 version 3.30 or later [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.30.0)
 * F5 CIS 2.7 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.7.0)
 * Clouddocs [documentation](https://clouddocs.f5.com/containers/latest/userguide/crd/externaldns.html)
 
