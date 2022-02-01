@@ -265,3 +265,24 @@ Validated Wide IP on BIG-IP DNS
 Validated DNS monitor for application **tea.example.com**
 
 ![Wide IP](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-50-26.png)
+
+## Step 5: Connect to Multiple Applications
+
+In this example we connecting to multiple applications based on their FQDN. The BIG-IP DNS is designated **nameserver** for the **A recorded**
+
+![DNS]https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-55-20.png
+
+Connect to the Public IP via the FQDN and application Path. Example below of /tea, /coffee and /mocha
+
+![traffic]https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-02-20.png
+
+## Step 6: Fail Application POD in Kubernetes
+
+To demonstrate an application failure we going to replicate the application pods to zero. WIDE IPs on the BIG-IP DNS will be removed
+
+```
+kubectl scale deploy/tea --replicas=0
+kubectl scale deploy/coffee --replicas=0
+kubectl scale deploy/mocha --replicas=0
+```
+![failure]https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-13-04.png
