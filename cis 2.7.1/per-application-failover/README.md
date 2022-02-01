@@ -289,4 +289,4 @@ kubectl scale deploy/mocha --replicas=0
 
 Demonstrate the failed monitor
 
-https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-17-24.png
+![monitor](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-17-24.png)
