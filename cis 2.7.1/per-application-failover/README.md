@@ -270,11 +270,11 @@ Validated DNS monitor for application **tea.example.com**
 
 In this example we connecting to multiple applications based on their FQDN. The BIG-IP DNS is designated **nameserver** for the **A recorded**
 
-![DNS]https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-55-20.png
+![DNS](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_12-55-20.png)
 
 Connect to the Public IP via the FQDN and application Path. Example below of /tea, /coffee and /mocha
 
-![traffic]https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-02-20.png
+![traffic](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-02-20.png)
 
 ## Step 6: Fail Application POD in Kubernetes
 
@@ -285,4 +285,4 @@ kubectl scale deploy/tea --replicas=0
 kubectl scale deploy/coffee --replicas=0
 kubectl scale deploy/mocha --replicas=0
 ```
-![failure]https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-13-04.png
+![failure](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-02-01_13-13-04.png)
