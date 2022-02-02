@@ -15,7 +15,7 @@ spec:
     dataServerName: /Common/east
     monitor:
       type: https
-      send: "GET /cafe HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      send: "GET /tea HTTP/1.1\r\nHost: cafe.example.com\r\n"
       recv: ""
       interval: 10
       timeout: 30
