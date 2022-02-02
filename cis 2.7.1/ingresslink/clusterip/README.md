@@ -18,14 +18,10 @@ On this page you’ll find:
 
 ## IngressLink Compatibility Matrix
 
-Minimum version to use IngressLink:
+Recommended version for IngressLink:
 
-| CIS | BIGIP | NGINX+ IC | AS3 |
-| ------ | ------ | ------ | ------ |
-| 2.4+ | v13.1+ | 1.10+ | 3.18+ | 
-
-* Recommend AS3 version 3.25 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.25.0)
-* CIS 2.4 private build [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.4.0)
+* Recommend AS3 version 3.34 [repo](https://github.com/F5Networks/f5-appsvcs-extension/releases/tag/v3.34.0)
+* CIS 2.7.1 [repo](https://github.com/F5Networks/k8s-bigip-ctlr/releases/tag/v2.7.1)
 * NGINX+ IC [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/ingresslink/clusterip/nginx-config)
 * Product Documentation [documentation](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)
 
@@ -53,15 +49,11 @@ Add BIG-IP credentials as Kubernetes Secrets
 
     kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<password>
 
-Create a service account for deploying CIS.
+Create a Service Account, Cluster Role and Cluster Role Binding
 
-    kubectl create serviceaccount bigip-ctlr -n kube-system
-
-Create a Cluster Role and Cluster Role Binding on the Kubernetes Cluster as follows:
+    kubectl create -f bigip-ctlr-clusterrole.yaml
     
-    kubectl create clusterrolebinding k8s-bigip-ctlr-clusteradmin --clusterrole=cluster-admin --serviceaccount=kube-system:k8s-bigip-ctlr
-    
-Create CIS IngressLink Custom Resource definition schema as follows:
+Create CRD schema
 
     kubectl create -f customresourcedefinition.yaml
 
