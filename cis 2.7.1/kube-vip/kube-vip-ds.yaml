@@ -49,13 +49,13 @@ spec:
         - name: bgp_routerid
           value: 192.168.200.61
         - name: bgp_as
-          value: "64512"
+          value: "65000"
         - name: bgp_peeraddress
         - name: bgp_peerpass
         - name: bgp_peeras
           value: "65000"
         - name: bgp_peers
-          value: "192.168.200.61:64512::false,192.168.200.62:64512::false"
+          value: "192.168.200.61:65000::false"
         - name: address
           value: 192.168.200.117
         image: ghcr.io/kube-vip/kube-vip:v0.4.1
