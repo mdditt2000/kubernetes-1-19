@@ -17,4 +17,4 @@ spec:
       name: https
   selector:
     app: nginx-ingress
-  type: NodePort
+  type: LoadBalancer
