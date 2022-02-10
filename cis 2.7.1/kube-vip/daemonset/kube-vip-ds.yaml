@@ -34,10 +34,14 @@ spec:
           value: 192.168.200.61
         - name: bgp_as
           value: "65000"
+        - name: bgp_peeras
+          value: "65000"
         - name: bgp_peers
           value: "192.168.200.60:65000::false"
-        - name: vip_configmap
-	        value: "kubevip" 
+        - name: vip_interface
+          value: "lo"
+         - name: vip_configmap
+          value: "plndr"
         image: ghcr.io/kube-vip/kube-vip:v0.4.1
         imagePullPolicy: Always
         name: kube-vip
