@@ -98,4 +98,52 @@ Install the kube-vip Cloud Provider
 
 ```
 kubectl create -f kube-vip-cloud-controller.yaml
-``` 
+```
+
+## Step 4: Deploy Nginx-Controller Installation
+
+Deploy NGINX controller by using the following:
+
+Create a namespace and a service account for the Ingress controller:
+   
+    kubectl apply -f nginx-config/ns-and-sa.yaml
+   
+Create a cluster role and cluster role binding for the service account:
+   
+    kubectl apply -f nginx-config/rbac.yaml
+   
+Create a secret with a TLS certificate and a key for the default server in NGINX:
+
+    kubectl apply -f nginx-config/default-server-secret.yaml
+    
+Create a config map for customizing NGINX configuration:
+
+    kubectl apply -f nginx-config/nginx-config.yaml
+    
+Create an IngressClass resource (for Kubernetes >= 1.18):  
+    
+    kubectl apply -f nginx-config/ingress-class.yaml
+  
+Create a service for the Ingress Controller pods for ports 80 and 443 as follows:
+
+    kubectl apply -f nginx-config/nginx-service.yaml
+
+nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/nginx-config)
+
+## Step 5: Deploy the Cafe Application
+
+Create the coffee and the tea deployments and services:
+
+    kubectl create -f cafe.yaml
+
+#### Configure Load Balancing for the Cafe Application
+
+Create a secret with an SSL certificate and a key:
+
+    kubectl create -f cafe-secret.yaml
+
+Create an Ingress resource:
+
+    kubectl create -f cafe-ingress.yaml
+
+ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/ingress-example)
