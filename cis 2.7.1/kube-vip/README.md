@@ -128,7 +128,34 @@ Create a service for the Ingress Controller pods for ports 80 and 443 as follows
 
     kubectl apply -f nginx-config/nginx-service.yaml
 
+**NOTE** expose the nginx-ingress Service and once the cloud provider has provided an address, kube-vip will start to advertise that address to the outside world 
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ingress
+  namespace: nginx-ingress
+  labels:
+    app: nginx-ingress
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: https
+  selector:
+    app: nginx-ingress
+  type: LoadBalancer
+```
+
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/nginx-config)
+
+
 
 ## Step 5: Deploy the Cafe Application
 

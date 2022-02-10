@@ -58,7 +58,7 @@ spec:
       - command:
         - /kube-vip-cloud-provider
         - --leader-elect-resource-name=kube-vip-cloud-controller
-        image: kubevip/kube-vip-cloud-provider:0.1
+        image: kubevip/kube-vip-cloud-provider:latest
         name: kube-vip-cloud-provider
         imagePullPolicy: Always
         resources: {}
