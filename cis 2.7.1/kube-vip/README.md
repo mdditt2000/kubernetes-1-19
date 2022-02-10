@@ -10,36 +10,85 @@ Demo [YouTube]()
 
 This user-guide demonstrates a virtual IP which is updated by the kube-vip Cloud Provider. Kube-vip Cloud Provider monitors the Nginx-Ingress Service which is of type LoadBalancer and update the EXTERNAL-IP with the virtual IP. This virtual IP can be advertised to the BIG-IP BPG and redistributed to the network. 
 
-## Step 1: Deploy Kube-VIP
+## Step 1: Enable BGP on BIG-IP
+
+Add BGP to route-domain
+
+![bgp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/kube-vip/diagram/2022-02-10_13-56-44.png)
+
+Access the IMI Shell
+
+    imish
+
+Switch to enable mode
+
+    enable
+
+Enter configuration mode
+
+    config terminal
+
+Setup route bgp with AS Number 65000
+
+    router bgp 65000
+
+Create BGP Peer group
+
+    neighbor kube-vip-k8s peer-group
+
+Assign peer group as BGP neighbors
+
+    neighbor kube-vip-k8s remote-as 65000
+
+Add all the peers: the other BIG-IP, our k8s components
+
+    neighbor 192.168.200.61 peer-group kube-vip-k8s
+
+Save configuration
+
+    write
+
+## Step 2: Deploy Kube-VIP
 
 In this user-guide, I deployed Kube-VIP as a DaemonSet. The installation documentation can be located **daemonset** [repo](https://kube-vip.chipzoller.dev/docs/installation/daemonset/)
-
-Used the following parameters
-
-* --custom-resource-mode=true - Configure CIS to only monitor CRDs. CIS will ignore all other resources
-* --gtm-bigip-username - Provide username for CIS to access GTM
-* --gtm-bigip-password - Provide password for CIS to access GTM
-* --gtm-bigip-url - Provide url for CIS to access GTM. CIS uses the python SDK to configure GTM
-* --ipam=true - CIS to pull VirtualServer IP address from IPAM range
 
 ```
 - name: bgp_peeras
     value: "65000"
 - name: bgp_peers
-    value: "192.168.200.61:65000::false"
+    value: "192.168.200.60:65000::false"
 - name: address
     value: 192.168.200.117
 ```
 
-Deploy CIS in both locations
+Deploy Kube-vip daemonset
 
 ```
-kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
-kubectl create -f bigip-ctlr-clusterrole.yaml
-kubectl create -f f5-bigip-ctlr-deployment.yaml
-kubectl create -f f5-bigip-node.yaml
+kubectl apply -f https://kube-vip.io/manifests/rbac.yaml
+kubectl create -f kube-vip-ds.yaml
 ```
 - f5-bigip-node is required for Flannel
 - bigip-ctlr-clusterrole is required for CIS permissions 
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
+kube-vip-daemonset [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
+
+
+```
+❯ kubectl logs -f kube-vip-ds-tjttm -n kube-system
+time="2022-02-10T21:29:59Z" level=info msg="server started"
+time="2022-02-10T21:29:59Z" level=info msg="Starting Kube-vip Manager with the BGP engine"
+time="2022-02-10T21:29:59Z" level=info msg="Namespace [kube-system], Hybrid mode [true]"
+time="2022-02-10T21:29:59Z" level=info msg="Starting the BGP server to advertise VIP routes to BGP peers"
+time="2022-02-10T21:29:59Z" level=info msg="Add a peer configuration for:192.168.200.60" Topic=Peer
+time="2022-02-10T21:29:59Z" level=info msg="Beginning watching services for type: LoadBalancer in all namespaces"
+time="2022-02-10T21:29:59Z" level=info msg="Service [kubernetes] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T21:29:59Z" level=info msg="Service [nginx-ingress] has been added/modified, it has an assigned external addresses [192.168.200.14]"
+time="2022-02-10T21:29:59Z" level=info msg="New VIP [192.168.200.14] for [nginx-ingress/b15b1a7f-f3c0-4a94-a154-2906f936578b] "
+time="2022-02-10T21:29:59Z" level=info msg="Starting advertising address [192.168.200.14] with kube-vip"
+time="2022-02-10T21:29:59Z" level=info msg="Started Load Balancer and Virtual IP"
+time="2022-02-10T21:29:59Z" level=info msg="Service [coffee-svc] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T21:29:59Z" level=info msg="Service [tea-svc] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T21:29:59Z" level=info msg="Service [kube-dns] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T21:30:07Z" level=info msg="Peer Up" Key=192.168.200.60 State=BGP_FSM_OPENCONFIRM Topic=Peer
+2022/02/10 21:30:07 conf:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 > state:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 session_state:ESTABLISHED router_id:"192.168.200.60" > transport:<local_address:"192.168.200.61" local_port:36952 remote_port:179 >
+```
