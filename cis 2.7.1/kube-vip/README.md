@@ -89,3 +89,13 @@ time="2022-02-10T21:29:59Z" level=info msg="Service [kube-dns] has been added/mo
 time="2022-02-10T21:30:07Z" level=info msg="Peer Up" Key=192.168.200.60 State=BGP_FSM_OPENCONFIRM Topic=Peer
 2022/02/10 21:30:07 conf:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 > state:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 session_state:ESTABLISHED router_id:"192.168.200.60" > transport:<local_address:"192.168.200.61" local_port:36952 remote_port:179 >
 ```
+
+## Step 3: Deploy kube-vip Cloud Provider
+
+kube-vip is designed to be as decoupled or agnostic from other components that may exist within a Kubernetes cluster as possible. The kube-vip cloud provider can be used to populate an IP address for Services of type LoadBalancer similar to what public cloud providers allow through a Kubernetes CCM.
+
+Install the kube-vip Cloud Provider
+
+```
+kubectl create -f kube-vip-cloud-controller.yaml
+``` 
