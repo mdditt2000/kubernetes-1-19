@@ -66,12 +66,9 @@ Deploy Kube-vip daemonset
 ```
 kubectl apply -f https://kube-vip.io/manifests/rbac.yaml
 kubectl create -f kube-vip-ds.yaml
-```
-- f5-bigip-node is required for Flannel
-- bigip-ctlr-clusterrole is required for CIS permissions 
+``` 
 
 kube-vip-daemonset [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/edns-multi-host/cis/cis-deployment)
-
 
 ```
 ❯ kubectl logs -f kube-vip-ds-tjttm -n kube-system
