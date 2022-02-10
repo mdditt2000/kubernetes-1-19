@@ -55,7 +55,7 @@ spec:
         - name: bgp_peeras
           value: "65000"
         - name: bgp_peers
-          value: "192.168.200.61:65000::false"
+          value: "192.168.200.60:65000::false"
         - name: address
           value: 192.168.200.117
         image: ghcr.io/kube-vip/kube-vip:v0.4.1
