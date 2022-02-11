@@ -155,8 +155,6 @@ spec:
 
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/nginx-config)
 
-
-
 ## Step 5: Deploy the Cafe Application
 
 Create the coffee and the tea deployments and services:
@@ -174,3 +172,52 @@ Create an Ingress resource:
     kubectl create -f cafe-ingress.yaml
 
 ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.7.1/kube-vip/ingress-example)
+
+## Step 6: Expose a Service
+
+We can now expose a Service and once the cloud provider has provided an address, kube-vip will start to advertise that address in BGP. My example is very simple using a Static host and therefore i cannot take advantage of ConfigMap. Rather the virtual IP is comes from the interface.
+
+Validate Kube-vip pods are deployed
+
+```
+❯ kubectl get pod -n kube-system | grep kube-vip
+kube-vip-cloud-provider-0                                  1/1     Running   0          21h
+kube-vip-ds-kjg7z                                          1/1     Running   0          21h
+```
+
+Log Kube-vip pod. You will notice the following:
+
+- Kube-vip Manager with the BGP engine
+- Advertise VIP routes to BGP peers **BIP-IP**
+- Beginning watching services for type: LoadBalancer in all namespaces
+- [nginx-ingress] has been added/modified, it has an assigned external addresses [192.168.200.14]
+- Starting advertising address [192.168.200.14] with kube-vip"
+
+
+time="2022-02-10T23:57:13Z" level=info msg="server started"
+time="2022-02-10T23:57:13Z" level=info msg="Starting Kube-vip Manager with the BGP engine"
+time="2022-02-10T23:57:13Z" level=info msg="Namespace [kube-system], Hybrid mode [false]"
+time="2022-02-10T23:57:13Z" level=info msg="Starting the BGP server to advertise VIP routes to BGP peers"
+time="2022-02-10T23:57:13Z" level=info msg="Add a peer configuration for:192.168.200.60" Topic=Peer
+time="2022-02-10T23:57:13Z" level=info msg="Beginning watching services for type: LoadBalancer in all namespaces"
+time="2022-02-10T23:57:13Z" level=info msg="Service [coffee-svc] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T23:57:13Z" level=info msg="Service [tea-svc] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T23:57:13Z" level=info msg="Service [kube-dns] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T23:57:13Z" level=info msg="Service [kubernetes] has been added/modified, it has no assigned external addresses"
+time="2022-02-10T23:57:13Z" level=info msg="Service [nginx-ingress] has been added/modified, it has an assigned external addresses [192.168.200.14]"
+time="2022-02-10T23:57:13Z" level=info msg="New VIP [192.168.200.14] for [nginx-ingress/b15b1a7f-f3c0-4a94-a154-2906f936578b] "
+time="2022-02-10T23:57:13Z" level=info msg="Starting advertising address [192.168.200.14] with kube-vip"
+time="2022-02-10T23:57:13Z" level=info msg="Started Load Balancer and Virtual IP"
+time="2022-02-10T23:57:19Z" level=info msg="Peer Up" Key=192.168.200.60 State=BGP_FSM_OPENCONFIRM Topic=Peer
+2022/02/10 23:57:19 conf:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 > state:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 session_state:ESTABLISHED router_id:"192.168.200.60" > transport:<local_address:"192.168.200.61" local_port:47466 remote_port:179 >
+
+Validate the **nginx-service**
+
+❯ kubectl get service -n nginx-ingress
+NAME            TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)                      AGE
+nginx-ingress   LoadBalancer   10.103.107.192   192.168.200.14   80:30249/TCP,443:30029/TCP   2d22h
+
+Validate BIG-IP routing table
+
+
+
