@@ -193,7 +193,7 @@ Log Kube-vip pod. You will notice the following:
 - [nginx-ingress] has been added/modified, it has an assigned external addresses [192.168.200.14]
 - Starting advertising address [192.168.200.14] with kube-vip"
 
-
+```
 time="2022-02-10T23:57:13Z" level=info msg="server started"
 time="2022-02-10T23:57:13Z" level=info msg="Starting Kube-vip Manager with the BGP engine"
 time="2022-02-10T23:57:13Z" level=info msg="Namespace [kube-system], Hybrid mode [false]"
@@ -210,14 +210,43 @@ time="2022-02-10T23:57:13Z" level=info msg="Starting advertising address [192.16
 time="2022-02-10T23:57:13Z" level=info msg="Started Load Balancer and Virtual IP"
 time="2022-02-10T23:57:19Z" level=info msg="Peer Up" Key=192.168.200.60 State=BGP_FSM_OPENCONFIRM Topic=Peer
 2022/02/10 23:57:19 conf:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 > state:<local_as:65000 neighbor_address:"192.168.200.60" peer_as:65000 session_state:ESTABLISHED router_id:"192.168.200.60" > transport:<local_address:"192.168.200.61" local_port:47466 remote_port:179 >
+```
 
 Validate the **nginx-service**
 
+```
 ❯ kubectl get service -n nginx-ingress
 NAME            TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)                      AGE
 nginx-ingress   LoadBalancer   10.103.107.192   192.168.200.14   80:30249/TCP,443:30029/TCP   2d22h
+```
 
 Validate BIG-IP routing table
 
+```
+east.f5demo.com[0]#show ip route
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+
+Gateway of last resort is 10.192.75.1 to network 0.0.0.0
+
+K*      0.0.0.0/0 [0/0] via 10.192.75.1, external
+C       10.192.75.0/24 is directly connected, external
+C       10.244.0.0/16 is directly connected, fl-vxlan
+C       127.0.0.1/32 is directly connected, lo
+C       127.1.1.254/32 is directly connected, tmm
+C       192.168.200.0/24 is directly connected, internal
+B       192.168.200.14/32 [200/0] via 192.168.200.61, internal, 01:11:11
+B       192.168.200.117/32 [200/0] via 192.168.200.61, internal, 01:11:11
+east.f5demo.com[0]#
+Vty connection is timed out.
+```
+ 
+## Step 7: Connect to the Virtual IP
+
+![traffic](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/kube-vip/diagram/2022-02-11_14-03-10.png)
 
 
