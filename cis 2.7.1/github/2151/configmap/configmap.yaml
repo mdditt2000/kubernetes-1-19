@@ -43,44 +43,6 @@ data:
                             }
                         ]
                     }
-                },
-                "alertmanager-cluster_tcp": {
-                    "class": "Application",
-                    "template": "generic",
-                    "alertmanager-cluster_tcp": {
-                        "class": "Service_TCP",
-                        "remark": "alertmanager.x.x.x",
-                        "virtualAddresses": [
-                            {
-                                "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
-                            }
-                        ],
-                        "virtualPort": 80,
-                        "allowVlans": [
-                            "/Common/VL-lb-int"
-                        ],
-                        "snat": "auto",
-                        "pool": "/sensu-system_infs_tenant/Shared/alertmanager-cluster_pool"
-                    }
-                },
-                "alertmanager-cluster_udp": {
-                    "class": "Application",
-                    "template": "generic",
-                    "alertmanager-cluster_udp": {
-                        "class": "Service_UDP",
-                        "remark": "alertmanager.x.x.x",
-                        "virtualAddresses": [
-                            {
-                                "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
-                            }
-                        ],
-                        "virtualPort": 80,
-                        "allowVlans": [
-                            "/Common/VL-lb-int"
-                        ],
-                        "snat": "auto",
-                        "pool": "/sensu-system_infs_tenant/Shared/alertmanager-cluster_pool"
-                    }
                 }
             }
         }
