@@ -2,7 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: f5-as3-sensu-system
-  namespace: f5
   labels:
     f5type: virtual-server
     as3: "true"
