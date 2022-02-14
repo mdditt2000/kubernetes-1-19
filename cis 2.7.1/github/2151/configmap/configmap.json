@@ -15,10 +15,10 @@
                 "template": "shared",
                 "alertmanager_serviceAddress": {
                     "class": "Service_Address",
-                    "virtualAddress": "10.192.75.117",
+                    "virtualAddress": "10.10.10.1",
                     "arpEnabled": true,
                     "icmpEcho": "enable",
-                    "routeAdvertisement": "all",
+                    "routeAdvertisement": "all"
                 },
                 "alertmanager-cluster_pool": {
                     "class": "Pool",
@@ -28,7 +28,7 @@
                     ],
                     "members": [
                         {
-                            "servicePort": 80,
+                            "servicePort": 9094,
                             "serverAddresses": [],
                             "shareNodes": true
                         }
@@ -46,7 +46,7 @@
                             "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
                         }
                     ],
-                    "virtualPort": 80,
+                    "virtualPort": 9094,
                     "allowVlans": [
                         "/Common/VL-lb-int"
                     ],
@@ -65,7 +65,7 @@
                             "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
                         }
                     ],
-                    "virtualPort": 80,
+                    "virtualPort": 9094,
                     "allowVlans": [
                         "/Common/VL-lb-int"
                     ],
