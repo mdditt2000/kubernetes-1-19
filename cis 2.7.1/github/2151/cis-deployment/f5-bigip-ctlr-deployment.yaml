@@ -48,7 +48,6 @@ spec:
               "--log-level=DEBUG",
               "--insecure=true",
               "--manage-configmaps=true",
-              "--filter-tenants=true",
               "--as3-validation=true",
               "--log-as3-response=true",
           ]
