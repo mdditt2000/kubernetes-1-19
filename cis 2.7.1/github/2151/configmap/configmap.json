@@ -1,0 +1,78 @@
+{
+    "class": "AS3",
+    "action": "deploy",
+    "persist": false,
+    "declaration": {
+        "class": "ADC",
+        "schemaVersion": "3.28.0",
+        "id": "f5-as3-sensu-system",
+        "label": "f5-as3-sensu-system",
+        "remark": "AS3 Declaration - NS sensu-system",
+        "sensu-system_infs_tenant": {
+            "class": "Tenant",
+            "Shared": {
+                "class": "Application",
+                "template": "shared",
+                "alertmanager_serviceAddress": {
+                    "class": "Service_Address",
+                    "virtualAddress": "10.192.75.117",
+                    "arpEnabled": true,
+                    "icmpEcho": "enable",
+                    "routeAdvertisement": "all",
+                },
+                "alertmanager-cluster_pool": {
+                    "class": "Pool",
+                    "loadBalancingMode": "round-robin",
+                    "monitors": [
+                        "tcp"
+                    ],
+                    "members": [
+                        {
+                            "servicePort": 80,
+                            "serverAddresses": [],
+                            "shareNodes": true
+                        }
+                    ]
+                }
+            },
+            "alertmanager-cluster_tcp": {
+                "class": "Application",
+                "template": "generic",
+                "alertmanager-cluster_tcp": {
+                    "class": "Service_TCP",
+                    "remark": "alertmanager.x.x.x",
+                    "virtualAddresses": [
+                        {
+                            "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
+                        }
+                    ],
+                    "virtualPort": 80,
+                    "allowVlans": [
+                        "/Common/VL-lb-int"
+                    ],
+                    "snat": "auto",
+                    "pool": "/sensu-system_infs_tenant/Shared/alertmanager-cluster_pool"
+                }
+            },
+            "alertmanager-cluster_udp": {
+                "class": "Application",
+                "template": "generic",
+                "alertmanager-cluster_udp": {
+                    "class": "Service_UDP",
+                    "remark": "alertmanager.x.x.x",
+                    "virtualAddresses": [
+                        {
+                            "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
+                        }
+                    ],
+                    "virtualPort": 80,
+                    "allowVlans": [
+                        "/Common/VL-lb-int"
+                    ],
+                    "snat": "auto",
+                    "pool": "/sensu-system_infs_tenant/Shared/alertmanager-cluster_pool"
+                }
+            }
+        }
+    }
+}
