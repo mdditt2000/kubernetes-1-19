@@ -10,37 +10,77 @@ data:
   template: |
     {
         "class": "AS3",
+        "action": "deploy",
+        "persist": false,
         "declaration": {
             "class": "ADC",
-            "schemaVersion": "3.13.0",
-            "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
-            "label": "http",
-            "remark": "A1 Template",
-            "k8s_tenant1": {
+            "schemaVersion": "3.28.0",
+            "id": "f5-as3-sensu-system",
+            "label": "f5-as3-sensu-system",
+            "remark": "AS3 Declaration - NS sensu-system",
+            "sensu-system_infs_tenant": {
                 "class": "Tenant",
-                "A1": {
+                "Shared": {
                     "class": "Application",
-                    "template": "generic",
-                    "a1_80_vs": {
-                        "class": "Service_HTTP",
-                        "remark": "a1",
-                        "virtualAddresses": [
-                            "10.192.75.120"
-                        ],
-                        "pool": "web_pool"
+                    "template": "shared",
+                    "alertmanager_serviceAddress": {
+                        "class": "Service_Address",
+                        "virtualAddress": "10.192.75.117",
+                        "arpEnabled": true,
+                        "icmpEcho": "enable",
+                        "routeAdvertisement": "all",
                     },
-                    "web_pool": {
+                    "alertmanager-cluster_pool": {
                         "class": "Pool",
+                        "loadBalancingMode": "round-robin",
                         "monitors": [
-                            "http"
+                            "tcp"
                         ],
                         "members": [
                             {
-                                "servicePort": 8080,
+                                "servicePort": 80,
                                 "serverAddresses": [],
                                 "shareNodes": true
                             }
                         ]
+                    }
+                },
+                "alertmanager-cluster_tcp": {
+                    "class": "Application",
+                    "template": "generic",
+                    "alertmanager-cluster_tcp": {
+                        "class": "Service_TCP",
+                        "remark": "alertmanager.x.x.x",
+                        "virtualAddresses": [
+                            {
+                                "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
+                            }
+                        ],
+                        "virtualPort": 80,
+                        "allowVlans": [
+                            "/Common/VL-lb-int"
+                        ],
+                        "snat": "auto",
+                        "pool": "/sensu-system_infs_tenant/Shared/alertmanager-cluster_pool"
+                    }
+                },
+                "alertmanager-cluster_udp": {
+                    "class": "Application",
+                    "template": "generic",
+                    "alertmanager-cluster_udp": {
+                        "class": "Service_UDP",
+                        "remark": "alertmanager.x.x.x",
+                        "virtualAddresses": [
+                            {
+                                "use": "/sensu-system_infs_tenant/Shared/alertmanager_serviceAddress"
+                            }
+                        ],
+                        "virtualPort": 80,
+                        "allowVlans": [
+                            "/Common/VL-lb-int"
+                        ],
+                        "snat": "auto",
+                        "pool": "/sensu-system_infs_tenant/Shared/alertmanager-cluster_pool"
                     }
                 }
             }
