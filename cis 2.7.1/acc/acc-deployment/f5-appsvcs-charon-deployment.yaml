@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: f5-automation-config-converter
+  name: f5-automation-config-converter
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: f5-automation-config-converter
+  template:
+    metadata:
+      labels:
+        app: f5-automation-config-converter
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: f5-automation-config-converter
+        image: f5devcentral/f5-automation-config-converter:latest
+        imagePullPolicy: Always
+        name: f5-automation-config-converter
+        ports:
+        - containerPort: 8080
+          protocol: TCP
