@@ -4,7 +4,6 @@ metadata:
   labels:
     f5cr: "true"
   name: policy-two-tcp
-  namespace: default
 spec:
   profiles:
     tcp: /Common/Custom_TCP
