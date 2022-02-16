@@ -7,12 +7,17 @@ metadata:
 spec:
   # This is an insecure virtual, Please use TLSProfile to secure the virtual
   # check out tls examples to understand more.
-  host: cafe.example.com
   virtualServerAddress: "10.192.75.110"
   virtualServerName: "K8S_iApp_004_test"
-  virtualServerHTTPPort: 443
-  httpTraffic: none
+  virtualServerHTTPPort: 80
+  policyName: policy-two
   pools:
   - path: /
     service: hello-world-app
     servicePort: 8080
+    monitor:
+      type: http
+      send: “GET /rn”
+      recv: ""
+      interval: 10
+      timeout: 10
