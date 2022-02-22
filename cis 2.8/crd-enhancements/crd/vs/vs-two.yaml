@@ -9,7 +9,7 @@ spec:
   virtualServerName: "K8S_iApp_004_test"
   virtualServerHTTPPort: 80
   policyName: policy-two
-  persistenceProfile: source-address
+  persistenceProfile: none
   pools:
   - path: /
     service: hello-world-app
