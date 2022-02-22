@@ -23,4 +23,4 @@ Example below show persistence changes added to the Policy CRD and associated to
 
 ![ts-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_11-04-17.png)
 
-Demo [YouTube]()
+Demo [YouTube](https://www.youtube.com/watch?v=brlNGGJ0sw0)
