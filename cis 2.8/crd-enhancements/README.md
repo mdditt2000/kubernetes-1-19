@@ -17,10 +17,10 @@ Persistence can be added to the VirtualServer, TransportServer or Policy CRD. Po
 
 Example below show persistence changes added to the Policy CRD and associated to either the VirtualServer CRD
 
-![vs-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_10-55-57.png)
+![vs-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_11-05-16.png)
 
 Example below show persistence changes added to the Policy CRD and associated to either the TransportServer CRD
 
-![ts-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_10-55-45.png)
+![ts-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_11-04-17.png)
 
 Demo [YouTube]()
