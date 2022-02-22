@@ -11,8 +11,12 @@ CIS uses AS3 default persistence profile
 - VirtualServer uses **cookie**
 - TransportServer uses **source-address**
 
-Persistence profile can be added to the VirtualServer, TransportServer or Policy CRD. Policy CRD will take precedence
+Persistence can be added to the VirtualServer, TransportServer or Policy CRD. Policy CRD will take precedence. Example below show persistence changes added to the VirtualServer, TransportServer CRD
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.7.1/per-application-failover/diagram/2022-01-31_14-03-56.png)
+![vs-ts](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_10-43-08.png)
+
+Example below show persistence changes added to the Policy CRD and associated to either the VirtualServer, TransportServer CRD
+
+![policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_10-43-08.png)
 
 Demo [YouTube]()
