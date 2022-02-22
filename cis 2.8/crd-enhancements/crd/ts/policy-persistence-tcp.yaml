@@ -3,7 +3,8 @@ kind: Policy
 metadata:
   labels:
     f5cr: "true"
-  name: policy-two-tcp
+  name: policy-persistence-tcp
 spec:
   profiles:
     tcp: /Common/Custom_TCP
+    persistenceProfile: none

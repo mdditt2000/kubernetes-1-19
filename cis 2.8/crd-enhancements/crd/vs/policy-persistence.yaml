@@ -3,9 +3,10 @@ kind: Policy
 metadata:
   labels:
     f5cr: "true"
-  name: policy-two
+  name: policy-persistence
   namespace: default
 spec:
   profiles:
     http: /Common/Custom_HTTP
     tcp: /Common/Custom_TCP
+    persistenceProfile: none
