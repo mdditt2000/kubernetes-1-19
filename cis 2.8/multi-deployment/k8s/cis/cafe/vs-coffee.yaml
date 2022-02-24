@@ -2,7 +2,7 @@ apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
   name: vs-coffee
-  namespace: nginx-ingress
+  namespace: default
   labels:
     f5cr: "true"
 spec:
@@ -21,5 +21,5 @@ spec:
       timeout: 10
       type: https
     path: /coffee
-    service: nginx-ingress
+    service: coffee-svc
     servicePort: 443

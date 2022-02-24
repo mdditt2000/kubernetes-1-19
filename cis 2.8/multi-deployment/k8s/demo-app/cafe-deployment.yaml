@@ -17,7 +17,7 @@ spec:
       - name: tea
         image: pleshakov/nginx-hello:0.1
         ports:
-        - containerPort: 8080
+        - containerPort: 443
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,25 +38,4 @@ spec:
       - name: coffee
         image: pleshakov/nginx-hello:0.1
         ports:
-        - containerPort: 8080
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mocha
-  namespace: default
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: mocha
-  template:
-    metadata:
-      labels:
-        app: mocha
-    spec:
-      containers:
-      - name: mocha
-        image: pleshakov/nginx-hello:0.1
-        ports:
-        - containerPort: 8080
+        - containerPort: 443

@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
   - name: tea-svc
-    port: 8080
+    port: 443
     protocol: TCP
-    targetPort: 8080
+    targetPort: 443
   type: ClusterIP
   selector:
     app: tea
@@ -25,26 +25,9 @@ metadata:
 spec:
   ports:
   - name: coffee-svc
-    port: 8080
+    port: 443
     protocol: TCP
-    targetPort: 8080
+    targetPort: 443
   type: ClusterIP
   selector:
     app: coffee
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mocha-svc
-  namespace: default
-  labels:
-    app: mocha-svc
-spec:
-  ports:
-  - name: mocha-svc
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
-  type: ClusterIP
-  selector:
-    app: mocha
