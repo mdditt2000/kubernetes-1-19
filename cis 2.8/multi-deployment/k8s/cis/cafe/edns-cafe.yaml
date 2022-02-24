@@ -13,6 +13,7 @@ spec:
   - dnsRecordType: A
     loadBalanceMethod: round-robin
     dataServerName: /Common/k8s
+    monitors:
     - interval: 20
       recv: ""
       send: "GET /tea HTTP/1.1\r\nHost: cafe.example.com\r\n"
