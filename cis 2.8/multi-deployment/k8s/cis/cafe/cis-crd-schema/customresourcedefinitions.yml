@@ -433,6 +433,7 @@ spec:
                         required:
                           - type
                           - interval
+                      monitors:
                     required:
                       - dataServerName
               required:
