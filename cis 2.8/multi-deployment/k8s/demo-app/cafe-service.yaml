@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
   - name: tea-svc
-    port: 443
+    port: 8080
     protocol: TCP
-    targetPort: 443
+    targetPort: 8080
   type: ClusterIP
   selector:
     app: tea
@@ -25,9 +25,9 @@ metadata:
 spec:
   ports:
   - name: coffee-svc
-    port: 443
+    port: 8080
     protocol: TCP
-    targetPort: 443
+    targetPort: 8080
   type: ClusterIP
   selector:
     app: coffee

@@ -9,9 +9,7 @@ spec:
   host: cafe.example.com
   hostGroup: "cafe"
   virtualServerAddress: "10.192.75.121"
-  virtualServerHTTPSPort: 443
-  tlsProfileName: reencrypt-tls
-  httpTraffic: redirect
+  virtualServerHTTPPort: 80
   snat: auto
   pools:
   - monitor:
@@ -19,7 +17,7 @@ spec:
       recv: ""
       send: "GET /tea HTTP/1.1\r\nHost: cafe.example.com\r\n"
       timeout: 10
-      type: https
+      type: http
     path: /tea
     service: tea-svc
-    servicePort: 443
+    servicePort: 8080
