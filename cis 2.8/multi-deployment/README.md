@@ -10,6 +10,8 @@ In this user-guide, we have deployed an OpenShift and Kubernetes container envir
 
 Demo on YouTube [video](Coming soon)
 
+This user-guide demonstrates an application having a Public Wide IP's HOST name which answers using round-robin for OpenShift and Kubernetes container environments. DNS has no layer 7 path awareness and therefore DNS monitors are required to determine the health of the applications. Each ExternalDNS CRD would specify the DNS monitors on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitoring and scaling. If a monitor detects the http status failure, the Wide IP is removed from DNS query.
+
 ### Environment parameters
 
 * Configure BIG-IP DNS iQuery so that BIG-IP systems can communicate with each other for datacenter **ocp** and **k8s**
@@ -22,7 +24,7 @@ Demo on YouTube [video](Coming soon)
 
 In this user-guide, CIS is deployed using a manifest. CIS can also be deployed using the CIS Operator from the OpenShift dashboard. Follow user-guide to deploy CIS using the [Operator CIS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/operator#readme)
 
-Add the following parameters to THE CIS deployment
+Add the following parameters to the CIS deployment
 
 * --custom-resource-mode=true - Configure CIS to watch for CRDs. ExternalDNS is not currently supported using OpenShift Routes
 * --bigip-partition=OpenShift - CIS uses BIG-IP tenant OpenShift to manage CRDs
@@ -33,18 +35,22 @@ args: [
   # See the k8s-bigip-ctlr documentation for information about
   # all config options
   # https://clouddocs.f5.com/containers/latest/
-  "--bigip-username=$(BIGIP_USERNAME)",
-  "--bigip-password=$(BIGIP_PASSWORD)",
-  "--bigip-url=10.192.125.60",
-  "--bigip-partition=OpenShift",
-  "--namespace=default",
-  "--pool-member-type=cluster",
-  "--openshift-sdn-name=/Common/openshift_vxlan",
-  "--insecure=true",
-  "--custom-resource-mode=true",
-  "--as3-validation=true",
-  "--log-as3-response=true",
-]
+    "--bigip-username=$(BIGIP_USERNAME)",
+    "--bigip-password=$(BIGIP_PASSWORD)",
+    "--bigip-url=10.192.125.60",
+    "--bigip-partition=ocp",
+    "--gtm-bigip-username=$(BIGIP_USERNAME)",
+    "--gtm-bigip-password=$(BIGIP_PASSWORD)",
+    "--gtm-bigip-url=10.192.125.60",
+    "--namespace=default",
+    "--pool-member-type=cluster",
+    "--openshift-sdn-name=/Common/openshift_vxlan",
+    "--log-level=DEBUG",
+    "--insecure=true",
+    "--custom-resource-mode=true",
+    "--as3-validation=true",
+    "--log-as3-response=true",
+  ]
 ```
 
 Deploy CIS in OpenShift
