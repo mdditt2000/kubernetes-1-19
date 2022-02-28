@@ -14,6 +14,7 @@ This user-guide demonstrates an application having a Wide IP's HOST name **cafe.
 
 ### Environment parameters
 
+* BIG-IP LTM and DNS configured on the same device
 * Configure BIG-IP DNS iQuery so that BIG-IP systems can communicate with each other for datacenter **ocp** and **k8s**
 
 ![iQuery](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_11-11-06.png)
