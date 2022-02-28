@@ -23,12 +23,12 @@ This user-guide demonstrates an application having a Wide IP's HOST name **cafe.
 
 ### Step 1: Deploy CIS
 
-In this user-guide, CIS is deployed using a manifest. CIS can also be deployed using the CIS Operator from the OpenShift dashboard. Follow user-guide to deploy CIS using the [Operator CIS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/operator#readme)
+In this user-guide, CIS is deployed using a manifest. CIS can also be deployed using the Operator from the OpenShift dashboard. Follow user-guide to deploy CIS using the [Operator CIS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/operator#readme)
 
 Add the following parameters to the CIS deployment
 
 * --custom-resource-mode=true - Configure CIS to watch for CRDs. ExternalDNS is not currently supported using OpenShift Routes
-* --bigip-partition=OpenShift - CIS uses BIG-IP tenant OpenShift to manage CRDs
+* --bigip-partition=ocp - CIS uses BIG-IP tenant OpenShift to manage CRDs
 * --openshift-sdn-name=/Common/openshift_vxlan - CNI policy on BIG-IP to connect to the PODs in OpenShift
 
 ```
@@ -46,7 +46,7 @@ args: [
     "--namespace=default",
     "--pool-member-type=cluster",
     "--openshift-sdn-name=/Common/openshift_vxlan",
-    "--log-level=DEBUG",
+    "--log-level=INFO",
     "--insecure=true",
     "--custom-resource-mode=true",
     "--as3-validation=true",
@@ -63,3 +63,52 @@ oc create -f f5-bigip-ctlr-deployment.yaml
 ```
 
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cis-deployment)
+
+**Note** Do not forget the OpenShift-SDN CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/ocp/cni/f5-openshift-hostsubnet-01.yaml)
+
+## Kubernetes Container Environments
+
+### Step 1: Deploy CIS
+
+The biggest benefit for using CRDs is their no limitations on how many Public IPs **Virtual Server** create on BIG-IP. However to maintain similarity with Routes we using HOST Header Load balancing to determine the backend application. In this example the backend is **/tea,/coffee and /mocha** with the same Public IP address 10.192.125.65
+
+Add the following parameters to THE CIS deployment
+
+* --custom-resource-mode=true - Configure CIS to watch for CRDs
+* --bigip-partition=k8s - CIS uses BIG-IP tenant Kubernetes to manage CRDs
+* --flannel-name=fl-vxlan - CNI policy on BIG-IP to connect to the PODs in Kubernetes
+
+```
+args: [
+  # See the k8s-bigip-ctlr documentation for information about
+  # all config options
+  # https://clouddocs.f5.com/containers/latest/
+    "--bigip-username=$(BIGIP_USERNAME)",
+    "--bigip-password=$(BIGIP_PASSWORD)",
+    "--bigip-url=192.168.200.60",
+    "--bigip-partition=k8s",
+    "--gtm-bigip-username=$(BIGIP_USERNAME)",
+    "--gtm-bigip-password=$(BIGIP_PASSWORD)",
+    "--gtm-bigip-url=192.168.200.60",
+    "--namespace=default",
+    "--pool-member-type=cluster",
+    "--flannel-name=fl-vxlan",
+    "--log-level=INFO",
+    "--insecure=true",
+    "--custom-resource-mode=true",
+    "--as3-validation=true",
+    "--log-as3-response=true",
+]
+```
+
+Deploy CIS in Kubernetes
+
+```
+kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
+kubectl create -f bigip-ctlr-clusterrole.yaml
+kubectl create -f f5-bigip-ctlr-deployment.yaml
+```
+
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/k8s/cis/cis-deployment)
+
+**Note** Do not forget the Flannel CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cni/f5-bigip-node.yaml)
