@@ -8,7 +8,7 @@ In this user-guide, we have deployed an OpenShift and Kubernetes container envir
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_09-39-06.png)
 
-Demo on YouTube [video](Coming soon)
+Demo on YouTube [video]()
 
 This user-guide demonstrates an application having a Public Wide IP's HOST name which answers using round-robin for OpenShift and Kubernetes container environments. DNS has no layer 7 path awareness and therefore DNS monitors are required to determine the health of the applications. Each ExternalDNS CRD would specify the DNS monitors on BIG-IP. Recommended to work with your F5 Solution Architect to discuss DNS monitoring and scaling. If a monitor detects the http status failure, the Wide IP is removed from DNS query.
 
