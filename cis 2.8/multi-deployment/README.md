@@ -20,7 +20,7 @@ Demo on YouTube [video](Coming soon)
 
 ### Step 1: Deploy CIS
 
-In this user-guide CIS is deployed using a manifest. CIS can also be deployed using the CIS Operator from the OpenShift dashboard. Follow user-guide to deploy CIS using the Operator CIS [Operator CIS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/operator#readme)
+In this user-guide CIS is deployed using a manifest. CIS can also be deployed using the CIS Operator from the OpenShift dashboard. Follow user-guide to deploy CIS using the [Operator CIS](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/operator#readme)
 
 
 
