@@ -14,13 +14,13 @@ spec:
     loadBalanceMethod: round-robin
     dataServerName: /Common/k8s
     monitors:
-    - interval: 20
+    - interval: 10
       recv: ""
       send: "GET /tea HTTP/1.1\r\nHost: cafe.example.com\r\n"
-      timeout: 10
+      timeout: 31
       type: http
-    - interval: 20
+    - interval: 10
       recv: ""
       send: "GET /coffee HTTP/1.1\r\nHost: cafe.example.com\r\n"
-      timeout: 10
+      timeout: 31
       type: http
