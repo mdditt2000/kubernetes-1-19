@@ -7,3 +7,13 @@ Today, organizations are increasingly deploying multiple container environment. 
 In this user-guide, we have deployed an OpenShift and Kubernetes container environments running identical applications. BIG-IP is platform-agnostic, using DNS to distribute traffic between the two container environments. This simple but powerful approach enables users the flexibility to complete an container environment proof of concept or migrating applications between environments. Since CIS uses the Kubernetes API the resource definitions for OpenShift and Kubernetes are identical except for the public IPs. Diagram below represents the OpenShift and Kubernetes environments.
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_09-39-06.png)
+
+Demo on YouTube [video](Coming soon)
+
+### Environment parameters
+
+* BIG-IP DNS Architectures
+
+- Configure BIG-IP DNS iQuery so that BIG-IP systems can communicate with each other for datacenter **ocp** and **k8s**
+
+![iQuery](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_11-11-06.png)
