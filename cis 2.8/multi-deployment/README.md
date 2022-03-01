@@ -54,7 +54,7 @@ args: [
   ]
 ```
 
-Deploy CIS in OpenShift
+#### Deploy CIS in OpenShift
 
 ```
 oc create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
@@ -101,7 +101,7 @@ args: [
 ]
 ```
 
-Deploy CIS in Kubernetes
+#### Deploy CIS in Kubernetes
 
 ```
 kubectl create secret generic bigip-login -n kube-system --from-literal=username=admin --from-literal=password=<secret>
@@ -127,7 +127,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 
 ![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-44-15.png)
 
-Create CRDs Schema in OpenShift
+##### Create CRDs Schema in OpenShift
 
 **Note:** CIS requires the CustomResourceDefinition schema
 
@@ -137,7 +137,7 @@ oc create -f CustomResourceDefinition.yaml
 
 CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-Create VirtualServer and ExternalDNS CRDs in OpenShift
+##### Create VirtualServer and ExternalDNS CRDs in OpenShift
 
 ```
 oc create -f vs-tea.yaml
@@ -147,7 +147,7 @@ oc create -f edns-cafe.yaml
 
 CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
 
-Validate CRD
+##### Validate CRD
 
 **Note** Sadly OpenShift does not have the same Dashboard for CRDs. Therefore you need to use the OpenShift CLI
 
@@ -161,11 +161,11 @@ NAME                               DOMAINNAME         AGE     CREATED ON
 externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:19Z
 ```
 
-Validate CRD using the BIG-IP
+#### Validate CRD using the BIG-IP
 
 ![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-52-50.png)
 
-Validate CRD policy for cafe.example.com on BIG-IP
+#### Validate CRD policy for cafe.example.com on BIG-IP
 
 ![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-52-04.png)
 
@@ -181,7 +181,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 
 ![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-45-08.png)
 
-Create CRDs Schema in Kubernetes
+#### Create CRDs Schema in Kubernetes
 
 **Note:** CIS requires the CustomResourceDefinition schema
 
@@ -191,7 +191,7 @@ kubectl create -f CustomResourceDefinition.yaml
 
 CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-Create VirtualServer and ExternalDNS CRDs in Kubernetes
+##### Create VirtualServer and ExternalDNS CRDs in Kubernetes
 
 ```
 kubectl create -f vs-tea.yaml
@@ -201,7 +201,7 @@ kubectl create -f edns-cafe.yaml
 
 CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/k8s/cis/cafe/unsecure)
 
-Validate CRD
+#### Validate CRD
 
 ```
 # kubectl get crd,vs,externaldns -n default
@@ -213,7 +213,7 @@ NAME                               DOMAINNAME         AGE     CREATED ON
 externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:43Z
 ```
 
-Validate CRD using the BIG-IP
+##### Validate CRD using the BIG-IP
 
 ![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-13.png)
 
@@ -223,7 +223,7 @@ Validate Kubernetes CRD pool-members using the BIG-IP
 
 ### Step 5: Validate the BIG-IP Wide IPs and DNS Failover
 
-Validate the BIG-IP GSLB Wide IP
+#### Validate the BIG-IP GSLB Wide IP
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-13-48.png)
 
