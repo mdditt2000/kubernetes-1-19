@@ -117,7 +117,7 @@ cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ### Step 3: Creating VirtualServer and ExternalDNS CRDs using OpenShift
 
-User-case for the CRDs:
+Use-case for the CRDs:
 
 - unsecure
 - Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
@@ -171,7 +171,7 @@ Validate CRD policy for cafe.example.com on BIG-IP
 
 ### Step 4: Creating VirtualServer and ExternalDNS CRDs using Kubernetes
 
-User-case for the CRDs:
+Use-case for the CRDs:
 
 - unsecure
 - Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
@@ -220,3 +220,8 @@ Validate CRD using the BIG-IP
 Validate Kubernetes CRD pool-members using the BIG-IP
 
 ![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-41.png)
+
+### Step 5: Validate Wide IPs and DNS Failover
+
+Validate Wide IPs on BIG-IP and Pools
+
