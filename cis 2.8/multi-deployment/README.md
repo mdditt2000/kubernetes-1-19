@@ -181,7 +181,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 
 ![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-45-08.png)
 
-Create OpenShift CRDs
+Create CRDs Schema in Kubernetes
 
 **Note:** CIS requires the CustomResourceDefinition schema
 
@@ -189,31 +189,34 @@ Create OpenShift CRDs
 kubectl create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/customresource/crd/crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-Create OpenShift CRDs
+Create VirtualServer and ExternalDNS CRDs in Kubernetes
 
 ```
 kubectl create -f vs-tea.yaml
-kubectl create -f vs-coffee.ya,l
+kubectl create -f vs-coffee.yaml
+kubectl create -f edns-cafe.yaml
 ```
 
-CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
+CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/k8s/cis/cafe/unsecure)
 
 Validate CRD
 
 ```
-# oc get crd,vs,policy,tlsprofile -n default
-NAME                                   HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/cafe-coffee   cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
-virtualserver.cis.f5.com/cafe-mocha    cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
-virtualserver.cis.f5.com/cafe-tea      cafe.example.com   edge-tls         redirect      10.192.125.65               None            Ok       68s
+# kubectl get crd,vs,externaldns -n default
+NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+virtualserver.cis.f5.com/vs-coffee   cafe.example.com                                  10.192.75.121               None            Ok       3d4h
+virtualserver.cis.f5.com/vs-tea      cafe.example.com                                  10.192.75.121               None            Ok       3d4h
+
+NAME                               DOMAINNAME         AGE     CREATED ON
+externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:43Z
 ```
 
 Validate CRD using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-47-04.png)
+![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-13.png)
 
 Validate Kubernetes CRD pool-members using the BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-51-23.png)
+![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-41.png)
