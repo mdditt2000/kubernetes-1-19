@@ -223,5 +223,39 @@ Validate Kubernetes CRD pool-members using the BIG-IP
 
 ### Step 5: Validate Wide IPs and DNS Failover
 
-Validate Wide IPs on BIG-IP and Pools
+Validate the GSLB Wide IPs on BIG-IP
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-13-48.png)
+
+Validate the GLSB Pools on BIG-IP
+
+Each pool represents a container environment. In this user-guide we have a **ocp** and **k8s** pool
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-14-21.png)
+
+Validate the **ocp** GLSB Pool
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-17-31.png)
+
+**Note** availability shows green. Monitors are able to successfully complete the health checks
+
+Validate the **ocp** GLSB Pool answer
+
+This is the public IP returned by the BIG-IP DNS to the clients DNS query
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-17-59.png)
+
+Validate the **k8s** GLSB Pool
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-28.png)
+
+**Note** availability shows green. Monitors are able to successfully complete the health checks
+
+Validate the **ocp** GLSB Pool answer
+
+This is the public IP returned by the BIG-IP DNS to the clients DNS query
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-57.png)
+
+### Step 5: Connect to Public IP
 
