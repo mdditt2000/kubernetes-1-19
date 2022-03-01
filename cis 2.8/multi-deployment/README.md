@@ -268,4 +268,4 @@ deployment.apps/coffee scaled
 deployment.apps/tea scaled
 ```
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-28.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-52-48.png)
