@@ -125,7 +125,7 @@ User-case for the CRDs:
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
-![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-44-15.png)
 
 Create OpenShift CRDs
 
@@ -141,7 +141,8 @@ Create OpenShift CRDs
 
 ```
 oc create -f vs-tea.yaml
-oc create -f vs-coffee.ya,l
+oc create -f vs-coffee.yaml
+oc create -f edns-cafe.yaml
 ```
 
 CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
@@ -176,7 +177,7 @@ User-case for the CRDs:
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
-![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-45-08.png)
 
 Create OpenShift CRDs
 
