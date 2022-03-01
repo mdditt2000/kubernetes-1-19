@@ -257,4 +257,15 @@ This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-57.png)
 
+#### Replica the **k8s** pods to zero
 
+Replica the application pods in the Kubernetes container environment to zero. BIG-IP DNS will detect the replica and remove the **k8s** Data Center from the WIDE IP. Only **ocp** will be available
+
+```
+❯ kubectl scale --current-replicas=3 --replicas=0 deployment/coffee
+deployment.apps/coffee scaled
+❯ kubectl scale --current-replicas=3 --replicas=0 deployment/tea
+deployment.apps/tea scaled
+```
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-28.png)
