@@ -227,31 +227,31 @@ Validate the BIG-IP GSLB Wide IP
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-13-48.png)
 
-Validate the BIG-IP GLSB Pools
+#### Validate the BIG-IP GLSB Pools
 
-Each pool represents a container environment. In this user-guide we have a **ocp** and **k8s** pool
+Each pool represents a container environment. In this user-guide we have a **ocp** and **k8s** pools
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-14-21.png)
 
-Validate the **ocp** Data Center GLSB Pool on BIG-IP
+#### Validate the **ocp** Data Center GLSB Pool on BIG-IP
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-17-31.png)
 
 **Note** availability shows green. Monitors are able to successfully complete the health checks
 
-Validate the **ocp** Data Center GLSB Pool answer on BIG-IP
+#### Validate the **ocp** Data Center GLSB Pool answer on BIG-IP
 
 This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-17-59.png)
 
-Validate the **k8s** Data Center GLSB Pool on BIG-IP
+#### Validate the **k8s** Data Center GLSB Pool on BIG-IP
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-28.png)
 
 **Note** availability shows green. Monitors are able to successfully complete the health checks
 
-Validate the **k8s** Data Center GLSB Pool answer on BIG-IP
+#### Validate the **k8s** Data Center GLSB Pool answer on BIG-IP
 
 This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
