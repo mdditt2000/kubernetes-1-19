@@ -127,7 +127,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 
 ![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-44-15.png)
 
-Create OpenShift CRDs
+Create CRDs Schema in OpenShift
 
 **Note:** CIS requires the CustomResourceDefinition schema
 
@@ -135,9 +135,9 @@ Create OpenShift CRDs
 oc create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/customresource/crd/crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-Create OpenShift CRDs
+Create VirtualServer and ExternalDNS CRDs in OpenShift
 
 ```
 oc create -f vs-tea.yaml
@@ -152,20 +152,22 @@ Validate CRD
 **Note** Sadly OpenShift does not have the same Dashboard for CRDs. Therefore you need to use the OpenShift CLI
 
 ```
-# oc get crd,vs,policy,tlsprofile -n default
-NAME                                   HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/cafe-coffee   cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
-virtualserver.cis.f5.com/cafe-mocha    cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
-virtualserver.cis.f5.com/cafe-tea      cafe.example.com   edge-tls         redirect      10.192.125.65               None            Ok       68s
+# oc get crd,vs,externaldns -n default
+NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS        IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+virtualserver.cis.f5.com/vs-coffee   cafe.example.com                                  10.192.125.121               None            Ok       2d23h
+virtualserver.cis.f5.com/vs-tea      cafe.example.com                                  10.192.125.121               None            Ok       2d23h
+
+NAME                               DOMAINNAME         AGE     CREATED ON
+externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:19Z
 ```
 
-Validate OpenShift Routes using the BIG-IP
+Validate CRD using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-47-04.png)
+![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-52-50.png)
 
-Validate OpenShift CRD pool-members using the BIG-IP
+Validate CRD policy for cafe.example.com on BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-51-23.png)
+![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-52-04.png)
 
 ### Step 4: Creating VirtualServer and ExternalDNS CRDs using Kubernetes
 
