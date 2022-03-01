@@ -127,7 +127,7 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 
 ![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-44-15.png)
 
-##### Create CRDs Schema in OpenShift
+#### Create CRDs Schema in OpenShift
 
 **Note:** CIS requires the CustomResourceDefinition schema
 
@@ -137,7 +137,7 @@ oc create -f CustomResourceDefinition.yaml
 
 CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-##### Create VirtualServer and ExternalDNS CRDs in OpenShift
+#### Create VirtualServer and ExternalDNS CRDs in OpenShift
 
 ```
 oc create -f vs-tea.yaml
@@ -147,7 +147,7 @@ oc create -f edns-cafe.yaml
 
 CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
 
-##### Validate CRD
+#### Validate CRD
 
 **Note** Sadly OpenShift does not have the same Dashboard for CRDs. Therefore you need to use the OpenShift CLI
 
@@ -191,7 +191,7 @@ kubectl create -f CustomResourceDefinition.yaml
 
 CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-##### Create VirtualServer and ExternalDNS CRDs in Kubernetes
+#### Create VirtualServer and ExternalDNS CRDs in Kubernetes
 
 ```
 kubectl create -f vs-tea.yaml
@@ -213,7 +213,7 @@ NAME                               DOMAINNAME         AGE     CREATED ON
 externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:43Z
 ```
 
-##### Validate CRD using the BIG-IP
+#### Validate CRD using the BIG-IP
 
 ![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-13.png)
 
