@@ -68,7 +68,7 @@ cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ## Kubernetes Container Environments
 
-### Step 1: Deploy CIS
+### Step 2: Deploy CIS
 
 The biggest benefit for using CRDs is their no limitations on how many Public IPs **Virtual Server** create on BIG-IP. However to maintain similarity with Routes we using HOST Header Load balancing to determine the backend application. In this example the backend is **/tea,/coffee and /mocha** with the same Public IP address 10.192.125.65
 
@@ -112,3 +112,105 @@ kubectl create -f f5-bigip-ctlr-deployment.yaml
 cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/k8s/cis/cis-deployment)
 
 **Note** Do not forget the Flannel CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cni/f5-bigip-node.yaml)
+
+## Creating Custom Resource Definitions 
+
+### Step 3: Creating VirtualServer and ExternalDNS CRDs using OpenShift
+
+User-case for the CRDs:
+
+- unsecure
+- Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
+- Same Hostname **cafe.example.com** for OpenShift and Kubernetes environments
+
+Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
+
+![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+
+Create OpenShift CRDs
+
+**Note:** CIS requires the CustomResourceDefinition schema
+
+```
+oc create -f CustomResourceDefinition.yaml
+```
+
+CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/customresource/crd/crd-schema/customresourcedefinitions.yml)
+
+Create OpenShift CRDs
+
+```
+oc create -f vs-tea.yaml
+oc create -f vs-coffee.ya,l
+```
+
+CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
+
+Validate CRD
+
+**Note** Sadly OpenShift does not have the same Dashboard for CRDs. Therefore you need to use the OpenShift CLI
+
+```
+# oc get crd,vs,policy,tlsprofile -n default
+NAME                                   HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+virtualserver.cis.f5.com/cafe-coffee   cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
+virtualserver.cis.f5.com/cafe-mocha    cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
+virtualserver.cis.f5.com/cafe-tea      cafe.example.com   edge-tls         redirect      10.192.125.65               None            Ok       68s
+```
+
+Validate OpenShift Routes using the BIG-IP
+
+![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-47-04.png)
+
+Validate OpenShift CRD pool-members using the BIG-IP
+
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-51-23.png)
+
+### Step 4: Creating VirtualServer and ExternalDNS CRDs using Kubernetes
+
+User-case for the CRDs:
+
+- unsecure
+- Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
+- Same Hostname **cafe.example.com** for OpenShift and Kubernetes environments
+
+Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
+
+![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+
+Create OpenShift CRDs
+
+**Note:** CIS requires the CustomResourceDefinition schema
+
+```
+kubectl create -f CustomResourceDefinition.yaml
+```
+
+CRD Schema [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/customresource/crd/crd-schema/customresourcedefinitions.yml)
+
+Create OpenShift CRDs
+
+```
+kubectl create -f vs-tea.yaml
+kubectl create -f vs-coffee.ya,l
+```
+
+CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
+
+Validate CRD
+
+```
+# oc get crd,vs,policy,tlsprofile -n default
+NAME                                   HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+virtualserver.cis.f5.com/cafe-coffee   cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
+virtualserver.cis.f5.com/cafe-mocha    cafe.example.com   edge-tls         redirect      10.192.125.65                                        68s
+virtualserver.cis.f5.com/cafe-tea      cafe.example.com   edge-tls         redirect      10.192.125.65               None            Ok       68s
+```
+
+Validate CRD using the BIG-IP
+
+![big-ip CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-47-04.png)
+
+Validate Kubernetes CRD pool-members using the BIG-IP
+
+![big-ip pools](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/route-vs-crd/diagram/2022-01-27_14-51-23.png)
