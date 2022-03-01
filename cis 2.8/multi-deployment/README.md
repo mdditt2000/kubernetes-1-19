@@ -269,3 +269,9 @@ deployment.apps/tea scaled
 ```
 
 ![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-52-48.png)
+
+#### Connect to the Public IP
+
+**Note** All traffic will connect to the **ocp** cluster. I can verify this by the server address
+
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-55-16.png)
