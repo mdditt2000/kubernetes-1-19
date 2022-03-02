@@ -8,7 +8,7 @@ metadata:
 spec:
   host: cafe.example.com
   hostGroup: "cafe"
-  virtualServerAddress: "10.192.75.121"
+  virtualServerAddress: "10.192.125.121"
   virtualServerHTTPPort: 443
   tlsProfileName: reencrypt-cafe
   httpTraffic: redirect
