@@ -11,4 +11,4 @@ spec:
     tag: 2.1.1-ubi
     pullPolicy: Always
   replicas: 1
-  serviceType: ClusterIP
+  serviceType: NodePort
