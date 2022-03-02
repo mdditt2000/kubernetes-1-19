@@ -46,7 +46,7 @@ spec:
               "--gtm-bigip-username=$(BIGIP_USERNAME)",
               "--gtm-bigip-password=$(BIGIP_PASSWORD)",
               "--gtm-bigip-url=10.192.125.60",
-              "--namespace=default",
+              "--namespace=nginx-ingress",
               "--pool-member-type=cluster",
               "--openshift-sdn-name=/Common/openshift_vxlan",
               "--log-level=DEBUG",
