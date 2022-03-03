@@ -9,7 +9,7 @@ spec:
   host: cafe.example.com
   hostGroup: "cafe"
   virtualServerAddress: "10.192.75.121"
-  virtualServerHTTPPort: 443
+  virtualServerHTTPSPort: 443
   tlsProfileName: reencrypt-cafe
   httpTraffic: redirect
   snat: auto
