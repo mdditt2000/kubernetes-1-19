@@ -12,7 +12,7 @@ spec:
   pools:
   - dnsRecordType: A
     loadBalanceMethod: round-robin
-    dataServerName: /Common/k8s
+    dataServerName: /Common/ocp
     monitors:
     - interval: 10
       recv: ""
