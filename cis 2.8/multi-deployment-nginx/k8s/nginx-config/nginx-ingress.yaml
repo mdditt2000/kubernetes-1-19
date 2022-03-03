@@ -4,7 +4,7 @@ metadata:
   name: nginx-ingress
   namespace: nginx-ingress
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: nginx-ingress
