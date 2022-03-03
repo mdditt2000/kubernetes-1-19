@@ -1,4 +1,4 @@
-# Multi-Cluster OpenShift/Kubernetes using F5 BIG-IP and NGINX IC
+# Multi-Cluster OpenShift/Kubernetes using F5 BIG-IP and NGINX
 
 Today, organizations are increasingly deploying multiple container environment. Deploying multiple environment can improve availability, isolation and scalability. This user-guide demonstrates how F5 Container Ingress Services (CIS) can automate BIP-IP to provide Ingress services for a multiple platform-agnostic container environments.
 
