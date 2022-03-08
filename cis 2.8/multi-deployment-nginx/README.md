@@ -69,7 +69,7 @@ cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 ### Step 2: Deploy NGINX Ingress Operator on OpenShift
 
-Recommend following the following [NGINX blog](https://www.nginx.com/blog/getting-started-nginx-ingress-operator-red-hat-openshift/)
+Recommend following [NGINX blog](https://www.nginx.com/blog/getting-started-nginx-ingress-operator-red-hat-openshift/)
 
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/nginx-config)
 
@@ -105,7 +105,7 @@ replicaset.apps/nginx-ingress-operator-controller-manager-c4fbbcb9f   1         
 
 ### Step 3: Deploy CIS
 
-The biggest benefit for using CRDs is their no limitations on how many Public IPs **Virtual Server** create on BIG-IP. However to maintain similarity with Routes we using HOST Header Load balancing to determine the backend application. In this example the backend is **/tea,/coffee and /mocha** with the same Public IP address 10.192.125.65
+The benefit for using CRDs is no limitations on how many Public IPs **Virtual Server** create on BIG-IP
 
 Add the following parameters to THE CIS deployment
 
