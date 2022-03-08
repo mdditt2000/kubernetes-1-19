@@ -1,10 +1,10 @@
-# Multi-Cluster OpenShift/Kubernetes using BIG-IP DNS Failover and Nginx
+# Multi-Cluster OpenShift/Kubernetes using BIG-IP DNS Failover and NGINX
 
-Today, organizations are increasingly deploying multiple container environment. Deploying multiple environment can improve availability, isolation and scalability. This user-guide demonstrates how F5 Container Ingress Services (CIS) can automate BIP-IP with Nginx Ingress Controller to provide Ingress services for a multiple platform-agnostic container environments
+Today, organizations are increasingly deploying multiple container environment. Deploying multiple environment can improve availability, isolation and scalability. This user-guide demonstrates how F5 Container Ingress Services (CIS) can automate BIP-IP with Nginx Ingress Controller to provide Ingress services for a multiple platform-agnostic container environments using DNS failover
 
 ## OpenShift and Kubernetes Container Environments
 
-In this user-guide, we have deployed an OpenShift and Kubernetes container environments running identical applications. BIG-IP is platform-agnostic, using DNS to distribute traffic between the two container environments. This simple but powerful approach enables users the flexibility to complete an container environment proof of concept or migrating applications between environments. Since CIS uses the Kubernetes API the resource definitions for OpenShift and Kubernetes are identical except for the public IPs. Diagram below represents the OpenShift and Kubernetes environments.
+In this user-guide, we have deployed an OpenShift and Kubernetes container environments running identical applications front-ended by NGINX Ingress Controller. BIG-IP is platform-agnostic, using DNS to distribute traffic between the OpenShift and Kubernetes clusters. This simple but powerful approach enables users the flexibility to complete an container environment proof of concept or migrating applications between environments. Since CIS uses the Kubernetes API the resource definitions for OpenShift and Kubernetes are identical except for the public IPs. Diagram below represents the OpenShift and Kubernetes environments.
 
 ![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-03_14-01-55.png)
 
@@ -14,8 +14,9 @@ This user-guide demonstrates an application having a Wide IP's HOST name **cafe.
 
 ### Environment parameters
 
+* NGINX Ingress Controller from OpenShift requires the Nginx Ingress Operator 
 * BIG-IP LTM and DNS configured on the same device
-* Configure BIG-IP DNS iQuery so that BIG-IP systems can communicate with each other for datacenter **ocp** and **k8s**
+* Configure BIG-IP DNS iQuery so that BIG-IP systems can communicate with each other for Data Center **ocp** and **k8s**
 
 ![iQuery](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_11-11-06.png)
 
@@ -62,9 +63,19 @@ oc create -f bigip-ctlr-clusterrole.yaml
 oc create -f f5-bigip-ctlr-deployment.yaml
 ```
 
-cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cis-deployment)
+cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/cis/cis-deployment)
 
-**Note** Do not forget the OpenShift-SDN CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/ocp/cni/f5-openshift-hostsubnet-01.yaml)
+**Note** Do not forget the OpenShift-SDN CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/cni)
+
+### Step 2: Deploy NGINX Ingress Operator on OpenShift
+
+Recommend following the following [NGINX blog](https://www.nginx.com/blog/getting-started-nginx-ingress-operator-red-hat-openshift/)
+
+nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/nginx-config)
+
+#### Validate NGINX Ingress Operator on OpenShift
+
+![iQuery](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_11-11-06.png)
 
 ## Kubernetes Container Environments
 
