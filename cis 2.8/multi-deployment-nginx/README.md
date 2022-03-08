@@ -75,11 +75,11 @@ nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/ci
 
 #### Validate NGINX Ingress Operator on OpenShift
 
-![iQuery](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_11-11-06.png)
+![operator](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-02_14-33-05.png)
 
 ## Kubernetes Container Environments
 
-### Step 2: Deploy CIS
+### Step 3: Deploy CIS
 
 The biggest benefit for using CRDs is their no limitations on how many Public IPs **Virtual Server** create on BIG-IP. However to maintain similarity with Routes we using HOST Header Load balancing to determine the backend application. In this example the backend is **/tea,/coffee and /mocha** with the same Public IP address 10.192.125.65
 
