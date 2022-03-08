@@ -77,6 +77,30 @@ nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/ci
 
 ![operator](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-02_14-33-05.png)
 
+```
+# oc get deployment -n nginx-ingress
+NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-ingress-controller                    1/1     1            1           5d19h
+nginx-ingress-operator-controller-manager   1/1     1            1           5d19h
+[root@ocp-installer secure]# kubectl -n nginx-ingress  get all
+NAME                                                            READY   STATUS    RESTARTS        AGE
+pod/nginx-ingress-controller-66b4c4f7-smk8h                     1/1     Running   0               5d19h
+pod/nginx-ingress-operator-controller-manager-c4fbbcb9f-xkvds   2/2     Running   1 (2d12h ago)   5d19h
+
+NAME                                                                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+service/nginx-ingress-controller                                    NodePort    172.30.175.208   <none>        80:30046/TCP,443:32028/TCP   5d19h
+service/nginx-ingress-operator-controller-manager-metrics-service   ClusterIP   172.30.0.114     <none>        8443/TCP                     5d19h
+
+NAME                                                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-ingress-controller                    1/1     1            1           5d19h
+deployment.apps/nginx-ingress-operator-controller-manager   1/1     1            1           5d19h
+
+NAME                                                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-ingress-controller-66b4c4f7                     1         1         1       5d19h
+replicaset.apps/nginx-ingress-operator-controller-manager-c4fbbcb9f   1         1         1       5d19h
+
+```
+
 ## Kubernetes Container Environments
 
 ### Step 3: Deploy CIS
