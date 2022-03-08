@@ -148,19 +148,37 @@ cis-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/
 
 **Note** Do not forget the Flannel CNI [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cni/f5-bigip-node.yaml)
 
-## Creating Custom Resource Definitions 
+### Step 4: Deploy NGINX Ingress Operator on Kubernetes
 
-### Step 3: Creating VirtualServer and ExternalDNS CRDs using OpenShift
+Deploy the following manifest and schema
+
+nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/k8s/nginx-config)
+
+## Creating Custom Resource Definitions
+
+### Step 5: Deploy the Cafe application
+
+OpenShift deployment is updated to the support the API changes in 1.22
+
+ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/ingress-example)
+
+Kubernetes deployment is still using beta API for IngressClass
+
+ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/k8s/ingress-example)
+
+### Step 6: Creating VirtualServer, TLS and ExternalDNS CRDs using OpenShift
 
 Use-case for the CRDs:
 
-- unsecure
-- Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
+- Secure
+- HTTP to HTTPS redirect
+- Re-encrypt TLS between Client and NGINX Ingress Controller
+- HTTPS Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
 - Same Hostname **cafe.example.com** for OpenShift and Kubernetes environments
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
-![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-44-15.png)
+![crd-ocp](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-08-49.png)
 
 #### Create CRDs Schema in OpenShift
 
@@ -170,51 +188,56 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 oc create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/ocp/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
-#### Create VirtualServer and ExternalDNS CRDs in OpenShift
+#### Create VirtualServer, TLSProfile and ExternalDNS CRDs in OpenShift
 
 ```
+oc create -f reencrypt-cafe.yaml
 oc create -f vs-tea.yaml
 oc create -f vs-coffee.yaml
 oc create -f edns-cafe.yaml
 ```
 
-CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/ocp/cis/cafe/unsecure)
+CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/ocp/cis/cafe/secure)
 
 #### Validate CRD
 
 **Note** Sadly OpenShift does not have the same Dashboard for CRDs. Therefore you need to use the OpenShift CLI
 
 ```
-# oc get crd,vs,externaldns -n default
 NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS        IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-coffee   cafe.example.com                                  10.192.125.121               None            Ok       2d23h
-virtualserver.cis.f5.com/vs-tea      cafe.example.com                                  10.192.125.121               None            Ok       2d23h
+virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
+virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
 
-NAME                               DOMAINNAME         AGE     CREATED ON
-externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:19Z
+NAME                                   AGE
+tlsprofile.cis.f5.com/reencrypt-cafe   5d19h
+
+NAME                               DOMAINNAME         AGE   CREATED ON
+externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d    2022-03-03T18:31:29Z
 ```
 
 #### Validate CRD using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-52-50.png)
+![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-16-43.png)
 
 #### Validate CRD policy for cafe.example.com on BIG-IP
 
-![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-52-04.png)
+![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-17-14.png)
 
-### Step 4: Creating VirtualServer and ExternalDNS CRDs using Kubernetes
+### Step 7: Creating VirtualServer and ExternalDNS CRDs using Kubernetes
 
 Use-case for the CRDs:
 
-- unsecure
-- Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
+- Secure
+- HTTP to HTTPS redirect
+- Re-encrypt TLS between Client and NGINX Ingress Controller
+- HTTPS Health monitor of the backend application using HOST **cafe.example.com** and **PATH /coffee, and /tea**
 - Same Hostname **cafe.example.com** for OpenShift and Kubernetes environments
 
 Diagram below displays the example of **vs-tea** with the **edns-cafe** for the following use-case
 
-![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-45-08.png)
+![crd-k8s](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-09-16.png)
 
 #### Create CRDs Schema in Kubernetes
 
