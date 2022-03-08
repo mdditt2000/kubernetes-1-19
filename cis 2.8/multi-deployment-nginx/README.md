@@ -1,4 +1,4 @@
-# Multi-Cluster OpenShift/Kubernetes using BIG-IP DNS Failover and NGINX
+# Multi-Cluster OpenShift/Kubernetes using BIG-IP DNS Failover with Nginx Ingress Controller
 
 Today, organizations are increasingly deploying multiple container environment. Deploying multiple environment can improve availability, isolation and scalability. This user-guide demonstrates how F5 Container Ingress Services (CIS) can automate BIP-IP with Nginx Ingress Controller to provide Ingress services for a multiple platform-agnostic container environments using DNS failover
 
