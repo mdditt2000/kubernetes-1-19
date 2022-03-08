@@ -225,7 +225,7 @@ externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d    2022-03-03T18:31:29Z
 
 ![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_11-17-14.png)
 
-### Step 7: Creating VirtualServer and ExternalDNS CRDs using Kubernetes
+### Step 7: Creating VirtualServer, TLS and ExternalDNS CRDs using Kubernetes
 
 Use-case for the CRDs:
 
