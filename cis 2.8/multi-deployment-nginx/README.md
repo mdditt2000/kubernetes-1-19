@@ -206,6 +206,7 @@ CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/m
 **Note** Sadly OpenShift does not have the same Dashboard for CRDs. Therefore you need to use the OpenShift CLI
 
 ```
+# oc get crd,vs,tlsprofile,externaldns -n nginx-ingress
 NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS        IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
 virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
 virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-cafe   redirect      10.192.125.121               None            Ok       5d
@@ -247,53 +248,57 @@ Diagram below displays the example of **vs-tea** with the **edns-cafe** for the 
 kubectl create -f CustomResourceDefinition.yaml
 ```
 
-CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
+CRD Schema [repo](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/k8s/cis/cafe/cis-crd-schema/customresourcedefinitions.yml)
 
 #### Create VirtualServer and ExternalDNS CRDs in Kubernetes
 
 ```
-kubectl create -f vs-tea.yaml
-kubectl create -f vs-coffee.yaml
-kubectl create -f edns-cafe.yaml
+oc create -f reencrypt-cafe.yaml
+oc create -f vs-tea.yaml
+oc create -f vs-coffee.yaml
+oc create -f edns-cafe.yaml
 ```
 
-CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment/k8s/cis/cafe/unsecure)
+CRD [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/multi-deployment-nginx/k8s/cis/cafe/secure)
 
 #### Validate CRD
 
 ```
-# kubectl get crd,vs,externaldns -n default
+❯ kubectl get crd,vs,tlsprofile,externaldns -n nginx-ingress
 NAME                                 HOST               TLSPROFILENAME   HTTPTRAFFIC   IPADDRESS       IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
-virtualserver.cis.f5.com/vs-coffee   cafe.example.com                                  10.192.75.121               None            Ok       3d4h
-virtualserver.cis.f5.com/vs-tea      cafe.example.com                                  10.192.75.121               None            Ok       3d4h
+virtualserver.cis.f5.com/vs-coffee   cafe.example.com   reencrypt-cafe   redirect      10.192.75.121               None            Ok       5d2h
+virtualserver.cis.f5.com/vs-tea      cafe.example.com   reencrypt-cafe   redirect      10.192.75.121               None            Ok       5d2h
 
-NAME                               DOMAINNAME         AGE     CREATED ON
-externaldns.cis.f5.com/edns-cafe   cafe.example.com   2d23h   2022-02-26T01:35:43Z
+NAME                                   AGE
+tlsprofile.cis.f5.com/reencrypt-cafe   5d22h
+
+NAME                               DOMAINNAME         AGE    CREATED ON
+externaldns.cis.f5.com/edns-cafe   cafe.example.com   5d2h   2022-03-03T18:27:10Z
 ```
 
 #### Validate CRD using the BIG-IP
 
-![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-13.png)
+![big-ip CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-43-28.png)
 
-Validate Kubernetes CRD pool-members using the BIG-IP
+#### Validate the BIG-IP GLSB Pools
 
-![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-02-28_16-59-41.png)
+![big-ip pools](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-43-46.png)
 
-### Step 5: Validate the BIG-IP Wide IPs and DNS Failover
+### Step 8: Validate the BIG-IP Wide IPs and DNS Failover
 
 #### Validate the BIG-IP GSLB Wide IP
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-13-48.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-45-58.png)
 
 #### Validate the BIG-IP GLSB Pools
 
 Each pool represents a container environment. In this user-guide we have a **ocp** and **k8s** pools
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-14-21.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-48-19.png)
 
 #### Validate the **ocp** Data Center GLSB Pool on BIG-IP
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-17-31.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-52-47.png)
 
 **Note** availability shows green. Monitors are able to successfully complete the health checks
 
@@ -301,11 +306,11 @@ Each pool represents a container environment. In this user-guide we have a **ocp
 
 This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-17-59.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-53-05.png)
 
 #### Validate the **k8s** Data Center GLSB Pool on BIG-IP
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-28.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-51-40.png)
 
 **Note** availability shows green. Monitors are able to successfully complete the health checks
 
@@ -313,7 +318,7 @@ This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
 This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-18-57.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_12-52-00.png)
 
 #### Replica the **k8s** pods to zero
 
