@@ -322,19 +322,16 @@ This is the public IP returned by the BIG-IP DNS to the clients DNS query
 
 #### Replica the **k8s** pods to zero
 
-Replica the application pods in the Kubernetes container environment to zero. BIG-IP DNS will detect the replica and remove the **k8s** Data Center from the WIDE IP. Only **ocp** will be available
+Replica the nginx-ingress pods in the Kubernetes container environment to zero. BIG-IP DNS will detect the replica and remove the **k8s** Data Center from the WIDE IP. Only **ocp** will be available
 
 ```
-❯ kubectl scale --current-replicas=3 --replicas=0 deployment/coffee
-deployment.apps/coffee scaled
-❯ kubectl scale --current-replicas=3 --replicas=0 deployment/tea
-deployment.apps/tea scaled
+kubectl scale --current-replicas=2 --replicas=0 deployment/nginx-ingress -n nginx-ingress
 ```
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-52-48.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_13-00-25.png)
 
 #### Connect to the Public IP
 
 **Note** All traffic will connect to the **ocp** cluster. I can verify this by the server address
 
-![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment/diagram/2022-03-01_10-55-16.png)
+![wide-ip](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/multi-deployment-nginx/diagram/2022-03-08_13-04-13.png)
