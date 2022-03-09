@@ -1,0 +1,144 @@
+{
+    "k8s": {
+        "Shared": {
+            "class": "Application",
+            "mysite_10_192_75_111_80": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                    "10.192.75.111"
+                ],
+                "policyEndpoint": "/k8s/Shared/mysite_10_192_75_111_80_f5demo_policy",
+                "policyWAF": {
+                    "bigip": "/Common/WAF_Policy"
+                },
+                "securityLogProfiles": [
+                    {
+                        "bigip": "/Common/Log all requests"
+                    }
+                ],
+                "profileHTTP": {
+                    "bigip": "/Common/Custom_HTTP"
+                }
+            },
+            "mysite_10_192_75_111_80_f5demo_policy": {
+                "class": "Endpoint_Policy",
+                "rules": [
+                    {
+                        "name": "vs_f5demo_f5_demo_80_mysite",
+                        "conditions": [
+                            {
+                                "type": "httpHeader",
+                                "name": "host",
+                                "event": "request",
+                                "all": {
+                                    "values": [
+                                        "mysite.f5demo.com"
+                                    ],
+                                    "operand": "equals"
+                                }
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "type": "forward",
+                                "event": "request",
+                                "select": {
+                                    "pool": {
+                                        "use": "f5_demo_80_mysite"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "strategy": "first-match"
+            },
+            "myapp_10_192_75_111_80": {
+                "class": "Service_HTTP",
+                "virtualAddresses": [
+                    "10.192.75.112"
+                ],
+                "policyEndpoint": "/k8s/Shared/myapp_10_192_75_111_80_f5demo_policy",
+                "policyWAF": {
+                    "bigip": "/Common/WAF_Policy"
+                },
+                "securityLogProfiles": [
+                    {
+                        "bigip": "/Common/Log all requests"
+                    }
+                ],
+                "profileHTTP": {
+                    "bigip": "/Common/Custom_HTTP"
+                }
+            },
+            "myapp_10_192_75_111_80_f5demo_policy": {
+                "class": "Endpoint_Policy",
+                "rules": [
+                    {
+                        "name": "vs_f5demo_f5_demo_80_myapp",
+                        "conditions": [
+                            {
+                                "type": "httpHeader",
+                                "name": "host",
+                                "event": "request",
+                                "all": {
+                                    "values": [
+                                        "mysite.f5demo.com"
+                                    ],
+                                    "operand": "equals"
+                                }
+                            }
+                        ],
+                        "actions": [
+                            {
+                                "type": "forward",
+                                "event": "request",
+                                "select": {
+                                    "pool": {
+                                        "use": "f5_demo_80_myapp"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "strategy": "first-match"
+            },
+            "f5_demo_80_mysite": {
+                "class": "Pool",
+                "members": [
+                    {
+                        "addressDiscovery": "static",
+                        "serverAddresses": [
+                        ],
+                        "servicePort": 80
+                    }
+                ]
+            },
+            "f5_demo_80_myapp": {
+                "class": "Pool",
+                "members": [
+                    {
+                        "addressDiscovery": "static",
+                        "serverAddresses": [
+                        ],
+                        "servicePort": 80
+                    }
+                ]
+            },
+            "template": "shared"
+        },
+        "class": "Tenant"
+    },
+    "class": "ADC",
+    "controls": {
+        "class": "Controls",
+        "userAgent": "CIS/v2.8.0 K8S/v1.19.0",
+        "archiveTimestamp": "2022-03-09T20:57:54.466Z"
+    },
+    "id": "urn:uuid:B97DFADF-9F0D-4F6C-8D66-E9B52E593694",
+    "label": "CIS Declaration",
+    "remark": "Auto-generated by CIS",
+    "schemaVersion": "3.18.0",
+    "updateMode": "selective"
+}

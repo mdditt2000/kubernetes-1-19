@@ -30,7 +30,3 @@ Customer not able to control the assigned policies on FWDN level - only on IP/Vi
 #### PM Response 
 
 Correct as shown above, policy is assigned to the Virtual
-
-#### Workaround
-
-Use a custom AS3 ConfigMap with Shared VirtualIPs to provide the above logic
