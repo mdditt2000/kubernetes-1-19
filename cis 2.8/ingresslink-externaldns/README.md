@@ -1,14 +1,16 @@
-# F5 IngressLink using ClusterIP User Guide
+# F5 IngressLink with ExternalDNS
 
-The F5 IngressLink is addressing modern app delivery at scale/large. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service and Nginx Ingress Service. The purpose of this user guide is to documented and simply the configuration and steps required to configure Ingresslink
+The F5 IngressLink addresses modern app delivery at scale while resolving persona challenges. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service (CIS) and Nginx Ingress Controller (IC). ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 IngressLink with ExternalDNS in a kubernetes environment.
 
-F5 IngressLink is the first true integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP Container Ingress Services and NGINX Ingress Controller for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies from a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across NetOps and DevOps teams. The diagram below demonstrates this use-case.
+F5 IngressLink is integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP, CIS and NGINX IC for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies. Providing a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across Infrastructure Providers, Cluster Operators and Application Developers as shown in the diagram below.
 
-This architecture diagram demonstrates the IngressLink solution
+![persona](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/diagram/2021-03-01_15-41-39.png)
+
+This architecture diagram demonstrates the IngressLink and ExternalDNS solution
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/diagram/2021-03-01_15-41-39.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=Ieq9rzelpUk)
+Demo on YouTube [video]()
 
 On this page you’ll find:
 
