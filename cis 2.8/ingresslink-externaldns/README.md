@@ -1,6 +1,6 @@
 # F5 IngressLink with ExternalDNS
 
-The F5 IngressLink addresses modern app delivery at scale while resolving persona challenges. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service (CIS) and Nginx Ingress Controller (IC). ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way.
+F5 IngressLink addresses modern app delivery at scale while resolving persona challenges. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service (CIS) and Nginx Ingress Controller (IC). ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way.
 
 ## Why IngressLink
 
