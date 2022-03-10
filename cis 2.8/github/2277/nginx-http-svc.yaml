@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-http
+  name: nginx-http
+  namespace: f5-test-nginx
+spec:
+  clusterIP: 172.30.45.193
+  clusterIPs:
+  - 172.30.45.193
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 80-80
+    nodePort: 32445
+    port: 80
+  selector:
+    app: nginx-http
+  type: NodePort
