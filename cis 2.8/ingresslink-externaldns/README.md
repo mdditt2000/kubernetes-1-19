@@ -1,12 +1,21 @@
 # F5 IngressLink with ExternalDNS
 
-The F5 IngressLink addresses modern app delivery at scale while resolving persona challenges. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service (CIS) and Nginx Ingress Controller (IC). ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way. This user-guide documents using F5 IngressLink with ExternalDNS in a kubernetes environment.
+The F5 IngressLink addresses modern app delivery at scale while resolving persona challenges. IngressLink is a resource definition defined between BIG-IP and Nginx using F5 Container Ingress Service (CIS) and Nginx Ingress Controller (IC). ExternalDNS allows user to control DNS records dynamically via Kubernetes CRD resources in a DNS provider-agnostic way.
 
-F5 IngressLink is integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP, CIS and NGINX IC for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies. Providing a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across Infrastructure Providers, Cluster Operators and Application Developers as shown in the diagram below.
+## Why IngressLink
+
+F5 IngressLink is integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP, CIS and NGINX IC for Kubernetes. 
+
+* IngressLink provides an **elegant control plane** solution that offers a unified method of working with F5 technologies
+* Providing a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across **Infrastructure Providers**, **Cluster Operators** and **Application Developers** personas
+* Aligning priorities and **minimize conflict** between teams while **enabling multi-tenancy** in Kubernetes
+* Save time and **reduce errors** with declarative deployment and simplify integration between BIG-IP and NGINX
 
 ![persona](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_14-50-09.png)
 
-This architecture diagram demonstrates the IngressLink and ExternalDNS solution
+This user-guide documents IngressLink with ExternalDNS. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and Data Centers.
+
+This architecture diagram demonstrates IngressLink with ExternalDNS
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/diagram/2021-03-01_15-41-39.png)
 
