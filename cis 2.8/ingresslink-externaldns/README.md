@@ -13,9 +13,7 @@ F5 IngressLink is integration between BIG-IP and NGINX technologies. F5 IngressL
 
 ![persona](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_14-50-09.png)
 
-This user-guide documents IngressLink with ExternalDNS. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and Data Centers.
-
-This architecture diagram demonstrates IngressLink with ExternalDNS
+This user-guide documents IngressLink with ExternalDNS. BIG-IP LTM and DNS are configured on the same device for a single cluster as shown in the diagram. However BIG-IP LTM and DNS can be on dedicated devices for multiple sites,clusters and Data Centers. This architecture diagram demonstrates IngressLink with ExternalDNS
 
 ![architecture](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/diagram/2021-03-01_15-41-39.png)
 
