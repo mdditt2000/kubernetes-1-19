@@ -4,7 +4,7 @@ The F5 IngressLink addresses modern app delivery at scale while resolving person
 
 F5 IngressLink is integration between BIG-IP and NGINX technologies. F5 IngressLink was built to support customers with modern, container application workloads that use both BIG-IP, CIS and NGINX IC for Kubernetes. It’s an elegant control plane solution that offers a unified method of working with both technologies. Providing a single interface—offering the best of BIG-IP and NGINX and fostering better collaboration across Infrastructure Providers, Cluster Operators and Application Developers as shown in the diagram below.
 
-![persona](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_14-50-09.png)
+![persona](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_14-50-09.png {width=40px height=400px})
 
 This architecture diagram demonstrates the IngressLink and ExternalDNS solution
 
