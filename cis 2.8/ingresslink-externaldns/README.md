@@ -103,6 +103,8 @@ Additionally, if you are deploying the CIS in Cluster Mode you need to have foll
 * You must have a fully active/licensed BIG-IP. SDN must be licensed. For more information, see [BIG-IP VE license support for SDN services](https://support.f5.com/csp/article/K26501111).
 * VXLAN tunnel should be configured from Kubernetes Cluster to BIG-IP. For more information see, [Creating VXLAN Tunnels](https://clouddocs.f5.com/containers/latest/userguide/cis-helm.html#creating-vxlan-tunnels)
 
+#### Create CIS using the below manifest
+
 ```
 kubectl create -f f5-bigip-ctlr-deployment.yaml
 ```
@@ -167,9 +169,9 @@ nginx-ingress   4/4     4            4           5h33m
 ```
 nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/nginx-config)
 
-**Step 4**
+## Deploy the Cafe Application
 
-### Deploy the Cafe Application
+**Step 4**
 
 Create the coffee and the tea deployments and services:
 
@@ -187,20 +189,68 @@ Create an Ingress resource:
 
 demo application [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/ingress-example)
 
+## Create an IngressLink and ExternalDNS CRD
+
 **Step 5**
 
-### Create an IngressLink and ExternalDNS CRD
+Add the **Public-IP** and **Host** to the IngressLink CRD. Host is **Wide-IP** that will match the ExternalDNS crd as shown below in the diagram
 
 ![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-10-00.png)
 
-Update the ip-address in IngressLink resource and iRule which is created in Step-1. This ip-address will be used to configure the BIG-IP device to load balance among the Ingress Controller pods.
+#### Create the IngressLink CRD
 
-    kubectl apply -f vs-ingresslink.yaml
+ ```
+❯ kubectl create -f vs-ingresslink.yaml
+ingresslink.cis.f5.com/vs-ingresslink created
+```
 
-Note: The name of the app label selector in IngressLink resource should match the labels of the nginx-ingress service created in step-3.
+**Note:** The name of the app label selector in IngressLink CRD should match the labels of the **nginx-ingress service** created in step-3. Recommend keeping the deployment default.
 
-crd-resource [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/ingresslink/clusterip/cis/crd-resource/vs-ingresslink.yaml)
+#### Validate the Public IP address on BIG-IP
+
+![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-20-43.png)
+
+#### Validate the BIG-IP Pools
+
+![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-21-36.png)
+
+#### Validate the Proxy-Protocol iRule
+
+![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-22-03.png)
+
+#### Create the ExternalDNS CRD
+
+ ```
+❯ kubectl create -f edns-cafe.yaml
+externaldns.cis.f5.com/edns-cafe created
+```
+
+crd-resource [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.8/ingresslink-externaldns/cis/crd-resource)
+
+#### Validate the ExternalDNS CRD in Kubernetes
+
+```
+❯ kubectl get crd,ingresslink,externaldns -n nginx-ingress
+NAME                                    IPAMVSADDRESS   AGE
+ingresslink.cis.f5.com/nginx-ingress                    4h25m
+ingresslink.cis.f5.com/vs-ingresslink                   4h19m
+
+NAME                               DOMAINNAME         AGE     CREATED ON
+externaldns.cis.f5.com/edns-cafe   cafe.example.com   4h12m   2022-03-10T21:17:36Z
+```
+
+#### Validate the Wide-IP on BIG0-IP DNS
+
+![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-31-50.png)
+
+#### Validate the Wide-IP Pool on BIG0-IP DNS
+
+![crd](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-40-00.png)
 
 **Step 6**
 
 ### Test the Application
+
+Connect to the host via the browser
+
+![traffic](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/ingresslink-externaldns/diagram/2022-03-10_17-43-16.png)
