@@ -9,9 +9,7 @@ spec:
   # check out tls examples to understand more.
   virtualServerAddress: "10.192.75.111"
   virtualServerHTTPPort: 80
-  policyName: policy-f5demo
   host: mysite.f5demo.com
-  hostGroup: "f5demo"
   pools:
   - path: /
     service: f5-demo
