@@ -43,7 +43,7 @@ spec:
               "--bigip-password=$(BIGIP_PASSWORD)",
               "--bigip-url=192.168.200.60",
               "--bigip-partition=k8s",
-              "--namespace=default",
+              "--namespace=nginx-ingress",
               "--gtm-bigip-username=$(BIGIP_USERNAME)",
               "--gtm-bigip-password=$(BIGIP_PASSWORD)",
               "--gtm-bigip-url=192.168.200.60",
