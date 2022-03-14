@@ -6,21 +6,16 @@ metadata:
   labels:
     f5cr: "true"
 spec:
-  domainName: cafe.example.com
+  domainName: mysite.f5demo.com
   dnsRecordType: A
   loadBalanceMethod: round-robin
   pools:
   - dnsRecordType: A
     loadBalanceMethod: round-robin
     dataServerName: /Common/k8s
-    monitors:
+    monitor:
     - interval: 10
       recv: ""
-      send: "GET /tea HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      send: "GET / HTTP/1.1\r\nHost: mysite.f5demo.com\r\n"
       timeout: 31
-      type: https
-    - interval: 10
-      recv: ""
-      send: "GET /coffee HTTP/1.1\r\nHost: cafe.example.com\r\n"
-      timeout: 31
-      type: https
+      type: http
