@@ -7,7 +7,7 @@ metadata:
 spec:
   # This is an insecure virtual, Please use TLSProfile to secure the virtual
   # check out tls examples to understand more.
-  virtualServerAddress: "10.192.75.111"
+  virtualServerAddress: "10.192.75.121"
   virtualServerHTTPPort: 80
   host: mysite.f5demo.com
   pools:
