@@ -4,10 +4,10 @@ metadata:
   labels:
     f5cr: "true"
   name: kubernetes-dashboard-certs
-  namespace: kubernetes-dashboard
+  namespace: default
 spec:
   hosts:
-    - example.com
+    - mysite.f5demo.com
   tls:
     clientSSL: /Common/clientssl
     reference: bigip
