@@ -19,5 +19,5 @@ spec:
       timeout: 31
       type: http
     path: /
-    service: f5-demo-service
+    service: kubernetes-dashboard-proxy
     servicePort: 3000
