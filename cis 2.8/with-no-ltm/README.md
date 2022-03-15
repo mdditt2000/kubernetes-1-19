@@ -12,7 +12,7 @@ In this use-case, their is LTM but user wants to take advantage of the features 
 
 Possible option of using **generic host** as shown below
 
-![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/with-no-ltm/diagram/2022-03-14_16-23-27.png)
+![architecture](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/with-no-ltm/diagram/2022-03-14_16-55-42.png)
 
 
 
