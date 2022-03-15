@@ -10,6 +10,7 @@ spec:
   virtualServerAddress: "10.192.75.121"
   virtualServerHTTPSPort: 443
   tlsProfileName: kubernetes-dashboard-certs
+  httpTraffic: redirect
   pools:
   - monitor:
       interval: 10
