@@ -6,17 +6,17 @@ metadata:
   labels:
     f5cr: "true"
 spec:
-  host: "*.f5demo.com"
+  host: "mysite.f5demo.com"
   virtualServerAddress: "10.192.75.121"
   virtualServerHTTPSPort: 443
-  httpTraffic: redirect
+  tlsProfileName: kubernetes-dashboard-certs
   pools:
   - monitor:
       interval: 10
       recv: ""
       send: "GET /"
       timeout: 31
-      type: https
+      type: http
     path: /
-    service: f5-demo-deployment
-    servicePort: 443
+    service: f5-demo-service
+    servicePort: 80
