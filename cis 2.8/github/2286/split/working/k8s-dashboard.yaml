@@ -1,0 +1,22 @@
+apiVersion: "cis.f5.com/v1"
+kind: VirtualServer
+metadata:
+  name: k8s-dashboard
+  namespace: kubernetes-dashboard
+  labels:
+    f5cr: "true"
+spec:
+  host: *.example.com
+  virtualServerAddress: "10.192.75.121"
+  virtualServerHTTPSPort: 443
+  httpTraffic: redirect
+  pools:
+  - monitor:
+      interval: 10
+      recv: ""
+      send: "GET /oauth/health"
+      timeout: 31
+      type: http
+    path: /
+    service: kubernetes-dashboard-proxy
+    servicePort: 3000
