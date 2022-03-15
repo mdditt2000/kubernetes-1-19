@@ -10,8 +10,8 @@ spec:
     - example.com
   tls:
     clientSSL: /Common/clientssl
-    reference: secret
-    termination: bigip
+    reference: bigip
+    termination: edge
 ---
 apiVersion: cis.f5.com/v1
 kind: VirtualServer
