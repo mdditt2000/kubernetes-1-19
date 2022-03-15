@@ -23,5 +23,5 @@ spec:
         imagePullPolicy: Always
         name: f5-demo-deployment
         ports:
-        - containerPort: 80
+        - containerPort: 3000
           protocol: TCP

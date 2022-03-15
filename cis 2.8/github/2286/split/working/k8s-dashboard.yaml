@@ -19,4 +19,4 @@ spec:
       type: http
     path: /
     service: f5-demo-service
-    servicePort: 80
+    servicePort: 3000
