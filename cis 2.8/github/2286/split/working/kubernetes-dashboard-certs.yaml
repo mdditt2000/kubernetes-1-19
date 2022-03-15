@@ -4,7 +4,7 @@ metadata:
   labels:
     f5cr: "true"
   name: kubernetes-dashboard-certs
-  namespace: default
+  namespace: kubernetes-dashboard
 spec:
   hosts:
     - f5demo.com

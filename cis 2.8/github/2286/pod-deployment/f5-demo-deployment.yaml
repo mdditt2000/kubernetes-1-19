@@ -4,6 +4,7 @@ metadata:
   labels:
     app: f5-demo-deployment
   name: f5-demo-deployment
+  namespace: kubernetes-dashboard
 spec:
   replicas: 2
   selector:
