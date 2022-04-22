@@ -30,3 +30,9 @@ The purpose of this document is to DEMO new CRD enhancements coming to CIS 2.9. 
 ![vs-ts](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/loadbalancingmethod/diagram/2022-04-22_15-36-20.png)
 
 Demo [YouTube](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/loadbalancingmethod)
+
+Validate the **loadBalancingMethod** on the BIG-IP
+
+![pool](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/loadbalancingmethod/diagram/2022-04-22_15-40-10.png)
+
+**NOTE** This example the pool is re-used! 
