@@ -6,8 +6,8 @@ metadata:
     f5cr: "true"
 spec:
   virtualServerAddress: "10.192.75.110"
-  virtualServerName: "loadbalancingmethod-change"
   virtualServerHTTPPort: 80
+  virtualServerName: "vs-loadbalancingmethod-change"
   pools:
   - path: /
     service: hello-world-app

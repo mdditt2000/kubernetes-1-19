@@ -7,7 +7,7 @@ metadata:
 spec:
   virtualServerAddress: "10.192.75.111"
   virtualServerPort: 80
-  virtualServerName: "loadbalancingmethod-change"
+  virtualServerName: "ts-loadbalancingmethod-change"
   mode: standard
   snat: auto
   pool:
