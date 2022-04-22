@@ -1,26 +1,32 @@
-# CRD Enhancements 
+# CRD Enhancements coming in CIS 2.9
 
-The purpose of this document is to document new CRD enhancements coming to CIS 2.8
+## Configure Load Balancing Method on VirtualServer and TransportServer CRD
 
-- change default persistence profile on BIG-IP
+The purpose of this document is to DEMO new CRD enhancements coming to CIS 2.9. This document is also a **pre-view** for early testing, and provide some feedback to F5 Product Management
 
-## Persistence Profile
+- change default load balancing method used by AS3 to user define. Following options are available via the AS3 schema:
 
-CIS uses AS3 default persistence profile
+    - dynamic-ratio-node
+    - fastest-app-response
+    - fastest-node
+    - least-connections-member
+    - least-connections-node
+    - least-sessions
+    - observed-member
+    - observed-node
+    - predictive-member
+    - predictive-node
+    - ratio-least-connections-membeions-node
+    - ratio-member
+    - ratio-session
+    - round-robin **"default"**
+    - weighted-least-connections-member
+    - weighted-least-connections-node
 
-- VirtualServer uses **cookie**
-- TransportServer uses **source-address**
+## loadBalancingMethod
 
-Persistence can be added to the VirtualServer, TransportServer or Policy CRD. Policy CRD will take precedence. Example below show persistence changes added to the VirtualServer, or TransportServer CRD
+**loadBalancingMethod** can be added to the VirtualServer, TransportServer CRD. Example below show **loadBalancingMethod** changes added to the VirtualServer CRD and TransportServer CRD
 
 ![vs-ts](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_10-43-08.png)
 
-Example below show persistence changes added to the Policy CRD and associated to the VirtualServer CRD
-
-![vs-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_11-05-16.png)
-
-Example below show persistence changes added to the Policy CRD and associated to the TransportServer CRD
-
-![ts-policy](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.8/crd-enhancements/diagram/2022-02-22_11-04-17.png)
-
-Demo [YouTube](https://www.youtube.com/watch?v=brlNGGJ0sw0)
+Demo [YouTube](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/loadbalancingmethod)
