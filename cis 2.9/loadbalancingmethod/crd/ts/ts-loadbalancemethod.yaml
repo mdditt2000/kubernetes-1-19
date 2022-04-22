@@ -13,7 +13,7 @@ spec:
   pool:
     service: hello-world-app
     servicePort: 8080
-    loadBalancingMethod: dynamic-ratio-member
+    loadBalancingMethod: least-connections
     monitor:
       type: tcp
       interval: 10
