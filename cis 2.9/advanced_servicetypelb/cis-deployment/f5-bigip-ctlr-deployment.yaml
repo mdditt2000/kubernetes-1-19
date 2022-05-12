@@ -18,7 +18,7 @@ spec:
       # permissions
       containers:
         - name: k8s-bigip-ctlr
-          image: "akzrepo/k8s-bigip-ctlr:lb_svc_policy_v2"
+          image: "f5networks/k8s-bigip-ctlr:2.8.1"
           env:
             - name: BIGIP_USERNAME
               valueFrom:
