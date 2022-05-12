@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     cis.f5.com/ipamLabel: Test
-    cis.f5.com/cis.f5.com/policyName: self-ip
+    cis.f5.com/cis.f5.com/policyName: type-lb
   labels:
     app: f5-demo-test
   name: f5-demo-test
