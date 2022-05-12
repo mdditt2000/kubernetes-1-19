@@ -7,7 +7,6 @@ metadata:
   namespace: default
 spec:
   profiles:
-    http: /Common/Custom_HTTP
     tcp: /Common/Custom_TCP
     persistenceProfile: none
   snat:
