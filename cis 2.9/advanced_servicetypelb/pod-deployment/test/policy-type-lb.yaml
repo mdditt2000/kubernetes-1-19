@@ -9,5 +9,9 @@ spec:
   profiles:
     tcp: /Common/Custom_TCP
     persistenceProfile: none
-  snat:
-    /Common/self-ip
+  iRules:
+    insecure: /Common/Proxy_Protocol_iRule
+  l3Policies:
+    firewallPolicy: /Common/AFM_Policy
+  logProfiles:
+      - /Common/firewall_log_profile
