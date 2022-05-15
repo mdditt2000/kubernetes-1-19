@@ -4,6 +4,7 @@ metadata:
   annotations:
     cis.f5.com/ipamLabel: Test
     cis.f5.com/policyName: type-lb
+    cis.f5.com/health: '{"interval": 10, "timeout": 31}'
   labels:
     app: f5-demo-test
   name: f5-demo-test

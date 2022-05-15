@@ -9,10 +9,8 @@ metadata:
 spec:
   l3Policies: 
     firewallPolicy: /Common/AFM_Policy
-    dos: /Common/dos
   profiles: 
     logProfiles: 
       - /Common/firewall_log_profile
-      - /Common/dos_log_profile
     persistenceProfile: none
     tcp: /Common/Custom_TCP
