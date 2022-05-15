@@ -6,9 +6,9 @@ Services of type LoadBalancer are natively supported in Kubernetes deployments. 
 
 With simplicity comes reduced completely or features. Services of type LoadBalancer lacks the capability of advanced configuration. However CIS can solve this with adding a **PolicyCRD** to the Virtual Address that is created on BIG-IP. Ths advanced configuration could be adding **TCP profiles, iRule, SNAT pools, logging, firewall and DOS profiles etc**. This examples demonstrates adding a firewall policy to protect the Kubernetes cluster from Network attacks. Logging policy is also added to log any attacks
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/diagram/2021-04-27_10-11-10.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/advanced_servicetypelb/diagram/2022-05-15_13-23-45.png)
 
-Demo on YouTube [video](https://www.youtube.com/watch?v=IEAzvkRjWAE)
+Demo on YouTube [video]()
 
 Looking at the diagram and Service of type LoadBalancer, the following events occur:
 
