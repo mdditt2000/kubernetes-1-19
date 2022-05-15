@@ -110,16 +110,16 @@ kubectl create -f customresourcedefinitions.yaml
 
 The orchestration parameter holds the orchestration environment i.e. Kubernetes
 
-* --ip-range='{Test":"10.192.75.117-10.192.75.119}'
+* --ip-range='{"Test":"10.192.75.117-10.192.75.119"}'
 
-ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated by the ipamlabel defined in the Service
+ip-range parameter holds the IP address ranges and from this range, it creates a pool of IP address range which gets allocated by the **ipamlabel** defined in the Service
 
 * --log-level=debug
 
 ```
 - args:
     - --orchestration=kubernetes
-    - --ip-range='{"Test":"10.192.75.113-10.192.75.116","Production":"10.192.125.30-10.192.125.50"}'
+    - --ip-range='{"Test":"10.192.75.117-10.192.75.119"}'
     - --log-level=DEBUG
 ```
 
@@ -161,7 +161,7 @@ I0512 22:29:12.156260       1 shared_informer.go:247] Caches are synced for F5 I
 ipam-deployment [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/advanced_servicetypelb/ipam-deployment)
 
 
-## Create the Service Type LoadBalancer Service
+## Create the Service Type LoadBalancer Service and add PolicyCRD
 
 ### Step 3
 
@@ -169,6 +169,7 @@ Create the pod deployments and services for the test application
 
 ```
 kubectl create -f f5-demo-test-deployment.yaml
+Kubectl create -f policy-type-lb.yaml
 kubectl create -f f5-demo-test-service.yaml
 ```
 
