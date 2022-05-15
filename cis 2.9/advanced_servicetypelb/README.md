@@ -8,7 +8,7 @@ With simplicity comes reduced completely or features. Services of type LoadBalan
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/advanced_servicetypelb/diagram/2022-05-15_13-23-45.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/zneGybLXBo8)
 
 Looking at the diagram and Service of type LoadBalancer, the following events occur:
 
