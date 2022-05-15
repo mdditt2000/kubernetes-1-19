@@ -201,4 +201,4 @@ kubernetes     ClusterIP      10.96.0.1      <none>          443/TCP        613d
 ```
 CIS will add the EXTERNAL-IP to the BIG-IP as you can see in the diagram
 
-![diagram](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/servicetypelb/diagram/2021-04-27_14-15-10.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/advanced_servicetypelb/diagram/2022-05-15_13-39-58.png)
