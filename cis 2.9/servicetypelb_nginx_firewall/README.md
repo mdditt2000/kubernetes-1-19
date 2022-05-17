@@ -180,11 +180,11 @@ pod-deployments [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master
 Use the kubectl get service command to determine the EXTERNAL-IP
 
 ```
-❯ kubectl get service
-NAME           TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-f5-demo-test   LoadBalancer   10.96.245.18   10.192.75.117   80:31340/TCP   51m
-kubernetes     ClusterIP      10.96.0.1      <none>          443/TCP        613d
+❯ kubectl get service -n nginx-ingress
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)                      AGE
+nginx-ingress   LoadBalancer   10.99.152.119   10.192.75.117   80:31203/TCP,443:30561/TCP   106s
+
 ```
 CIS will add the EXTERNAL-IP to the BIG-IP as you can see in the diagram
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/advanced_servicetypelb/diagram/2022-05-15_13-39-58.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/servicetypelb_nginx_firewall/diagram/2022-05-17_15-12-04.png)

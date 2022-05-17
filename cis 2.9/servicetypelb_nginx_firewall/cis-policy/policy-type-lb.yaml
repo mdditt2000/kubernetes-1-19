@@ -7,6 +7,8 @@ metadata:
   name: type-lb
   namespace: nginx-ingress
 spec:
+  iRules: 
+    insecure: /Common/Proxy_Protocol_iRule
   l3Policies: 
     firewallPolicy: /Common/AFM_Policy
     dos: /Common/dos
