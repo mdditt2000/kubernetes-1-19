@@ -5,7 +5,7 @@ metadata:
   labels: 
     f5cr: "true"
   name: type-lb
-  namespace: default
+  namespace: nginx-ingress
 spec:
   l3Policies: 
     firewallPolicy: /Common/AFM_Policy
