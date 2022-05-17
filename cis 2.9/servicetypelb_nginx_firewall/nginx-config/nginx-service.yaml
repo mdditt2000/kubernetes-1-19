@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ingress
+  namespace: nginx-ingress
+  labels:
+    app: nginx-ingress
+  annotations:
+    cis.f5.com/ipamLabel: Test
+    cis.f5.com/policyName: type-lb
+    cis.f5.com/health: '{"interval": 10, "timeout": 31}'
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: https
+  selector:
+    app: nginx-ingress
+  type: LoadBalancer
+status:
+  loadBalancer:
