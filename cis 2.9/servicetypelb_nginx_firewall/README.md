@@ -101,9 +101,30 @@ Kubectl create -f policy-type-lb.yaml
 
 policy-crd [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/servicetypelb_nginx_firewall/cis-policy)
 
+### Deploy the Cafe Application
+
+**Step 3**
+
+Create the coffee and the tea deployments and services:
+
+    kubectl create -f cafe.yaml
+
+### Configure Load Balancing for the Cafe Application
+
+Create a secret with an SSL certificate and a key:
+
+    kubectl create -f cafe-secret.yaml
+
+Create an Ingress resource:
+
+    kubectl create -f cafe-ingress.yaml
+
+ingress-example [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/servicetypelb_nginx_firewall/ingress-example)
+
+
 ## Create the NGINX Ingress Controller
 
-### Step 4
+### Step 5
 
 ### Nginx-Controller Installation
 
