@@ -175,7 +175,7 @@ CIS will add the EXTERNAL-IP to the BIG-IP as you can see in the diagram
 
 ## View the Firewall, DOS and Logging are added to the VirtualServer
 
-![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/servicetypelb_nginx_firewall/diagram/2022-05-17_15-12-04.png)
+![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/servicetypelb_nginx_firewall/diagram/2022-05-20_12-16-25.png)
 
 ## View the Firewall evening logs
 
