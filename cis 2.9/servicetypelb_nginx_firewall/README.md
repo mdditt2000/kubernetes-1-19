@@ -1,4 +1,4 @@
-# Service Type LB with NGINX IC and BIG-IP Firewall/Dos
+# Service Type LB with NGINX IC and BIG-IP with Firewall/Dos
 
 A service of type LoadBalancer is the simplest and the fastest way to expose a service inside a Kubernetes cluster to the external world. All you need to-do is specify the service type as type=LoadBalancer in the service definition. This guide we are exposing the **nginx-ingress service** as service type type=LoadBalancer.
 
@@ -8,7 +8,7 @@ With simplicity comes reduced completely or features. Services of type LoadBalan
 
 ![diagram](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/servicetypelb_nginx_firewall/diagram/2022-05-17_16-25-35.png)
 
-Demo on YouTube [video]()
+Demo on YouTube [video](https://youtu.be/KE9Riplu0Oc)
 
 ## Create the CIS Deployment Configuration
 
