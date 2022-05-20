@@ -107,18 +107,18 @@ policy-crd [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%
 
 ### Nginx-Controller Installation
 
-This diagram demonstrates the how CIS and IPAM work together for the **nginx-ingress service**
+This diagram demonstrates the how CIS and IPAM work together using annotations in the **nginx-ingress service** to add Firewall, DOS and other required BIG-IP configurations 
 
-![CRD](https://github.com/mdditt2000/k8s-bigip-ctlr/blob/main/user_guides/simplifying-ingress/diagram/2021-10-18_14-30-40.png)
+![CRD](https://github.com/mdditt2000/kubernetes-1-19/blob/master/cis%202.9/servicetypelb_nginx_firewall/diagram/2022-05-17_16-47-44.png)
 
-Create NGINX IC custom resource definitions for VirtualServer and VirtualServerRoute, TransportServer and Policy resources:
+Create NGINX IC custom resource definitions schema:
 
     kubectl apply -f k8s.nginx.org_virtualservers.yaml
     kubectl apply -f k8s.nginx.org_virtualserverroutes.yaml
     kubectl apply -f k8s.nginx.org_transportservers.yaml
     kubectl apply -f k8s.nginx.org_policies.yaml
 
-crd-schema [repo](https://github.com/nginxinc/kubernetes-ingress/tree/v1.10.0/deployments/common/crds)
+crd-schema [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/servicetypelb_nginx_firewall/nginx-config/crd-schema)
 
 Create a namespace and a service account for the Ingress controller:
    
@@ -140,25 +140,24 @@ Create an IngressClass resource (for Kubernetes >= 1.18):
     
     kubectl apply -f nginx-config/ingress-class.yaml
 
+Create a deployment for the Ingress Controller pods for ports 80 and 443 as follows: 
+
+    kubectl apply -f nginx-config/nginx-ingress.yaml
+  
+Create a service for the Ingress Controller pods for ports 80 and 443 as follows: 
+
 Add the annotation to the nginx-service for **LoadBalancer Service type** to obtain the public IP address from IPAM.
 
 ```
   annotations:
     cis.f5.com/ipamLabel: Test
+    cis.f5.com/policyName: type-lb
+    cis.f5.com/health: '{"interval": 10, "timeout": 31}'
 ```
-
-    kubectl apply -f nginx-config/nginx-ingress.yaml
-  
-Create a service for the Ingress Controller pods for ports 80 and 443 as follows:
 
     kubectl apply -f nginx-config/nginx-service.yaml
 
-nginx-config [repo](https://github.com/mdditt2000/k8s-bigip-ctlr/tree/main/user_guides/simplifying-ingress/nginx-config)
-
-Validate that the EXTERNAL-IP is populated 
-
-
-
+nginx-config [repo](https://github.com/mdditt2000/kubernetes-1-19/tree/master/cis%202.9/servicetypelb_nginx_firewall/nginx-config)
 
 ## View the Service Type LoadBalancer status
 
