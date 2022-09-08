@@ -1,13 +1,11 @@
 apiVersion: "cis.f5.com/v1"
 kind: VirtualServer
 metadata:
-  name: vs-coffee
+  name: vs-hello
   namespace: default
   labels:
     f5cr: "true"
 spec:
-  host: cafe.example.com
-  hostGroup: "cafe"
   virtualServerAddress: "10.192.75.121"
   virtualServerHTTPPort: 80
   snat: auto
@@ -15,9 +13,9 @@ spec:
   - monitor:
       interval: 10
       recv: ""
-      send: "GET /coffee HTTP/1.1\r\nHost: cafe.example.com\r\n"
+      send: "GET /"
       timeout: 31
       type: http
-    path: /coffee
-    service: coffee-svc
+    path: /
+    service: hello-world-app
     servicePort: 8080
